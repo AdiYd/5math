@@ -1,5 +1,58 @@
-:root {
-    --themeColorText: black;
-    --themeColorBG: white;
+.flex {
+    display: flex;
+}
 
+.center {
+    justify-content: center;
+}
+
+.between {
+    justify-content: space-between;
+}
+
+.grid {
+    display: grid;
+}
+
+.columns {
+    grid-auto-flow: column;
+}
+
+.rows {
+    grid-auto-flow: row;
+}
+
+.round {
+    border-radius: var(--themeBorderRadius);
+}
+
+.border {
+    border: 1px solid;
+}
+
+.small {
+    font-size: 0.65em;
+}
+
+.medium {
+    font-size: 0.85em;
+}
+
+.large {
+    font-size: 1em;
+}
+
+.xLarge {
+    font-size: 1.3em;
+}
+
+
+button {
+    padding: 0.5em 0.6em;
+    background-color: rgba(180, 180, 180, 0.4);
+    border-radius: 0.1em;
+}
+
+button:hover {
+    opacity: 0.8;
 }

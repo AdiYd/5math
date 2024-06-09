@@ -1,0 +1,7 @@
+:root {
+    --themeColor: rgb(0, 166, 255);
+    --themeColorAlpha: rgba(0, 166, 255, 0.3);
+    --themeColorText: black;
+    --themeColorBG: white;
+    --themeBorderRadius: 20px;
+}
