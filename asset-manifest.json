@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/5math/static/css/main.f18a634b.css",
-    "main.js": "/5math/static/js/main.39a47fe0.js",
+    "main.css": "/5math/static/css/main.252c16d6.css",
+    "main.js": "/5math/static/js/main.41dfdbc3.js",
     "static/media/bg2.jpg": "/5math/static/media/bg2.8d1eb78b16280286bb98.jpg",
     "static/media/layout.png": "/5math/static/media/layout.744ab3d41ebc4a44ed93.png",
     "static/media/shaiProfile.jpg": "/5math/static/media/shaiProfile.617c6ace9d959d2cfc53.jpg",
@@ -13,11 +13,11 @@
     "static/media/revicons.woff": "/5math/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/5Math.svg": "/5math/static/media/5Math.a5a17a78e5b6ae6db2ac7cb2b699f2eb.svg",
     "index.html": "/5math/index.html",
-    "main.f18a634b.css.map": "/5math/static/css/main.f18a634b.css.map",
-    "main.39a47fe0.js.map": "/5math/static/js/main.39a47fe0.js.map"
+    "main.252c16d6.css.map": "/5math/static/css/main.252c16d6.css.map",
+    "main.41dfdbc3.js.map": "/5math/static/js/main.41dfdbc3.js.map"
   },
   "entrypoints": [
-    "static/css/main.f18a634b.css",
-    "static/js/main.39a47fe0.js"
+    "static/css/main.252c16d6.css",
+    "static/js/main.41dfdbc3.js"
   ]
 }
