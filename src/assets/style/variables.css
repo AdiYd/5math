@@ -1,0 +1,56 @@
+:root {
+    --fontSize: 18px;
+
+    --logoBlueDeep: #262161;
+    --logoBlue: #00ADF0;
+    --logoBlueLight: #82E8DE;
+
+    --themeColor: rgb(0, 166, 255);
+    --themeColorAlpha: rgba(0, 166, 255, 0.3);
+
+    --constThemeColor: var(--ThemeGPTPurpleV);
+    --constThemeColorAlpha: var(--ThemeGPTPurpleVAlpha);
+
+    --themeColorText: black;
+    --themeColorBG: white;
+
+    --themeBorderRadius: 15px;
+
+    --fontFamily: Assistant, sans-serif;
+    --themeGPTfont: 'Inter', sans-serif;
+
+    --boxShadowHeader: 0px 1px 4px -1px rgba(0, 0, 0, 0.445);
+    /* #222; */
+    --boxShadow: 1px 1px 5px rgba(0, 0, 0, .955);
+
+    --ThemeColor1TitleColor: -webkit-linear-gradient(0deg, white, white, var(--themeColor), var(--themeColor), var(--themeColor), var(--themeColor));
+    --headerGradient: linear-gradient(90deg, #000000, #0007098c, #21212187, transparent);
+    --linearGradient: -45deg, #9c78db5c, transparent;
+
+
+    /* +++++++++++++   GPT Theme colors Light +++++++++++++ */
+    --ThemeGPTOrangeDeep: #F39F2E;
+    --ThemeGPTBlue: #007bff;
+    --ThemeGPTBlueAlpha: rgba(0, 123, 255, 0.5);
+    --ThemeGPTBlueV: #00a6ff;
+    --ThemeGPTBlueVAlpha: rgba(0, 166, 255, 0.5);
+    --ThemeGPTGreen: #29a847;
+    --ThemeGPTGreenAlpha: rgba(41, 168, 71, 0.5);
+    --ThemeGPTGreenV: rgb(57, 255, 20);
+    --ThemeGPTGreenVAlpha: rgba(57, 255, 20, 0.5);
+    --ThemeGPTGrey: #708090;
+    --ThemeGPTGreyV: #708090;
+    --ThemeGPTRed: rgb(220, 35, 35);
+    --ThemeGPTRedAlpha: rgba(236, 101, 101, 0.5);
+    --ThemeGPTRedV: #f5477e;
+    --ThemeGPTRedVAlpha: rgba(245, 71, 126, 0.5);
+    --ThemeGPTOrangeV: rgb(255, 87, 34);
+    --ThemeGPTOrangeVAlpha: rgba(255, 87, 34, 0.5);
+    --ThemeGPTPurple: #6a0dad;
+    --ThemeGPTPurpleV: rgb(168, 0, 230);
+    --ThemeGPTPurpleVAlpha: rgba(168, 0, 230, 0.8);
+    --ThemeGPTPurpleLightV: rgb(155, 127, 240);
+    --ThemeGPTPurpleLightVAlpha: rgba(155, 127, 240, 0.5);
+    --ThemeGPTWhite: #f7f7f7;
+    /* +++++++++++++   END GPT colors Light   +++++++++++++ */
+}

@@ -1,10 +1,108 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  margin: 0em;
+    position: relative;
+    font-family: var(--fontFamily);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  font-size: 20px;
+  font-size: var(--fontSize);
+    direction: rtl;
+    color: var(--themeColorText);
+    background: var(--themeColorBG);
+    transition: 0.1s;
+  }
+  
+  div.fameDiv1 {
+    background: var(--ThemeGPTPurpleVAlpha);
+    font-weight: 600;
+    font-size: 0.9em;
+    height: 25em;
+    padding: 2em 3em;
+    margin: 3em 5em;
+    color: white;
+  }
+  
+  div.fameDiv2 {
+    /* background: var(--ThemeGPTOrangeDeep); */
+    font-weight: 600;
+    font-size: 0.9em;
+    height: 25em;
+    padding: 2em 3em;
+    /* margin: 3em 5em; */
+  }
+  
+  div.fameDiv3 {
+    background: var(--ThemeGPTOrangeDeep);
+    font-weight: 600;
+    font-size: 0.9em;
+    height: 25em;
+    padding: 2em 3em;
+    margin: 3em 5em;
+  }
+  
+  div.fameDiv3 p {
+    line-height: 2em;
+
+  }
+  button#trialButton {
+    font-size: 1.1em;
+    padding: 0.5em 0.9em;
+    border-radius: 20px;
+  }
+  
+  button#trialButton:hover {
+    background-color: var(--themeColor);
+  }
+  
+  .App {
+    font-size: 1rem;
+  }
+  
+  div#aboutUs p {
+    width: 70vw;
+  }
+  
+  section.caruselDiv {
+    background: rgba(6, 124, 227, 0.1);
+    background: var(--themeColorAlpha);
+    padding: 1em;
+  }
+  
+  div.carousel-container li {
+    align-content: center;
+  }
+  
+  div.carousel-container button {
+    /* background-color: transparent; */
+    background: transparent;
+  }
+  
+  div.carousel-container button:hover::before {
+    color: white;
+  }
+  
+  div.carousel-container button::before {
+    color: black;
+  }
+  
+  .custom-dot-list-style button {
+    background-color: transparent;
+  }
+  
+  .custom-dot-list-style li.react-multi-carousel-dot--active button {
+    background-color: black;
+  }
+  
+  p.cardText {
+    display: contents;
+    font-size: 1.5em;
+  }
+  
+  img#tutorSelfie {
+    margin: 3em;
+    float: left;
+    border-radius: 50%;
+    width: 15em;
+    height: 15em;
+    border: 3px solid var(--themeColorAlpha);
 }
