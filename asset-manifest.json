@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Home/static/css/main.fb1b1fb8.css",
-    "main.js": "/Home/static/js/main.9bdccb12.js",
-    "static/media/bg2.jpg": "/Home/static/media/bg2.8d1eb78b16280286bb98.jpg",
-    "static/media/layout.png": "/Home/static/media/layout.744ab3d41ebc4a44ed93.png",
-    "static/media/shaiProfile.jpg": "/Home/static/media/shaiProfile.617c6ace9d959d2cfc53.jpg",
-    "static/media/bg3.jpg": "/Home/static/media/bg3.6d9d93b4bbf6b6b9aa8e.jpg",
-    "static/media/bg4.jpg": "/Home/static/media/bg4.dbf8da3ebed6ec8dbddc.jpg",
-    "static/media/revicons.eot": "/Home/static/media/revicons.a77de540a38981833f9e.eot",
-    "static/media/revicons.ttf": "/Home/static/media/revicons.57fd05d4ae650374c8de.ttf",
-    "static/media/experience.png": "/Home/static/media/experience.45e103f46324b9cc40a2.png",
-    "static/media/revicons.woff": "/Home/static/media/revicons.e8746a624ed098489406.woff",
-    "static/media/5Math.svg": "/Home/static/media/5Math.a5a17a78e5b6ae6db2ac7cb2b699f2eb.svg",
-    "index.html": "/Home/index.html",
-    "main.fb1b1fb8.css.map": "/Home/static/css/main.fb1b1fb8.css.map",
-    "main.9bdccb12.js.map": "/Home/static/js/main.9bdccb12.js.map"
+    "main.css": "/5math/static/css/main.6925ff78.css",
+    "main.js": "/5math/static/js/main.e81d0176.js",
+    "static/media/bg2.jpg": "/5math/static/media/bg2.8d1eb78b16280286bb98.jpg",
+    "static/media/layout.png": "/5math/static/media/layout.744ab3d41ebc4a44ed93.png",
+    "static/media/shaiProfile.jpg": "/5math/static/media/shaiProfile.617c6ace9d959d2cfc53.jpg",
+    "static/media/bg3.jpg": "/5math/static/media/bg3.6d9d93b4bbf6b6b9aa8e.jpg",
+    "static/media/bg4.jpg": "/5math/static/media/bg4.dbf8da3ebed6ec8dbddc.jpg",
+    "static/media/revicons.eot": "/5math/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/5math/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/experience.png": "/5math/static/media/experience.45e103f46324b9cc40a2.png",
+    "static/media/revicons.woff": "/5math/static/media/revicons.e8746a624ed098489406.woff",
+    "static/media/5Math.svg": "/5math/static/media/5Math.a5a17a78e5b6ae6db2ac7cb2b699f2eb.svg",
+    "index.html": "/5math/index.html",
+    "main.6925ff78.css.map": "/5math/static/css/main.6925ff78.css.map",
+    "main.e81d0176.js.map": "/5math/static/js/main.e81d0176.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb1b1fb8.css",
-    "static/js/main.9bdccb12.js"
+    "static/css/main.6925ff78.css",
+    "static/js/main.e81d0176.js"
   ]
 }
