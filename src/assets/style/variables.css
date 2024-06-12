@@ -12,7 +12,8 @@
     --constThemeColorAlpha: var(--ThemeGPTPurpleVAlpha);
 
     --themeColorText: black;
-    --themeColorBG: white;
+    --themeColorBG: #FEF8E9;
+        --themeBG_Gradient: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.908), rgba(2, 44, 51, 0.447), rgba(2, 44, 51, 0.247), transparent, transparent, white, white);
 
     --themeBorderRadius: 15px;
 
