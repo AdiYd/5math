@@ -8,6 +8,14 @@
 
 .center {
     justify-content: center;
+    align-items: center;
+
+.end {
+    justify-content: end;
+}
+    
+.gap1 {
+    gap: 1em
 }
 
 .between {
@@ -49,7 +57,19 @@
 }
 
 .small {
-    font-size: 0.65em;
+    font-size: 0.8em;
+    }
+    
+.smaller {
+    font-size: 0.6em;
+}
+
+.opacity {
+    opacity: 0.7;
+}
+    
+    .opacityHover:hover {
+        opacity: 0.7;
 }
 
 .medium {

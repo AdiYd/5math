@@ -53,4 +53,79 @@ div#cardContainer * {
     align-content: center;
     text-align: center;
     justify-self: center;
-}
+    display: flex;
+    }
+    
+                div#promptContainer {
+        position: fixed;
+        z-index: 150;
+        background: var(--themeColorBG);
+        padding: 1em;
+        border: 1px solid;
+        top: 10%;
+        width: 57vw;
+        height: 80vh;
+        left: 20%;
+        overflow-y: scroll;
+    }
+    
+    div#promptContainer::-webkit-scrollbar {
+        width: 0.4em;
+        height: 0.3em;
+        border-radius: var(--PlotRadius);
+    }
+    
+    div#promptContainer::-webkit-scrollbar-track {
+        background: transparent;
+    
+    }
+    
+    div#promptContainer::-webkit-scrollbar-thumb {
+        cursor: grab;
+        /* background: linear-gradient(315deg, transparent, transparent, #233b3234, transparent, transparent); */
+        border-radius: 12px;
+        background-color: rgba(0, 0, 0, 0.442);
+        /* background: linear-gradient(45deg, rgba(22, 146, 235, 0.538), transparent); */
+    }
+    
+    div#promptContainer::-webkit-scrollbar-thumb:active {
+        cursor: grabbing;
+    }
+    
+    
+    svg#closePrompt:hover {
+        opacity: 0.6;
+    }
+    
+                div.checkBoxDiv {
+                    position: relative;
+                }
+    
+    input[type=checkbox] {
+        margin: 0.8em;
+        width: 1em;
+        height: 1em;
+    }
+    
+    input[type=checkbox]:checked+label::before {
+        content: "";
+        display: block;
+        position: absolute;
+        text-align: center;
+        height: 1em;
+        width: 1em;
+        left: 0;
+        top: 5px;
+        background-color: #FA9E57;
+        font-family: "Montserrat";
+        border-radius: 2px;
+        border: 1px solid rgb(150 150 150 / 30%);
+    }
+    
+                                div.checkBoxDiv input[type=checkbox]:checked+label::after {
+        content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
+        display: block;
+        position: absolute;
+        left: 3px;
+        top: 3px;
+    }
