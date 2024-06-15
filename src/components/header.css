@@ -15,21 +15,35 @@ div.headerPad {
 
 
 div.headerPad li:hover {
-    border-color: var(--themeColor);
+    color: rgb(0 0 0 / 80%);
 }
 
 div.headerBorder {
     align-items: center;
-    border-radius: 0px 0px 1em 1em;
-    padding: 0.2em 0em;
-    background-color: #011e33;
-    background: #011e33;
-    background-image: var(--headerGradient);
-    color: aliceblue;
-    box-shadow: var(--boxShadowHeader);
+    /* border-radius: 0px 0px 0.5em 0.5em; */
+        padding: 0.5em 0em;
+        /* background-color: #011e33; */
+        /* background: rgba(1, 30, 51, 0.8); */
+        /* background-image: var(--headerGradient); */
+        background-image: var(--headerGradient2);
+        color: var(--themeColorText_DarkMode);
+        /* box-shadow: var(--boxShadowHeader); */
     border: none;
 }
 
+div.headerBorder svg {
+    /* fill: var(--themeColorText_DarkMode); */
+    margin: 0em 1em;
+    display: flex;
+}
+
+div.headerBorder div#formulaLogo svg {
+    fill: var(--themeColorText_DarkMode);
+}
+
+div.headerBorder div#formulaLogotheme svg {
+    fill: var(--themeColor);
+}
 .activePage {
     color: var(--themeColor);
     font-weight: 600;
@@ -55,13 +69,15 @@ div#menuLogo {
 }
 
 div#menuLogo img {
-    width: 1.5em;
-    height: 1.2em;
+    width: 2em;
+        height: 1.5em;
 }
 
 ul#menuCategory {
     list-style-type: none;
     font-size: 0.9em;
+    align-items: baseline;
+        padding: 0em 0.2em;
 }
 
 div.headerPad li {
@@ -74,4 +90,44 @@ div.headerPad li {
 ul#menuCategory li:hover {
     opacity: 0.8;
     /* font-weight: 600; */
+}
+div.headerBorder div.subMenu {
+    background: black;
+    color: var(--themeColorText_DarkMode);
+    box-shadow: none;
+}
+
+div.subMenu {
+    position: absolute;
+    z-index: 50;
+    display: flex;
+    flex-wrap: wrap;
+    /* width: fit-content; */
+    /* height: fit-content; */
+    color: var(--themeColorText);
+    background: var(--themeColorBG);
+    padding: 0.9em 1.2em;
+    border-radius: 1em;
+    box-shadow: var(--boxShadowHeader2);
+    cursor: default;
+}
+
+div.subMenu * {
+    height: fit-content;
+    width: max-content;
+    cursor: pointer;
+    margin: 0.9em;
+}
+
+div.subMenu *:hover {
+    color: var(--themeColor);
+}
+
+li {
+    list-style: none;
+    width: max-content;
+}
+
+button#loginButton {
+    color: var(--themeColorText_DarkMode);
 }

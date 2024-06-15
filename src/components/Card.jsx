@@ -1,4 +1,4 @@
-import './components.css';
+import './Components.css';
 import img from '../assets/img/5Math.svg';
 import { debug } from '../assets/function/functions';
 
@@ -22,16 +22,18 @@ export default function Card({
     boxShadow = true,
     translateY = true,
     textDict = textDictTamplate,
-    childrens,
+    children,
+    cardID,
+    className,
     style = {},
     ...props }) {
-    debug('this is text dict', textDict, true);
     return (
         <div
-            className={`flex center columns alignCenter round ${boxShadow ? 'boxShadowHover' : ''} ${translateY ? 'translateY' : ''}`}
+            className={`flex center cardContainer columns alignCenter tCenter ${className} ${boxShadow ? 'boxShadowHover' : ''} ${translateY ? 'translateY' : ''}`}
             style={{ ...style }}
-            id='cardContainer'>
-            {childrens ? childrens :
+            title={props.title}
+            id={cardID}>
+            {children ? children :
                 <>
                     {textDict.title && <h3>{textDict.title}</h3>}
                     {textDict.img && <img

@@ -4,16 +4,22 @@
     --logoBlueDeep: #262161;
     --logoBlue: #00ADF0;
     --logoBlueLight: #82E8DE;
+    --themeGrey: rgba(184, 198, 211, 1);
 
-    --themeColor: rgb(0, 166, 255);
+    --themeColor: var(--ThemeGPTOrangeV);
     --themeColorAlpha: rgba(0, 166, 255, 0.3);
+    --themeGreyAlpha: rgba(184, 198, 211, 0.473);
 
     --constThemeColor: var(--ThemeGPTPurpleV);
     --constThemeColorAlpha: var(--ThemeGPTPurpleVAlpha);
 
     --themeColorText: black;
-    --themeColorBG: #FEF8E9;
-        --themeBG_Gradient: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.908), rgba(2, 44, 51, 0.447), rgba(2, 44, 51, 0.247), transparent, transparent, white, white);
+    --themeColorText2: #27326d;
+        --themeColorText_DarkMode: rgb(254, 248, 233);
+        --themeColorBG: white;
+        --themeColorBG_DarkMode: #212121;
+        --themeColorBG2: #FEF8E9;
+        --themeBG_Gradient: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.95), rgba(2, 44, 51, 0.6), rgba(2, 44, 51, 0.3), transparent, transparent, transparent, rgba(255, 255, 255, 0.5), white);
 
     --themeBorderRadius: 15px;
 
@@ -21,24 +27,31 @@
     --themeGPTfont: 'Inter', sans-serif;
 
     --boxShadowHeader: 0px 1px 4px -1px rgba(0, 0, 0, 0.445);
+    --boxShadowHeader2: 0px 1px 4px -1px #222;
+        --BoxShadowPlotBase: -1px 1px 8px 1px;
     /* #222; */
-    --boxShadow: 1px 1px 5px rgba(0, 0, 0, .955);
+    --boxShadow: 3px 3px 12px rgba(117, 115, 115, 0.755);
+        --boxShadow2: 1px 1px 5px rgba(0, 0, 0, .955);
 
     --ThemeColor1TitleColor: -webkit-linear-gradient(0deg, white, white, var(--themeColor), var(--themeColor), var(--themeColor), var(--themeColor));
     --headerGradient: linear-gradient(90deg, #000000, #0007098c, #21212187, transparent);
+    --headerGradient2: linear-gradient(180deg, #000000, black, black, black, black, transparent);
     --linearGradient: -45deg, #9c78db5c, transparent;
 
 
     /* +++++++++++++   GPT Theme colors Light +++++++++++++ */
     --ThemeGPTOrangeDeep: #F39F2E;
+    --ThemeGPTOrangeDeepAlpha: rgba(243, 159, 46, 0.7);
+        --ThemeGPTOrangeV: #EF8D67;
+        --ThemeGPTOrangeVAlpha: rgb(239, 141, 103, 0.5);
     --ThemeGPTBlue: #007bff;
     --ThemeGPTBlueAlpha: rgba(0, 123, 255, 0.5);
     --ThemeGPTBlueV: #00a6ff;
     --ThemeGPTBlueVAlpha: rgba(0, 166, 255, 0.5);
     --ThemeGPTGreen: #29a847;
     --ThemeGPTGreenAlpha: rgba(41, 168, 71, 0.5);
-    --ThemeGPTGreenV: rgb(57, 255, 20);
-    --ThemeGPTGreenVAlpha: rgba(57, 255, 20, 0.5);
+    --ThemeGPTGreenV: rgb(32, 206, 1);
+        --ThemeGPTGreenVAlpha: rgba(32, 206, 1, 0.5);
     --ThemeGPTGrey: #708090;
     --ThemeGPTGreyV: #708090;
     --ThemeGPTRed: rgb(220, 35, 35);
@@ -49,7 +62,7 @@
     --ThemeGPTOrangeVAlpha: rgba(255, 87, 34, 0.5);
     --ThemeGPTPurple: #6a0dad;
     --ThemeGPTPurpleV: rgb(168, 0, 230);
-    --ThemeGPTPurpleVAlpha: rgba(168, 0, 230, 0.8);
+    --ThemeGPTPurpleVAlpha: rgba(168, 0, 230, 0.7);
     --ThemeGPTPurpleLightV: rgb(155, 127, 240);
     --ThemeGPTPurpleLightVAlpha: rgba(155, 127, 240, 0.5);
     --ThemeGPTWhite: #f7f7f7;

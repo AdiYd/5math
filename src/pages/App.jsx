@@ -1,28 +1,30 @@
 import { debug } from '../assets/function/functions';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, RouterProvider } from 'react-router-dom';
 import Header from '../components/Header';
 import Home from './Home';
+import Bagrut from './Bagrut';
 import AboutUs from './About';
+import Formulas from './Formula';
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
 window.onscroll = () => {
     let currentScroll = window.scrollY;
     let element = document.getElementById('header');
-    let login = document.getElementById('loginButton');
+    // let login = document.getElementById('loginButton');
     let logo = document.getElementById('imgLogo');
     if (element && (currentScroll >= prevScroll) && currentScroll > 50 && !change) {  // Scrolling down
 
         change = true;
         element.setAttribute('class', 'headerBorder');
-        login.setAttribute('class', 'themeConst round');
+        // login.setAttribute('class', 'themeConst round');
         logo.setAttribute('class', 'dropShadowWhite');
     }
     else if ((element) && (currentScroll < prevScroll) && (currentScroll <= 20) && change) {   // Scrolling up
 
         change = false;
         element.setAttribute('class', 'headerPad');
-        login.setAttribute('class', 'round');
+        // login.setAttribute('class', 'round');
         logo.setAttribute('class', 'dropShadow');
     }
     prevScroll = currentScroll;
@@ -32,48 +34,61 @@ window.onscroll = () => {
 
 
 export const PAGES = {
-    'דף הבית': {
+    Home: {
         link: <Home />,
-        name: 'Home'
+        name: 'דף הבית'
     },
-    'הקורסים שלנו': {
+    Courses: {
         link: undefined,
-        name: 'Courses'
+        name: 'הקורסים שלנו'
     },
-    'בגרויות ישנות': {
+    BagrutOfficial: {
+        link: <Bagrut />,
+        name: 'מבחני בגרות'
+    },
+    Exercise: {
         link: undefined,
-        name: 'BagrutOfficial'
+        name: 'חוברות תרגול'
     },
-    'חוברות תרגול': {
-        link: undefined,
-        name: 'Exercise'
-    },
-    'קצת עלינו': {
+    AboutUs: {
         link: <AboutUs />,
-        name: 'About-Us'
+        name: 'קצת עלינו'
     }
 }
 
 
 
 export default function App({ }) {
+    let url = window.location.href;
+    let relPath = url.slice(url.lastIndexOf('/') + 1);
+    debug('Im in app with url: ', url, relPath);
     return (
-        <Routes>
-            <Route
-                path="/"
-                element={<Header currentPage={"דף הבית"} />} >
+        <>
+            <Routes>
                 <Route
-                    index element={<Home />} />
+                    path='Formulas'
+                    element={<Formulas fullMode={true} />} />
+                <Route
+                    path='*'
+                    element={<>
+                        <Header currentPage={relPath} />
+                        <Routes>
+                            <Route
+                                path='5math'
+                                index element={<Home />} />
 
-                {Object.keys(PAGES).map((pageName, indx) =>
-                    <Route
-                        key={indx}
-                        path={PAGES[pageName].name}
-                        element={PAGES[pageName].link} />)}
-                <Route
-                    path="*"
-                    element={<><h1>Error Page! 404</h1></>} />
-            </Route>
-        </Routes>
+                            {Object.keys(PAGES).map((pageName, indx) =>
+                                <Route
+                                    key={indx}
+                                    path={pageName}
+                                    element={PAGES[pageName].link} />)}
+                            <Route
+                                path="*"
+                                element={<><h1>Error Page! 404</h1></>} />
+                        </Routes>
+                        <footer className='pt3 pb3 mt3' style={{ height: '10em', backgroundImage: 'linear-gradient(45deg, var(--themeColor), transparent)' }} />                    </>
+                    } />
+            </Routes>
+        </>
     )
 }

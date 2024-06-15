@@ -6,9 +6,13 @@
     display: flex;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
 .center {
     justify-content: center;
     align-items: center;
+}
 
 .end {
     justify-content: end;
@@ -18,6 +22,9 @@
     gap: 1em
 }
 
+.gap2 {
+    gap: 2em
+}
 .between {
     justify-content: space-between;
 }
@@ -44,12 +51,19 @@
     direction: rtl;
 }
 
+.square {
+    border-radius: 2px;
+}
+
+.squarish {
+    border-radius: 8px;
+}
 .round {
     border-radius: var(--themeBorderRadius);
 }
 
 .rounder {
-    border-radius: 50%;
+    border-radius: 20px;
 }
 
 .border {
@@ -73,11 +87,11 @@
 }
 
 .medium {
-    font-size: 0.85em;
+    font-size: 0.92em;
 }
 
 .large {
-    font-size: 1em;
+    font-size: 1.15em;
 }
 
 .xLarge {
@@ -107,12 +121,22 @@
     cursor: pointer;
 }
 
+.tStart {
+    text-align: start;
+}
+
+.tCenter {
+    text-align: center;
+}
 .alignCenter {
     align-items: center;
     align-content: center;
     align-self: center;
 }
 
+.baseLine {
+    align-items: baseline;
+}
 .boxShadow {
     box-shadow: var(--boxShadow);
 }
@@ -123,11 +147,12 @@
 
 .boxShadowHover:hover {
     /* box-shadow: 2px 2px 12px 1px rgba(0, 0, 0, .955); */
-    box-shadow: 0 0.3em 0.9em rgba(0, 0, 0, 0.599);
+    box-shadow: 0px 5px 4px 15px rgba(0, 0, 0, 0.599);
+        box-shadow: 4px 14px 20px rgba(0, 0, 0, 0.5);
 }
 
 .translateY:hover {
-    transform: translateY(-1em);
+    transform: translateY(-1.4em);
 }
 
 .dropShadow {
@@ -136,10 +161,14 @@
 }
 
 .dropShadowWhite {
-    -webkit-filter: drop-shadow(3px 5px 2px rgba(183, 216, 245, 0.4));
-    filter: drop-shadow(3px 5px 2px rgba(183, 216, 245, 0.4));
+    -webkit-filter: drop-shadow(3px 5px 2px rgba(254, 248, 233, 0.4));
+        filter: drop-shadow(3px 5px 2px rgba(254, 248, 233, 0.4));
 }
 
+.darkMode {
+    background: var(--themeColorBG_DarkMode);
+    color: var(--themeColorText_DarkMode);
+}
 
 a,
 a:hover,
@@ -149,10 +178,12 @@ a:active {
     list-style: none;
     text-decoration: none;
     transition: 0.2s;
+    text-align: -webkit-center;
 }
 
 button {
     padding: 0.5em 0.6em;
+    color: var(--themeColorText_DarkMode);
     background-color: var(--themeColor);
     border-radius: 0.2em;
     font-weight: bold;
@@ -165,6 +196,15 @@ button:hover {
     opacity: 0.8;
 }
 
+.bStart {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.bEnd {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 .alpha {
     background-color: var(--themeColorAlpha);
 }
@@ -174,10 +214,51 @@ button:hover {
     color: white;
 }
 
+.themeConst2 {
+    background-color: var(--ThemeGPTOrangeDeep);
+    color: black;
+}
+
+.themeConst3 {
+    background-color: var(--themeGrey);
+    color: var(--themeColorText);
+}
+
+.themeConst3:hover {
+    opacity: 0.7;
+}
+
+.themeConst4 {
+    color: var(--themeColorText);
+    background-color: transparent;
+}
+
+.themeConst4:hover {
+    color: var(--themeColorText_DarkMode);
+    background-color: var(--themeColor);
+}
+
+.themeBorder {
+    background: transparent;
+    color: var(--themeColorText);
+    border: 1px solid var(--themeColor);
+}
+
+.themeBorder:hover {
+    color: var(--themeColorText_DarkMode);
+    background: var(--themeColor);
+}
 .rotate {
     animation: rotate 1s forwards;
 }
 
+.borderDropBR {
+    border-radius: 30px 30px 1px 30px !important;
+}
+
+.borderDropBL {
+    border-radius: 30px 30px 30px 1px !important;
+}
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -264,6 +345,17 @@ button:hover {
 /*     END Padding     */
 
 /*     Margin     */
+.ma1 {
+    margin: 0.5em;
+}
+
+.ma2 {
+    margin: 0.8em;
+}
+
+.ma3 {
+    margin: 1em;
+}
 .m1 {
     margin: auto 0.5em;
 }
@@ -345,7 +437,7 @@ button:hover {
 }
 
 .bg1 {
-    background-image: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.908), rgba(2, 44, 51, 0.447), rgba(2, 44, 51, 0.247), transparent, transparent, transparent, transparent);
+    background-image: var(--themeBG_Gradient);
 }
 
 .bg2 {
@@ -368,7 +460,7 @@ button:hover {
 .mathLayout {
     background-image: url('../img/layout.png');
     z-index: -1;
-    background-repeat: no-repeat;
+    background-repeat: round;
     background-size: auto;
     /* background-attachment: fixed; */
     position: fixed;
@@ -378,3 +470,196 @@ button:hover {
 }
 
 /*    END BG    */
+@media only screen and (max-width: 1100px) {
+    body {
+        font-size: 16px;
+        /* background: rgba(0, 128, 0, 0.346); */
+    }
+
+    .App {
+        font-size: 0.95rem;
+    }
+
+
+    #frame2Card {
+        height: 16em;
+    }
+
+    img#frame2Img {
+        width: 4em;
+        height: 4em;
+    }
+
+    img#tutorSelfie {
+        margin: 2em;
+        width: 10em;
+        height: 10em;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    body {
+        font-size: 14px;
+        background: rgba(128, 107, 0, 0.346);
+    }
+
+    div.frameDiv1,
+    div.frameDiv3,
+    #frame2Card * {
+        font-size: 0.8em;
+    }
+
+    #frame2Card {
+        height: 14em;
+        width: 14em;
+    }
+
+    div.frameDiv3 h1 {
+        font-size: 1.5em;
+    }
+
+    img#frame2Img {
+        width: 3.5em;
+        height: 3.5em;
+    }
+
+    img#tutorSelfie {
+        margin: 2em;
+        width: 9em;
+        height: 9em;
+    }
+
+    button {
+        font-size: 0.8em;
+    }
+
+    div.checkBoxDiv input[type=checkbox] {
+        margin: 0.4em;
+        width: 0.7em;
+        height: 0.7em;
+    }
+
+}
+
+@media only screen and (max-width: 750px) {
+    body {
+        font-size: 12px;
+        /* background: rgba(102, 0, 128, 0.346); */
+    }
+
+    .App {
+        font-size: 0.9rem;
+    }
+
+    div.frameDiv1,
+    div.frameDiv3,
+    #frame2Card * {
+        font-size: 0.7em;
+    }
+
+
+    #frame2Card {
+        height: 11em;
+        width: 14em;
+    }
+
+    div.quickSignUp form div {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    div.quickSignUp h3 {
+        font-size: 0.9em;
+    }
+
+    div.quickSignUp form div input {
+        width: 80%;
+        margin: 1em;
+    }
+
+    div.quickSignUp form div input {
+        margin: 0.5em 0.3em;
+    }
+
+    div.quickSignUp form div#checkBoxDiv,
+    div.quickSignUp form div#checkBoxDiv div {
+        flex-direction: row;
+        font-size: 0.7em;
+    }
+
+    div.quickSignUp form div input[type='checkbox'] {
+        width: 1em;
+    }
+
+}
+
+@media only screen and (max-width: 680px) {
+    body {
+        font-size: 10px;
+        background: rgba(0, 113, 128, 0.346);
+    }
+
+
+    #frame2Card {
+        height: 10em;
+        min-width: 5em;
+        margin: 0.7em;
+    }
+
+    div.frameDiv2 {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    div.frameDiv1,
+    div.frameDiv3,
+    #frame2Card * {
+        font-size: 0.6em;
+    }
+
+    div.frameDiv3 h1 {
+        font-size: 1em;
+    }
+
+    img#tutorSelfie {
+        margin: 1em;
+        width: 7em;
+        height: 7em;
+        border: 1px solid rgba(255, 255, 255, 0.651);
+    }
+
+    button {
+        font-size: 0.8em;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    body {
+        font-size: 8px;
+        background: rgba(128, 53, 0, 0.346);
+    }
+
+    .App {
+        font-size: 0.9rem;
+    }
+
+    div.frameDiv2 {
+        padding: 0.8em;
+    }
+
+    #frame2Card {
+        height: 7em;
+        max-width: 5em;
+    }
+
+    div#frame2Card h3 {
+        font-size: 0.7em;
+    }
+
+    div.frameDiv1,
+    div.frameDiv3,
+    #frame2Card * {
+        font-size: 0.5em;
+    }
+}

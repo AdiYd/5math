@@ -26,47 +26,52 @@ img#LogoImgMain {
     border-radius: 40px;
 }
 
-div#cardContainer {
-    /* background-color: bisque; */
+div.cardContainer {
+    display: block;
     cursor: default;
     background: var(--themeColorBG);
-        border-radius: var(--themeBorderRadius);
-        font-size: 1.2em;
+    border-radius: 12px;
     margin: 0.5em;
     padding: 0.7em 0.5em;
     width: fit-content;
     height: fit-content;
     min-height: 5em;
-    min-width: 3em;
-    flex-wrap: wrap;
-    max-width: 20%;
+        min-width: 4em;
+            /* max-width: 20%; */
 }
 
-div#cardContainer img {
+/* div.cardContainer img {
     width: 15%;
     height: 25%;
 }
 
-div#cardContainer * {
+*/
+/* 
+div.cardContainer * {
     width: fit-content;
     align-items: center;
     align-content: center;
     text-align: center;
     justify-self: center;
     display: flex;
-    }
+    */
     
-                div#promptContainer {
+div#promptContainer {
+    resize: both;
         position: fixed;
         z-index: 150;
         background: var(--themeColorBG);
         padding: 1em;
-        border: 1px solid;
+        border: 1px solid var(--themeGrey);
         top: 10%;
         width: 57vw;
         height: 80vh;
         left: 20%;
         overflow-y: scroll;
+        background-image: linear-gradient(45deg, transparent,
+                    rgba(230, 226, 188, 0.202),
+                    rgba(238, 212, 174, 0.106),
+                    rgba(216, 239, 199, 0.176), transparent);
     }
     
     div#promptContainer::-webkit-scrollbar {
@@ -93,39 +98,39 @@ div#cardContainer * {
     }
     
     
-    svg#closePrompt:hover {
-        opacity: 0.6;
-    }
+svg#closePrompt:hover {
+    opacity: 0.6;
+}
     
-                div.checkBoxDiv {
-                    position: relative;
-                }
+div.checkBoxDiv {
+    position: relative;
+}
     
-    input[type=checkbox] {
-        margin: 0.8em;
-        width: 1em;
-        height: 1em;
+div.checkBoxDiv input[type=checkbox] {
+    cursor: pointer;
+    margin: 0.8em;
+    /* width: 1em;
+                                                                                                                                height: 1em; */
     }
-    
-    input[type=checkbox]:checked+label::before {
-        content: "";
-        display: block;
-        position: absolute;
-        text-align: center;
-        height: 1em;
-        width: 1em;
-        left: 0;
-        top: 5px;
-        background-color: #FA9E57;
-        font-family: "Montserrat";
-        border-radius: 2px;
-        border: 1px solid rgb(150 150 150 / 30%);
-    }
-    
-                                div.checkBoxDiv input[type=checkbox]:checked+label::after {
-        content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
-        display: block;
-        position: absolute;
-        left: 3px;
-        top: 3px;
-    }
+
+div.frameDiv3 {
+    background: var(--ThemeGPTOrangeDeepAlpha);
+    font-weight: 600;
+    font-size: 1em;
+    padding: 2em 3em;
+    margin: 3em 5em;
+    text-align: start;
+    border-radius: 30px 30px 30px 1px;
+}
+div.frameDiv3 p {
+    direction: rtl;
+    line-height: 1.5em;
+    font-size: 1.2em;
+}
+
+button#trialButton {
+    font-size: 1.1em;
+    margin: 1em;
+    padding: 0.5em 0.9em;
+    border-radius: 20px;
+}

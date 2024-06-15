@@ -1,7 +1,8 @@
 import { THEME_COLORS } from "./Header";
 import { useRef } from "react";
-import './components.css';
+import './Components.css';
 import LogoImg from '../assets/img/5Math.svg';
+import { MathJax } from "better-react-mathjax";
 
 export default function Logo({
     showIcon = true,

@@ -2,6 +2,7 @@ import { useState } from "react";
 
 
 export default function AboutUs({ ...props }) {
+    document.title = 'הסיפור שלנו';
 
     return (
         <div id='aboutUs' className="flex center">

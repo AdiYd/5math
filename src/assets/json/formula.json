@@ -1,0 +1,117 @@
+{
+    "אלגברה": {
+        "בינום מסדר 2": "$(x \\pm y)^2 = x^2 \\pm 2xy + y^2$",
+        " הכפל המקוצר": "$a^2 - b^2 = (a+b)(a-b)$",
+        "ערך מוחלט": "$ |x| = a → x = a \\text{ או } x = -a$"
+    },
+    "קו ישר": {
+        "משוואת קו ישר": "$$y = mx + b$$",
+        "שיפוע ע\"י 2 נק'": "$m = \\frac{y_2 - y_1}{x_2 - x_1}$",
+        "משוואת ישר ע\"י נקודה ושיפוע": "$y - y_1 = m(x - x_1)$"
+    },
+    "פרבולה": {
+        "נוסחת השורשים": "$x_{1,2} = \\frac{-b \\pm \\sqrt{b^2-4ac}}{2a}$",
+        "ציר הסימטריה": "$X_{sym}=\\frac{-b}{2a}$",
+        "קודקוד הפורבולה": "$P_{vertex}(-\\frac{b}{2a}, c - \\frac{b^2}{4a})$",
+        "חיבור וכפל  שורשים": "$x_1+x_2 = -\\frac{b}{a} , x_1\\cdot x_2 = \\frac{c}{a}$"
+    },
+    "נגזרות": {
+        "פולינום": "$\\frac{d}{dx}(ax^n) = anx^{n-1}$",
+        "מעריך": "$\\frac{d}{dx}(e^{ax}) = ae^{ax}$",
+        "לוגריתם": "$\\frac{d}{dx}\\ln(x) = \\frac{1}{x}$",
+        "שורש": "$\\frac{d}{dx} \\sqrt{x} = \\frac{1}{2\\sqrt{x}}$",
+        "סינוס": "$\\frac{d}{dx}\\sin(x) = \\cos(x)$",
+        "קוסינוס": "$\\frac{d}{dx}\\cos(x) = -\\sin(x)$",
+        "טנגנס": "$\\frac{d}{dx}\\tan(x) = \\sec^2(x)$"
+    },
+    "אינטגרלים": {
+        "פולינום": "$\\int ax^n \\, dx = \\frac{a}{n+1}x^{n+1} + C$",
+        "מעריך": "$\\int e^{ax} \\, dx = \\frac{1}{a}e^{ax} + C$",
+        "לוגריתם": "$\\int \\frac{1}{x} dx = \\ln|x| + C$",
+        "סינוס ": "$\\int \\sin(x) \\, dx = -\\cos(x) + C$",
+        "קוסינוס ": "$\\int \\cos(x) \\, dx = \\sin(x) + C$",
+        "טנגנס ": "$\\int \\tan(x) \\, dx = -\\ln|\\cos(x)| + C$"
+    },
+    "גאומטריה": {
+        "פיתגורס": "$c^2 = a^2 + b^2$",
+        "היקף מעגל": "$P = 2\\pi r$",
+        "שטח משולש ": "$A = \\frac{1}{2}bh$",
+        " שטח מעגל": "$A = \\pi r^2$",
+        " נפח כדור  ": "$V = \\frac{4}{3}\\pi r^3$",
+        "נפח קונוס": "$V = \\frac{1}{3}\\pi r^2h$"
+    },
+    "טריגונומטריה": {
+        " משפט הסינוסים": "$\\frac{a}{\\sin(A)} = \\frac{b}{\\sin(B)} = \\frac{c}{\\sin(C)}$",
+        "משפט הקוסינוסים ": "$c^2 = a^2 + b^2 - 2ab\\cos(C)$",
+        " שטח משולש ": "$A = \\frac{1}{2}ab\\sin(∡\\theta)$",
+        "  שטח מקטע מעגל ": "$A = \\frac{1}{2}r^2\\theta$"
+    },
+    "זהויות טריגונומטריות": {
+        "זהות פיתגורס": "$\\sin^2(\\theta) + \\cos^2(\\theta) = 1$",
+        "סכום זוויות": "$\\sin(\\alpha \\pm \\beta) = \\sin(\\alpha)\\cos(\\beta) \\pm \\cos(\\alpha)\\sin(\\beta)$",
+        "סינוס זווית כפולה": "$\\sin(2\\theta) = 2\\sin(\\theta)\\cos(\\theta)$",
+        "קוסינוס זווית כפולה": "$\\cos(2\\theta) = \\cos^2(\\theta) - \\sin^2(\\theta)$",
+        "טנגנס זווית כפולה": "$\\tan(2\\theta) = \\frac{2\\tan(\\theta)}{1 - \\tan^2(\\theta)}$",
+        "סינוס חצי זווית": "$\\sin^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos(\\theta)}{2}$",
+        "קוסינוס חצי זווית": "$\\cos^2\\left(\\frac{\\theta}{2}\\right) = \\frac{1 + \\cos(\\theta)}{2}$",
+        "טנגנס חצי זווית": "$\\tan\\left(\\frac{\\theta}{2}\\right) = \\frac{1 - \\cos(\\theta)}{\\sin(\\theta)}$",
+        "אוילר": "$e^{i\\theta} = \\cos(\\theta) + i\\sin(\\theta)$",
+        "זהויות נוספות": "$\\csc(\\theta) = \\frac{1}{\\sin(\\theta)}, \\sec(\\theta) = \\frac{1}{\\cos(\\theta)}, \\cot(\\theta) = \\frac{1}{\\tan(\\theta)}$"
+    },
+    "הסתברות": {
+        "חוק ההסתברות": "$P(A) = \\frac{\\text{תוצאות רצויות}}{\\text{סה\"כ תוצאות אפשרויות}}$",
+        "הסתברות מותנית": "$P(A|B) = \\frac{P(A \\cap B)}{P(B)}$",
+        "חוק ביוס": "$P(A|B) = \\frac{P(B|A)P(A)}{P(B)}$",
+        "פרמוטציה": "$P(n, r) = \\frac{n!}{(n-r)!}$",
+        "קומבינציות": "$C(n, k) = \\binom{n}{k} = \\frac{n!}{k!(n-k)!}$",
+        "התפלגות נורמלית": "$f(x|\\mu,\\sigma^2) = \\frac{1}{\\sigma\\sqrt{2\\pi}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}$",
+        "התפלגות בינומית": "$P(k; n, p) = \\binom{n}{k} p^k (1-p)^{n-k}$",
+        "תוחלת משתנה בדיד אקראי": "$E(X) = \\sum xP(x)$"
+    },
+    "לוגריתמים": {
+        "חזקה של לוג": "$x = a^{\\log_a x}$",
+        "בסיס לוג": "$\\log_a x = \\frac{\\log_b x}{\\log_b a}$",
+        "לוג של כפל": "$\\log(a\\cdot b) = \\log a+ \\log b$",
+        "לוג של חילוק": "$\\log(\\frac{a}{b}) = \\log a-\\log b$",
+        "לוג של חזקה": "$\\log(a^b) = b\\cdot \\log a$",
+        "לוג טבעי": "$\\ln(x) = \\frac{\\log_a x}{\\log_a e}$"
+    },
+    "חדו\"א": {
+        "חוק השרשרת": "$\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}$",
+        " נגזרת מכפלה": "$\\frac{d}{dx}[u \\cdot v] = u' \\cdot v + u \\cdot v'$",
+        "נגזרת חלוקה ": "$\\frac{d}{dx}\\left[\\frac{u}{v}\\right] = \\frac{u'v - uv'}{v^2}$",
+        "הגדרת גבול הנגזרת": "$f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$"
+    },
+    "גידול ודעיכה": {
+        "גידול מעריכי": "$y = y_0e^{kt}$",
+        "ריבית דריבית": "$A = P\\left(1+\\frac{r}{n}\\right)^{nt}$"
+    },
+    "בעיות מילוליות": {
+        "משוואת מרחק-זמן": "$\\text{Distance} = \\text{Speed} \\cdot \\text{Time} $",
+        "ריבית פשוטה": "$I = Prt$ (Interest = Principal $\\times$ rate $\\times$ time)",
+        "ריבית מצטברת": "$A = Pe^{rt}$"
+    },
+    "סדרות": {
+        "הנדסית": "$a_n = aq^{n-1}$",
+        "סכום סדרה הנדסית": "$S_n = a \\frac{1-q^n}{1-q}$ for $q \\neq 1$",
+        "סכום סדרה הנדסית אינסופית": "$S = \\frac{a}{1-q}$ for $|q| < 1$",
+        "חשבונית": "$a_n = a + (n-1)d$",
+        "סכום סדרה חשבונית": "$S_n = \\frac{n}{2} (2a + (n-1)d)$",
+        "סדרה הרמונית": "$\\sum_{n=1}^\\infty \\frac{1}{n}$",
+        "סדרת חזקות": "$\\sum_{n=0}^\\infty c_n (x-a)^n$",
+        "טור טיילור": "$f(x) = f(a) + f'(a)(x-a) + \\frac{f''(a)}{2!}(x-a)^2 + \\ldots$"
+    },
+    "מרוכבים": {
+        "קרטזי": "$z = a + bi$",
+        "פולרי": "$z = r(\\cos(\\theta) + i\\sin(\\theta))$",
+        "צמוד": "$\\overline{z} = a - bi$",
+        "ערך מוחלט": "$|z| = r = \\sqrt{a^2 + b^2}$",
+        "ארגומנט": "$\\arg(z) = \\tan^{-1}\\left(\\frac{b}{a}\\right)$",
+        "חזקה": "$z^n = r^n(\\cos(n\\theta) + i\\sin(n\\theta))$",
+        "שורש": "$z^{1/n} = r^{1/n}\\left[\\cos\\left(\\frac{\\theta + 2\\pi k}{n}\\right) + i\\sin\\left(\\frac{\\theta + 2\\pi k}{n}\\right)\\right], k = 0, 1, ..., n-1$"
+    },
+    "עוד": {
+        "עצרת": "$n! = n \\times (n-1) \\times \\dots \\times 2 \\times 1$",
+        "הבינום של ניוטון": "$(x + y)^n = \\sum_{k=0}^{n} {n \\choose k} x^{n-k} y^k$"
+    }
+}
