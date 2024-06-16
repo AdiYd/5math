@@ -6,6 +6,7 @@ import Bagrut from './Bagrut';
 import AboutUs from './About';
 import Formulas from './Formula';
 import Footer from '../components/Footer';
+import Login from './Login';
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
@@ -83,6 +84,10 @@ export default function App({ }) {
                                     key={indx}
                                     path={pageName}
                                     element={PAGES[pageName].link} />)}
+                            <Route
+                                path={'Login'}
+                                element={<Login />} />
+
                             <Route
                                 path="*"
                                 element={<><h1>Error Page! 404</h1></>} />

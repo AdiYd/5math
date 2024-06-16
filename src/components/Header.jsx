@@ -201,8 +201,9 @@ export default function Header({ currentPage }) {
                     {/* <button id='loginButton' className='round'> התחבר </button> */}
                     <FontAwesomeIcon
                         onMouseEnter={() => { setUserMenu(true) }}
+                        onClick={() => { navigate('Login'); setUserMenu(p => !p) }}
                         title='איזור אישי'
-                        onClick={() => { setUserMenu(p => !p) }}
+                        // onClick={() => { setUserMenu(p => !p) }}
                         style={{ cursor: 'pointer', marginBottom: '0.3em' }}
                         size='lg'
                         icon={faUser}

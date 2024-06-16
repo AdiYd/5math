@@ -1,6 +1,6 @@
 div.loginContainer {
     font-size: 1rem;
-    font-family: var(--ThemeGPTfont);
+    font-family: var(--themeGPTfont);
     align-content: center;
     text-align: center;
 }
@@ -22,8 +22,9 @@ div.loginContainer h2 {
     font-size: 0.9em;
     align-items: center;
     /* display: table-caption; */
-    margin: auto;
+    margin: 2em auto;
     box-shadow: var(--boxShadowHeader);
+    width: fit-content;
     /* padding: 1em 5em 1.5em 5em; */
     padding: 1.3em 4em 2em 4em;
 
@@ -33,14 +34,18 @@ div.loginContainer h2 {
 }
 
 .mode0 {
-    background-color: var(--ThemeColor1MainBackground);
-    color: var(--ThemeColor1TextColor);
+    background-color: var(--themeColorBG2);
+        color: var(--themeColorText);
 }
 
 .mode1 {
     background: #161b22;
-    background-color: var(--ThemeColor1MainBackgroundDark);
-    color: var(--ThemeColor1TextColorDark);
+    background-color: var(--themeColorBG_DarkMode);
+        color: var(--themeColorText_DarkMode);
+    }
+    
+    .mode1 button {
+        color: var(--themeColorText_DarkMode);
 }
 
 div.login {
@@ -56,22 +61,14 @@ div.signup {
 input.input,
 select.input {
     background: white;
-    width: 100%;
+    /* width: 100%; */
     height: 2em;
     margin: 1em 0em;
     margin-top: 0.5em;
     text-align: center;
     border-radius: 7px;
-    border: 1.2px solid transparent;
-    box-shadow: var(--BoxShadowHeader);
+    border: 1.2px solid var(--themeGreyAlpha);
 }
-
-/* input.input:focus-visible,
-select.input:focus-visible {
-    outline: none;
-    border-color: transparent;
-    box-shadow: var(--ThemeColor) var(--BoxShadowPlotBase);
-    /* border: 1px solid black; */
 
 
 input.darkInput,
@@ -81,12 +78,17 @@ select.darkInput {
 
 input.darkInput:focus-visible,
 select.darkInput:focus-visible {
-    border-color: var(--ThemeColor);
+    border-color: var(--themeColor);
 }
 
+input#password,
+input#password2,
+input#email,
 input#Password,
 input#Email {
     min-width: 24vw;
+    width: 37vw;
+        max-width: 30em;
 }
 
 
@@ -176,4 +178,7 @@ h6#forgetPass:hover {
 
 .tStart {
     text-align: start;
+}
+div.google div {
+    gap: 1em;
 }

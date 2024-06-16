@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './pages/App.css';
+import './assets/style/media.css';
 import './assets/style/style.css';
 import './assets/style/variables.css';
 import App from './pages/App';
 import { BrowserRouter } from 'react-router-dom';
 import { MathJaxContext } from "better-react-mathjax";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const MathJaxSrc = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'//'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'; //https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
-
+const GglClientID = '1032984137880-aa1mhd4l96nlrmha42cjshsail7odfe2.apps.googleusercontent.com';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

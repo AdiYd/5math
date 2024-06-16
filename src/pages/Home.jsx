@@ -7,6 +7,7 @@ import { MathJax } from "better-react-mathjax";
 import Card from '../components/Card';
 import Logo from '../components/Logo';
 import './App.css';
+import '../assets/style/media.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

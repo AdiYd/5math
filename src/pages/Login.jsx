@@ -1,5 +1,7 @@
 
 import './Login.css';
+import './App.css';
+import '../components/Components.css';
 import parse from 'html-react-parser';
 import { debug } from '../assets/function/functions';
 import { useState, useRef } from 'react';
@@ -10,6 +12,8 @@ import { jwtDecode } from "jwt-decode";
 import bcrypt from "bcryptjs-react";
 import Prompt from '../components/PromptDiv';
 import Logo from '../components/Logo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 // import { genSalt, hash } from 'bcrypt';
 
 const saltRounds = 10;
@@ -21,6 +25,13 @@ const showPass = <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-6
 const hidePass = <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
 const errorMsg = <path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />;
 
+const GradeDict = {
+    0: 'מורה',
+    9: "כיתה ט'",
+    10: "כיתה י'",
+    11: "כיתה יא'",
+    12: "כיתה יב'"
+}
 const PasswordRegex = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z0-9@$!%*#?&]{6,15}$";
 const ValidIcons = {
     valid: <svg
@@ -73,7 +84,7 @@ export default function Login({
         password: null,
         age: null,
         grade: null,
-        type: 'Student',
+        type: ['הכנה לבגרות'],
         level: null,
     })
     const navigate = useNavigate();
@@ -98,8 +109,19 @@ export default function Login({
     }
     const onFulfilValidation = (res) => {
         setTimeout(() => {
-            navigate('/Home')
+            navigate('Home')
         }, 1000)
+    }
+
+    function onStudentTypeClick(e, item) {
+        if (userData.type?.includes(item)) {
+            let tempList = [...userData.type];
+            tempList.splice(tempList.indexOf(item), 1);
+            setUserData(p => ({ ...p, type: tempList }))
+        }
+        else {
+            setUserData(p => ({ ...p, type: [...p.type, item] }))
+        }
     }
 
     function onInputHandler(e) {
@@ -117,13 +139,13 @@ export default function Login({
                     setErr(p => ({
                         ...p,
                         [name]:
-                            <p className='errorMSG tStart' style={{ fontSize: '0.8em' }}>
-                                Password must contain:<br />
-                                {!(value.length <= 15 && value.length >= 6) ? parse('Between 6-15 letters <br/> ') : undefined}
-                                {!new RegExp("(?=.*?[A-Z])").test(value) ? parse('A-Z letter <br/>') : undefined}
-                                {!new RegExp("(?=.*?[a-z])").test(value) ? parse('a-z letter <br/>') : undefined}
-                                {!new RegExp("(?=.*?[0-9])").test(value) ? parse('0-9 digit<br/>') : undefined}
-                                {!new RegExp("(?=.*?[@$!%*#?&])").test(value) ? '@$!%*#?& special char' : undefined}
+                            <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                                סיסמה חייבת לכלול:<br />
+                                {!(value.length <= 15 && value.length >= 6) ? parse('בין 6 - 15 אותיות <br/> ') : undefined}
+                                {!new RegExp("(?=.*?[A-Z])").test(value) ? parse('A-Z אות <br/>') : undefined}
+                                {!new RegExp("(?=.*?[a-z])").test(value) ? parse('a-z אות <br/>') : undefined}
+                                {!new RegExp("(?=.*?[0-9])").test(value) ? parse('0-9 ספרה<br/>') : undefined}
+                                {!new RegExp("(?=.*?[@$!%*#?&])").test(value) ? '@$!%*#?& תו מיוחד' : undefined}
                             </p>
                     }))
                     setValidPass(false);
@@ -237,7 +259,7 @@ export default function Login({
                         setUserData(tempObj);
                         debug('We are reay to go! ', tempObj, DBG_PROPS);
 
-                        authUser(tempObj, 'signup', 'onSite', onSignupFullfil, onRejectValidation);
+                        // authUser(tempObj, 'signup', 'onSite', onSignupFullfil, onRejectValidation);
                     });
                 })
                 // navigate('/Home');
@@ -258,7 +280,7 @@ export default function Login({
                 email: email.toLocaleLowerCase(),
                 password: password
             }
-            authUser(tempObj, 'login', 'onSite', onFulfilValidation, onRejectValidation)
+            // authUser(tempObj, 'login', 'onSite', onFulfilValidation, onRejectValidation)
             // bcrypt.genSalt(saltRounds, (err, salt) => {
             //     if (err) {
             //         debug('Error with crypt salt: ', err, DBG_PROPS);
@@ -283,83 +305,41 @@ export default function Login({
     let formFields, className = `input${colorMode ? ' darkInput' : ''}`;
     if (signup) { // Sign up form
         formFields = <>
-            <div>
+            <div className='ma1'>
                 <div className='flex' style={{ justifyContent: 'space-between' }}>
                     <div className='grid center tStart' >
-                        <label htmlFor='fname'> First name: </label>
+                        <label htmlFor='fname'>שם פרטי: </label>
                         <input
                             id='fname'
                             className={className}
                             maxLength={20}
                             required={true}
                             autoComplete='on'
-                            title='First name'
+                            title='שם פרטי'
                             type='text'
                             onChange={onInputHandler}
-                            placeholder='First name'
+                            placeholder='שם פרטי'
                             name='fname'></input>
                     </div>
                     <div className='grid tStart' style={{ marginLeft: '2em' }} >
-                        <label htmlFor='fname'> Last name: </label>
+                        <label htmlFor='fname'> שם משפחה: </label>
                         <input
                             id='lname'
                             className={className}
                             maxLength={20}
                             required={true}
                             autoComplete='on'
-                            title='Last name'
+                            title='שם משפחה'
                             type='text'
                             onChange={onInputHandler}
-                            placeholder='Last name'
+                            placeholder='שם משפחה'
                             name='lname'></input>
                     </div>
                 </div>
             </div>
-            <div className='flex' style={{ justifyContent: 'space-between' }}>
-                <div>
-                    <label htmlFor='ageSelect'> Age: </label>
-                    <select
-                        name='age'
-                        required={true}
-                        onChange={onInputHandler}
-                        className={className}
-                        id='ageSelect'>
-                        <option defaultChecked={true}></option>
-                        {[13, 14, 15, 16, 17, 18, 19, 20, 1, 0].map((item, indx) => (
-                            <option key={indx}
-                                value={item}>{item ? item === 1 ? 'Other' : item : 'Skip'}</option>
-                        ))}
-                    </select>
-                </div>
-                <div className='flex'>
-                    <label htmlFor='gradeSelect'> Grade: </label>
-                    <select
-                        name='grade'
-                        required={false}
-                        onChange={onInputHandler}
-                        className={className}
-                        id='gradeSelect'>
-                        <option defaultChecked={true}></option>
-                        {[9, 10, 11, 12, 0].map((item, indx) => (
-                            <option key={indx}
-                                value={item}>{item === 0 ? 'Teacher' : `${item}ᵗʰ`}</option>
-                        ))}
-                    </select>
-                </div>
-            </div>
-            <div className='flex' style={{ justifyContent: 'space-between' }}>
-                {['Teacher', 'Student', 'Other'].map((item, indx) => (
-                    <button key={indx + item}
-                        type='button'
-                        onClick={() => setUserData(p => ({ ...p, type: item }))}
-                        className={`button round ${colorMode ? 'dark' : 'light'} medium pointer hover${colorMode ? 'Theme' : 'Alpha'}`}
-                        style={{ background: userData.type === item ? `var(--ThemeColor${!colorMode ? 'Alpha' : ''})` : '' }}
-                    >{item}</button>
-                ))}
-            </div>
-            <div className='grid'>
+            <div className='grid ma1'>
                 <div className='tStart'>
-                    <label htmlFor='email'> Email: </label>
+                    <label htmlFor='email'> כתובת אימייל: </label>
                 </div>
                 <span>
                     <input
@@ -368,15 +348,15 @@ export default function Login({
                         maxLength={40}
                         required={true}
                         autoComplete='on'
-                        title='Email'
+                        title='אימייל'
                         type='email'
                         onChange={onInputHandler}
-                        placeholder='Email'
+                        placeholder='אימייל'
                         name='email'></input>
                 </span>
                 {confirmEmail && <>
                     <div className='tStart'>
-                        <label htmlFor='email2'> Confirm email: </label>
+                        <label htmlFor='email2'>חזרה על המייל: </label>
                     </div>
                     <input
                         id='email2'
@@ -385,15 +365,15 @@ export default function Login({
                         required={true}
                         onChange={onInputHandler}
                         autoComplete='off'
-                        title='Confirm email'
+                        title='אישור אימייל'
                         type='text'
-                        placeholder='Confirm Email'
+                        placeholder='אישור אימייל'
                         name='email2'></input>
                 </>}
             </div>
-            <div>
+            <div className='ma1'>
                 <div className='flex tStart'>
-                    <label htmlFor='password'>Password: </label>
+                    <label htmlFor='password'>סיסמה:  </label>
                     {errInput.password === true && ValidIcons.valid}
                 </div>
                 <span id='pass'>
@@ -404,10 +384,10 @@ export default function Login({
                         maxLength={15}
                         className={className}
                         style={{ marginBottom: (Boolean(errInput.password) && errInput.password !== true) ? '0em' : '' }}
-                        title='Password'
+                        title='סיסמה'
                         type={hidePassword ? 'password' : 'text'}
                         onChange={onInputHandler}
-                        placeholder='Password'
+                        placeholder='סיסמה'
                         name='password'></input>
                     <svg
                         onClick={() => setPassState(p => !p)}
@@ -423,7 +403,7 @@ export default function Login({
                 {errInput.password}
                 <span id='pass'>
                     <div className='flex tStart'>
-                        <label htmlFor='password2'>Confirm password: </label>
+                        <label htmlFor='password2'>חזרה על הסיסמה: </label>
                         {errInput.password2}
                     </div>
                     <input
@@ -432,32 +412,38 @@ export default function Login({
                         minLength={6}
                         maxLength={15}
                         className={className}
-                        title='Confirm password'
+                        title='אישור סיסמה'
                         onChange={onInputHandler}
                         type={hidePassword ? 'password' : 'text'}
-                        placeholder='Confirm password'
+                        placeholder='אישור סיסמה'
                         name='password2'></input>
                 </span>
             </div>
-            <div className='flex center'>
+            <div className='flex columns ma1'>
+                <label className='tStart'> מה היעדים שלך מהקורס:</label>
+                <div className='flex around ma2'>
+                    {['תרגול', 'הכנה לבגרות', 'למידה', 'אחר'].map((item, indx) => (
+                        <button key={indx + item}
+                            type='button'
+                            onClick={(e) => onStudentTypeClick(e, item)}
+                            className={`round medium pointer themeConst ${userData.type.includes(item) ? '' : 'themeConstBorder'}`}
+                        >{item}</button>
+                    ))}
+                </div>
+            </div>
+            <div className='flex center mt2'>
                 <button
                     style={{ fontSize: '1em' }}
                     className='large pointer round'
-                    type='submit'>Sign up</button>
+                    type='submit'>הרשמה</button>
             </div>
             <div
                 style={{ cursor: 'pointer', alignItems: 'center' }}
                 onClick={() => { setValidForm(undefined); setSignup(false) }}
                 className='flex'>
-                <svg
-                    style={{ padding: '0em 0.5em' }}
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill={!colorMode ? "var(--ThemeColor1TextColor)" : 'var(--ThemeColor1TextColorDark)'}>
-                    <path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z" /></svg>
-                <h5 id='signupText'>Back to Login</h5>
+                <FontAwesomeIcon icon={faArrowRight} />
+                <h5 id='signupText'>בחזרה להתחברות</h5>
+
             </div>
         </>
     }
@@ -465,7 +451,7 @@ export default function Login({
         formFields = <>
             <div >
                 <div className='flex tStart'>
-                    <label htmlFor='email'> Email: </label>
+                    <label htmlFor='email'> אימייל: </label>
                 </div>
                 <input
                     id='Email'
@@ -473,16 +459,16 @@ export default function Login({
                     maxLength={40}
                     required={true}
                     autoComplete='on'
-                    title='Email'
+                    title='אימייל'
                     type='email'
                     onChange={onInputHandler}
-                    placeholder='Email'
+                    placeholder='אימייל'
                     name='email'></input>
             </div>
             <div>
                 <div className='flex tStart' style={{ justifyContent: 'space-between' }}>
-                    <label htmlFor='password'>Password: </label>
-                    <h6 id='forgetPass' className={`linkHoverColor${colorMode}`}>Forgot password?</h6>
+                    <label htmlFor='password'>סיסמא: </label>
+                    <h6 id='forgetPass' className={`linkHoverColor${colorMode}`}>שכחת סיסמה ? </h6>
                 </div>
                 <span id='pass'>
                     <input
@@ -491,10 +477,10 @@ export default function Login({
                         minLength={6}
                         maxLength={15}
                         className={className}
-                        title='Password'
+                        title='סיסמה'
                         type={hidePassword ? 'password' : 'text'}
                         onChange={onInputHandler}
-                        placeholder='Password'
+                        placeholder='סיסמה'
                         name='password'></input>
                     <svg
                         onClick={() => setPassState(p => !p)}
@@ -513,7 +499,7 @@ export default function Login({
             <div className='flex center'>
                 <button
                     style={{ fontSize: '1em' }}
-                    className='large pointer round'
+                    className='large pointer round mt3'
                     type='submit'>התחברות</button>
             </div>
             <div className='flex center'>
@@ -526,17 +512,17 @@ export default function Login({
     }
 
     let gglLogin = <div className='flex center' style={{ margin: '0.5em' }} >
-        <div className='flex' style={{ width: 'fit-content', borderRadius: '20px', border: colorMode ? '1px solid white' : '' }}>
+        <div className='flex google' style={{ width: 'fit-content', borderRadius: '20px', border: colorMode ? '1px solid white' : '' }}>
             <GoogleLogin
                 shape='circle'
                 size='medium'
                 logo_alignment='center'
-                text={signup ? 'signup_with' : 'signin_with'}
+                text={"No text "}
                 theme={!colorMode ? 'outline' : 'filled_black'}
                 onSuccess={res => {
                     let userData = jwtDecode(res.credential);
                     debug('Google Res: ', res, userData, DBG_PROPS);
-                    authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
+                    // authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
                     setUpdate(p => !p)
                 }}
                 onError={() => {
@@ -564,8 +550,8 @@ export default function Login({
 
         </div>
 
-    let loginForm = <div className={`loginForm mode${colorMode} ${signup ? 'signup' : 'login'}`}>
-        <h2>{signup ? 'Sign up' : 'Login'}</h2>
+    let loginForm = <div className={`loginForm boxShadow mode${colorMode} ${signup ? 'signup' : 'login'}`}>
+        <h2>{signup ? 'הרשמה' : 'התחברות'}</h2>
         <form onSubmit={onSubmitForm} name={signup ? 'signup' : 'login'} >
             {formFields}
         </form>
@@ -586,16 +572,11 @@ export default function Login({
     </>
 
     let dbgBtns = <>
-        <button
-            onClick={() => debug('This is userData: ', userData, DBG_PROPS)}
-            className='medium round opacityHover'>
-            userData
-        </button>
     </>
 
     return (
-        <div className='loginContainer' >
-            <LogoMark width='4em' height='3.5em' />
+        <div className='loginContainer rtl' >
+            <Logo width='4em' height='3.5em' />
             {loginForm}
             {validForm}
             {/* {data} */}
