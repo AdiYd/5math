@@ -69,7 +69,9 @@ const bagrutInfoDict = {
             ],
             footer: [
                 <div className='flex columns'><FontAwesomeIcon icon={faFileCircleQuestion} title='מספר שאלות' /><p>5 שאלות</p></div>,
+                // <div style={{ borderLeft: '2px solid' }}></div>,
                 <div className='flex columns'><FontAwesomeIcon icon={faStopwatch} title='זמן הבחינה' /><p>3 וחצי שעות</p></div>,
+                // <div style={{ borderLeft: '2px solid' }}></div>,
                 <div className='flex columns'><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /><p>035581</p></div>
             ]
         },
@@ -88,7 +90,9 @@ const bagrutInfoDict = {
             ],
             footer: [
                 <div className='flex columns center'><FontAwesomeIcon icon={faFileCircleQuestion} title='מספר שאלות' /><p>3 שאלות</p></div>,
+                // <div style={{ borderLeft: '2px solid' }}></div>,
                 <div className='flex columns center'><FontAwesomeIcon icon={faStopwatch} title='זמן הבחינה' /><p>שעתיים ורבע</p></div>,
+                // <div style={{ borderLeft: '2px solid' }}></div>,
                 <div className='flex columns center'><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /><p>035582</p></div>
             ]
         }
@@ -242,7 +246,7 @@ function Bagrut({ ...props }) {
                     <div className='footerBagrutInfo'>
                         {/* <h3 >אז מה היה לנו ?</h3> */}
                         {item.footer.map((line, indx) => (
-                            line
+                            line 
                         ))}
                     </div>
                 </Card>

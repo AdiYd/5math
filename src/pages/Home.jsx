@@ -175,7 +175,7 @@ function Home({ ...props }) {
                     <h3>נרשמים עכשיו ומקבלים שיעור במתנה: </h3>
                 </div>
                 <form onSubmit={onSubmitForm} name='quick Signup' >
-                    <div className='flex center' >
+                    <div className='flex center baseLine' >
                         <input
                             id='name'
                             className='inputText'

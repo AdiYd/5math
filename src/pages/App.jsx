@@ -53,7 +53,7 @@ export const PAGES = {
     },
     AboutUs: {
         link: <AboutUs />,
-        name: 'קצת עלינו'
+        name: 'על הקורס'
     }
 }
 

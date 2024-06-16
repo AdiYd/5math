@@ -5,9 +5,9 @@ function Footer({ ...props }) {
 
     return (
         <div className="footer">
-            <div className='flex center'>
+            <div className='flex columns center'>
                 <h3>Website created for 5 math by Adi Yd </h3>
-                <h3>All right belong to YdSolutions © 2024 </h3>
+                <h4>All right belong to YdSolutions © 2024 </h4>
             </div>
         </div>
     )

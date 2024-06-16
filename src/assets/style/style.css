@@ -29,6 +29,9 @@
     justify-content: space-between;
 }
 
+.around {
+    justify-content: space-around;
+}
 .grid {
     display: grid;
 }
@@ -356,6 +359,9 @@ button:hover {
 .ma3 {
     margin: 1em;
 }
+.m0 {
+    margin: 0em;
+}
 .m1 {
     margin: auto 0.5em;
 }
@@ -530,7 +536,7 @@ button:hover {
     }
 
     div.frameDiv3 button {
-        font-size: 0.8em !important;
+        font-size: 0.85em !important;
     }
 
     button {
@@ -558,11 +564,7 @@ button:hover {
     div.frameDiv1,
     div.frameDiv3,
     #frame2Card * {
-        font-size: 0.7em;
-    }
-
-        div.frameDiv3 button {
-            font-size: 0.9em !important;
+        font-size: 0.8em;
         }
 
     #frame2Card {
@@ -593,6 +595,11 @@ button:hover {
     div.quickSignUp form div#checkBoxDiv div {
         flex-direction: row;
         font-size: 0.7em;
+    }
+
+    div.quickSignUp form button {
+        font-size: 0.6em;
+        margin: 1em !important;
     }
 
     div.quickSignUp form div input[type='checkbox'] {

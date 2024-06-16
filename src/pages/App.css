@@ -30,7 +30,7 @@ div.frameDiv1 {
     /* background: var(--ThemeGPTOrangeDeep); */
     font-weight: 600;
     font-size: 0.9em;
-    padding: 2em 3em;
+    padding: 1em;
     /* margin: 3em 5em; */
 }
 #frame2Card {
@@ -57,7 +57,7 @@ img#frame2Img {
   display: block;
 }
 hr#horizLine {
-  border-top: 1px solid rgba(136, 135, 135, 0.312);
+  border-top: 1px solid var(--themeGrey);
   margin-top: 0.5em;
   margin-bottom: 0.2em;
   width: 92%;
@@ -119,36 +119,25 @@ div.carousel-container button::before {
     color: var(--themeColorText2);
   }
   
-img#tutorSelfie {
-  height: 12em;
-    border: 1px solid rgba(255, 255, 255, 0.692);
-  margin: 3em;
-    float: left;
-    border-radius: 50%;
-      width: 12em;
-      }
       
-      
-      div.quickSignUp {
-        background: #161b22;
-        background-color: var(--themeColorBG_DarkMode);
-        color: var(--themeColorText_DarkMode);
-        padding: 1em 0em;
-        border-radius: 30px 1px 30px 30px;
-        margin: 3em 5em;
-      }
-      
-      
-      
-      div.quickSignUp h3 {
-        margin: 0.5em;
-        font-size: 1.3em;
-      }
+  div.quickSignUp {
+    background: #161b22;
+    background-color: var(--themeColorBG_DarkMode);
+    color: var(--themeColorText_DarkMode);
+    padding: 1em 0em;
+    border-radius: 30px 1px 30px 30px;
+    margin: 3em 5em;
+  }
+  
+  div.quickSignUp h3 {
+    margin: 0.5em;
+    font-size: 1.3em;
+  }
       
       textarea,
       input {
         background: var(--themeColorBG);
-        height: 2.2em;
+        height: 2.5em;
         margin: 1em 1em;
         margin-top: 0.5em;
         text-align: center;
@@ -156,7 +145,7 @@ img#tutorSelfie {
         border: 1.2px solid transparent;
         box-shadow: var(--BoxShadowHeader);
       }
-      
+
       textarea:focus-visible,
       input:focus-visible {
         outline: none;

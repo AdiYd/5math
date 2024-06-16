@@ -112,7 +112,7 @@ div.checkBoxDiv input[type=checkbox] {
 
 div.frameDiv3 {
     background: var(--ThemeGPTOrangeDeepAlpha);
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 1em;
     padding: 2em 3em;
     margin: 3em 5em;
@@ -137,7 +137,9 @@ div.footer {
     width: -webkit-fill-available;
     /* background-color: var(--themeColorBG_DarkMode); */
     background-image: linear-gradient(0deg, black, black, black,
-            var(--themeColorBG_DarkMode), var(--themeColorBG_DarkMode), transparent);
+            var(--themeColorBG_DarkMode),
+                var(--themeColorBG_DarkMode),
+                white);
     color: var(--themeColorText_DarkMode);
 }
 div.writeMe {
@@ -164,8 +166,17 @@ div.writeMe textarea {
 img#tutorSelfie {
     height: 12em;
     border: 1px solid rgba(255, 255, 255, 0.692);
-    margin: 3em;
+    margin: 2em;
     float: left;
     border-radius: 50%;
     width: 12em;
+}
+#tutorSelfie {
+    border: 1px solid rgba(255, 255, 255, 0.692);
+    float: left;
+    height: 6.5em;
+    width: 6.5em;
+    border-radius: 30%;
+    padding: 1em;
+    margin: 1em;
 }
