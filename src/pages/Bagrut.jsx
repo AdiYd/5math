@@ -4,7 +4,7 @@ import Card from '../components/Card';
 import Carousel from "react-multi-carousel";
 import { responsive } from './Home';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload, faFileCircleQuestion, faStopwatch, faFileLines } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faFileCircleQuestion, faStopwatch, faFileLines, faFile, faInfo, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const dwnld = <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />;
 
@@ -28,7 +28,7 @@ const bagrutInfoDict = {
             footer: [
                 <><p>5 שאלות</p><br /><FontAwesomeIcon icon={faFileCircleQuestion} title='מספר שאלות' /></>,
                 <><p>3 וחצי שעות</p><br /><FontAwesomeIcon icon={faStopwatch} title='זמן הבחינה' /></>,
-                <><p>#035581</p><br /><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /></>
+                <><p>035581</p><br /><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /></>
             ]
         },
         sec: {
@@ -47,7 +47,7 @@ const bagrutInfoDict = {
             footer: [
                 <><p>3 שאלות</p><br /><FontAwesomeIcon icon={faFileCircleQuestion} title='מספר שאלות' /></>,
                 <><p>שעתיים ורבע</p><br /><FontAwesomeIcon icon={faStopwatch} title='זמן הבחינה' /></>,
-                <><p>#035582</p><br /><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /></>
+                <><p>035582</p><br /><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /></>
             ]
         }
     },
@@ -70,7 +70,7 @@ const bagrutInfoDict = {
             footer: [
                 <div className='flex columns'><FontAwesomeIcon icon={faFileCircleQuestion} title='מספר שאלות' /><p>5 שאלות</p></div>,
                 <div className='flex columns'><FontAwesomeIcon icon={faStopwatch} title='זמן הבחינה' /><p>3 וחצי שעות</p></div>,
-                <div className='flex columns'><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /><p>#035581</p></div>
+                <div className='flex columns'><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /><p>035581</p></div>
             ]
         },
         sec: {
@@ -89,7 +89,7 @@ const bagrutInfoDict = {
             footer: [
                 <div className='flex columns center'><FontAwesomeIcon icon={faFileCircleQuestion} title='מספר שאלות' /><p>3 שאלות</p></div>,
                 <div className='flex columns center'><FontAwesomeIcon icon={faStopwatch} title='זמן הבחינה' /><p>שעתיים ורבע</p></div>,
-                <div className='flex columns center'><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /><p>#035582</p></div>
+                <div className='flex columns center'><FontAwesomeIcon icon={faFileLines} title='מספר הבחינה' /><p>035582</p></div>
             ]
         }
     }
@@ -206,7 +206,7 @@ function Bagrut({ ...props }) {
                         key={item + indx}
                         title={bagrutDict[item].name}
                         translateY={false}
-                        cardID='bagrutCard' className >
+                        cardID='bagrutCard' className='rtl' >
                         <h3>{bagrutDict[item].name}</h3>
                         <a
                             className='downLoad squarish'
@@ -270,10 +270,14 @@ function Bagrut({ ...props }) {
             <div className='flex center gap2'>
                 <button
                     onClick={() => { setInfo(true); slideOne.current.click() }}
-                    className={`pl3 pr3 round ${!bagrutInfo ? 'themeConst4' : ''}`} > מידע על מבנה הבגרות</button>
+                    className={`pl3 pr3 round ${!bagrutInfo ? 'themeConst4' : ''}`} >
+                    <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
+                    מידע על מבנה הבגרות</button>
                 <button
                     onClick={() => { setInfo(false); slideZero.current.click() }}
-                    className={`pl3 pr3 round ${bagrutInfo ? 'themeConst4' : ''}`} >שאלוני בגרות משנים קודמות</button>
+                    className={`pl3 pr3 round ${bagrutInfo ? 'themeConst4' : ''}`} >
+                    <FontAwesomeIcon icon={faFile} className='ml2' />
+                    שאלוני בגרות משנים קודמות</button>
             </div>
 
             <Carousel

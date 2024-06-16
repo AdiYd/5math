@@ -5,6 +5,7 @@ import Home from './Home';
 import Bagrut from './Bagrut';
 import AboutUs from './About';
 import Formulas from './Formula';
+import Footer from '../components/Footer';
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
@@ -86,7 +87,8 @@ export default function App({ }) {
                                 path="*"
                                 element={<><h1>Error Page! 404</h1></>} />
                         </Routes>
-                        <footer className='pt3 pb3 mt3' style={{ height: '10em', backgroundImage: 'linear-gradient(45deg, var(--themeColor), transparent)' }} />                    </>
+                        <Footer />
+                    </>
                     } />
             </Routes>
         </>

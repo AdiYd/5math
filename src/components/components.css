@@ -68,10 +68,7 @@ div#promptContainer {
         height: 80vh;
         left: 20%;
         overflow-y: scroll;
-        background-image: linear-gradient(45deg, transparent,
-                    rgba(230, 226, 188, 0.202),
-                    rgba(238, 212, 174, 0.106),
-                    rgba(216, 239, 199, 0.176), transparent);
+        background-image: linear-gradient(var(--linearGradient2));
     }
     
     div#promptContainer::-webkit-scrollbar {
@@ -133,4 +130,13 @@ button#trialButton {
     margin: 1em;
     padding: 0.5em 0.9em;
     border-radius: 20px;
+}
+div.footer {
+    height: 15vh;
+    padding: 2em 1em;
+    width: -webkit-fill-available;
+    /* background-color: var(--themeColorBG_DarkMode); */
+    background-image: linear-gradient(0deg, black, black, black,
+            var(--themeColorBG_DarkMode), var(--themeColorBG_DarkMode), transparent);
+    color: var(--themeColorText_DarkMode);
 }

@@ -610,6 +610,8 @@ button:hover {
     div.frameDiv2 {
         display: flex;
         flex-wrap: wrap;
+        width: -webkit-fill-available;
+            margin: 0em;
     }
 
     div.frameDiv1,
@@ -626,7 +628,11 @@ button:hover {
     }
         
     div.frameDiv3 div h2 {
-                                                                    font-size: 0.9em;
+    font-size: 1em;
+    }
+    
+    div.frameDiv3 p {
+        font-size: 0.9em !important;
     }
 
     img#tutorSelfie {
@@ -664,16 +670,19 @@ button:hover {
         font-size: 0.7em;
     }
 
-        div.frameDiv3 div h1 {
-            font-size: 0.9em;
+                                div.frameDiv3 h1 {
+                                    font-size: 1.1em;
         }
 
     div.frameDiv3 p {
         font-size: 0.8em !important;
     }
+
     div.frameDiv1,
     div.frameDiv3,
     #frame2Card * {
         font-size: 0.5em;
+            border-radius: 0px;
+                margin: 0em;
     }
 }

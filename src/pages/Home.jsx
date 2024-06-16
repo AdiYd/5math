@@ -46,7 +46,7 @@ const cardStyle = {
 }
 
 function Home({ ...props }) {
-
+    document.title = '5 Math - דף הבית';
     function onSubmitForm(e) {
         e.preventDefault();
         let formaName = e.target.name;
