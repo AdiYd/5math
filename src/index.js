@@ -45,7 +45,9 @@ root.render(
         }}
         src={MathJaxSrc}
       >
-      <App />
+        <GoogleOAuthProvider clientId={GglClientID}>
+          <App />
+        </GoogleOAuthProvider>
       </MathJaxContext>
     </BrowserRouter>
   </React.StrictMode>

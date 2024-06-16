@@ -22,8 +22,8 @@ div.loginContainer h2 {
     font-size: 0.9em;
     align-items: center;
     /* display: table-caption; */
-    margin: 1em 2em 1em 2em;
-    box-shadow: var(--BoxShadowHeader);
+    margin: auto;
+    box-shadow: var(--boxShadowHeader);
     /* padding: 1em 5em 1.5em 5em; */
     padding: 1.3em 4em 2em 4em;
 
@@ -45,6 +45,8 @@ div.loginContainer h2 {
 
 div.login {
     border-radius: 40px 40px 1px 40px;
+    border: 1px solid var(--themeGreyAlpha);
+ 
 }
 
 div.signup {
@@ -64,13 +66,13 @@ select.input {
     box-shadow: var(--BoxShadowHeader);
 }
 
-input.input:focus-visible,
+/* input.input:focus-visible,
 select.input:focus-visible {
     outline: none;
     border-color: transparent;
     box-shadow: var(--ThemeColor) var(--BoxShadowPlotBase);
     /* border: 1px solid black; */
-}
+
 
 input.darkInput,
 select.darkInput {

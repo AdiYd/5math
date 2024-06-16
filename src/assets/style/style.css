@@ -251,6 +251,17 @@ button:hover {
     color: var(--themeColorText_DarkMode);
     background: var(--themeColor);
 }
+
+.themeBorder {
+    background: transparent;
+        border: 1px solid var(--constThemeColor);
+}
+
+.themeBorder:hover {
+    color: var(--themeColorText_DarkMode);
+    background: var(--themeColor);
+}
+
 .rotate {
     animation: rotate 1s forwards;
 }
@@ -687,11 +698,18 @@ div.writeMe svg {
     button {
         font-size: 0.8em;
     }
-div#promptContainer {
-    top: 10%;
-    width: 68vw;
-    height: 80vh;
-    left: 10%;
+    div#promptContainer {
+        top: 10%;
+        width: 68vw;
+        height: 80vh;
+        left: 10%;
+    }
+input#password,
+input#password2,
+input#email,
+input#Password,
+input#Email {
+    width: 90%;
 }
 }
 
