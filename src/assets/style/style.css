@@ -529,6 +529,10 @@ button:hover {
         height: 9em;
     }
 
+    div.frameDiv3 button {
+        font-size: 0.8em !important;
+    }
+
     button {
         font-size: 0.8em;
     }
@@ -557,6 +561,9 @@ button:hover {
         font-size: 0.7em;
     }
 
+        div.frameDiv3 button {
+            font-size: 0.9em !important;
+        }
 
     #frame2Card {
         height: 11em;
@@ -615,12 +622,9 @@ button:hover {
     }
 
     div.frameDiv1,
-    div.frameDiv3,
-    #frame2Card * {
-        font-size: 0.6em;
-        width: -webkit-fill-available;
-            margin: 0em !important;
-            border-radius: 0em !important;
+    div.frameDiv3 {
+        margin: 0em !important;
+        border-radius: 0em !important;
     }
     div.quickSignUp {
         margin: 0em;
@@ -635,6 +639,22 @@ button:hover {
         font-size: 0.9em !important;
     }
 
+    div.writeMe {
+        width: -webkit-fill-available;
+        box-shadow: none;
+    }
+
+    div.writeMe div {
+        flex-direction: column;
+    }
+
+div.writeMe svg {
+    width: 0.6em;
+}
+    div.writeMe input,
+    div.writeMe textArea {
+        width: 65vw !important;
+    }
     img#tutorSelfie {
         margin: 1em;
         width: 7em;
@@ -670,14 +690,17 @@ button:hover {
         font-size: 0.7em;
     }
 
-                                div.frameDiv3 h1 {
-                                    font-size: 1.1em;
+        div.frameDiv3 h1 {
+            font-size: 1.1em;
         }
 
     div.frameDiv3 p {
         font-size: 0.8em !important;
     }
 
+    div.frameDiv3 button {
+        font-size: 0.6em !important;
+    }
     div.frameDiv1,
     div.frameDiv3,
     #frame2Card * {

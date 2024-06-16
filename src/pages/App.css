@@ -145,6 +145,7 @@ img#tutorSelfie {
         font-size: 1.3em;
       }
       
+      textarea,
       input {
         background: var(--themeColorBG);
         height: 2.2em;
@@ -156,6 +157,7 @@ img#tutorSelfie {
         box-shadow: var(--BoxShadowHeader);
       }
       
+      textarea:focus-visible,
       input:focus-visible {
         outline: none;
         border-color: transparent;
