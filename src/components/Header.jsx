@@ -223,7 +223,9 @@ export default function Header({ currentPage }) {
                 {/* {refSheet &&
                     <Formula showDiv={refSheet} callBack={() => { setRefSheet(p => !p) }} />
                 } */}
-                <Outlet />
+                <User.Provider value={'checkMe'}>
+                    <Outlet />
+                </User.Provider>
             </div>
         </>
     );
