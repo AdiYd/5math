@@ -140,3 +140,32 @@ div.footer {
             var(--themeColorBG_DarkMode), var(--themeColorBG_DarkMode), transparent);
     color: var(--themeColorText_DarkMode);
 }
+div.writeMe {
+    position: relative;
+    display: block;
+    /* width: fit-content; */
+    margin: auto;
+    margin-bottom: 1em;
+    padding: 1.1em 3em;
+}
+
+div.writeMe input {
+    width: 20vw;
+}
+
+div.writeMe textarea {
+    height: 6em;
+    width: 44vw;
+    border-radius: 12px;
+    direction: auto;
+}
+
+
+img#tutorSelfie {
+    height: 12em;
+    border: 1px solid rgba(255, 255, 255, 0.692);
+    margin: 3em;
+    float: left;
+    border-radius: 50%;
+    width: 12em;
+}
