@@ -10,7 +10,7 @@ import { faDownload, faFileCircleQuestion, faStopwatch, faFileLines, faFile, faI
 
 const dwnld = <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />;
 
-const colorList2 = [
+export const colorList2 = [
     'rgb(174 94 94 / 50%)',
     'rgb(154 174 94 / 50%)',
     'rgb(94 174 159 / 50%)',
@@ -20,7 +20,7 @@ const colorList2 = [
     'rgb(174 94 144 / 50%)',
     'rgb(174 94 94 / 50%)'
 ]
-const colorList = [
+export const colorList = [
     'rgb(229 19 19 / 50%)',
     'rgb(229 167 19 / 50%)',
     'rgb(206 229 19 / 50%)',
@@ -258,7 +258,7 @@ function Bagrut({ ...props }) {
             {Object.values(bagrutInfoDict.L5).map((item, index) => (
                 <Card
                     // style={{ backgroundImage: `linear-gradient(45deg,${colorList[Math.floor(Math.random() * colorList2.length)]},transparent` }}
-                    className={index === 0 ? 'borderDropBR' : 'borderDropBL'} cardID={'bagrutInfoCarusel'} key={index} boxShadow={true} translateY={false}>
+                    className={`${index === 0 ? 'borderDropBR' : 'borderDropBL'} ${user.darkMode ? 'darkModeGradient' : ''}`} cardID={'bagrutInfoCarusel'} key={index} boxShadow={true} translateY={false}>
                     <h3 >{item.title}</h3>
                     <div className='grid rows tStart'>
                         {item.body.map((line, ind) => (
@@ -296,7 +296,7 @@ function Bagrut({ ...props }) {
 
 
     return (
-        <div className="bagrutMain">
+        <div className={`bagrutMain ${user.darkMode ? 'darkMode' : ''}`}>
             <div style={{ height: '1em' }}></div>
             <h1>בגרות במתמטיקה - מידע ושאלונים</h1>
             <div className='flex center gap2'>

@@ -34,7 +34,7 @@ div.loginContainer h2 {
 }
 
 .mode0 {
-    background-color: var(--themeColorBG2);
+    /* background-color: var(--themeColorBG2); */
         color: var(--themeColorText);
 }
 
@@ -75,7 +75,7 @@ select.input {
 
 input.darkInput,
 select.darkInput {
-    border: 1.2px solid transparent;
+    border: 1.2px solid var(--themeGreyAlpha);
 }
 
 input.darkInput:focus-visible,

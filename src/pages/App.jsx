@@ -14,7 +14,8 @@ import { Cookies, useCookies } from 'react-cookie';
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
-window.onscroll = () => {
+const scrollFunction = (darkMode) => {
+    window.onscroll = () => {
     let currentScroll = window.scrollY;
     let element = document.getElementById('header');
     // let login = document.getElementById('loginButton');
@@ -29,11 +30,12 @@ window.onscroll = () => {
     else if ((element) && (currentScroll < prevScroll) && (currentScroll <= 20) && change) {   // Scrolling up
 
         change = false;
-        element.setAttribute('class', 'headerPad');
+        element.setAttribute('class', `headerPad ${darkMode ? 'darkModeHeader' : ''}`);
         // login.setAttribute('class', 'round');
         logo.setAttribute('class', 'dropShadow');
     }
     prevScroll = currentScroll;
+    }
 };
 // ************  Scroll event listner - END  ************ //
 
@@ -73,8 +75,7 @@ export default function App({ }) {
     const navigate = useNavigate();
     let url = window.location.href;
     let relPath = url.slice(url.lastIndexOf('/') + 1);
-    debug('Im in app with url: ', url);
-    
+
     useEffect(() => {
         if (cookie.userAuth) {
             debug('User Authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
@@ -85,6 +86,19 @@ export default function App({ }) {
             debug('User Un-authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
         }
     }, []);
+
+    useEffect(() => {
+        scrollFunction(user.darkMode);
+        var style = getComputedStyle(document.body);
+        let bgColor = document.querySelector(':root');
+        if (user.darkMode) {
+            let darkColor = style.getPropertyValue('--themeColorBG_DarkMode');
+            bgColor.style.setProperty('--themeColorBG', darkColor);
+        }
+        else if (!user.darkMode) {
+            bgColor.style.setProperty('--themeColorBG', '#fff');
+        }
+    }, [user.darkMode])
 
     const onFulfilValidation = (res) => {
         setTimeout(() => {
@@ -105,7 +119,9 @@ export default function App({ }) {
             let tempObj = { ...user, ...obj };
             debug('This is user Info: ', tempObj, true);
             setUserInfo(tempObj);
-            onFulfilValidation(tempObj);
+            if (obj.isAuth === true) {
+                onFulfilValidation(tempObj);
+            }
         }
     }
 
@@ -122,10 +138,12 @@ export default function App({ }) {
                             <Header currentPage={relPath} />
                         <Routes>
                             <Route
+
                                     index
-                                    element={
-                                        <Home />
-                                    } />
+                                    element={<Home />} />
+                                <Route
+                                    path={'5Math'}
+                                    element={<Home />} />
 
                             {Object.keys(PAGES).map((pageName, indx) =>
                                 <Route
@@ -137,9 +155,7 @@ export default function App({ }) {
                             <Route
                                 path={'Login'}
                                     element={
-                                        <User.Provider value={userLogin}>
-                                            <Login />
-                                        </User.Provider>
+                                        <Login />
                                     } />
 
                             <Route

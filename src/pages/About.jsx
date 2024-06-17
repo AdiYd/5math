@@ -9,7 +9,7 @@ export default function AboutUs({ ...props }) {
     debug('Context: ', user, true);
 
     return (
-        <div id='aboutUs' className="flex center">
+        <div id='aboutUs' className={`flex center ${user.darkMode ? 'darkMode' : ''}`}>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur dui vel accumsan porttitor. Fusce eget porttitor felis, at vestibulum leo. Proin blandit eros at mi lobortis, nec euismod tortor lacinia. Phasellus diam lorem, blandit sed libero sit amet, suscipit elementum felis. Ut nec gravida nunc, eu tempor risus. Fusce ligula turpis, finibus sed mollis a, aliquet vel felis. Fusce nec tempor metus. Morbi laoreet enim vitae quam vehicula, et viverra nulla condimentum. Vivamus viverra leo eu ultrices malesuada. Mauris diam arcu, rhoncus eu ultrices eu, aliquet quis lacus. Phasellus aliquam est a elit vehicula, at luctus leo elementum. Donec semper ac metus a laoreet. Praesent tincidunt urna id pulvinar fringilla. Proin dictum rhoncus lobortis. Praesent varius rutrum lorem vel porta.
 

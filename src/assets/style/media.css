@@ -248,6 +248,13 @@ div.avatar12a {
     div.loginForm button {
         font-size: 0.8em;
     }
+    div.fliterDiv p {
+        display: none;
+    }
+        div#promptContainer {
+            left: 15% !important;
+            width: 74vw !important;
+        }
 
 }
 
@@ -299,6 +306,10 @@ div.avatar12a {
         font-size: 0.7em;
     }
 
+    img#tutorSelfie {
+        width: 5em !important;
+        height: 5em !important;
+    }
     /* div.frameDiv1,
     div.frameDiv3,
     #frame2Card * {

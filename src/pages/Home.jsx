@@ -52,6 +52,7 @@ function Home({ ...props }) {
     document.title = '5 Math - דף הבית';
     const user = useContext(User);
     debug('Context: ', user, true);
+
     function onSubmitForm(e) {
         e.preventDefault();
         let formaName = e.target.name;
@@ -61,10 +62,10 @@ function Home({ ...props }) {
     }
 
     return (
-        <div className="App">
+        <div className={`App`}>
             {/* <div style={{ height: '4em' }}></div> */}
 
-            <div className='flex center frameDiv1 round boxShadow'>
+            <div className='flex center frameDiv1 pt3 round boxShadow'>
                 <div className='alignCenter'>
                     <Logo />
                     <h1>קורס הכנה לבגרות 5 ו 4 יח"ל, בשילוב כלים דיגיטליים חכמים</h1>
@@ -99,7 +100,9 @@ function Home({ ...props }) {
                     itemClass="carousel-item-padding-40-px">
 
                     <div className='flex center frameDiv2'>
-                        <Card cardID={'frame2Card'}>
+                        <Card
+                            className={`${user.darkMode ? 'darkModeGradient' : ''}`}
+                            cardID={'frame2Card'}>
                             <>
                                 <div className='flex center' style={{ verticalAlign: 'top' }}>
                                     <img id='frame2Img'
@@ -113,7 +116,9 @@ function Home({ ...props }) {
                                     ועוד מגוון שיפורים שטרם ראיתם</p>
                             </>
                         </Card>
-                        <Card cardID={'frame2Card'}>
+                        <Card
+                            className={`${user.darkMode ? 'darkModeGradient' : ''}`}
+                            cardID={'frame2Card'}>
                             <>
                                 <div className='flex center' style={{ verticalAlign: 'top' }}>
                                     <img id='frame2Img'
@@ -128,7 +133,9 @@ function Home({ ...props }) {
                                 </p>
                             </>
                         </Card>
-                        <Card cardID={'frame2Card'}>
+                        <Card
+                            className={`${user.darkMode ? 'darkModeGradient' : ''}`}
+                            cardID={'frame2Card'}>
                             <>
                                 <div className='flex center' style={{ verticalAlign: 'top' }}>
                                     <img id='frame2Img'
@@ -142,7 +149,9 @@ function Home({ ...props }) {
                                 </p>
                             </>
                         </Card>
-                        <Card cardID={'frame2Card'}>
+                        <Card
+                            className={`${user.darkMode ? 'darkModeGradient' : ''}`}
+                            cardID={'frame2Card'}>
                             <>
                                 <div className='flex center' style={{ verticalAlign: 'top' }}>
                                     <img id='frame2Img'
@@ -163,8 +172,12 @@ function Home({ ...props }) {
 
                     </div>
                     <div className='flex center'>
-                        <Card style={cardStyle} />
-                        <Card style={cardStyle} />
+                        <Card
+                            className={`${user.darkMode ? 'darkModeGradient' : ''}`}
+                            style={cardStyle} />
+                        <Card
+                            className={`${user.darkMode ? 'darkModeGradient' : ''}`}
+                            style={cardStyle} />
                     </div>
                 </Carousel>
             </section>

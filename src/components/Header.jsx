@@ -1,5 +1,6 @@
 import { debug } from '../assets/function/functions';
 import { Children, useEffect, useState, useContext } from 'react';
+import { toggleOff, toggleOn } from '../pages/Login';
 import useWindowDimensions from '../assets/function/useWindowDimentions';
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
@@ -203,7 +204,7 @@ export default function Header({ currentPage }) {
 
             <div
                 id='header'
-                className='headerPad'
+                className={`headerPad ${user.darkMode ? 'darkModeHeader' : ''}`}
                 style={{ gridTemplateColumns: '1fr 10fr 1fr 2fr' }}>
                 <div
                     id='menuLogo'
@@ -234,13 +235,13 @@ export default function Header({ currentPage }) {
                     className='fitH'>
                     {/* <button id='loginButton' className='round'> התחבר </button> */}
                     {!user.isAuth ? <FontAwesomeIcon
-                        onClick={() => { navigate('Login'); setUserMenu(p => !p) }}
+                        onClick={() => { navigate('Login'); setPageName('Login') }}
                         title='הרשמה מהירה'
                         // onClick={() => { setUserMenu(p => !p) }}
                         style={{ cursor: 'pointer', marginBottom: '0.3em' }}
                         size='lg'
                         icon={faUser}
-                        color={userMenu ? 'var(--themeColor)' : ''} />
+                        color={pageName === 'Login' ? 'var(--themeColor)' : ''} />
                         : <div onMouseEnter={() => { setUserMenu(true) }}>
                             <Avatar
                                 onClick={() => setUserMenu(p => !p)}
@@ -264,6 +265,20 @@ export default function Header({ currentPage }) {
                                 <p>{user.email}</p>
                                 <p>הגדרות</p>
                                 <div
+                                    title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
+                                    className='flex center pointer'>
+                                    <svg
+                                        onClick={() => { user.callback({ darkMode: !user.darkMode }) }}
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        height="24px"
+                                        viewBox="0 -960 960 960"
+                                        width="24px"
+                                    // fill={user.darkMode ? '' : ""}
+                                    >
+                                        {!user.darkMode ? toggleOn : toggleOff}
+                                    </svg>
+                                </div>
+                                <div
                                     onClick={() => { setUserMenu(false); user.callback(undefined, true) }}
                                     className='flex center alignCenter m0'>
                                     <FontAwesomeIcon
@@ -277,7 +292,7 @@ export default function Header({ currentPage }) {
                         </div>}
                 </div>
             </div>
-            <div className="App-main">
+            <div className={`App-main ${user.darkMode ? 'darkMode' : ''}`}>
                 <Prompt show={formula} callBack={setFormula}>
                     <Formulas />
                 </Prompt>

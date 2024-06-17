@@ -3,3 +3,7 @@ div.formulaContainer {
     padding: 0.2em 0.4em;
 
 }
+a#formula,
+a#formula span {
+    visibility: visible;
+}

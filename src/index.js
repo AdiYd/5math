@@ -22,6 +22,7 @@ export const User = createContext({
   isAuth: false,
   email: 'JohnDoh@5math.com',
   src: undefined,
+  darkMode: false,
   jwt: undefined
 })
 

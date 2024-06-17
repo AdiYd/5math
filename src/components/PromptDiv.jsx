@@ -1,7 +1,8 @@
 import { debug } from '../assets/function/functions';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 // import { ResizableBox, Resizable } from 'react-resizable';
 import './Components.css';
+import { User } from '..';
 
 function Prompt({
     show = true,
@@ -11,10 +12,14 @@ function Prompt({
     callBack = () => { },
     ...props }) {
     const [showDiv, setShowDiv] = useState(show);
-
+    const { darkMode, callback } = useContext(User);
+    const [localDarkMode, setDarkMode] = useState(darkMode);
     useEffect(() => {
         setShowDiv(show);
     }, [show])
+    useEffect(() => {
+        setDarkMode(darkMode)
+    }, [darkMode])
 
     function onClickHandler(e) {
         setShowDiv(false);
@@ -29,6 +34,7 @@ function Prompt({
         {showX &&
             <div
                 className='flex center fit'
+                // id={darkMode ? 'darkMode' : ''}
                 style={{ position: 'sticky', top: '0%', right: '98%', zIndex: '200' }}
                 title='סגור'>
                 <svg
@@ -49,8 +55,9 @@ function Prompt({
                     minConstraints={[100, 100]} maxConstraints={[300, 300]}>
                     <span>Contents</span>
                 </ResizableBox> */}
-
+            <User.Provider value={{ darkMode: localDarkMode, callback: () => { setDarkMode(p => !p) } }}>
             {children}
+            </User.Provider>
 
             {showButton && <button
                 onClick={onClickHandler}
@@ -67,7 +74,7 @@ function Prompt({
             // draggableOpts={{}}
             // minConstraints={[100, 100]}
             style={{ display: showDiv ? '' : 'none' }}
-            className={`squarish boxShadow ${props.className ? props.className : ''}`}
+            className={`squarish boxShadow ${props.className ? props.className : ''} ${localDarkMode ? 'darkMode' : ''}`}
             id='promptContainer' >
             {childs}
         </div>

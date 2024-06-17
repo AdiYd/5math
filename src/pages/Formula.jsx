@@ -1,7 +1,9 @@
 import { debug } from '../assets/function/functions';
 import { MathJax } from 'better-react-mathjax';
 import './Formula.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
+import { User } from '..';
+import { toggleOff, toggleOn } from './Login';
 import Checkbox from '../components/CheckBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareXmark, faSquareCheck, faArrowsRotate, faCaretLeft, faSquareArrowUpRight, faArrowDownShortWide, faArrowUpShortWide } from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +30,13 @@ function Formulas({
     const [showAll, setShowAll] = useState(JSON.parse(localStorage.getItem('userFormulaShowAll')) ?? true);
     const msg = !Object.keys(userFormula).length ? 'ניתן לבחור נוסחאות ולבנות דף נוסחאות מצומצם' : undefined;
     const selectAllList = useRef([]);
+    const { darkMode, callback } = useContext(User);
+
+    function setDarkMode() {
+        debug('Inside setDarkMode if Formula: ', darkMode, callback, true);
+        callback();
+        setUpdate(p => !p);
+    }
 
     const updateUserFormula = ({ category, name, add = true, storage = true } = {}) => {
         let tempObj = { ...userFormula };
@@ -188,6 +197,19 @@ function Formulas({
                             setFilters(p => ({ ...p, active: !p.active }))
                         }}
                     />
+                    <div
+                        title={darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
+                        className='flex center pointer'>
+                        <svg
+                            onClick={() => { setDarkMode(p => !p) }}
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24px"
+                            viewBox="0 -960 960 960"
+                            width="24px"
+                            fill={darkMode ? '' : "var(--themeColor)"}>
+                            {!darkMode ? toggleOn : toggleOff}
+                        </svg>
+                    </div>
                 </div>
                 {filter}
                 {msg && <p className='ma1'>{msg}</p>}
