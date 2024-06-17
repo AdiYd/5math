@@ -13,7 +13,7 @@ import imgLogo from '../assets/img/5Math.svg';
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faBars, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
 import { PAGES } from '../pages/App';
 import Formulas from '../pages/Formula';
 
@@ -22,7 +22,7 @@ const DBG_PROPS = {
     background: 'azul',
     fontWeight: 'bold'
 }
-
+const MOBILE_SCREEN_WIDTH = 680;
 export const THEME_COLORS = ['var(--ThemeGPTBlueV)', 'var(--ThemeGPTBlue)', 'var(--ThemeGPTOrangeV)', 'var(--ThemeGPTOrangeDeep)', 'var(--ThemeGPTRedV)', 'var(--ThemeGPTRed)', 'var(--ThemeGPTPurpleV)', 'var(--ThemeGPTPurpleLightV)', 'var(--ThemeGPTGreenV)', 'var(--ThemeGPTGreen)'];
 if (Boolean(localStorage.getItem('themeColor'))) {
     onLogoClickHandler(undefined, true);
@@ -38,13 +38,13 @@ const DropDown = (color) => {
     </svg>)
 }
 
-const Formula = (color) => {
+const Formula = (color, isMobile = false) => {
     color = color === true ? 'var(--themeColor)' : color ? color : '#000';
     return (<svg
         xmlns="http://www.w3.org/2000/svg"
-        height="1.5em"
+        height={isMobile ? '2em' : '1.5em'}
         viewBox="0 -960 960 960"
-        width="1.5em"
+        width={isMobile ? '2em' : '1.5em'}
         fill={color}>
         <path d="M400-240v-80h62l105-120-105-120h-66l-64 344q-8 45-37 70.5T221-120q-45 0-73-24t-28-64q0-32 17-51.5t43-19.5q25 0 42.5 17t17.5 41q0 5-.5 9t-1.5 9q5-1 8.5-5.5T252-221l62-339H200v-80h129l21-114q7-38 37.5-62t72.5-24q44 0 72 26t28 65q0 30-17 49.5T500-680q-25 0-42.5-17T440-739q0-5 .5-9t1.5-9q-6 2-9 6t-5 12l-17 99h189v80h-32l52 59 52-59h-32v-80h200v80h-62L673-440l105 120h62v80H640v-80h32l-52-60-52 60h32v80H400Z" />
     </svg>)
@@ -168,11 +168,13 @@ export default function Header({ currentPage }) {
             setPageName(currentPage);
         }
     }, [window.location.href])
-
+    let isMobile = Boolean(width <= MOBILE_SCREEN_WIDTH);
+    debug('Is this mobile? ', isMobile);
 
     function onClickHandler(e) {
         setUpdate(p => !p)
     }
+
 
     return (
         <>
@@ -205,8 +207,11 @@ export default function Header({ currentPage }) {
             <div
                 id='header'
                 className={`headerPad ${user.darkMode ? 'darkModeHeader' : ''}`}
-                style={{ gridTemplateColumns: '1fr 10fr 1fr 2fr' }}>
-                <div
+                style={{
+                    height: isMobile ? '8vh' : '', alignItems: 'center',
+                    gridTemplateColumns: isMobile ? 'repeat(4,1fr)' : '1fr 10fr 1fr 2fr'
+                }}>
+                {!isMobile && <div
                     id='menuLogo'
                     className='flex center m3 round fit fitH pointer'>
                     <img
@@ -216,18 +221,30 @@ export default function Header({ currentPage }) {
                         src={imgLogo}
                         title='5Math'
                         alt='5Math' />
-                </div>
+                </div>}
                 <Menu
+                    isMobile={isMobile}
                     pages={PAGES}
                     currentPage={pageName}
                 />
-
+                {isMobile && <div
+                    id='menuLogo'
+                    className='flex center m3 round fit fitH pointer'>
+                    <img
+                        id={'imgLogo'}
+                        className='dropShadow'
+                        style={{ width: '3em', height: '2.2em' }}
+                        onClick={onLogoClickHandler}
+                        src={imgLogo}
+                        title='5Math'
+                        alt='5Math' />
+                </div>}
                 <div
                     title='דף נוסחאות'
                     id={`formulaLogo${formula ? 'theme' : ''}`}
                     onClick={() => setFormula(p => !p)}
-                    className='flex end fitH pointer'>
-                    {Formula(formula ? 'var(--themeColor)' : undefined)}
+                    className={isMobile ? 'flex center pointer' : 'flex end fitH pointer'}>
+                    {Formula(formula ? 'var(--themeColor)' : undefined, isMobile)}
                 </div>
                 <div
                     onMouseLeave={() => { setUserMenu(false) }}
@@ -238,7 +255,7 @@ export default function Header({ currentPage }) {
                         onClick={() => { navigate('Login'); setPageName('Login') }}
                         title='הרשמה מהירה'
                         // onClick={() => { setUserMenu(p => !p) }}
-                        style={{ cursor: 'pointer', marginBottom: '0.3em' }}
+                        style={{ cursor: 'pointer', alignSelf: 'end', height: isMobile ? '1.5em' : '' }}
                         size='lg'
                         icon={faUser}
                         color={pageName === 'Login' ? 'var(--themeColor)' : ''} />
@@ -256,7 +273,7 @@ export default function Header({ currentPage }) {
                                 round={true}
                                 textSizeRatio={2}
                                 color="var(--themeColor)"
-                                size={Math.max(Math.ceil(width / 48), 10)}>
+                                size={isMobile ? '28' : '30'}>
                             </Avatar>
                             <SubMenu
                                 style={{ left: '0%', fontSize: '0.85em' }}
@@ -264,7 +281,7 @@ export default function Header({ currentPage }) {
                                 <p>{user.name}</p>
                                 <p>{user.email}</p>
                                 <p>הגדרות</p>
-                                <div
+                                {/* <div
                                     title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
                                     className='flex center pointer'>
                                     <svg
@@ -277,7 +294,7 @@ export default function Header({ currentPage }) {
                                     >
                                         {!user.darkMode ? toggleOn : toggleOff}
                                     </svg>
-                                </div>
+                                </div> */}
                                 <div
                                     onClick={() => { setUserMenu(false); user.callback(undefined, true) }}
                                     className='flex center alignCenter m0'>
@@ -307,18 +324,30 @@ export default function Header({ currentPage }) {
 
 
 
-function Menu({ pages, currentPage, ...props }) {
+function Menu({ pages, currentPage, isMobile = false, ...props }) {
     const [pageName, setPageName] = useState(currentPage);
     const [subMenu, setSubmenu] = useState({ Courses: false, Exercise: false })
+    const [mobileMenu, setMobileMenu] = useState(false);
     useEffect(() => {
         setPageName(currentPage);
     }, [currentPage])
 
+
     return (
         <div
             className='flex fitH' {...props}>
-            <ul className='grid columns fill between m1'
-                id='menuCategory'>
+            {isMobile && <div
+                onClick={() => setMobileMenu(p => !p)}
+                className='flex center m3'>
+                <FontAwesomeIcon
+                    icon={faBars}
+                    className='pointer opacityHover'
+                    size='2xl'
+                    color={mobileMenu ? 'var(--themeColor)' : ''} />
+            </div>}
+            <ul className={!isMobile ? 'grid columns fill between m1' : 'flex columns gap1 fit'}
+                style={{ visibility: isMobile ? mobileMenu ? 'visible' : 'hidden' : '', position: isMobile ? 'absolute' : '' }}
+                id={isMobile ? 'mobile' : 'menuCategory'}>
                 {Object.keys(pages).map((pageRout, index) =>
                     pageRout in subMenu ?
                         <div
@@ -344,11 +373,11 @@ function Menu({ pages, currentPage, ...props }) {
                                 </div>
                             </Link>
                             <SubMenu showMenu={subMenu[pageRout]} horizontal={true} >
-                                <a>  בדיקת לטקסט כלשהו </a>
-                                <a>  בדיקת לטקסט כלשהו </a>
-                                <a>  בדיקת לטקסט כלשהו </a>
-                                <a>  בדיקת לטקסט כלשהו </a>
-                                <a href='/Home'>  בדיקת לטקסט כלשהו </a>
+                                <a>  בדיקה של טקסט כלשהו </a>
+                                <a>  בדיקה של טקסט כלשהו </a>
+                                <a>  בדיקה של טקסט כלשהו </a>
+                                <a>  בדיקה של טקסט כלשהו </a>
+                                <a href='/Home'>  בדיקה של טקסט כלשהו </a>
                             </SubMenu>
                         </div> :
                         <div

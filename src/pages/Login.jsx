@@ -79,7 +79,7 @@ export default function Login({
     const [validPass, setValidPass] = useState(false);
     const [errInput, setErr] = useState({});
     const [hidePassword, setPassState] = useState(true);
-    const [colorMode, setColorMode] = useState(user.darkMode ? true : user.darkMode);
+    const [colorMode, setColorMode] = useState(!user.darkMode);
     const [userData, setUserData] = useState({
         fname: null,
         lname: null,

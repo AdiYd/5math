@@ -302,6 +302,9 @@ button:hover {
 .borderDropBL {
     border-radius: 30px 30px 30px 1px !important;
 }
+.fadeIn {
+    animation: translate 0.7s ease-in forwards;
+}
 @keyframes rotate {
     0% {
         transform: rotate(0deg);

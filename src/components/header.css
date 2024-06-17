@@ -33,7 +33,7 @@ div.headerBorder {
 }
 
 div.headerBorder svg {
-    /* fill: var(--themeColorText_DarkMode); */
+    fill: var(--themeColorText_DarkMode);
     margin: 0em 1em;
     display: flex;
 }
@@ -133,4 +133,26 @@ li {
 
 button#loginButton {
     color: var(--themeColorText_DarkMode);
+}
+ul#mobile {
+    flex-direction: column;
+    gap: 1em;
+    width: fit-content;
+    background-color: var(--themeColorBG2);
+    box-shadow: var(--boxShadowHeader2);
+    text-align: start;
+    border-radius: 12px;
+    font-size: 2em;
+    padding: 0.5em;
+}
+
+ul#mobile * {
+    text-align: start;
+    border-color: transparent;
+
+}
+
+ul#mobile *:hover {
+    color: var(--themeColor);
+
 }

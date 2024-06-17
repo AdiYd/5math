@@ -66,11 +66,11 @@ function Home({ ...props }) {
             {/* <div style={{ height: '4em' }}></div> */}
 
             <div className='flex center frameDiv1 pt3 round boxShadow'>
-                <div className='alignCenter'>
+                <div className='alignCenter fadeIn'>
                     <Logo />
-                    <h1>קורס הכנה לבגרות 5 ו 4 יח"ל, בשילוב כלים דיגיטליים חכמים</h1>
-                    <h2> ללמוד ולתרגל בצורה חכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</h2>
-                    <h2>לגשת לבגרות בראש שקט ובבטחון</h2>
+                    <h1>קורס דיגיטלי להכנה לבגרות במתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
+                    <h2> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</h2>
+                    <h2>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</h2>
                     <button
                         className='themeConst2'
                         id='trialButton'>לצפייה בשיעור ניסיון</button>
