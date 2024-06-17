@@ -108,7 +108,6 @@ function Formulas({
     if (fullMode) {
         document.title = ' דף נוסחאות - 5 יחידות';
     }
-    debug('this is filters: ', filters, true);
     let filter = filters.active &&
         <div className='flex wrap fitH ma3 center small' style={{ gap: '0.4em' }}>
             {Object.keys(formulas).map((item, index) => (

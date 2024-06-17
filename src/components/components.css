@@ -132,14 +132,15 @@ button#trialButton {
     border-radius: 20px;
 }
 div.footer {
-    height: 15vh;
-    padding: 2em 1em;
+    /* height: 15vh; */
+    padding: 1em 1em;
     width: -webkit-fill-available;
     /* background-color: var(--themeColorBG_DarkMode); */
-    background-image: linear-gradient(0deg, black, black, black,
-            var(--themeColorBG_DarkMode),
-                var(--themeColorBG_DarkMode),
-                white);
+    background-image: linear-gradient(0deg, black, black, black,var(--themeColorBG_DarkMode),
+    var(--themeColorBG_DarkMode),
+    white);
+    background: var(--themeDarkBlue);
+    background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode);
 }
 div.writeMe {
@@ -166,12 +167,12 @@ div.writeMe textarea {
 img#tutorSelfie {
     height: 12em;
     border: 1px solid rgba(255, 255, 255, 0.692);
-    margin: 2em;
+    margin: 1em;
     float: left;
-    border-radius: 50%;
+    border-radius: 40%;
     width: 12em;
 }
-#tutorSelfie {
+/* #tutorSelfie {
     border: 1px solid rgba(255, 255, 255, 0.692);
     float: left;
     height: 6.5em;
@@ -180,3 +181,4 @@ img#tutorSelfie {
     padding: 1em;
     margin: 1em;
 }
+*/

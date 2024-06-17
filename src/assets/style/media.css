@@ -73,7 +73,7 @@
 
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     body {
         font-size: 12px;
         /* background: rgba(102, 0, 128, 0.346); */
@@ -225,7 +225,6 @@ div.avatar12a {
         left: 10%;
     }
 
-                input#name,
     input#password,
     input#password2,
     input#email,

@@ -1,4 +1,6 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext } from 'react';
+import { User } from '..';
+import { debug } from '../assets/function/functions';
 import './Bagrut.css'
 import Card from '../components/Card';
 import Carousel from "react-multi-carousel";
@@ -7,6 +9,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faFileCircleQuestion, faStopwatch, faFileLines, faFile, faInfo, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 const dwnld = <path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z" />;
+
+const colorList2 = [
+    'rgb(174 94 94 / 50%)',
+    'rgb(154 174 94 / 50%)',
+    'rgb(94 174 159 / 50%)',
+    'rgb(94 108 174 / 50%)',
+    'rgb(98 94 174 / 50%)',
+    'rgb(154 94 174 / 50%)',
+    'rgb(174 94 144 / 50%)',
+    'rgb(174 94 94 / 50%)'
+]
+const colorList = [
+    'rgb(229 19 19 / 50%)',
+    'rgb(229 167 19 / 50%)',
+    'rgb(206 229 19 / 50%)',
+    'rgb(48 229 19 / 50%)',
+    'rgb(19 229 220 / 50%)',
+    'rgb(19 123 229 / 50%)',
+    'rgb(103 19 229 / 50%)',
+    'rgb(229 19 228 / 50%)'
+]
 
 const bagrutInfoDict = {
     L4: {
@@ -98,7 +121,6 @@ const bagrutInfoDict = {
         }
     }
 }
-
 const bagrutDict = {
     mA16: {
         name: "2016 - חורף",
@@ -157,7 +179,8 @@ const bagrutDict = {
 
 function Bagrut({ ...props }) {
     document.title = 'שאלוני בגרות';
-
+    const user = useContext(User);
+    debug('Context: ', user, true);
     const [filterData, setFilterData] = useState({
         year: undefined,
         moed: undefined,
@@ -207,6 +230,7 @@ function Bagrut({ ...props }) {
                         ((filterData.year && item.includes(filterData.year) || !filterData.year) && ((filterData.moed && item.includes(filterData.moed)) || !filterData.moed))))
                 }).map((item, indx) => (
                     <Card
+                        style={{ backgroundImage: `linear-gradient(45deg,${colorList[indx % (colorList.length)]},transparent` }}
                         key={item + indx}
                         title={bagrutDict[item].name}
                         translateY={false}
@@ -233,12 +257,12 @@ function Bagrut({ ...props }) {
         <div className='grid columns' style={{ gridTemplateColumns: '1fr 1fr' }}>
             {Object.values(bagrutInfoDict.L5).map((item, index) => (
                 <Card
-                    style={{ backgroundImage: `linear-gradient(45deg,${colorList[indx % (colorList.length)]},transparent` }}
+                    // style={{ backgroundImage: `linear-gradient(45deg,${colorList[Math.floor(Math.random() * colorList2.length)]},transparent` }}
                     className={index === 0 ? 'borderDropBR' : 'borderDropBL'} cardID={'bagrutInfoCarusel'} key={index} boxShadow={true} translateY={false}>
                     <h3 >{item.title}</h3>
                     <div className='grid rows tStart'>
                         {item.body.map((line, ind) => (
-                            <div className='flex m1' style={{ alignItems: 'start' }} >
+                            <div key={ind} className='flex m1' style={{ alignItems: 'start' }} >
                                 <p className='ml1'>{`${ind + 1}.`}</p>
                                 {line}
                             </div>
@@ -248,7 +272,9 @@ function Bagrut({ ...props }) {
                     <div className='footerBagrutInfo'>
                         {/* <h3 >אז מה היה לנו ?</h3> */}
                         {item.footer.map((line, indx) => (
-                            line 
+                            <div key={indx}>
+                                {line}
+                            </div> 
                         ))}
                     </div>
                 </Card>
@@ -276,12 +302,12 @@ function Bagrut({ ...props }) {
             <div className='flex center gap2'>
                 <button
                     onClick={() => { setInfo(true); slideOne.current.click() }}
-                    className={`pl3 pr3 round ${!bagrutInfo ? 'themeConst4' : ''}`} >
+                    className={`pl3 pr3 round ${!bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
                     מידע על מבנה הבגרות</button>
                 <button
                     onClick={() => { setInfo(false); slideZero.current.click() }}
-                    className={`pl3 pr3 round ${bagrutInfo ? 'themeConst4' : ''}`} >
+                    className={`pl3 pr3 round ${bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faFile} className='ml2' />
                     שאלוני בגרות משנים קודמות</button>
             </div>

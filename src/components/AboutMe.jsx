@@ -78,7 +78,7 @@ function AboutMe({ ...props }) {
                     onChange={(e) => setWriteMe(p => ({ ...p, content: e.target.value }))}
                     className='inputText' />
             </div>
-            <button className='round alignCenter' style={{ width: '40vw' }} type='submit'>
+            <button className='round alignCenter' style={{ width: '15vw' }} type='submit'>
                 שליחה
             </button>
         </form>
@@ -86,14 +86,14 @@ function AboutMe({ ...props }) {
 
     return (
         <div className='rtl frameDiv3 round boxShadow'>
-            <FontAwesomeIcon icon={faUser}
-                id='tutorSelfie' className='boxShadowHover p2' color='var(--constThemeColor)' />
-            {/* <img id='tutorSelfie'
+            {/* <FontAwesomeIcon icon={faUser}
+                id='tutorSelfie' className='boxShadowHover p2' color='var(--constThemeColor)' /> */}
+            <img id='tutorSelfie'
                 className='boxShadowHover'
                 src={selfie}
                 alt="Picture of the Shai, the teacher"
                 title='Picture of the course teacher'
-            /> */}
+            />
             <div className='flex center'>
                 <h1>ההצלחה מתחילה בך ועוברת במרצה </h1>
             </div>

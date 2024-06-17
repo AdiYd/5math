@@ -18,8 +18,8 @@ div#bagrutCard {
     background-color: var(--themeColorBG_DarkMode);
     color: var(--themeColorText_DarkMode);
     background-color: var(--themeColorBG);
-    background: var(--themeGreyAlpha);
-    background: var(--themeColorBG2);
+    /* background: var(--themeGreyAlpha);
+            background: var(--themeColorBG2); */
     color: var(--themeColorText);
     display: flex;
     gap: 1em;
@@ -64,7 +64,7 @@ div#bagrutInfoCarusel {
     /* background-color: var(--themeColorBG2); */
     /* background-image: linear-gradient(0deg, var(--themeColorAlpha), var(--themeColorAlpha),
             transparent, transparent, transparent, transparent, transparent); */
-    background: var(--themeColorBG2);
+    /* background: var(--themeColorBG2); */
     font-weight: 600;
     height: fill-available;
     width: fill-available;

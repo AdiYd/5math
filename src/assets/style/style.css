@@ -169,8 +169,8 @@
 }
 
 .darkMode {
-    background: var(--themeColorBG_DarkMode);
-    color: var(--themeColorText_DarkMode);
+    background: var(--themeColorBG_DarkMode) !important;
+    color: var(--themeColorText_DarkMode) !important;
 }
 
 a,
@@ -372,7 +372,7 @@ button:hover {
     margin: 1em;
 }
 .m0 {
-    margin: 0em;
+    margin: 0em !important;
 }
 .m1 {
     margin: auto 0.5em;

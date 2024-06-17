@@ -7,6 +7,7 @@ div#header {
     grid-auto-flow: column;
     width: 100%;
     transition: 0.2s;
+    align-items: end;
 }
 
 div.headerPad {
@@ -17,17 +18,18 @@ div.headerPad {
 div.headerPad li:hover {
     color: rgb(0 0 0 / 80%);
 }
+*/
 
 div.headerBorder {
     align-items: center;
     /* border-radius: 0px 0px 0.5em 0.5em; */
-        padding: 0.5em 0em;
-        /* background-color: #011e33; */
-        /* background: rgba(1, 30, 51, 0.8); */
-        /* background-image: var(--headerGradient); */
-        background-image: var(--headerGradient2);
-        color: var(--themeColorText_DarkMode);
-        /* box-shadow: var(--boxShadowHeader); */
+    padding: 0.5em 0em;
+    /* background-color: #011e33; */
+    background: var(--themeDarkBlue);
+    background-image: var(--headerGradient);
+        /* background-image: var(--headerGradient2); */
+    color: var(--themeColorText_DarkMode);
+    /* box-shadow: var(--boxShadowHeader); */
     border: none;
 }
 
@@ -93,8 +95,8 @@ ul#menuCategory li:hover {
 }
 div.headerBorder div.subMenu {
     background: black;
-    background: rgba(1, 30, 51, 1);
-        background-image: var(--headerGradient);
+    /* background: var(--themeDarkBlue); */
+        /* background-image: var(--headerGradient); */
     color: var(--themeColorText_DarkMode);
     box-shadow: none;
 }
@@ -118,7 +120,7 @@ div.subMenu * {
     height: fit-content;
     width: max-content;
     cursor: pointer;
-    margin: 0.9em;
+    margin: 0.7em;
 }
 
 div.subMenu *:hover {

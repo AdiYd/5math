@@ -4,8 +4,8 @@ import './App.css';
 import '../components/Components.css';
 import parse from 'html-react-parser';
 import { debug } from '../assets/function/functions';
-import { useState, useRef } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useState, useRef, useContext } from 'react';
+import { User } from '..';
 import { useLocation } from "react-router-dom";
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
@@ -69,6 +69,8 @@ export default function Login({
     confirmEmail = false,
     signupForm = false,
     ...props }) {
+    document.title = 'הרשמה ל 5Math';
+    const user = useContext(User);
     const location = useLocation();
     const [update, setUpdate] = useState(false);
     const [signup, setSignup] = useState(location.state?.signup ? location.state.signup : signupForm);
@@ -87,9 +89,7 @@ export default function Login({
         type: ['הכנה לבגרות'],
         level: null,
     })
-    const navigate = useNavigate();
     const validationErr = useRef();
-
     const onRejectValidation = (data) => {
         // debug('Server rejected request under: ', data);
         validationErr.current = <div className='flex center' style={{ alignItems: 'center' }}>
@@ -107,11 +107,7 @@ export default function Login({
         </div>
         setUpdate(p => !p)
     }
-    const onFulfilValidation = (res) => {
-        setTimeout(() => {
-            navigate('Home')
-        }, 1000)
-    }
+
 
     function onStudentTypeClick(e, item) {
         if (userData.type?.includes(item)) {
@@ -231,7 +227,7 @@ export default function Login({
                     showDiv={true} >
                     {msg}
                 </Prompt>)
-            onFulfilValidation(res)
+            // onFulfilValidation(res)
         }
         e.preventDefault();
         let formaName = e.target.name;
@@ -282,24 +278,22 @@ export default function Login({
             }
 
             if (['demo', '123', '0000'].includes(password.toLowerCase())) {
-                user(p => ({
-                    ...p,
+                user({
                     name: 'Demo user',
                     email: 'Demo@5Math.mail',
                     google: false,
                     isAuth: true,
-                }))
-                onFulfilValidation()
+                })
+                // onFulfilValidation()
             }
             else if (password.toLowerCase() === 'admin') {
-                user(p => ({
-                    ...p,
-                    name: 'Admin Jow',
+                user({
+                    name: 'Admin Yd',
                     email: 'Admin@5Math.mail',
                     google: false,
+                    isAdmin: true,
                     isAuth: true
-                }))
-                onFulfilValidation()
+                })
             }
             // authUser(tempObj, 'login', 'onSite', onFulfilValidation, onRejectValidation)
             // bcrypt.genSalt(saltRounds, (err, salt) => {
@@ -478,10 +472,10 @@ export default function Login({
                     id='Email'
                     className={className}
                     maxLength={40}
-                    required={true}
+                    // required={true}
                     autoComplete='on'
                     title='אימייל'
-                    type='email'
+                    // type='email'
                     onChange={onInputHandler}
                     placeholder='אימייל'
                     name='email'></input>
@@ -495,7 +489,7 @@ export default function Login({
                     <input
                         id='Password'
                         required={true}
-                        minLength={6}
+                        // minLength={6}
                         maxLength={15}
                         className={className}
                         title='סיסמה'
@@ -534,7 +528,7 @@ export default function Login({
 
     let gglLogin = <div className='flex center' style={{ margin: '0.5em' }} >
         <div className='flex google' style={{ width: 'fit-content', borderRadius: '20px', border: colorMode ? '1px solid white' : '' }}>
-            <GoogleLogin
+            {<GoogleLogin
                 shape='circle'
                 size='medium'
                 logo_alignment='center'
@@ -543,14 +537,26 @@ export default function Login({
                 onSuccess={res => {
                     let userData = jwtDecode(res.credential);
                     debug('Google Res: ', res, userData, DBG_PROPS);
+
+                    if (userData) {
+                        user({
+                            name: userData.name,
+                            email: userData.email,
+                            google: true,
+                            isAuth: true,
+                            src: userData.picture,
+                            jwt: res.credential
+                        })
+                        // onFulfilValidation()
+                    }
                     // authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
                     setUpdate(p => !p)
                 }}
                 onError={() => {
                     debug('Google Login Failed!', DBG_PROPS);
                 }}
-                useOneTap
-            />
+            // useOneTap
+            />}
         </div>
     </div>
 

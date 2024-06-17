@@ -1,5 +1,6 @@
 import { debug } from '../assets/function/functions';
 import { BrowserRouter, Routes, Route, RouterProvider } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import Header from '../components/Header';
 import Home from './Home';
 import Bagrut from './Bagrut';
@@ -7,6 +8,9 @@ import AboutUs from './About';
 import Formulas from './Formula';
 import Footer from '../components/Footer';
 import Login from './Login';
+import { createContext, useContext, useState, useEffect } from 'react';
+import { User } from '..';
+import { Cookies, useCookies } from 'react-cookie';
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
@@ -33,8 +37,6 @@ window.onscroll = () => {
 };
 // ************  Scroll event listner - END  ************ //
 
-
-
 export const PAGES = {
     Home: {
         link: <Home />,
@@ -58,12 +60,55 @@ export const PAGES = {
     }
 }
 
-
+const tokenTime = {
+    admin: 60 * 60,
+    google: 25 * 60,
+    demo: 10 * 60
+}
 
 export default function App({ }) {
+    const userInfo = useContext(User);
+    const [cookie, setCookie, removeCookie] = useCookies();
+    const [user, setUserInfo] = useState(cookie.userAuth ? cookie.userAuth : userInfo);
+    const navigate = useNavigate();
     let url = window.location.href;
     let relPath = url.slice(url.lastIndexOf('/') + 1);
-    debug('Im in app with url: ', url, relPath);
+    debug('Im in app with url: ', url);
+    
+    useEffect(() => {
+        if (cookie.userAuth) {
+            debug('User Authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
+            // setUserInfo(cookie.userAuth);
+        }
+        else {
+
+            debug('User Un-authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
+        }
+    }, []);
+
+    const onFulfilValidation = (res) => {
+        setTimeout(() => {
+            let maxAge = res.isAdmin ? tokenTime.admin : res.google ? tokenTime.google : tokenTime.demo;
+            setCookie('userAuth', JSON.stringify(res), { maxAge, secure: false });
+            debug('Setting cookie: ', res, `Valid for ${maxAge / 60} minutes`, true)
+            navigate('/Home');
+        }, 800)
+    }
+
+    function userLogin(obj, disconnect = false) {
+        if (disconnect) {
+            removeCookie('userAuth');
+            setUserInfo(userInfo);
+            return
+        }
+        else if (obj) {
+            let tempObj = { ...user, ...obj };
+            debug('This is user Info: ', tempObj, true);
+            setUserInfo(tempObj);
+            onFulfilValidation(tempObj);
+        }
+    }
+
     return (
         <>
             <Routes>
@@ -73,25 +118,35 @@ export default function App({ }) {
                 <Route
                     path='*'
                     element={<>
-                        <Header currentPage={relPath} />
+                        <User.Provider value={{ ...user, callback: userLogin }}>
+                            <Header currentPage={relPath} />
                         <Routes>
                             <Route
-                                path='5math'
-                                index element={<Home />} />
+                                    index
+                                    element={
+                                        <Home />
+                                    } />
 
                             {Object.keys(PAGES).map((pageName, indx) =>
                                 <Route
                                     key={indx}
                                     path={pageName}
-                                    element={PAGES[pageName].link} />)}
+                                    element={
+                                        PAGES[pageName].link
+                                    } />)}
                             <Route
                                 path={'Login'}
-                                element={<Login />} />
+                                    element={
+                                        <User.Provider value={userLogin}>
+                                            <Login />
+                                        </User.Provider>
+                                    } />
 
                             <Route
                                 path="*"
                                 element={<><h1>Error Page! 404</h1></>} />
                         </Routes>
+                        </User.Provider>
                         <Footer />
                     </>
                     } />

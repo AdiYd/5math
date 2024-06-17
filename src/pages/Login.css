@@ -41,6 +41,8 @@ div.loginContainer h2 {
 .mode1 {
     background: #161b22;
     background-color: var(--themeColorBG_DarkMode);
+    background: var(--themeDarkBlue);
+        background-image: var(--headerGradient);
         color: var(--themeColorText_DarkMode);
     }
     

@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { debug } from "../assets/function/functions";
+import { User } from "..";
 
 
 export default function AboutUs({ ...props }) {
     document.title = 'הסיפור שלנו';
+    const user = useContext(User);
+    debug('Context: ', user, true);
 
     return (
         <div id='aboutUs' className="flex center">

@@ -1,4 +1,6 @@
 import assist from '../assets/img/pesonalAssist.png';
+import { User } from '..';
+import { useState, useContext } from 'react';
 import experience from '../assets/img/experience.png';
 import timeSave from '../assets/img/timeSave.png';
 import digital from '../assets/img/digital.png';
@@ -48,6 +50,8 @@ const cardStyle = {
 
 function Home({ ...props }) {
     document.title = '5 Math - דף הבית';
+    const user = useContext(User);
+    debug('Context: ', user, true);
     function onSubmitForm(e) {
         e.preventDefault();
         let formaName = e.target.name;
@@ -180,7 +184,7 @@ function Home({ ...props }) {
                         <input
                             id='name'
                             className='inputText'
-                            maxLength={20}
+                            maxLength={30}
                             required={true}
                             autoComplete='on'
                             title='שם מלא'
@@ -189,7 +193,7 @@ function Home({ ...props }) {
                             placeholder='שם מלא'
                             name='name'></input>
                         <input
-                            id='email'
+                            id='emails'
                             className='inputText'
                             maxLength={60}
                             required={true}

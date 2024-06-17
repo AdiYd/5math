@@ -1,13 +1,18 @@
 import { debug } from '../assets/function/functions';
-import { Children, useEffect, useState } from 'react';
+import { Children, useEffect, useState, useContext } from 'react';
+import useWindowDimensions from '../assets/function/useWindowDimentions';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import { User } from '..';
 import Prompt from './PromptDiv';
 import '../assets/style/style.css';
 import './Components.css';
 import './header.css';
 import imgLogo from '../assets/img/5Math.svg';
 import { Link, Outlet, useNavigate } from "react-router-dom";
+import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
 import { PAGES } from '../pages/App';
 import Formulas from '../pages/Formula';
 
@@ -21,6 +26,7 @@ export const THEME_COLORS = ['var(--ThemeGPTBlueV)', 'var(--ThemeGPTBlue)', 'var
 if (Boolean(localStorage.getItem('themeColor'))) {
     onLogoClickHandler(undefined, true);
 }
+
 
 const DropDown = (color) => {
     color = color === true ? 'var(--themeColor)' : color ? color : '#73716c';
@@ -136,20 +142,22 @@ function onLogoClickHandler(event, fromDB = false) {
 // onLogoClickHandler(undefined, true)
 
 export default function Header({ currentPage }) {
+    const { width, height } = useWindowDimensions();
     const navigate = useNavigate();
+    const user = useContext(User);
     const [pageName, setPageName] = useState(currentPage);
     const [formula, setFormula] = useState(false);
     const [userMenu, setUserMenu] = useState(false);
     const [update, setUpdate] = useState(false);
-    const [menu, setMenu] = useState(false);
+    // const [menu, setMenu] = useState(false);
     useEffect(() => {
-        debug('Changing header pageName after page Change: ', currentPage, true);
+        // debug('Changing header pageName after page Change: ', currentPage, true);
         setPageName(currentPage);
     }, [currentPage])
     useEffect(() => {
         let relPath = window.location.href.slice(window.location.href.lastIndexOf('/') + 1);
         currentPage = relPath;
-        debug('Changing header pageName after url: ', currentPage);
+        // debug('Changing header pageName after url: ', currentPage);
         if (currentPage.toLowerCase() === '5math') {
             currentPage = 'Home'
             navigate('Home')
@@ -160,12 +168,39 @@ export default function Header({ currentPage }) {
         }
     }, [window.location.href])
 
+
     function onClickHandler(e) {
         setUpdate(p => !p)
     }
 
     return (
         <>
+            {!user.isAuth && <div style={{ display: 'none' }}>
+                <GoogleLogin
+                    onSuccess={res => {
+                        let userData = jwtDecode(res.credential);
+                        debug('Google Res: ', res, userData, DBG_PROPS);
+
+                        if (userData) {
+                            user.callback({
+                                name: userData.name,
+                                email: userData.email,
+                                google: true,
+                                isAuth: true,
+                                src: userData.picture,
+                                jwt: res.credential
+                            })
+                        }
+                        // authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
+                        setUpdate(p => !p)
+                    }}
+                    onError={() => {
+                        debug('Google Login Failed!', DBG_PROPS);
+                    }}
+                    useOneTap
+                />
+            </div>}
+
             <div
                 id='header'
                 className='headerPad'
@@ -193,27 +228,53 @@ export default function Header({ currentPage }) {
                     className='flex end fitH pointer'>
                     {Formula(formula ? 'var(--themeColor)' : undefined)}
                 </div>
-
                 <div
                     onMouseLeave={() => { setUserMenu(false) }}
                     style={{ position: 'relative', textAlign: '-webkit-center' }}
                     className='fitH'>
                     {/* <button id='loginButton' className='round'> התחבר </button> */}
-                    <FontAwesomeIcon
-                        onMouseEnter={() => { setUserMenu(true) }}
+                    {!user.isAuth ? <FontAwesomeIcon
                         onClick={() => { navigate('Login'); setUserMenu(p => !p) }}
-                        title='איזור אישי'
+                        title='הרשמה מהירה'
                         // onClick={() => { setUserMenu(p => !p) }}
                         style={{ cursor: 'pointer', marginBottom: '0.3em' }}
                         size='lg'
                         icon={faUser}
-                        color={userMenu ? 'var(--themeColor)' : ''}
-                    />
-                    <SubMenu showMenu={userMenu}>
-                        <a>שם משתמש</a>
-                        <a> אימייל  </a>
-                        <a> הגדרות  </a>
-                    </SubMenu>
+                        color={userMenu ? 'var(--themeColor)' : ''} />
+                        : <div onMouseEnter={() => { setUserMenu(true) }}>
+                            <Avatar
+                                onClick={() => setUserMenu(p => !p)}
+                                title='איזור אישי'
+                                name={user.name}
+                                src={user.src}
+                                className="avatar12a"
+                                style={{
+                                    border: `1.2px solid ${userMenu ? 'var(--themeColor)' : 'white'}`,
+                                    boxShadow: 'var(--boxShadowHeader2)'
+                                }}
+                                round={true}
+                                textSizeRatio={2}
+                                color="var(--themeColor)"
+                                size={Math.max(Math.ceil(width / 48), 10)}>
+                            </Avatar>
+                            <SubMenu
+                                style={{ left: '0%', fontSize: '0.85em' }}
+                                showMenu={userMenu}>
+                                <p>{user.name}</p>
+                                <p>{user.email}</p>
+                                <p>הגדרות</p>
+                                <div
+                                    onClick={() => { setUserMenu(false); user.callback(undefined, true) }}
+                                    className='flex center alignCenter m0'>
+                                    <FontAwesomeIcon
+                                        style={{ width: '1.1em' }}
+                                        // size='xs'
+                                        title='התנתקות'
+                                        icon={faArrowRightFromBracket} />
+                                    <p>יציאה</p>
+                                </div>
+                            </SubMenu>
+                        </div>}
                 </div>
             </div>
             <div className="App-main">
@@ -223,9 +284,7 @@ export default function Header({ currentPage }) {
                 {/* {refSheet &&
                     <Formula showDiv={refSheet} callBack={() => { setRefSheet(p => !p) }} />
                 } */}
-                <User.Provider value={'checkMe'}>
-                    <Outlet />
-                </User.Provider>
+                <Outlet />
             </div>
         </>
     );
@@ -305,7 +364,6 @@ function SubMenu({
     ...props }) {
     const [update, setUpdate] = useState(false);
     useEffect(() => {
-
         setUpdate(p => !p);
     }, [showMenu])
 

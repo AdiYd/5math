@@ -7,6 +7,7 @@
     --themeGrey: rgba(184, 198, 211, 1);
 
     --themeColor: var(--ThemeGPTOrangeV);
+    --themeDarkBlue: rgba(1, 30, 51, 1);
     --themeColorAlpha: rgba(0, 166, 255, 0.3);
     --themeGreyAlpha: rgba(184, 198, 211, 0.473);
 
@@ -34,7 +35,7 @@
         --boxShadow2: 1px 1px 5px rgba(0, 0, 0, .955);
 
     --ThemeColor1TitleColor: -webkit-linear-gradient(0deg, white, white, var(--themeColor), var(--themeColor), var(--themeColor), var(--themeColor));
-    --headerGradient: linear-gradient(90deg, #000000, #0007098c, #21212187, transparent);
+    --headerGradient: linear-gradient(-90deg, #000000, #0007098c, #21212187, transparent);
     --headerGradient2: linear-gradient(180deg, #000000, black, black, black, black, transparent);
     --linearGradient: -45deg, #9c78db5c, transparent;
     --linearGradient2: 45deg, transparent, rgba(188, 203, 230, 0.22), rgb(236 230 192 / 11%), rgb(206 239 199 / 22%), transparent;
