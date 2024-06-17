@@ -48,7 +48,9 @@ root.render(
         src={MathJaxSrc}
       >
         <GoogleOAuthProvider clientId={GglClientID}>
-          <App />
+          <CookiesProvider defaultSetOptions={{ path: '/' }}>
+            <App />
+          </CookiesProvider>
         </GoogleOAuthProvider>
       </MathJaxContext>
     </BrowserRouter>

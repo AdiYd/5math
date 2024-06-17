@@ -93,6 +93,8 @@ ul#menuCategory li:hover {
 }
 div.headerBorder div.subMenu {
     background: black;
+    background: rgba(1, 30, 51, 1);
+        background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode);
     box-shadow: none;
 }

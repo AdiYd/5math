@@ -232,7 +232,9 @@ function Bagrut({ ...props }) {
             הכרת מבנה הבחינה תעזור לך לתכנן נכון את הלמידה למבחן וגם את חלוקת הזמן ובחירת השאלות במהלך הבחינה עצמה. אז מה בעצם צפוי לך בבחינה? </p>
         <div className='grid columns' style={{ gridTemplateColumns: '1fr 1fr' }}>
             {Object.values(bagrutInfoDict.L5).map((item, index) => (
-                <Card className={index === 0 ? 'borderDropBR' : 'borderDropBL'} cardID={'bagrutInfoCarusel'} key={index} boxShadow={true} translateY={false}>
+                <Card
+                    style={{ backgroundImage: `linear-gradient(45deg,${colorList[indx % (colorList.length)]},transparent` }}
+                    className={index === 0 ? 'borderDropBR' : 'borderDropBL'} cardID={'bagrutInfoCarusel'} key={index} boxShadow={true} translateY={false}>
                     <h3 >{item.title}</h3>
                     <div className='grid rows tStart'>
                         {item.body.map((line, ind) => (
