@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/5math/static/css/main.d96b4bc7.css",
+    "main.css": "/5math/static/css/main.d27d2c41.css",
     "main.js": "/5math/static/js/main.45ffbe6d.js",
     "static/media/bg2.jpg": "/5math/static/media/bg2.8d1eb78b16280286bb98.jpg",
     "static/media/layout.png": "/5math/static/media/layout.744ab3d41ebc4a44ed93.png",
@@ -13,11 +13,11 @@
     "static/media/revicons.woff": "/5math/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/5Math.svg": "/5math/static/media/5Math.a5a17a78e5b6ae6db2ac7cb2b699f2eb.svg",
     "index.html": "/5math/index.html",
-    "main.d96b4bc7.css.map": "/5math/static/css/main.d96b4bc7.css.map",
+    "main.d27d2c41.css.map": "/5math/static/css/main.d27d2c41.css.map",
     "main.45ffbe6d.js.map": "/5math/static/js/main.45ffbe6d.js.map"
   },
   "entrypoints": [
-    "static/css/main.d96b4bc7.css",
+    "static/css/main.d27d2c41.css",
     "static/js/main.45ffbe6d.js"
   ]
 }
