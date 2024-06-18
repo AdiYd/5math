@@ -13,10 +13,10 @@
         height: 16em;
     }
 
-    img#frame2Img {
+                                                                                                                                /* img#frame2Img {
         width: 4em;
         height: 4em;
-    }
+    */
 
     img#tutorSelfie {
         margin: 1.5em !important;
@@ -34,22 +34,22 @@
     div.frameDiv1,
     div.frameDiv3,
     #frame2Card * {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
 
-    #frame2Card {
+        /* #frame2Card {
         height: 14em;
         width: 14em;
-    }
+    */
 
     div.frameDiv3 h1 {
         font-size: 1.5em;
     }
 
-    img#frame2Img {
+                /* img#frame2Img {
         width: 3.5em;
         height: 3.5em;
-    }
+    */
 
     img#tutorSelfie {
         margin: 2em;
@@ -86,13 +86,13 @@
     div.frameDiv1,
     div.frameDiv3,
     #frame2Card * {
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
 
-    #frame2Card {
+        /* #frame2Card {
         height: 11em;
         width: 14em;
-    }
+    */
 
     div.quickSignUp form div {
         flex-direction: column;
@@ -134,14 +134,13 @@
 
 
     section.caruselDiv {
-        background: var(--themeColorAlpha);
+        /* background: var(--themeColorAlpha); */
         padding: 1em 0.5em;
     }
 
     #frame2Card {
-        height: 10em;
-        min-width: 5em;
-        margin: 0.7em;
+        height: 17em;
+        width: 16em;
     }
 
     div.frameDiv2 {
@@ -228,8 +227,8 @@
 
     div.login,
     div.signup {
-        width: -webkit-fill-available;
-        border-radius: 0px !important;
+        width: 65% !important;
+            /* border-radius: 0px !important; */
     }
 
     input#lname,
@@ -306,6 +305,11 @@
 div#promptContainer {
     left: 10% !important;
     width: 80vw !important;
+}
+div.login,
+div.signup {
+    width: -webkit-fill-available !important;
+    border-radius: 0px !important;
 }
     /* div.frameDiv1,
     div.frameDiv3,

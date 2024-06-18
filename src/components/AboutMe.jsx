@@ -37,8 +37,11 @@ function AboutMe({ ...props }) {
         רציתי לעזור לתלמידים כמוני, שחוו תחושת כישלון בגלל מערכת חינוך לא מלמדת, ולהראות להם, כמו שגיליתי בעצמי, את היופי והעוצמה שבמתמטיקה. כך הפכתי להיות מורה.
     </p>
 
-    let myAgenda = moreInfo && <div className='flex'>
-        <p> bla bla bla - myAgenda! </p>
+    let myAgenda = moreInfo && <div className='flex columns'>
+        <h3> My Agenda - myAgenda! </h3>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam consectetur dui vel accumsan porttitor.
+            Proin convallis vel nibh eget rutrum. Vivamus venenatis, nibh at cursus porttitor, enim neque hendrerit mi, quis ultrices sapien erat sodales felis. Curabitur tempus condimentum nibh vitae semper. Vivamus sed sodales neque. Maecenas et est in nisi cursus commodo vel ac felis.
+        </p>
     </div>
 
     let contactMe = writeMe.active && <div className=' writeMe alignCenter boxShadow round'>

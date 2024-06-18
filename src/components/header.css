@@ -92,6 +92,7 @@ ul#menuCategory li:hover {
     opacity: 0.8;
     /* font-weight: 600; */
 }
+div.headerBorder ul#mobile,
 div.headerBorder div.subMenu {
     background: black;
     /* background: var(--themeDarkBlue); */
@@ -100,6 +101,9 @@ div.headerBorder div.subMenu {
     box-shadow: none;
 }
 
+ ul#mobile div {
+     margin: 1em 0.2em;
+ }
 div.subMenu {
     position: absolute;
     z-index: 50;

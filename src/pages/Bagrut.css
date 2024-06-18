@@ -57,6 +57,7 @@ div.carouselBagrut {
 }
 
 div#bagrutInfoCarusel {
+    place-content: stretch;
     position: relative;
     display: grid;
     grid-template-rows: 2fr 8fr 0.5fr 2fr;

@@ -85,10 +85,13 @@
     opacity: 0.7;
 }
     
-    .opacityHover:hover {
-        opacity: 0.7;
+.opacityHover:hover {
+    opacity: 0.7;
 }
 
+.darkBlue {
+    color: var(--themeDarkBlue);
+}
 .medium {
     font-size: 0.92em;
 }
@@ -303,7 +306,11 @@ button:hover {
     border-radius: 30px 30px 30px 1px !important;
 }
 .fadeIn {
-    animation: translate 0.7s ease-in forwards;
+    animation: translate 0.9s ease-in forwards;
+}
+    
+    .appearIn {
+        animation: appear 0.7s ease-in forwards;
 }
 @keyframes rotate {
     0% {
@@ -316,6 +323,16 @@ button:hover {
 }
 
 
+@keyframes appear {
+    0% {
+        opacity: 0;
+        /* transform: scale(0); */
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes translate {
     0% {
         transform: translateY(2.4em);

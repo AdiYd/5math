@@ -345,7 +345,9 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                     size='2xl'
                     color={mobileMenu ? 'var(--themeColor)' : ''} />
             </div>}
-            <ul className={!isMobile ? 'grid columns fill between m1' : 'flex columns gap1 fit'}
+            <ul className={!isMobile ? 'grid columns fill between m1' : mobileMenu ? 'appearIn' : 'flex columns gap1 fit'}
+                onPointerLeave={() => setMobileMenu(false)}
+                onTouchEnd={() => setMobileMenu(false)}
                 style={{ visibility: isMobile ? mobileMenu ? 'visible' : 'hidden' : '', position: isMobile ? 'absolute' : '' }}
                 id={isMobile ? 'mobile' : 'menuCategory'}>
                 {Object.keys(pages).map((pageRout, index) =>

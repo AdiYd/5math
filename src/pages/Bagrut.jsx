@@ -249,7 +249,8 @@ function Bagrut({ ...props }) {
         </div>
     </div>
 
-    let bagrut5_about = <div className='rtl' style={{ maxWidth: '87%', margin: 'auto' }}>
+    let bagrut5_about =
+        <div className='rtl' style={{ maxWidth: '87%', margin: 'auto' }}>
         <h3>מבנה הבחינה:</h3>
         <p> בבחינת הבגרות במתמטיקה 5 יחידות אנחנו נדרשים ליישם ידע במגוון רחב של נושאים מתמטיים בזמן מוגבל.
 
@@ -268,7 +269,10 @@ function Bagrut({ ...props }) {
                             </div>
                         ))}
                     </div>
-                    <hr style={{ width: '100%', border: '1px solid var(--themeGrey)', margin: '0.1em' }} />
+                    <hr
+                        // style={{ width: '100%', border: '1px solid var(--themeGrey)', margin: '0.1em' }} 
+                        id='horizLine'
+                    />
                     <div className='footerBagrutInfo'>
                         {/* <h3 >אז מה היה לנו ?</h3> */}
                         {item.footer.map((line, indx) => (
@@ -281,6 +285,11 @@ function Bagrut({ ...props }) {
             ))}
         </div>
     </div>
+
+    const onSlideChange = (slide) => {
+        debug('This is the slide: ', slide, true);
+        setInfo(!Boolean(slide % 2));
+    }
 
     const ButtonCarusel = ({ next, previous, goToSlide, ...rest }) => {
         const { carouselState: { currentSlide } } = rest;
@@ -313,6 +322,7 @@ function Bagrut({ ...props }) {
             </div>
 
             <Carousel
+                afterChange={(slide) => onSlideChange(slide)}
                 swipeable={true}
                 draggable={false}
                 showDots={true}

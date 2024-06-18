@@ -197,7 +197,7 @@ function Formulas({
                             setFilters(p => ({ ...p, active: !p.active }))
                         }}
                     />
-                    <div
+                    {!fullMode && <div
                         title={darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
                         className='flex center pointer'>
                         <svg
@@ -209,7 +209,7 @@ function Formulas({
                             fill={darkMode ? '' : "var(--themeColor)"}>
                             {!darkMode ? toggleOn : toggleOff}
                         </svg>
-                    </div>
+                    </div>}
                 </div>
                 {filter}
                 {msg && <p className='ma1'>{msg}</p>}
