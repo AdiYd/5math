@@ -46,7 +46,7 @@ div.loginContainer h2 {
         color: var(--themeColorText_DarkMode);
     }
     
-    .mode1 button {
+.mode1 button {
         color: var(--themeColorText_DarkMode);
 }
 

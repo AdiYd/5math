@@ -32,11 +32,44 @@
     }
 
     div.frameDiv1,
-    div.frameDiv3,
-    #frame2Card * {
+    div.frameDiv3 {
         font-size: 0.9em;
     }
 
+    div.quickSignUp form div {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    div.quickSignUp h3 {
+        font-size: 0.9em;
+    }
+
+    div.quickSignUp form div input {
+        width: 80%;
+        margin: 1em;
+    }
+
+    div.quickSignUp form div input {
+        margin: 0.5em 0.3em;
+    }
+
+    div.quickSignUp form div#checkBoxDiv,
+    div.quickSignUp form div#checkBoxDiv div {
+        flex-direction: row;
+        gap: 1.2em;
+        font-size: 0.7em;
+    }
+
+    div.quickSignUp form button {
+        font-size: 0.8em;
+        margin: 0.8em !important;
+    }
+
+    div.quickSignUp form div input[type='checkbox'] {
+        width: 1em;
+    }
         /* #frame2Card {
         height: 14em;
         width: 14em;
@@ -84,8 +117,7 @@
     }
 
     div.frameDiv1,
-    div.frameDiv3,
-    #frame2Card * {
+    div.frameDiv3 {
         font-size: 0.9em;
     }
 
@@ -236,8 +268,9 @@
         min-width: 20vw;
     }
 
-    div.loginForm button {
-        font-size: 0.8em;
+    div.loginForm button#signupButton {
+            /* font-size: 0.8em; */
+            width: 25vw;
     }
     div.fliterDiv p {
         display: none;

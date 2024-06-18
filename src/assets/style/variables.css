@@ -16,11 +16,12 @@
 
     --themeColorText: black;
     --themeColorText2: #27326d;
-        --themeColorText_DarkMode: rgb(254, 248, 233);
-        --themeColorBG: white;
-        --themeColorBG_DarkMode: #212121;
-        --themeColorBG2: #FEF8E9;
-        --themeBG_Gradient: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.95), rgba(2, 44, 51, 0.6), rgba(2, 44, 51, 0.3), transparent, transparent, transparent, rgba(255, 255, 255, 0.5), white);
+    --themeColorText_DarkMode: rgb(254, 248, 233);
+    --themeColorBG: white;
+    --themeColorBG_DarkMode: #212121;
+    --themeColorBG2: aliceblue;
+    --themeBG_GradientLight: -webkit-linear-gradient(238deg, #b0d0c03a, transparent);
+    --themeBG_Gradient: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.95), rgba(2, 44, 51, 0.6), rgba(2, 44, 51, 0.3), transparent, transparent, transparent, rgba(255, 255, 255, 0.5), white);
 
     --themeBorderRadius: 15px;
 

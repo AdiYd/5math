@@ -71,6 +71,8 @@ div#bagrutInfoCarusel {
     width: fill-available;
     align-items: start;
     padding: 1em;
+    background-color: var(--themeColorBG);
+    background-image: var(--themeBG_GradientLight);
 }
 
 div#bagrutInfoCarusel div div p {

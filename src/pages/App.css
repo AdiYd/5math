@@ -45,13 +45,14 @@ div.frameDiv2 {
   direction: rtl;
   text-align: -webkit-center;
   display: flex;
-    flex-direction: column;
-    width: 15em;
-    height: 20em;
-    justify-content: space-around;
-    /* display: grid; */
-    /* grid-auto-flow: row; */
-  /* grid-template-rows: 5fr 2fr 5fr; */
+  flex-direction: column;
+  width: 15em;
+  height: 20em;
+  border-radius: 30px;
+  justify-content: space-around;
+  background-image: linear-gradient(45deg, #cdbba482, transparent);
+  background: var(--themeColorBG2);
+    background-image: linear-gradient(238deg, #aae3c63a, #f0dfad11, #e4969622);
 }
 
 #frame2Card2 {
@@ -151,7 +152,7 @@ div.carousel-container button::before {
     background: #161b22;
     background-color: var(--themeColorBG_DarkMode);
     background: var(--themeDarkBlue);
-      background-image: var(--headerGradient);
+    background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode);
     padding: 1em 0em;
     border-radius: 30px 1px 30px 30px;
