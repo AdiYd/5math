@@ -40,12 +40,13 @@
     --headerGradient2: linear-gradient(180deg, #000000, black, black, black, black, transparent);
     --linearGradient: -45deg, #9c78db5c, transparent;
     --linearGradient2: 45deg, transparent, rgba(188, 203, 230, 0.22), rgb(236 230 192 / 11%), rgb(206 239 199 / 22%), transparent;
-
+    --linearGradDeg: 10deg;
+        --linearGradOpacity: 0.3;
     /* +++++++++++++   GPT Theme colors Light +++++++++++++ */
     --ThemeGPTOrangeDeep: #F39F2E;
     --ThemeGPTOrangeDeepAlpha: rgba(243, 159, 46, 0.7);
-        --ThemeGPTOrangeV: #EF8D67;
-        --ThemeGPTOrangeVAlpha: rgb(239, 141, 103, 0.5);
+    --ThemeGPTOrangeV: #EF8D67;
+    --ThemeGPTOrangeVAlpha: rgb(239, 141, 103, 0.5);
     --ThemeGPTBlue: #007bff;
     --ThemeGPTBlueAlpha: rgba(0, 123, 255, 0.5);
     --ThemeGPTBlueV: #00a6ff;

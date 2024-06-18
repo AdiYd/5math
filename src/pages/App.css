@@ -113,7 +113,8 @@ div#frame2Card p {
       }
       
     div.carousel-container {
-      padding: 2em 0.5em
+      padding: 2em 0.5em;
+      padding-top: 0em;
   }
     
 div.carousel-container li {

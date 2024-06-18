@@ -16,10 +16,7 @@ div.bagrutContainers {
 
 div#bagrutCard {
     background-color: var(--themeColorBG);
-        background-image: var(--themeBG_GradientLight) !important;
-            /* background-image: none !important; */
-    /* background: var(--themeGreyAlpha);
-            background: var(--themeColorBG2); */
+    background-image: var(--themeBG_GradientLight);
     color: var(--themeColorText);
     display: flex;
     gap: 1em;
