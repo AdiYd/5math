@@ -7,7 +7,8 @@ div#header {
     grid-auto-flow: column;
     width: 100%;
     transition: 0.2s;
-    align-items: end;
+    align-items: center;
+    padding-bottom: 0.1em;
 }
 
 div.headerPad {
@@ -28,14 +29,17 @@ div.headerBorder {
     background-image: var(--headerGradient);
         /* background-image: var(--headerGradient2); */
     color: var(--themeColorText_DarkMode);
+    padding-top: 0.5em;
     /* box-shadow: var(--boxShadowHeader); */
     border: none;
 }
 
 div.headerBorder svg {
     fill: var(--themeColorText_DarkMode);
-    margin: 0em 1em;
-    display: flex;
+}
+
+div#formulaLogo {
+    align-self: end;
 }
 
 div.headerBorder div#formulaLogo svg {
@@ -71,7 +75,7 @@ div#menuLogo {
 
 div#menuLogo img {
     width: 2em;
-        height: 1.5em;
+    height: 1.5em;
 }
 
 ul#menuCategory {
@@ -147,8 +151,11 @@ ul#mobile {
     box-shadow: var(--boxShadowHeader2);
     text-align: start;
     border-radius: 12px;
-    font-size: 2em;
-    padding: 0.5em;
+    font-size: 1em;
+    width: max-content;
+    padding: 1em;
+    right: 2px;
+    top: 5px;
 }
 
 ul#mobile * {
