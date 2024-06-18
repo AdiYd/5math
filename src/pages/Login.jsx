@@ -466,7 +466,7 @@ export default function Login({
             </div>
             <div className='flex columns ma1'>
                 <label className='tStart'> מה היעדים שלך מהקורס:</label>
-                <div className='flex around ma2'>
+                <div style={{ gap: '0.2em' }} className='flex wrap around ma1'>
                     {['תרגול', 'הכנה לבגרות', 'למידה', 'אחר'].map((item, indx) => (
                         <button key={indx + item}
                             type='button'
@@ -478,8 +478,8 @@ export default function Login({
             </div>
             <div className='flex center mt2'>
                 <button
-                    style={{ fontSize: '1em' }}
-                    className='large pointer round'
+                    id='signupButton'
+                    className='pointer round mt3'
                     type='submit'>הרשמה</button>
             </div>
             <div
@@ -544,8 +544,8 @@ export default function Login({
             {errInput.general}
             <div className='flex center'>
                 <button
-                    style={{ fontSize: '1em', width: '25vw' }}
-                    className='large pointer round mt3'
+                    id='signupButton'
+                    className='pointer round mt3'
                     type='submit'>התחברות</button>
             </div>
             <div className='flex center'>
@@ -611,9 +611,9 @@ export default function Login({
         </div>
 
     let loginForm = <div
-        style={{ backgroundImage: !colorMode ? `linear-gradient(45deg,${randomGradient.current},transparent` : '' }}
+        // style={{ backgroundImage: !colorMode ? `linear-gradient(45deg,${randomGradient.current},transparent` : '' }}
         className={`loginForm boxShadow mode${!colorMode ? '0' : '1'} ${signup ? 'signup' : 'login'}`}>
-        <h2>{signup ? 'הרשמה' : 'התחברות'}</h2>
+        <h2>{signup ? 'הרשמה' : 'איזור אישי'}</h2>
         <form onSubmit={onSubmitForm} name={signup ? 'signup' : 'login'} >
             {formFields}
         </form>
@@ -638,7 +638,9 @@ export default function Login({
 
     return (
         <div className='loginContainer rtl' >
-            <Logo width='4em' height='3.5em' />
+            <div className='flex center ma3'>
+                <Logo rotationDeg={90} width='4em' height='3.5em' />
+            </div>
             {loginForm}
             {validForm}
             {/* {data} */}

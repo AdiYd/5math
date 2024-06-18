@@ -33,9 +33,14 @@ div.loginContainer h2 {
     /* overflow: hidden; */
 }
 
+.loginForm button#signupButton {
+    max-width: 22em;
+    width: 20vw;
+}
 .mode0 {
     /* background-color: var(--themeColorBG2); */
         color: var(--themeColorText);
+        background-color: var(--themeColorBG);
 }
 
 .mode1 {
@@ -53,7 +58,6 @@ div.loginContainer h2 {
 div.login {
     border-radius: 40px 40px 1px 40px;
     border: 1px solid var(--themeGreyAlpha);
- 
 }
 
 div.signup {

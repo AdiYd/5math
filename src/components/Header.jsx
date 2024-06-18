@@ -13,9 +13,10 @@ import imgLogo from '../assets/img/5Math.svg';
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket, faBars, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faBars, faCaretDown, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
 import { PAGES } from '../pages/App';
 import Formulas from '../pages/Formula';
+import Logo from './Logo';
 
 const DBG_PROPS = {
     color: 'darkred',
@@ -29,14 +30,6 @@ if (Boolean(localStorage.getItem('themeColor'))) {
 }
 
 
-const DropDown = (color) => {
-    color = color === true ? 'var(--themeColor)' : color ? color : '#73716c';
-    return (<svg xmlns="http://www.w3.org/2000/svg"
-        height="1.5em" viewBox="0 -960 960 960" width="1.5em"
-        fill={color}>
-        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-    </svg>)
-}
 
 const Formula = (color, isMobile = false) => {
     color = color === true ? 'var(--themeColor)' : color ? color : '#000';
@@ -169,7 +162,6 @@ export default function Header({ currentPage }) {
         }
     }, [window.location.href])
     let isMobile = Boolean(width <= MOBILE_SCREEN_WIDTH);
-    debug('Is this mobile? ', isMobile);
 
     function onClickHandler(e) {
         setUpdate(p => !p)
@@ -279,13 +271,20 @@ export default function Header({ currentPage }) {
                 style={{ gridTemplateColumns: !isMobile ? '1fr 10fr 1fr 1fr' : '' }}
                 className={`headerPad ${user.darkMode ? 'darkModeHeader' : ''}`}>
                 {isMobile ?
-                    <div className='flex around' style={{ position: 'relative' }}>
+                    <div className='flex between alignCenter ma1 ml3' style={{ position: 'relative' }}>
                         <Menu
                             isMobile={isMobile}
                             pages={PAGES}
                             currentPage={pageName} />
                         <div>
-                            <Logo direction='rows' textDirection='rtl' width='3em' height='2em' gap='1em' />
+                            <Logo direction='rows'
+                                alignItems={'center'}
+                                fontSize='1.5em'
+                                rotate={false}
+                                imgWidth='3em'
+                                imgHeight='2em'
+                                textDirection='ltr'
+                                gap='3em' />
                         </div>
                         {formulaDiv}
                         {loginDiv}
@@ -301,13 +300,18 @@ export default function Header({ currentPage }) {
                                 src={imgLogo}
                                 title='5Math'
                                 alt='5Math' />
-                </div>}
-                <Menu
-                    isMobile={isMobile}
-                    pages={PAGES}
-                    currentPage={pageName}
-                />
-                {isMobile && <div
+                        </div>
+                        <Menu
+                            isMobile={isMobile}
+                            pages={PAGES}
+                            currentPage={pageName} />
+                        {formulaDiv}
+                        {loginDiv}
+                    </>}
+
+                {false &&
+                    <>
+                        <div
                     id='menuLogo'
                     className='flex center m3 round fit fitH pointer'>
                     <img
@@ -317,77 +321,12 @@ export default function Header({ currentPage }) {
                         onClick={onLogoClickHandler}
                         src={imgLogo}
                         title='5Math'
-                        alt='5Math' />
-                </div>}
-                <div
-                    title='דף נוסחאות'
-                    id={`formulaLogo${formula ? 'theme' : ''}`}
-                    onClick={() => setFormula(p => !p)}
-                    className={isMobile ? 'flex center pointer' : 'flex end fitH pointer'}>
-                    {Formula(formula ? 'var(--themeColor)' : undefined, isMobile)}
-                </div>
-                <div
-                    onMouseLeave={() => { setUserMenu(false) }}
-                    style={{ position: 'relative', textAlign: '-webkit-center' }}
-                    className='fitH'>
-                    {/* <button id='loginButton' className='round'> התחבר </button> */}
-                    {!user.isAuth ? <FontAwesomeIcon
-                        onClick={() => { navigate('Login'); setPageName('Login') }}
-                        title='הרשמה מהירה'
-                        // onClick={() => { setUserMenu(p => !p) }}
-                        style={{ cursor: 'pointer', alignSelf: 'end', height: isMobile ? '1.5em' : '' }}
-                        size='lg'
-                        icon={faUser}
-                        color={pageName === 'Login' ? 'var(--themeColor)' : ''} />
-                        : <div onMouseEnter={() => { setUserMenu(true) }}>
-                            <Avatar
-                                onClick={() => setUserMenu(p => !p)}
-                                title='איזור אישי'
-                                name={user.name}
-                                src={user.src}
-                                className="avatar12a"
-                                style={{
-                                    border: `1.2px solid ${userMenu ? 'var(--themeColor)' : 'white'}`,
-                                    boxShadow: 'var(--boxShadowHeader2)'
-                                }}
-                                round={true}
-                                textSizeRatio={2}
-                                color="var(--themeColor)"
-                                size={isMobile ? '28' : '30'}>
-                            </Avatar>
-                            <SubMenu
-                                style={{ left: '0%', fontSize: '0.85em' }}
-                                showMenu={userMenu}>
-                                <p>{user.name}</p>
-                                <p>{user.email}</p>
-                                <p>הגדרות</p>
-                                {/* <div
-                                    title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
-                                    className='flex center pointer'>
-                                    <svg
-                                        onClick={() => { user.callback({ darkMode: !user.darkMode }) }}
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        height="24px"
-                                        viewBox="0 -960 960 960"
-                                        width="24px"
-                                    // fill={user.darkMode ? '' : ""}
-                                    >
-                                        {!user.darkMode ? toggleOn : toggleOff}
-                                    </svg>
-                                </div> */}
-                                <div
-                                    onClick={() => { setUserMenu(false); user.callback(undefined, true) }}
-                                    className='flex center alignCenter m0'>
-                                    <FontAwesomeIcon
-                                        style={{ width: '1.1em' }}
-                                        // size='xs'
-                                        title='התנתקות'
-                                        icon={faArrowRightFromBracket} />
-                                    <p>יציאה</p>
-                                </div>
-                            </SubMenu>
-                        </div>}
-                </div>
+                            alt='5Math' />
+                    </div>
+
+                    </>}
+
+
             </div>
             <div className={`App-main ${user.darkMode ? 'darkMode' : ''}`}>
                 <Prompt show={formula} callBack={setFormula}>
@@ -397,7 +336,7 @@ export default function Header({ currentPage }) {
                     <Formula showDiv={refSheet} callBack={() => { setRefSheet(p => !p) }} />
                 } */}
                 <Outlet />
-            </div>
+            </div>   
         </>
     );
 }
@@ -412,26 +351,13 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
         setPageName(currentPage);
     }, [currentPage])
 
-
-    return (
-        <div
-            className='flex fitH' {...props}>
-            {isMobile && <div
-                onClick={() => setMobileMenu(p => !p)}
-                className='flex center m3'>
-                <FontAwesomeIcon
-                    icon={faBars}
-                    className='pointer opacityHover'
-                    size='2xl'
-                    color={mobileMenu ? 'var(--themeColor)' : ''} />
-            </div>}
-            <ul className={!isMobile ? 'grid columns fill between m1' : mobileMenu ? 'appearIn' : 'flex columns gap1 fit'}
+    var menu = <ul className={!isMobile ? 'flex around' : ` flex columns ${mobileMenu ? 'appearIn' : ''}`}
                 onPointerLeave={() => setMobileMenu(false)}
                 onTouchEnd={() => setMobileMenu(false)}
                 style={{ visibility: isMobile ? mobileMenu ? 'visible' : 'hidden' : '', position: isMobile ? 'absolute' : '' }}
                 id={isMobile ? 'mobile' : 'menuCategory'}>
                 {Object.keys(pages).map((pageRout, index) =>
-                    pageRout in subMenu ?
+                    (pageRout in subMenu) && !mobileMenu ?
                         <div
                             key={index}
                             onMouseLeave={() => { setSubmenu(p => ({ ...p, [pageRout]: false })) }}
@@ -440,14 +366,14 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                                 key={index}
                                 onClick={() => { setPageName(pageRout) }}
                                 to={pageRout}>
-                                <div className='flex center alignCenter'>
+                                <div className='flex gap1 center alignCenter'>
                                     <li
                                         // onClick={() => { setSubmenu(p => ({ ...p, [pageRout]: true })) }}
                                         className={`fit ${pageName === pageRout ? 'activePage' : ''}`}
                                         key={index}
                                     >{PAGES[pageRout].name}</li>
                                     <div
-                                        className='flex'
+                                        className='flex mr1'
                                         onClick={() => { setSubmenu(p => ({ ...p, [pageRout]: !p[pageRout] })) }}
                                         onMouseEnter={() => { setSubmenu(p => ({ ...p, [pageRout]: true })) }}>
                                     <FontAwesomeIcon icon={faCaretDown}
@@ -482,7 +408,8 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
 
     return (
         <>
-            {isMobile && <div
+            {isMobile &&
+                <div
                 {...props}
                 onClick={() => setMobileMenu(p => !p)}
                 className='flex center m3 pr3'>
@@ -491,8 +418,8 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                     className='pointer opacityHover'
                     size='2xl'
                     color={mobileMenu ? 'var(--themeColor)' : ''} />
-            </div>}
-
+                </div>}
+            {menu}
         </>
     )
 }

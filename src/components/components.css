@@ -16,6 +16,7 @@ span#logoMark a {
     font-size: 1.1em;
     font-weight: 600;
     -webkit-text-fill-color: transparent;
+    display: ruby;
 }
 
 img#LogoImgMain {
@@ -147,11 +148,10 @@ div.footer {
 }
 div.writeMe {
     position: relative;
-    display: block;
     /* width: fit-content; */
     margin: auto;
     margin-bottom: 1em;
-    padding: 1.1em 3em;
+    padding: 1.2em;
 }
 
 div.writeMe input {

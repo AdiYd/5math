@@ -194,7 +194,7 @@ function Bagrut({ ...props }) {
     const slideOne = useRef();
 
     var filterButtons = <div
-        style={{ gap: '2em' }}
+        style={{ gap: '1em' }}
         className='fliterDiv rtl fitH'>
         <p className='m1'>סינון תוצאות: </p>
         <div className='ltr ma1'>
@@ -287,7 +287,6 @@ function Bagrut({ ...props }) {
     </div>
 
     const onSlideChange = (slide) => {
-        debug('This is the slide: ', slide, true);
         setInfo(!Boolean(slide % 2));
     }
 
@@ -305,18 +304,18 @@ function Bagrut({ ...props }) {
 
 
     return (
-        <div className={`bagrutMain ${user.darkMode ? 'darkMode' : ''}`}>
+        <div className={`bagrutMain mt1 mb3 ${user.darkMode ? 'darkMode' : ''}`}>
             <div style={{ height: '1em' }}></div>
             <h1>בגרות במתמטיקה - מידע ושאלונים</h1>
             <div className='flex center gap2'>
                 <button
-                    onClick={() => { setInfo(true); slideOne.current.click() }}
-                    className={`pl3 pr3 round ${!bagrutInfo ? 'themeBorder' : ''}`} >
+                    onClick={() => { if (!bagrutInfo) { setInfo(true); slideOne.current.click() } }}
+                    className={`round ${!bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
                     מידע על מבנה הבגרות</button>
                 <button
-                    onClick={() => { setInfo(false); slideZero.current.click() }}
-                    className={`pl3 pr3 round ${bagrutInfo ? 'themeBorder' : ''}`} >
+                    onClick={() => { if (bagrutInfo) { setInfo(false); slideZero.current.click() } }}
+                    className={`round ${bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faFile} className='ml2' />
                     שאלוני בגרות משנים קודמות</button>
             </div>
@@ -339,7 +338,7 @@ function Bagrut({ ...props }) {
                 // partialVisbile={true}
                 containerClass="carouselBagrut"
                 removeArrowOnDeviceType={["tablet", "mobile"]}
-                // deviceType={this.props.deviceType}
+                // deviceType={'mobile'}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px">
                 {bagrut5}

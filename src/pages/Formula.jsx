@@ -150,12 +150,12 @@ function Formulas({
                 <div className='flex center gap1'>
                     <button
                         style={{ border: '1px solid var(--themeColor)' }}
-                        type='sumbit' className={`round ${!showAll ? '' : 'themeBorder'}`}> הצג בחירה</button>
+                        type='sumbit' className={`round smaller ${!showAll ? '' : 'themeBorder'}`}> הצג בחירה</button>
                     <button
                         style={{ border: '1px solid var(--themeColor)' }}
                         type='button'
                         onClick={() => { setShowAll(true); localStorage.setItem('userFormulaShowAll', true) }}
-                        className={`round ${showAll ? '' : 'themeBorder'}`}> הצג הכל</button>
+                        className={`round smaller ${showAll ? '' : 'themeBorder'}`}> הצג הכל</button>
                     <FontAwesomeIcon
                         icon={showChbx ? faSquareXmark : faSquareCheck}
                         className='ml2 mr2 pointer opacityHover'

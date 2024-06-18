@@ -23,16 +23,15 @@ const scrollFunction = (darkMode) => {
     if (element && (currentScroll >= prevScroll) && currentScroll > 50 && !change) {  // Scrolling down
 
         change = true;
-        element.setAttribute('class', 'headerBorder');
+        element?.setAttribute('class', 'headerBorder');
         // login.setAttribute('class', 'themeConst round');
-        logo.setAttribute('class', 'dropShadowWhite');
+        logo?.setAttribute('class', 'dropShadowWhite');
     }
     else if ((element) && (currentScroll < prevScroll) && (currentScroll <= 20) && change) {   // Scrolling up
-
         change = false;
-        element.setAttribute('class', `headerPad ${darkMode ? 'darkModeHeader' : ''}`);
+        element?.setAttribute('class', `headerPad ${darkMode ? 'darkModeHeader' : ''}`);
         // login.setAttribute('class', 'round');
-        logo.setAttribute('class', 'dropShadow');
+        logo?.setAttribute('class', 'dropShadow');
     }
     prevScroll = currentScroll;
     }

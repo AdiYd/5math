@@ -15,9 +15,9 @@ div.bagrutContainers {
 }
 
 div#bagrutCard {
-    background-color: var(--themeColorBG_DarkMode);
-    color: var(--themeColorText_DarkMode);
     background-color: var(--themeColorBG);
+        background-image: var(--themeBG_GradientLight) !important;
+            /* background-image: none !important; */
     /* background: var(--themeGreyAlpha);
             background: var(--themeColorBG2); */
     color: var(--themeColorText);
@@ -68,8 +68,9 @@ div#bagrutInfoCarusel {
     /* background: var(--themeColorBG2); */
     font-weight: 600;
     height: fill-available;
+    height: -webkit-fill-available;
     width: fill-available;
-    align-items: start;
+    width: -webkit-fill-available;
     padding: 1em;
     background-color: var(--themeColorBG);
     background-image: var(--themeBG_GradientLight);

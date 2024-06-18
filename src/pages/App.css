@@ -11,6 +11,12 @@ body {
     background: var(--themeColorBG);
     transition: 0.1s;
 }
+div#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
 div.App-main {
   position: relative;
 }
@@ -18,7 +24,7 @@ div.App-main {
 div.frameDiv1 {
   position: relative;
     background: var(--ThemeGPTPurpleVAlpha);
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 0.9em;
     padding: 2em 3em;
     margin: 3em 5em;
@@ -28,7 +34,7 @@ div.frameDiv1 {
         
 div.frameDiv2 {
     /* background: var(--ThemeGPTOrangeDeep); */
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 0.9em;
     padding: 1em 0.7em;
     margin: 1em 0em;
@@ -37,11 +43,7 @@ div.frameDiv2 {
     /* margin: 3em 5em; */
 }
 #frame2Card {
-  /* margin: 0.4em 1.2em 1em 1.2em; */
   padding: 1em;
-  /* border-radius: 1px; */
-  /* width: 13em;
-                                    height: 20em; */
   direction: rtl;
   text-align: -webkit-center;
   display: flex;
@@ -51,23 +53,20 @@ div.frameDiv2 {
   border-radius: 30px;
   justify-content: space-around;
   background-image: linear-gradient(45deg, #cdbba482, transparent);
-  background: var(--themeColorBG2);
+  background: var(--themeColorBG);
     background-image: linear-gradient(238deg, #aae3c63a, #f0dfad11, #e4969622);
+  background-image: linear-gradient(238deg, #b0d0c03a, transparent);
 }
 
 #frame2Card2 {
-  /* margin: 0.4em 1.2em 1em 1.2em; */
-  padding: 0.6em 1em;
-  /* border-radius: 1px; */
+  padding: 1em;
   max-width: 16em;
   min-width: 10em;
   height: 21em;
   direction: rtl;
-  text-align: -webkit-center;
   display: flex;
-  flex-direction: column;
   justify-content: space-evenly;
-  border-radius: 25px;
+  border-radius: 30px;
 }
 
 img#frame2Img {
@@ -90,7 +89,7 @@ hr#horizLine {
   margin-bottom: 0.2em;
   width: 92%;
 }
-
+/* 
 div#frame2Card h3 {
   font-size: 1.2em;
   margin: 0.2em 0em;
@@ -98,17 +97,15 @@ div#frame2Card h3 {
 div#frame2Card p {
   font-weight: 500;
 }
+*/
   
   .App {
     font-size: 1rem;
   }
-  
-  div#aboutUs p {
-    width: 70vw;
-  }
+
   
   section.caruselDiv {
-    background: rgba(6, 179, 227, 0.25);
+    /* background: rgba(6, 179, 227, 0.25); */
       /* background: rgb(188 191 194 / 23%);
                                       background: var(--themeGreyAlpha); */
       /* background: var(--themeColor); */
@@ -149,6 +146,7 @@ div.carousel-container button::before {
   display: contents;
   /* font-size: 1.5em; */
     color: var(--themeDarkBlue);
+    color: #032f4d;
   }
   
       
@@ -207,5 +205,6 @@ div.carousel-container button::before {
       }
     .whatsappHover:hover {
       color: #1b9949;
+      color: #25D366;
     }
   

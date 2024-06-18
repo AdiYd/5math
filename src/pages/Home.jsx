@@ -13,9 +13,9 @@ import '../assets/style/media.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComment, faComments, faDesktop, faGift, faLaptop, faLocation, faLocationDot, faMobile, faMobileScreen, faPersonCircleQuestion, faPlay, faQuestionCircle, faTabletScreenButton, faVideo, faWandMagicSparkles, faWifi } from '@fortawesome/free-solid-svg-icons';
+import { faAt, faComment, faComments, faDesktop, faEnvelope, faGift, faLaptop, faLocation, faLocationDot, faMailReply, faMobile, faMobileScreen, faPersonCircleQuestion, faPhone, faPlay, faQuestionCircle, faTabletScreenButton, faVideo, faWandMagicSparkles, faWifi } from '@fortawesome/free-solid-svg-icons';
 import { } from '@fortawesome/free-regular-svg-icons';
-import { faViadeoSquare } from '@fortawesome/free-brands-svg-icons';
+import { faViadeoSquare, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Prompt from '../components/PromptDiv';
 import Checkbox from '../components/CheckBox';
 import AboutMe from '../components/AboutMe';
@@ -59,8 +59,8 @@ function Home({ ...props }) {
             <div className='alignCenter fadeIn'>
                 <Logo />
                 <h1>קורס דיגיטלי להכנה לבגרות במתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
-                <h2> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</h2>
-                <h2>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</h2>
+            <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
+            <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>
                 <button
                     className='themeConst2'
                     id='trialButton'>לצפייה בשיעור ניסיון</button>
@@ -88,7 +88,7 @@ function Home({ ...props }) {
             className={``}
             cardID={'frame2Card'}>
             <>
-                <div className='flex center' style={{ verticalAlign: 'top' }}>
+                <div className='flex center'>
                     <img id='frame2Img'
                         src={timeSave} alt='לוגו חסכון בזמן' title='חסכון בזמן' />
                 </div>
@@ -105,7 +105,7 @@ function Home({ ...props }) {
             className={``}
             cardID={'frame2Card'}>
             <>
-                <div className='flex center' style={{ verticalAlign: 'top' }}>
+                <div className='flex center'>
                     <img id='frame2Img'
                         src={experience} alt='לוגו 21 שנות ניסיון' title='21 שנות נסיון' />
                 </div>
@@ -121,7 +121,7 @@ function Home({ ...props }) {
             className={``}
             cardID={'frame2Card'}>
             <>
-                <div className='flex center' style={{ verticalAlign: 'top' }}>
+                <div className='flex center' >
                     <img id='frame2Img'
                         src={assist} alt='לוגו ליווי אישי צמוד' title='ליווי אישי' />
                 </div>
@@ -142,7 +142,7 @@ function Home({ ...props }) {
     let caruselSection1 = <>
         <Card
             className={` `}
-            style={{ backgroundImage: 'linear-gradient( transparent, rgb(168 0 230 / 40%))' }}
+            style={{ backgroundImage: 'linear-gradient( transparent, rgb(168 0 230 / 30%))' }}
             cardID={'frame2Card2'}>
             <>
                 <div className='flex center ma3 darkBlue mt1 gap1'>
@@ -155,10 +155,17 @@ function Home({ ...props }) {
                 </div>
 
                 <div>
-                    <h3 className='cardText'>בלוג לשאלות ועזרה</h3>
+                    <h3 className='cardText'>יש עם מי לדבר</h3>
                 </div>
                 <hr id='horizLine' />
-                <p >תוכלו לשאול ולהתייעץ עם המרצה, עם מורים אחרים וגם עם תלמידים</p>
+                <p >תוכלו לשאול שאלות ולהתייעץ עם המרצה ועם מורים אחרים, ניתן לפנות אלינו במגוון דרכים ולקבל מענה בהתאם לצורך</p>
+                <div className='ma1 darkBlue gap1 flex around'>
+                    <FontAwesomeIcon title='Whatsapp' icon={faWhatsapp} />
+                    <FontAwesomeIcon title='טלפון' icon={faPhone} />
+                    <FontAwesomeIcon title='אימייל' icon={faEnvelope} />
+                    <FontAwesomeIcon title='שיתוף מסמכים' icon={faMailReply} />
+
+                </div>
                 <h3 id='textGradient'> ההצלחה שלכם חשובה לנו!</h3>
             </>
         </Card>
@@ -183,14 +190,14 @@ function Home({ ...props }) {
                     <h3 className='cardText'>למידה דיגיטלית וחדשנית </h3>
                 </div>
                 <hr id='horizLine' />
-                <p >תוכן ויזואלי, סרטונים ותרגילים ברמה גבוהה יחד עם ממשק דיגטלי וכלים שיעזרו לכם להבין כל נושא לעומק  </p>
+                <p >תוכן ויזואלי ערוך תמציתי ומדויק, סרטונים ותרגילים ברמה גבוהה יחד עם ממשק דיגטלי וכלים שיעזרו לכם להבין כל נושא לעומק  </p>
 
                 <h3 id='textGradient'> להבין מתמטיקה באופן אינטואיטיבי</h3>
             </>
         </Card>
         <Card
             className={` `}
-            style={{ backgroundImage: 'linear-gradient(transparent, rgb(32 206 1 / 40%))' }}
+            style={{ backgroundImage: 'linear-gradient(transparent, rgb(32 206 1 / 30%))' }}
             cardID={'frame2Card2'}>
             <>
                 <div className='flex center ma3 mt1 darkBlue gap1'>
@@ -209,7 +216,6 @@ function Home({ ...props }) {
                 <p > בואו ללמוד בנוחות, בקצב וברמה שמתאימה לכם <br /> האתר מותאם לגלישה בקצב מהיר ונתמך ע"י רוב המכשירים</p>
                 <div className='ma1 darkBlue gap1 flex around'>
                     <FontAwesomeIcon title='סמארטפון' icon={faMobileScreen} />
-                    <FontAwesomeIcon title='טאבלט' icon={faTabletScreenButton} />
                     <FontAwesomeIcon title='מחשב נייד' icon={faLaptop} />
                     <FontAwesomeIcon title='מחשב נייח' icon={faDesktop} />
                 </div>
@@ -228,7 +234,6 @@ function Home({ ...props }) {
 
     return (
         <div className={`App`}>
-
             {frame1}
             <section className='caruselDiv'>
                 <Carousel
@@ -297,21 +302,20 @@ function Home({ ...props }) {
                             placeholder='אימייל'
                             name='email'></input>
                         <button
-                            style={{ margin: '0em 1em', padding: '0.9em 1.2em' }}
                             className='themeConst round'
                             type='submit'>לקבלת הטבה</button>
                     </div>
                     <div className='flex center' id='checkBoxDiv'>
                         <div className='flex center checkboxContainer'>
-                            <Checkbox color='var(--ThemeGPTOrangeDeep)' id='10G' name='10' title="כיתה ט'" />
+                            <Checkbox color='var(--constThemeColor)' id='10G' name='10' title="כיתה ט'" />
                             <label forhtml='10G'> כיתה י'</label>
                         </div>
                         <div className='flex center checkboxContainer'>
-                            <Checkbox color='var(--ThemeGPTOrangeDeep)' id='11G' name='11' title="כיתה ט'" />
+                            <Checkbox color='var(--constThemeColor)' id='11G' name='11' title="כיתה ט'" />
                             <label forhtml='11G'>כיתה יא'</label>
                         </div>
                         <div className='flex center checkboxContainer'>
-                            <Checkbox color='var(--ThemeGPTOrangeDeep)' id='12G' name='12' title="כיתה ט'" />
+                            <Checkbox color='var(--constThemeColor)' id='12G' name='12' title="כיתה ט'" />
                             <label forhtml='12G'> כיתה יב'</label>
                         </div>
                     </div>

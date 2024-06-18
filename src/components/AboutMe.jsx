@@ -2,9 +2,10 @@ import './Components.css';
 import selfie from '../assets/img/shaiProfile.jpg'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp, faUser } from '@fortawesome/free-solid-svg-icons';
-import { faCircleXmark } from '@fortawesome/free-regular-svg-icons';
+import { faCaretUp, faCircleXmark, faUser } from '@fortawesome/free-solid-svg-icons';
+import { } from '@fortawesome/free-regular-svg-icons';
 import { debug } from '../assets/function/functions';
+import { faWhatsapp, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
 
 function AboutMe({ ...props }) {
     const [active, setActive] = useState(false);
@@ -44,7 +45,8 @@ function AboutMe({ ...props }) {
         </p>
     </div>
 
-    let contactMe = writeMe.active && <div className=' writeMe alignCenter boxShadow round'>
+    let contactMe = writeMe.active &&
+        <div className=' writeMe flex columns center fit boxShadow round'>
         <FontAwesomeIcon
             className='opacityHover pointer'
             title='סגירה'
@@ -74,7 +76,7 @@ function AboutMe({ ...props }) {
             </div>
             <div className='flex center'>
                 <textarea
-                    style={{ alignContent: 'center' }}
+                        maxLength={500}
                     placeholder='תוכן ההודעה'
                     name='content'
                     value={writeMe.content}
@@ -85,6 +87,16 @@ function AboutMe({ ...props }) {
                 שליחה
             </button>
         </form>
+            <div className='flex center gap1'>
+                <h3> אפשר גם בוואטצאפ</h3>
+                <FontAwesomeIcon
+                    onClick={() => { window.location.href = 'https://wa.me/972507191745' }}
+                    href=''
+                    className='pointer whatsappHover'
+                    size='xl'
+                    color='#1b9949'
+                    icon={faWhatsapp} />
+            </div>
     </div>
 
     return (
@@ -109,7 +121,7 @@ function AboutMe({ ...props }) {
             <div className='flex center pt2 pb2'>
                 {!active && <button
                     onClick={() => setActive(true)}
-                    className='themeConst round large'
+                    className='themeConst round'
                 >קראו עוד אודותי</button>}
 
                 {active && <div className='flex center gap2'>
@@ -123,13 +135,13 @@ function AboutMe({ ...props }) {
                     </span>
                     {!writeMe.active && <button
                         onClick={() => setWriteMe(p => ({ ...p, active: true }))}
-                        className='themeConst round large'
+                        className='themeConst round'
                     >
                         כתבו לי
                     </button>}
                     {!moreInfo && <button
                         onClick={() => setMoreInfo(true)}
-                        className='themeConst round  large'
+                        className='themeConst round '
                     >
                         קראו על האג'נדה שלי
                     </button>}

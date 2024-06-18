@@ -39,7 +39,7 @@ function Prompt({
                 // id={darkMode ? 'darkMode' : ''}
                 onClick={onClickHandler}
                 style={{ position: 'sticky', top: '-1%', right: '101%', zIndex: '200' }}
-                title='סגור'>
+                title='סגירה'>
                 <FontAwesomeIcon icon={faCircleXmark} size='lg' />
             </div>}
         <div style={{ position: 'relative', height: '-webkit-fill-available' }}>
