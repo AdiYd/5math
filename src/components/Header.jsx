@@ -124,11 +124,10 @@ function onLogoClickHandler(event, fromDB = false) {
     themeColor.style.setProperty('--themeColorAlpha', randomColorAlpha);
     localStorage.setItem('themeColor', JSON.stringify({ color: randomColor, alpha: randomColorAlpha }));
     if (element) {
-        debug('Logo Clicked!');
-        element.animate(
-            { transform: 'rotate(360deg)' },
-            { duration: 800, iterations: 1 }
-        );
+        // element.animate(
+        //     { transform: 'rotate(360deg)' },
+        //     { duration: 800, iterations: 1 }
+        // );
     }
 }
 //    ******************************        END          ******************************//

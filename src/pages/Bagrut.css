@@ -20,8 +20,9 @@ div#bagrutCard {
     color: var(--themeColorText);
     display: flex;
     gap: 1em;
-    width: 20vw;
-    height: 10em;
+    width: 11em;
+    height: 8em;
+    margin: 0.6em;
 }
 
 div#bagrutCard:hover {

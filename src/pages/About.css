@@ -13,7 +13,8 @@ div#aboutCard {
     /* gap: 1em; */
     width: 13em;
     height: 15em;
-    padding: 0.5em;
+    padding: 0.8em;
+    border-radius: 30px;
 }
 
 div.storyDiv p {
