@@ -124,10 +124,10 @@ function onLogoClickHandler(event, fromDB = false) {
     themeColor.style.setProperty('--themeColorAlpha', randomColorAlpha);
     localStorage.setItem('themeColor', JSON.stringify({ color: randomColor, alpha: randomColorAlpha }));
     if (element) {
-        // element.animate(
-        //     { transform: 'rotate(360deg)' },
-        //     { duration: 800, iterations: 1 }
-        // );
+        element.animate(
+            { transform: 'rotate(360deg)' },
+            { duration: 800, iterations: 1 }
+        );
     }
 }
 //    ******************************        END          ******************************//
@@ -168,7 +168,7 @@ export default function Header({ currentPage }) {
 
     let formulaDiv =   <div
         title='דף נוסחאות'
-        id={`formulaLogo${formula ? 'theme' : ''}`}
+        id={`formulaLogo`}
         onClick={() => setFormula(p => !p)}
         className={'pointer'}>
         {Formula(formula ? 'var(--themeColor)' : undefined, isMobile)}

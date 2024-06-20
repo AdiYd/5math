@@ -58,7 +58,7 @@ function Home({ ...props }) {
     let frame1 =  <div className='flex center frameDiv1 pt3 round boxShadow'>
             <div className='alignCenter fadeIn'>
                 <Logo />
-                <h1>קורס דיגיטלי להכנה לבגרות במתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
+            <h1>קורס דיגיטלי ללימודי מתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
             <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
             <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>
                 <button
@@ -172,7 +172,7 @@ function Home({ ...props }) {
         <Card
             className={` `}
             style={{
-                padding: width >= 900 ? '1.5%' : '',
+                padding: width >= 900 ? '2.5%' : '',
                 backgroundImage: 'linear-gradient(transparent, var(--themeColorAlpha))'
             }}
             cardID={'frame2Card2'}>
@@ -190,9 +190,9 @@ function Home({ ...props }) {
                     <h3 className='cardText'>למידה דיגיטלית וחדשנית </h3>
                 </div>
                 <hr id='horizLine' />
-                <p >תוכן ויזואלי ערוך תמציתי ומדויק, סרטונים ותרגילים ברמה גבוהה יחד עם ממשק דיגטלי וכלים שיעזרו לכם להבין כל נושא לעומק  </p>
+                <p >תוכן ויזואלי ערוך, תמציתי ומדויק. סרטונים ותרגילים ברמה גבוהה יחד עם ממשק דיגטלי וכלים שיעזרו לכם להבין כל נושא לעומק  </p>
 
-                <h3 id='textGradient'> להבין מתמטיקה באופן אינטואיטיבי</h3>
+                <h3 id='textGradient'> ללמוד מתמטיקה באופן אינטואיטיבי</h3>
             </>
         </Card>
         <Card

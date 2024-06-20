@@ -138,10 +138,7 @@ div.footer {
     padding-bottom: 0.1em;
     width: -webkit-fill-available;
     background-color: var(--themeColorBG_DarkMode);
-        background-image: linear-gradient(0deg, black, var(--themeDarkBlue), var(--themeDarkBlue), var(--themeColorBG_DarkMode),
-    var(--themeColorBG_DarkMode),
-    white);
-    background: var(--themeDarkBlue);
+    /* background: var(--themeDarkBlue); */
     background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode);
     

@@ -2,7 +2,7 @@ import './Components.css';
 import selfie from '../assets/img/shaiProfile.jpg'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCaretUp, faCircleXmark, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faCaretUp, faCircleXmark, faSortDown, faSortUp, faUser } from '@fortawesome/free-solid-svg-icons';
 import { } from '@fortawesome/free-regular-svg-icons';
 import { debug } from '../assets/function/functions';
 import { faWhatsapp, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
@@ -88,7 +88,7 @@ function AboutMe({ ...props }) {
             </button>
         </form>
             <div className='flex center gap1'>
-                <h3> אפשר גם בוואטצאפ</h3>
+                <h4> אפשר גם בוואטצאפ</h4>
                 <FontAwesomeIcon
                     onClick={() => { window.location.href = 'https://wa.me/972507191745' }}
                     href=''
@@ -124,26 +124,26 @@ function AboutMe({ ...props }) {
                     className='themeConst round'
                 >קראו עוד אודותי</button>}
 
-                {active && <div className='flex center gap2'>
+                {active && <div className='flex center alignCenter gap2'>
                     <span className='flex center'>
                         <FontAwesomeIcon
                             title='סגירה'
-                            className='m1 pointer'
+                            className='mt1 pointer'
                             onClick={() => { setActive(false); setMoreInfo(false); setWriteMe(p => ({ ...p, active: false })) }}
-                            icon={faCaretUp} size='2xl' color='var(--constThemeColor)' />
+                            icon={faSortUp} size='2xl' color='var(--constThemeColor)' />
 
                     </span>
+                    {!moreInfo &&
+                        <FontAwesomeIcon
+                            title='עוד עליי'
+                            className='mb1 pointer'
+                            onClick={() => setMoreInfo(true)}
+                            icon={faSortDown} size='2xl' color='var(--constThemeColor)' />}
                     {!writeMe.active && <button
                         onClick={() => setWriteMe(p => ({ ...p, active: true }))}
                         className='themeConst round'
                     >
                         כתבו לי
-                    </button>}
-                    {!moreInfo && <button
-                        onClick={() => setMoreInfo(true)}
-                        className='themeConst round '
-                    >
-                        קראו על האג'נדה שלי
                     </button>}
                 </div>}
             </div>

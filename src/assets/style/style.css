@@ -25,6 +25,9 @@
 .gap2 {
     gap: 2em
 }
+.gap3 {
+    gap: 3em
+}
 .between {
     justify-content: space-between;
 }
@@ -98,6 +101,9 @@
     color: #023458;
 }
 
+.darkRed {
+    color: rgb(102, 5, 5);
+}
 .smaller {
     font-size: 0.6em;
 }
@@ -532,7 +538,7 @@ button:hover {
     background-image: linear-gradient(1deg, #23c9b161, transparent);
     background-image: linear-gradient(1deg, var(--themeColorAlpha), transparent, transparent);
     background-image: linear-gradient(1deg, #a3bbbb7d, #d6dada40, transparent);
-    background-image: linear-gradient(1deg, #ffa20193, transparent, transparent);
+    background-image: linear-gradient(0deg, #ffa20193, transparent, transparent);
 }
 
 .bg2 {

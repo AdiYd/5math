@@ -31,7 +31,7 @@ export const colorList = [
     'rgb(229 19 228 / 50%)'
 ]
 
-const bagrutInfoDict = {
+export const bagrutInfoDict = {
     L4: {
         frst: {
             title: 'השאלון הראשון כולל 3 פרקים:',
@@ -202,7 +202,7 @@ function Bagrut({ ...props }) {
                 <button
                     onClick={() => { setFilterData(p => ({ ...p, year: p.year === item ? undefined : item })) }}
                     key={`${index}  ${item}`}
-                    className={`squarish pointer yearButton ${index === 0 ? 'bStart' : index === 4 ? 'bEnd' : ''}
+                    className={`squarish pointer small yearButton ${index === 0 ? 'bStart' : index === 4 ? 'bEnd' : ''}
                 ${filterData.year === item ? '' : 'themeBorder'}`}>
                     {`20${item}`}
                 </button>
@@ -213,7 +213,7 @@ function Bagrut({ ...props }) {
                 <button
                     onClick={() => { setFilterData(p => ({ ...p, moed: p.moed === item ? undefined : item })) }}
                     key={`${index}  ${item}`}
-                    className={`squarish pointer rtl yearButton ${index === 0 ? 'bStart' : index === 2 ? 'bEnd' : ''}
+                    className={`squarish pointer rtl small yearButton ${index === 0 ? 'bStart' : index === 2 ? 'bEnd' : ''}
                 ${filterData.moed === item ? '' : 'themeBorder'}`}>
                     {item === 'A' ? 'חורף' : item === 'B' ? "קיץ א'" : "קיץ ב'"}
                 </button>
@@ -230,18 +230,17 @@ function Bagrut({ ...props }) {
                         ((filterData.year && item.includes(filterData.year) || !filterData.year) && ((filterData.moed && item.includes(filterData.moed)) || !filterData.moed))))
                 }).map((item, indx) => (
                     <Card
-                        style={{ backgroundImage: `linear-gradient(45deg,${colorList[indx % (colorList.length)]},transparent` }}
+                        className={`rtl hoverGrad${indx % 6}`}
                         key={item + indx}
                         title={bagrutDict[item].name}
                         translateY={false}
-                        cardID='bagrutCard' className='rtl' >
-                        <h3>{bagrutDict[item].name}</h3>
+                        cardID='bagrutCard'>
+                        <h4 className='m1'>{bagrutDict[item].name}</h4>
                         <a
-                            className='downLoad squarish'
+                            className='downLoad rounder'
                             href={bagrutDict[item].linkTo}>
                             הורדה &nbsp;
-                            <FontAwesomeIcon icon={faDownload} size='lg' />
-
+                            <FontAwesomeIcon icon={faDownload} />
                         </a>
                     </Card>
                 ))
@@ -249,8 +248,7 @@ function Bagrut({ ...props }) {
         </div>
     </div>
 
-    let bagrut5_about =
-        <div className='rtl' style={{ maxWidth: '87%', margin: 'auto' }}>
+    let bagrut5_about = <div className='rtl' style={{ maxWidth: '87%', margin: 'auto' }}>
         <h3>מבנה הבחינה:</h3>
         <p> בבחינת הבגרות במתמטיקה 5 יחידות אנחנו נדרשים ליישם ידע במגוון רחב של נושאים מתמטיים בזמן מוגבל.
 
@@ -306,16 +304,16 @@ function Bagrut({ ...props }) {
     return (
         <div className={`bagrutMain mt1 mb3 ${user.darkMode ? 'darkMode' : ''}`}>
             <div style={{ height: '1em' }}></div>
-            <h1>בגרות במתמטיקה - מידע ושאלונים</h1>
+            <h2>בגרות במתמטיקה - מידע ושאלונים</h2>
             <div className='flex center gap2'>
                 <button
                     onClick={() => { if (!bagrutInfo) { setInfo(true); slideOne.current.click() } }}
-                    className={`round ${!bagrutInfo ? 'themeBorder' : ''}`} >
+                    className={`${!bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
                     מידע על מבנה הבגרות</button>
                 <button
                     onClick={() => { if (bagrutInfo) { setInfo(false); slideZero.current.click() } }}
-                    className={`round ${bagrutInfo ? 'themeBorder' : ''}`} >
+                    className={`${bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faFile} className='ml2' />
                     שאלוני בגרות משנים קודמות</button>
             </div>

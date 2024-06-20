@@ -30,6 +30,7 @@ div.frameDiv1 {
     margin: 3em 5em;
     color: white;
     border-radius: 30px 30px 1px 30px;
+    border-radius: 30px;
     }
         
 div.frameDiv2 {
@@ -86,7 +87,7 @@ img#frame2Img {
 hr#horizLine {
   border-top: 1px solid var(--themeGrey);
   margin-top: 0.5em;
-  margin-bottom: 0.2em;
+  margin-bottom: 1em;
   width: 92%;
 }
 /* 
@@ -110,11 +111,13 @@ div#frame2Card p {
                                       background: var(--themeGreyAlpha); */
       /* background: var(--themeColor); */
       padding: 1em;
+      line-height: 1.5;
       }
       
     div.carousel-container {
       padding: 2em 0.5em;
       padding-top: 0em;
+      margin: 1em 0em;
   }
     
 div.carousel-container li {

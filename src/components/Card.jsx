@@ -31,7 +31,7 @@ export default function Card({
         <div
             className={`flex center cardContainer columns alignCenter tCenter ${className} ${boxShadow ? 'boxShadowHover' : ''} ${translateY ? 'translateY' : ''}`}
             style={{ ...style }}
-            title={props.title}
+            {...props}
             id={cardID}>
             {children ? children :
                 <>

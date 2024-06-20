@@ -250,13 +250,14 @@
     div.storyDiv {
         position: absolute;
         top: 0%;
-        left: 15%;
+        left: 5%;
         height: max-content;
-        max-width: 80vw;
+        max-width: 85vw;
         max-height: 85vh;
         overflow-x: overlay;
         overflow-y: overlay;
         background-color: white !important;
+        z-index: 40;
         }
         
         div.storyDiv svg {

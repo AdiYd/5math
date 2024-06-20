@@ -26,7 +26,7 @@ div#bagrutCard {
 }
 
 div#bagrutCard:hover {
-    opacity: 0.8;
+    background-image: linear-gradient(180deg, var(--themeGreyAlpha), transparent);
 }
 
 a.downLoad {
@@ -43,7 +43,7 @@ a.downLoad:hover {
 }
 
 button.yearButton {
-    padding: 0.3em 0.8em;
+    padding: 0.3em 0.6em;
     margin: 0em 0.2em;
 }
 
@@ -64,7 +64,7 @@ div#bagrutInfoCarusel {
     /* background-image: linear-gradient(0deg, var(--themeColorAlpha), var(--themeColorAlpha),
             transparent, transparent, transparent, transparent, transparent); */
     /* background: var(--themeColorBG2); */
-    font-weight: 600;
+    font-weight: 500;
     height: fill-available;
     height: -webkit-fill-available;
     width: fill-available;

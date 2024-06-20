@@ -2,29 +2,30 @@
       position: relative;
   }
 div#aboutCard {
-    cursor: pointer;
     background-color: var(--themeColorBG);
     background-image: var(--themeBG_GradientLight);
     /* background-image: none !important; */
     /* background: var(--themeGreyAlpha);
         background: var(--themeColorBG2); */
     color: var(--themeColorText);
-    display: flex;
+    /* display: flex; */
     /* gap: 1em; */
+    display: grid;
+        grid-template-rows: 1fr 2fr 1fr;
     width: 13em;
-    height: 15em;
+    height: 12em;
     padding: 0.8em;
     border-radius: 30px;
 }
 
 div.storyDiv p {
     margin-top: 0em;
-    line-height: 2.2em;
+    line-height: 1.8;
     max-width: 65vw;
 }
 
 div.storyDiv {
-    background: rgba(163, 177, 182, 0.185);
+    background: rgba(255, 255, 255, 0.5);
         margin: auto;
     padding: 1em;
     border-radius: 30px;
@@ -55,10 +56,8 @@ div.storyDiv {
     background-image: linear-gradient(var(--linearGradDeg), rgba(103, 19, 229, var(--linearGradOpacity)), transparent) !important;
 }
 
-    margin: 0em;
-    margin-top: 0em;
-    margin-bottom: 1em;
-    padding-left: 3em;
+.constGrad5 {
+    background-image: linear-gradient(var(--linearGradDeg), rgba(229, 19, 228, var(--linearGradOpacity)), transparent) !important;
 }
 
 
@@ -66,25 +65,21 @@ div.storyDiv {
     background-image: linear-gradient(var(--linearGradDeg), rgba(229, 19, 19, var(--linearGradOpacity)), transparent) !important;
 }
 .hoverGrad1:hover {
-    background-image: linear-gradient(var(--linearGradDeg), rgb(229 19 19, var(--linearGradOpacity)), transparent);
+    background-image: linear-gradient(var(--linearGradDeg), rgba(206, 229, 19, var(--linearGradOpacity)), transparent) !important;
 }
 
 .hoverGrad2:hover {
-    background-image: linear-gradient(var(--linearGradDeg), rgb(206 229 19, var(--linearGradOpacity)), transparent);
+    background-image: linear-gradient(var(--linearGradDeg), rgba(48, 229, 19, var(--linearGradOpacity)), transparent) !important;
 }
 
 .hoverGrad3:hover {
-    background-image: linear-gradient(var(--linearGradDeg), rgb(48 229 19, var(--linearGradOpacity)), transparent);
+    background-image: linear-gradient(var(--linearGradDeg), rgba(19, 229, 220, var(--linearGradOpacity)), transparent) !important;
 }
 
 .hoverGrad4:hover {
-    background-image: linear-gradient(var(--linearGradDeg), rgb(19 229 220, var(--linearGradOpacity)), transparent);
+    background-image: linear-gradient(var(--linearGradDeg), rgba(103, 19, 229, var(--linearGradOpacity)), transparent) !important;
 }
 
 .hoverGrad5:hover {
-    background-image: linear-gradient(var(--linearGradDeg), rgb(103 19 229, var(--linearGradOpacity)), transparent);
-}
-
-.hoverGrad6:hover {
-    background-image: linear-gradient(var(--linearGradDeg), rgb(229 19 228, var(--linearGradOpacity)), transparent);
+    background-image: linear-gradient(var(--linearGradDeg), rgba(229, 19, 228, var(--linearGradOpacity)), transparent) !important;
 }
