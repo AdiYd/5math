@@ -26,10 +26,11 @@ div.headerBorder {
     /* background-color: #011e33; */
     background: var(--themeDarkBlue);
     background-image: var(--headerGradient);
-        /* background-image: var(--headerGradient2); */
-    color: var(--themeColorText_DarkMode);
+    color: var(--themeColorText_DarkMode);*/ 
+        background-color: rgba(255, 255, 255, 0.825);
     padding-top: 0.5em;
-    /* box-shadow: var(--boxShadowHeader); */
+    box-shadow: var(--boxShadowHeader);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.613);
 }
 
 div.headerBorder div#formulaLogo svg,

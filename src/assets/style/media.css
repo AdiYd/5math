@@ -253,6 +253,9 @@
         left: 15%;
         height: max-content;
         max-width: 80vw;
+        max-height: 85vh;
+        overflow-x: overlay;
+        overflow-y: overlay;
         background-color: white !important;
         }
         
