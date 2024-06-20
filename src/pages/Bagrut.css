@@ -1,5 +1,6 @@
 div.bagrutMain {
     align-items: center;
+    min-height: 66vh;
 }
 
 div.fliterDiv {

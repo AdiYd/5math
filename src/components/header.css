@@ -86,13 +86,15 @@ ul#menuCategory li:hover {
     opacity: 0.8;
     /* font-weight: 600; */
 }
-/* div.headerBorder ul#mobile,
+div.headerBorder ul#mobile,
 div.headerBorder div.subMenu {
     background: black;
     color: var(--themeColorText_DarkMode);
 }
 
-*/
+div.headerBorder div#formulaLogo svg#fxLogo {
+    fill: var(--themeColorText_DarkMode);
+}
  /* ul#mobile div {
      margin: 1em 0.2em;
 */
@@ -115,13 +117,9 @@ div.subMenu {
 div.subMenu * {
     height: fit-content;
     width: max-content;
-    cursor: pointer;
     margin: 0.7em;
 }
 
-div.subMenu *:hover {
-    color: var(--themeColor);
-}
 
 li {
     list-style: none;

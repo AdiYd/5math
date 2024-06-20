@@ -197,6 +197,9 @@
         width: 65vw !important;
     }
 
+    div.headerBorder {
+        border-radius: 0px !important;
+    }
     img#tutorSelfie {
         margin: 1em !important;
             width: 7em !important;

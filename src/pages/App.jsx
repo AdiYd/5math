@@ -11,6 +11,7 @@ import Login from './Login';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '..';
 import { Cookies, useCookies } from 'react-cookie';
+import UserZone from './User/UserZone';
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
@@ -62,9 +63,9 @@ export const PAGES = {
 }
 
 const tokenTime = {
-    admin: 60 * 60,
-    google: 25 * 60,
-    demo: 10 * 60
+    admin: 60 * 60,     // 1 Hour
+    google: 25 * 60,   // 25 Minuts
+    demo: 10 * 60     // 10 Minutes
 }
 
 export default function App({ }) {
@@ -156,7 +157,11 @@ export default function App({ }) {
                                     element={
                                         <Login />
                                     } />
-
+                                <Route
+                                    path={'Personal'}
+                                    element={
+                                        <UserZone />
+                                    } />
                             <Route
                                 path="*"
                                 element={<><h1>Error Page! 404</h1></>} />

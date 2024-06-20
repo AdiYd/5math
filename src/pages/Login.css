@@ -3,6 +3,7 @@ div.loginContainer {
     font-family: var(--themeGPTfont);
     align-content: center;
     text-align: center;
+    min-height: 66vh;
 }
 
 div.loginContainer h2 {

@@ -12,10 +12,9 @@ body {
     transition: 0.1s;
 }
 div#root {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
+  /* display: flex;
+        flex-direction: column; */
+    min-height: 100vh;
 }
 div.App-main {
   position: relative;
@@ -102,6 +101,7 @@ div#frame2Card p {
   
   .App {
     font-size: 1rem;
+    min-height: 66vh;
   }
 
   

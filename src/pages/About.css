@@ -1,7 +1,7 @@
   div#about {
-      position: relative;
+    position: relative;
     padding: 0.5em;
-    min-height: 68vh;
+    min-height: 69vh;
   }
 div#aboutCard {
     background-color: var(--themeColorBG);

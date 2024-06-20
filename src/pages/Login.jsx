@@ -309,7 +309,7 @@ export default function Login({
             }
             else if ([password.toLowerCase(), email.toLowerCase()].includes('admin')) {
                 user.callback({
-                    name: 'Admin Yd',
+                    name: 'יהונתן גילאון',
                     email: 'Admin@5Math.mail',
                     google: false,
                     isAdmin: true,

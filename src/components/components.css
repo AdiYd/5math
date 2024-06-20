@@ -132,7 +132,7 @@ button#trialButton {
     padding: 0.5em 0.9em;
     border-radius: 20px;
 }
-div.footer {
+footer.footer {
     /* height: 15vh; */
     padding: 1em 1em;
     padding-bottom: 0.1em;

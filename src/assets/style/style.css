@@ -88,6 +88,9 @@
     opacity: 0.7;
 }
 
+.hoverTheme:hover {
+    color: var(--themeColor);
+}
 .borderHoverTheme:hover {
     border: 1px solid var(--themeColor);
 }
