@@ -42,6 +42,11 @@ div.loginContainer h2 {
     /* background-color: var(--themeColorBG2); */
         color: var(--themeColorText);
         background-color: var(--themeColorBG);
+        box-shadow: var(--boxShadowHeader);
+        }
+        
+.mode0 input {
+    box-shadow: var(--boxShadowHeader);
 }
 
 .mode1 {
@@ -57,7 +62,8 @@ div.loginContainer h2 {
 }
 
 div.login {
-    border-radius: 40px;
+    border-radius: var(--themeBorderRadius);
+    border-bottom-right-radius: 1px;
     border: 1px solid var(--themeGreyAlpha);
     margin-bottom: 4em;
 }
@@ -96,7 +102,7 @@ input#Password,
 input#Email {
     min-width: 24vw;
     width: 37vw;
-        max-width: 30em;
+    max-width: 30em;
 }
 
 

@@ -92,6 +92,51 @@ export default function Login({
     })
     const validationErr = useRef();
     const randomGradient = useRef(colorList[Math.floor(Math.random() * (colorList.length))]);
+
+    const userAuth = ({ email, password } = {}) => {
+        if (email in USERS) { // React-query for user by mail 
+            if (USERS[email]?.google) {
+                setErr(p => ({
+                    ...p,
+                    ['general']:
+                        <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                            {ValidIcons.error}  שם משתמש קיים, יש להתחבר דרך גוגל <br />
+                        </p>
+                }))
+
+            }
+            else if (!USERS[email]?.google && password) {
+                compare(password, USERS[email]?.password).then(bool => {
+                    debug(`Passwords ${!bool ? "don't" : ''} match!`)
+                    if (bool) {
+                        user.callback({ email, userObj: { isAuth: true } });
+                    }
+                    else {
+                        setErr(p => ({
+                            ...p,
+                            ['general']:
+                                <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                                    {ValidIcons.error} סיסמה שגויה <br />
+                                </p>
+                        }))
+                    }
+                })
+            }
+            // onFulfilValidation()
+
+        }
+        else {
+            setErr(p => ({
+                ...p,
+                ['general']:
+                    <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                        {ValidIcons.error}  שם משתמש לא קיים במערכת <br />
+                        ניתן להרשם <b> כאן </b>
+                    </p>
+            }))
+        }
+    }
+
     const onRejectValidation = (data) => {
         // debug('Server rejected request under: ', data);
         validationErr.current = <div className='flex center' style={{ alignItems: 'center' }}>
@@ -216,6 +261,21 @@ export default function Login({
     function onSubmitForm(e) {
         const callBack = () => {
             setValidForm(undefined);
+        }
+        const printHash = (password)=>{
+            genSalt(saltRounds, (err, salt) => {
+                if (err) {
+                    debug('Error with crypt salt: ', err, DBG_PROPS);
+                    return
+                }
+                hash(password, salt, (error, hashedPass) => {
+                    if (error) {
+                        debug('Error with crypt Hash: ', error, DBG_PROPS);
+                    }
+                    debug('This is the HashPass: ', hashedPass);
+
+                });
+            })
         }
 
         const onSignupFullfil = (res) => {
@@ -572,7 +632,7 @@ export default function Login({
                         return
                     }
                     if (userData) {
-                        user.callback({
+                        let userObj = {
                             name: userData.name,
                             email: userData.email,
                             google: true,

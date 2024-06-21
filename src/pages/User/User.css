@@ -1,5 +1,7 @@
 div.UserZone {
-    min-height: 66vh;
+    position: relative;
+    padding: 0.5em;
+    min-height: 69vh;
     display: flex;
     flex-direction: column;
     text-align: center;
