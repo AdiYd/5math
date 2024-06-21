@@ -69,7 +69,7 @@ div#promptContainer {
         height: 80vh;
         left: 20%;
         overflow-y: scroll;
-        background-image: linear-gradient(var(--linearGradient2));
+        background-image: var(--themeBG_GradientLight);
     }
     
     div#promptContainer::-webkit-scrollbar {
@@ -118,7 +118,8 @@ div.frameDiv3 {
     padding: 2em 3em;
     margin: 3em 5em;
     text-align: start;
-    border-radius: 30px 30px 30px 1px;
+    border-radius: var(--cardRadius);
+    border-bottom-left-radius: 1px;
 }
 div.frameDiv3 p {
     direction: rtl;

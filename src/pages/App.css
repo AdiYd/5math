@@ -50,12 +50,12 @@ div.frameDiv2 {
   flex-direction: column;
   width: 15em;
   height: 20em;
-  border-radius: 30px;
+  border-radius: var(--cardRadius);
   justify-content: space-around;
-  background-image: linear-gradient(45deg, #cdbba482, transparent);
+  /* background-image: linear-gradient(45deg, #cdbba482, transparent); */
   background: var(--themeColorBG);
-    background-image: linear-gradient(238deg, #aae3c63a, #f0dfad11, #e4969622);
-  background-image: linear-gradient(238deg, #b0d0c03a, transparent);
+    /* background-image: linear-gradient(238deg, #aae3c63a, #f0dfad11, #e4969622); */
+    background-image: var(--themeBG_GradientLight);
 }
 
 #frame2Card2 {
@@ -99,36 +99,36 @@ div#frame2Card p {
 }
 */
   
-  .App {
-    font-size: 1rem;
-    min-height: 66vh;
-  }
+.App {
+  font-size: 1rem;
+  min-height: 66vh;
+}
 
   
-  section.caruselDiv {
-    /* background: rgba(6, 179, 227, 0.25); */
-      /* background: rgb(188 191 194 / 23%);
-                                      background: var(--themeGreyAlpha); */
-      /* background: var(--themeColor); */
-      padding: 1em;
-      line-height: 1.5;
-      }
-      
-    div.carousel-container {
-      padding: 2em 0.5em;
-      padding-top: 0em;
-      margin: 1em 0em;
-  }
+section.caruselDiv {
+  /* background: rgba(6, 179, 227, 0.25); */
+  /* background: rgb(188 191 194 / 23%);
+                                    background: var(--themeGreyAlpha); */
+  /* background: var(--themeColor); */
+  padding: 1em;
+  line-height: 1.5;
+}
+
+div.carousel-container {
+  padding: 2em 0.5em;
+  padding-top: 0em;
+  margin: 1em 0em;
+}
     
 div.carousel-container li {
     align-content: center;
   }
 
-  div.carousel-container button {
-    /* background-color: transparent; */
-    background: transparent;
-    z-index: 0;
-      border: 1px solid black;
+div.carousel-container button {
+  /* background-color: transparent; */
+  background: transparent;
+  z-index: 0;
+  border: 1px solid black;
 }
 
 div.carousel-container button:hover::before {
@@ -161,7 +161,8 @@ div.carousel-container button::before {
     background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode);
     padding: 1em 0em;
-    border-radius: 30px 1px 30px 30px;
+    border-radius: var(--cardRadius);
+    border-top-right-radius: 1px;
     margin: 3em 5em;
   }
   
@@ -170,45 +171,45 @@ div.carousel-container button::before {
     font-size: 1.3em;
   }
       
-      textarea,
-      input {
-        background: var(--themeColorBG);
-        height: 2.5em;
-        margin: 1em 1em;
-        margin-top: 0.5em;
-        text-align: center;
-        border-radius: 7px;
-        border: 1.2px solid var(--themeGreyAlpha);
-        box-shadow: var(--BoxShadowHeader);
-      }
+  textarea,
+  input {
+    background: var(--themeColorBG);
+    height: 2.5em;
+    margin: 1em 1em;
+    margin-top: 0.5em;
+    text-align: center;
+    border-radius: 7px;
+    border: 1.2px solid var(--themeGreyAlpha);
+    box-shadow: var(--BoxShadowHeader);
+  }
 
-      textarea:focus-visible,
-      input:focus-visible {
-        outline: none;
-        border-color: transparent;
-        box-shadow: var(--themeColor) var(--BoxShadowPlotBase);
-        /* border: 1px solid black; */
-      }
-      
-      input[type=checkbox] {
-        margin: 0.8em;
-        width: 1em;
-        height: 1em;
-        accent-color: black;
-        border-radius: 20px;
-      }
-      
-      input.inputText {
-        width: 24vw;
-      }
-      
-      div.checkboxContainer {
-        margin: 0em 1em;
-        padding: 0.1em 0.8em;
-        border-radius: var(--themeBorderRadius);
-      }
-    .whatsappHover:hover {
-      color: #1b9949;
-      color: #25D366;
-    }
+  textarea:focus-visible,
+  input:focus-visible {
+    outline: none;
+    border-color: transparent;
+    box-shadow: var(--themeColor) var(--BoxShadowPlotBase);
+    /* border: 1px solid black; */
+  }
+  
+  input[type=checkbox] {
+    margin: 0.8em;
+    width: 1em;
+    height: 1em;
+    accent-color: black;
+    border-radius: 20px;
+  }
+  
+  input.inputText {
+    width: 24vw;
+  }
+  
+  div.checkboxContainer {
+    margin: 0em 1em;
+    padding: 0.1em 0.8em;
+    border-radius: var(--themeBorderRadius);
+  }
+.whatsappHover:hover {
+  color: #1b9949;
+  color: #25D366;
+}
   
