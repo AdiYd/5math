@@ -31,7 +31,7 @@ div.cardContainer {
     display: block;
     cursor: default;
     background: var(--themeColorBG);
-    border-radius: 12px;
+    border-radius: var(--cardRadius);
     margin: 0.5em;
     padding: 0.7em 0.5em;
     width: fit-content;
@@ -86,7 +86,7 @@ div#promptContainer {
     div#promptContainer::-webkit-scrollbar-thumb {
         cursor: grab;
         /* background: linear-gradient(315deg, transparent, transparent, #233b3234, transparent, transparent); */
-        border-radius: 12px;
+        border-radius: var(--cardRadius);
         background-color: rgba(0, 0, 0, 0.442);
         /* background: linear-gradient(45deg, rgba(22, 146, 235, 0.538), transparent); */
     }

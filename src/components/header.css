@@ -24,11 +24,11 @@ div.headerBorder {
     /* background: var(--themeDarkBlue);
     background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode); */
-    background-color: rgba(255, 255, 255, 0.96);
+    background-color: rgba(255, 255, 255, 1);
     padding-top: 0.5em;
     box-shadow: var(--boxShadowHeader);
     border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    border-radius: 0px 0px 30px 30px;
+    /* border-radius: 0px 0px 30px 30px; */
 }
 
 
@@ -86,15 +86,17 @@ ul#menuCategory li:hover {
     opacity: 0.8;
     /* font-weight: 600; */
 }
-div.headerBorder ul#mobile,
+/* div.headerBorder ul#mobile,
 div.headerBorder div.subMenu {
     background: black;
     color: var(--themeColorText_DarkMode);
 }
 
-div.headerBorder div#formulaLogo svg#fxLogo {
+*/
+/* div.headerBorder div#formulaLogo svg#fxLogo {
     fill: var(--themeColorText_DarkMode);
 }
+*/
  /* ul#mobile div {
      margin: 1em 0.2em;
 */

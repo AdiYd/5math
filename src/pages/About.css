@@ -17,7 +17,7 @@ div#aboutCard {
     width: 13em;
     height: 12em;
     padding: 0.8em;
-    border-radius: 30px;
+    border-radius: var(--cardRadius);
 }
 
 div.storyDiv p {
@@ -27,7 +27,7 @@ div.storyDiv p {
 }
 
 div.storyDiv {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
         margin: auto;
     padding: 1.1em 2em;
     border-radius: 30px;

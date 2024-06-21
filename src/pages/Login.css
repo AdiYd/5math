@@ -57,7 +57,7 @@ div.loginContainer h2 {
 }
 
 div.login {
-    border-radius: 40px 40px 1px 40px;
+    border-radius: 40px;
     border: 1px solid var(--themeGreyAlpha);
     margin-bottom: 4em;
 }
