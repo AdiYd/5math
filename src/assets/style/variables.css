@@ -25,7 +25,7 @@
     --themeBG_GradientLight: -webkit-linear-gradient(90deg, rgba(71, 200, 235, 0.15), transparent);
     --themeBG_Gradient: -webkit-linear-gradient(90deg, rgba(1, 57, 66, 0.95), rgba(2, 44, 51, 0.6), rgba(2, 44, 51, 0.3), transparent, transparent, transparent, rgba(255, 255, 255, 0.5), white);
 
-    --themeBorderRadius: 15px;
+    --themeBorderRadius: 30px;
     --cardRadius: 12px;
 
     --fontFamily: 'Rubik', Assistant, sans-serif;

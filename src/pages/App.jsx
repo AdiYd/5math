@@ -63,10 +63,12 @@ export const PAGES = {
 }
 
 const tokenTime = {
-    admin: 60 * 60,     // 1 Hour
-    google: 25 * 60,   // 25 Minuts
-    demo: 10 * 60     // 10 Minutes
+    admin: 60 * 60,      // 1 Hour
+    google: 25 * 60,    // 25 Minuts
+    default: 20 * 60,  // 20 Minutes
 }
+
+export const USERS = require('../assets/json/users.json');
 
 export default function App({ }) {
     const userInfo = useContext(User);
@@ -102,26 +104,36 @@ export default function App({ }) {
 
     const onFulfilValidation = (res) => {
         setTimeout(() => {
-            let maxAge = res.isAdmin ? tokenTime.admin : res.google ? tokenTime.google : tokenTime.demo;
+            let maxAge = res.isAdmin ? tokenTime.admin : res.google ? tokenTime.google : tokenTime.default;
             setCookie('userAuth', JSON.stringify(res), { maxAge, secure: false });
-            debug('Setting cookie: ', res, `Valid for ${maxAge / 60} minutes`, true)
+            debug('Authoraized new user: ', res.email, `Valid for ${maxAge / 60} minutes`, true)
             navigate('/Home');
-        }, 800)
+        }, 1500)
     }
 
-    function userLogin(obj, disconnect = false) {
+    function userLogin({ email, google = false, userObj = {}, disconnect = false, isAdmin = false } = {}) {
+        let userInfos;
         if (disconnect) {
             removeCookie('userAuth');
             setUserInfo(userInfo);
             return
         }
-        else if (obj) {
-            let tempObj = { ...user, ...obj };
-            debug('This is user Info: ', tempObj, true);
-            setUserInfo(tempObj);
-            if (obj.isAuth === true) {
-                onFulfilValidation(tempObj);
+        else if (isAdmin) {
+            userInfos = { ...USERS.admin };
+            setUserInfo(userInfos);
+            onFulfilValidation(userInfos);
+        }
+        else if (email in USERS) {
+            userInfos = { ...user, ...userObj, ...USERS[email] };
+            delete userInfos?.password;
+            debug('This is user Info: ', userInfos, true);
+            setUserInfo(userInfos);
+            if (userInfos.isAuth === true) {
+                onFulfilValidation(userInfos);
             }
+        }
+        else if (google && !(email in USERS)) {
+            debug(`Signing new user based on google account: ${email}`);
         }
     }
 

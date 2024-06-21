@@ -118,7 +118,7 @@ div.frameDiv3 {
     padding: 2em 3em;
     margin: 3em 5em;
     text-align: start;
-    border-radius: var(--cardRadius);
+    border-radius: var(--themeBorderRadius);
     border-bottom-left-radius: 1px;
 }
 div.frameDiv3 p {

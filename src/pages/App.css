@@ -29,7 +29,7 @@ div.frameDiv1 {
     margin: 3em 5em;
     color: white;
     border-radius: var(--themeBorderRadius);
-    border-bottom-right-radius: 1px;
+    /* border-bottom-right-radius: 1px; */
     }
         
 div.frameDiv2 {
@@ -160,7 +160,7 @@ div.carousel-container button::before {
     background-image: var(--headerGradient);
     color: var(--themeColorText_DarkMode);
     padding: 1em 0em;
-    border-radius: var(--cardRadius);
+    border-radius: var(--themeBorderRadius);
     border-top-right-radius: 1px;
     margin: 3em 5em;
   }

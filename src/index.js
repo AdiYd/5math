@@ -16,14 +16,14 @@ const GglClientID = '1032984137880-aa1mhd4l96nlrmha42cjshsail7odfe2.apps.googleu
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export const User = createContext({
-  name: 'John Doh',
+  name: 'John Doe',
   google: false,
-  subscribed: false,
+  subscribe: false,
   isAuth: false,
-  email: 'JohnDoh@5math.com',
-  src: undefined,
+  email: 'JohnDoe@5math.co.il',
+  picture: null,
   darkMode: false,
-  jwt: undefined
+  jwt: null
 })
 
 root.render(

@@ -10,11 +10,12 @@ import { User } from '..';
 import { useLocation } from "react-router-dom";
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
-import bcrypt from "bcryptjs-react";
+import { genSalt, hash, compare } from 'bcryptjs-react'
 import Prompt from '../components/PromptDiv';
 import Logo from '../components/Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { USERS } from './App';
 // import { genSalt, hash } from 'bcrypt';
 
 const saltRounds = 10;
@@ -99,14 +100,15 @@ export default function Login({
                 setErr(p => ({
                     ...p,
                     ['general']:
-                        <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                            {ValidIcons.error}  שם משתמש קיים, יש להתחבר דרך גוגל <br />
+                        <p className='errorMSG tStart rtl'>
+                            {ValidIcons.notValid}  שם משתמש קיים, יש להתחבר דרך גוגל <br />
                         </p>
                 }))
-
+                return
             }
             else if (!USERS[email]?.google && password) {
-                compare(password, USERS[email]?.password).then(bool => {
+                let passHash = USERS[email]?.password ? USERS[email].password : '';
+                compare(password, passHash).then(bool => {
                     debug(`Passwords ${!bool ? "don't" : ''} match!`)
                     if (bool) {
                         user.callback({ email, userObj: { isAuth: true } });
@@ -115,23 +117,21 @@ export default function Login({
                         setErr(p => ({
                             ...p,
                             ['general']:
-                                <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                                    {ValidIcons.error} סיסמה שגויה <br />
+                                <p className='errorMSG tStart rtl' >
+                                    {ValidIcons.notValid} סיסמה שגויה <br />
                                 </p>
                         }))
                     }
                 })
             }
-            // onFulfilValidation()
-
         }
         else {
             setErr(p => ({
                 ...p,
                 ['general']:
-                    <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                        {ValidIcons.error}  שם משתמש לא קיים במערכת <br />
-                        ניתן להרשם <b> כאן </b>
+                    <p className='errorMSG tStart rtl'>
+                        {ValidIcons.notValid}  שם משתמש לא קיים במערכת,
+                        ניתן להרשם <b className='opacityHover' onClick={() => setSignup(true)}> כאן </b>
                     </p>
             }))
         }
@@ -314,7 +314,7 @@ export default function Login({
         let formaName = e.target.name;
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
-        debug('This is formData: ', formaName, userDataObj, DBG_PROPS);
+        debug('User Form data: ', formaName, userDataObj, DBG_PROPS);
         if (formaName === 'signup') {
             if (userDataObj.password2 === userDataObj.password && validPass &&
                 (confirmEmail ? userDataObj.email2 === userDataObj.email : true)) {
@@ -322,12 +322,12 @@ export default function Login({
                 tempObj.email = tempObj.email.toLowerCase();
                 delete tempObj.password2;
                 delete tempObj.email2;
-                bcrypt.genSalt(saltRounds, (err, salt) => {
+                genSalt(saltRounds, (err, salt) => {
                     if (err) {
                         debug('Error with crypt salt: ', err, DBG_PROPS);
                         return
                     }
-                    bcrypt.hash(tempObj.password, salt, (error, hashedPass) => {
+                    hash(tempObj.password, salt, (error, hashedPass) => {
                         if (error) {
                             debug('Error with crypt Hash: ', error, DBG_PROPS);
                         }
@@ -353,57 +353,17 @@ export default function Login({
         }
         else if (formaName === 'login') {
             let { email, password } = userDataObj;
-            let tempObj = {
-                email: email.toLocaleLowerCase(),
+            let userObj = {
+                email: email.toLowerCase(),
                 password: password
             }
 
-            if (['demo', '123', '0000'].includes(password.toLowerCase()) || ['demo', '123', '0000'].includes(email.toLowerCase())) {
-                user.callback({
-                    name: 'Demo user',
-                    email: 'Demo@5Math.mail',
-                    google: false,
-                    isAuth: true,
-                })
-                // onFulfilValidation()
+            if (userObj.email === 'admin') {
+                debug('Admin login...');
+                user.callback({ isAdmin: true })
             }
-            else if ([password.toLowerCase(), email.toLowerCase()].includes('admin')) {
-                user.callback({
-                    name: 'יהונתן גילאון',
-                    email: 'Admin@5Math.mail',
-                    google: false,
-                    isAdmin: true,
-                    isAuth: true
-                })
-            } else {
-                setErr(p => ({
-                    ...p,
-                    ['general']:
-                        <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                            {ValidIcons.error}  שם משתמש וסיסמא שגויים <br />
-                        </p>
-                }))
-            }
-
-            // authUser(tempObj, 'login', 'onSite', onFulfilValidation, onRejectValidation)
-            // bcrypt.genSalt(saltRounds, (err, salt) => {
-            //     if (err) {
-            //         debug('Error with crypt salt: ', err, DBG_PROPS);
-            //         return
-            //     }
-            //     bcrypt.hash(password, salt, (error, hashedPass) => {
-            //         if (error) {
-            //             debug('Error with crypt Hash: ', error, DBG_PROPS);
-            //         }
-            //         let tempObj = {
-            //             email: email,
-            //             password: hashedPass
-            //         }
-            //         authUser(tempObj, 'login', 'onSite')
-            //     });
-            // })
-
-            // navigate('/Home');
+            //printHash(password);
+            userAuth(userObj);
         }
     }
 
@@ -633,13 +593,14 @@ export default function Login({
                     }
                     if (userData) {
                         let userObj = {
-                            name: userData.name,
-                            email: userData.email,
+                            name: userData.name.toLowerCase(),
+                            email: userData.email.toLowerCase(),
                             google: true,
                             isAuth: true,
                             src: userData.picture,
                             jwt: res.credential
-                        })
+                        }
+                        user.callback({ email: userObj.email, google: true, userObj });
                         // onFulfilValidation()
                     }
                     // authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
@@ -656,7 +617,7 @@ export default function Login({
 
     let styleMode =
         <div className="flex"
-            title={colorMode ? 'Dark mode' : 'Light mode'}
+            title={colorMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
             onClick={() => { setColorMode(p => !p) }}
             style={{ cursor: 'pointer', position: 'absolute', right: '50%', bottom: '0.4em' }}>
             <svg

@@ -192,7 +192,7 @@ export default function Header({ currentPage }) {
                     onClick={() => setUserMenu(p => !p)}
                     title='איזור אישי'
                     name={user.name}
-                    src={user.src}
+                    src={user.picture}
                     className="avatar12a"
                     style={{
                         border: `1.2px solid ${userMenu ? 'var(--themeColor)' : 'white'}`,
@@ -226,7 +226,7 @@ export default function Header({ currentPage }) {
                     </svg>
                 </div> */}
                     <div
-                        onClick={() => { setUserMenu(false); user.callback(undefined, true) }}
+                        onClick={() => { setUserMenu(false); user.callback({ disconnect: true }) }}
                         className='flex center pointer hoverTheme alignCenter m0'>
                         <FontAwesomeIcon
                             style={{ width: '1.1em' }}

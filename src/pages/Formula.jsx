@@ -38,6 +38,62 @@ function Formulas({
         setUpdate(p => !p);
     }
 
+    let functionalBtns = <div className='flex center ma1 gap1'>
+        <FontAwesomeIcon
+            icon={faSquareCheck}
+            className='ml2 mr2 pointer opacityHover'
+            style={{ opacity: showChbx ? '' : '0.4' }}
+            title={showChbx ? ' הסתרת לחצני בחירה' : 'הצגת לחצני בחירה'}
+            // type='button'
+            onClick={() => {
+                setShowChbx(p => !p)
+            }}
+        />
+        <FontAwesomeIcon
+            icon={faArrowsRotate}
+            className='ml2 mr2 pointer opacityHover'
+            title='איפוס הגדרות'
+            // type='button'
+            onClick={() => {
+                setUserFormula({});
+                let tempObj = { ...filters };
+                for (let item in tempObj) {
+                    tempObj[item] = false;
+                }
+                setFilters(tempObj);
+                if (!showAll) {
+                    setShowAll(true);
+                }
+                localStorage.removeItem('userFormula');
+                localStorage.setItem('userFormulaShowAll', true);
+            }}
+        />
+        <FontAwesomeIcon
+            icon={faArrowDownShortWide}
+            style={{ opacity: filters.active ? '' : '0.4' }}
+            className='ml2 mr2 pointer opacityHover'
+            title='הוספת פילטרים'
+            // type='button'
+            onClick={() => {
+                setFilters(p => ({ ...p, active: !p.active }))
+            }}
+        />
+        {!fullMode && <div
+            title={darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
+            className='flex center pointer'>
+            <svg
+                onClick={() => { setDarkMode(p => !p) }}
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+            // fill={darkMode ? '' : "var(--themeColor)"}
+            >
+                {!darkMode ? toggleOn : toggleOff}
+            </svg>
+        </div>}
+    </div>
+
     const updateUserFormula = ({ category, name, add = true, storage = true } = {}) => {
         let tempObj = { ...userFormula };
         if (add) {
@@ -156,61 +212,9 @@ function Formulas({
                         type='button'
                         onClick={() => { setShowAll(true); localStorage.setItem('userFormulaShowAll', true) }}
                         className={`round smaller ${showAll ? '' : 'themeBorder'}`}> הצג הכל</button>
-                    <FontAwesomeIcon
-                        icon={showChbx ? faSquareXmark : faSquareCheck}
-                        className='ml2 mr2 pointer opacityHover'
-                        title={showChbx ? ' הסתרת לחצני בחירה' : 'הצגת לחצני בחירה'}
-                        color='var(--themeColor)'
-                        // type='button'
-                        onClick={() => {
-                            setShowChbx(p => !p)
-                        }}
-                    />
-                    <FontAwesomeIcon
-                        icon={faArrowsRotate}
-                        className='ml2 mr2 pointer opacityHover'
-                        title='איפוס הגדרות'
-                        color='var(--themeColor)'
-                        // type='button'
-                        onClick={() => {
-                            setUserFormula({});
-                            let tempObj = { ...filters };
-                            for (let item in tempObj) {
-                                tempObj[item] = false;
-                            }
-                            setFilters(tempObj);
-                            if (!showAll) {
-                                setShowAll(true);
-                            }
-                            localStorage.removeItem('userFormula');
-                            localStorage.setItem('userFormulaShowAll', true);
-                        }}
-                    />
-                    <FontAwesomeIcon
-                        icon={faArrowDownShortWide}
-                        style={{ opacity: filters.active ? '' : '0.5' }}
-                        className='ml2 mr2 pointer opacityHover'
-                        title='הוספת פילטרים'
-                        color='var(--themeColor)'
-                        // type='button'
-                        onClick={() => {
-                            setFilters(p => ({ ...p, active: !p.active }))
-                        }}
-                    />
-                    {!fullMode && <div
-                        title={darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
-                        className='flex center pointer'>
-                        <svg
-                            onClick={() => { setDarkMode(p => !p) }}
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24px"
-                            viewBox="0 -960 960 960"
-                            width="24px"
-                            fill={darkMode ? '' : "var(--themeColor)"}>
-                            {!darkMode ? toggleOn : toggleOff}
-                        </svg>
-                    </div>}
+
                 </div>
+                {functionalBtns}
                 {filter}
                 {msg && <p className='ma1'>{msg}</p>}
                 <div className='mt1 mb3'>
