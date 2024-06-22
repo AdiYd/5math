@@ -74,6 +74,10 @@ export default function Login({
     document.title = 'הרשמה ל 5Math';
     const user = useContext(User);
     const location = useLocation();
+    const usersQuery = useQuery({
+        queryKey: ['users'],
+        queryFn: () => wait(1500).then(() => Object.keys(USERS))
+    })
     const [update, setUpdate] = useState(false);
     const [signup, setSignup] = useState(location.state?.signup ? location.state.signup : signupForm);
     const [validForm, setValidForm] = useState(undefined);
@@ -93,6 +97,23 @@ export default function Login({
     })
     const validationErr = useRef();
     const randomGradient = useRef(colorList[Math.floor(Math.random() * (colorList.length))]);
+    const serverMsg = useRef(undefined);
+
+    if (usersQuery.isLoading) {
+        serverMsg.current = <h1>Loading...</h1>
+    }
+    else if (usersQuery.isError) {
+        serverMsg.current = <h1>Error!</h1>
+    }
+    else if (usersQuery.isFetching) {
+        serverMsg.current = <h1>isFetching</h1>
+    }
+    else if (usersQuery.isFetched) {
+        serverMsg.current = <h1>isFetched</h1>
+    }
+    else {
+        serverMsg.current = undefined
+    }
 
     const userAuth = ({ email, password } = {}) => {
         if (email in USERS) { // React-query for user by mail 
