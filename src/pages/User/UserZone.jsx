@@ -1,21 +1,49 @@
 import './User.css';
 import { User } from '../..';
+import { USERS } from "../App";
 import { useContext, useEffect, useState } from 'react';
 import PrincipleDoc from '../../assets/Documents/PrincipleDoc.docx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import wordIcon from './wordLogo.svg';
 import { useNavigate } from 'react-router-dom';
 import { debug } from '../../assets/function/functions';
+import * as AWS from 'aws-sdk';
+import { DynamoDB, DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
 
+const REGION = "REGION";
+const IDENTITY_POOL_ID = "myPoolID"; // An Amazon Cognito Identity Pool ID.
 
-function onClickHandler(e) {
+const dynamoClient = new DynamoDBClient({
+    region: REGION,
+    credentials: fromCognitoIdentityPool({
+        client: new CognitoIdentityClient({ region: REGION }),
+        identityPoolId: IDENTITY_POOL_ID,
+    }),
+});
 
-}
+export { dynamoClient };
+
 
 function UserZone({ ...props }) {
     const user = useContext(User);
     const navigate = useNavigate();
-    const [msg, setMsg] = useState('No msg');
+
+
+    const onRead = () => {
+        let params = {
+            TableName: "Users"
+        };
+
+        docClient.scan(params, function (err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                debug('This is data: ', data, true);
+            }
+        });
+    };
 
     useEffect(() => {
         if (!user.isAuth) {
@@ -23,20 +51,11 @@ function UserZone({ ...props }) {
         }
     }, [user, user.isAuth])
 
-    useEffect(() => {
-        debug('Im here');
-        checkMe('myMessg')
-    }, [])
-
-    const wait = (duration) => {
-        return new Promise((resolve) => setTimeout(() => resolve('nice'), duration))
+    function onClickHandler(e) {
+        onRead();
     }
 
-    const checkMe = async (msg) => {
-        var a = await wait(1500);
-        debug('Waited', a, true);
-        setMsg(msg);
-    }
+
 
     return (user.isAuth &&
         <div className='UserZone'>
@@ -50,13 +69,9 @@ function UserZone({ ...props }) {
                     title='מסמך עקרונות' alt='Word document Icon' />
                 לחץ להורדת מסמך עקרונות
             </a>}
-            <h1>{msg}</h1>
-
-            <pre style={{ color: 'gray', fontFamily: 'var(--fontFamily)' }}>
-                {String.raw`
-                text here will displayed nicly
-                with various tamplates`}
-            </pre>
+            <div>
+                <button onClick={onClickHandler}> click Me</button>
+            </div>
         </div>
     )
 }

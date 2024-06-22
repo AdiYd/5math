@@ -9,12 +9,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { MathJaxContext } from "better-react-mathjax";
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { CookiesProvider } from 'react-cookie';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 const MathJaxSrc = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'//'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js'; //https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js
 const GglClientID = '1032984137880-aa1mhd4l96nlrmha42cjshsail7odfe2.apps.googleusercontent.com';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient({
+
+})
 export const User = createContext({
   name: 'John Doe',
   google: false,
@@ -61,7 +65,9 @@ root.render(
       >
         <GoogleOAuthProvider clientId={GglClientID}>
           <CookiesProvider defaultSetOptions={{ path: '/' }}>
+            <QueryClientProvider client={queryClient}>
               <App />
+            </QueryClientProvider>
           </CookiesProvider>
         </GoogleOAuthProvider>
       </MathJaxContext>

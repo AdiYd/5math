@@ -16,19 +16,12 @@
         "password": null,
         "subscribe": null
     },
-    "123": {
-        "name": "Demo user",
-        "email": "DemoUser@5math.co.il",
-        "isAuth": true,
-        "google": false,
-        "password": null,
-        "subscribe": null
-    },
     "adi": {
-        "name": "Demo user",
-        "email": "DemoUser@5math.co.il",
+        "name": "Adi Yehuda",
+        "email": "AdiY@5math.co.il",
         "isAuth": true,
         "google": false,
+        "isAdmin": true,
         "password": "$2a$10$yrCIym3BZ2pOMQIEjoo5IemjjGXYbdEmWXpz159tM/yGqsVC3oTBq",
         "subscribe": null
     },
@@ -40,9 +33,9 @@
         "password": null,
         "subscribe": null
     },
-    "daskj@djfsdkjh": {
-        "name": "Adi Yehuda",
-        "email": "Adiyehuda89@gmail.com",
+    "demo": {
+        "name": "משתמש דמו",
+        "email": "DemoUser@5math.co.il",
         "isAuth": true,
         "google": false,
         "password": null,

@@ -28,7 +28,7 @@ function Formulas({
     });
     const [userFormula, setUserFormula] = useState(localStorage.getItem('userFormula') ? JSON.parse(localStorage.getItem('userFormula')) : {});
     const [showAll, setShowAll] = useState(JSON.parse(localStorage.getItem('userFormulaShowAll')) ?? true);
-    const msg = !Object.keys(userFormula).length ? 'ניתן לבחור נוסחאות ולבנות דף נוסחאות מצומצם' : undefined;
+    const msg = (!Object.keys(userFormula).length && showChbx) ? 'ניתן לבחור נוסחאות ולבנות דף נוסחאות מצומצם' : undefined;
     const selectAllList = useRef([]);
     const { darkMode, callback } = useContext(User);
 
@@ -56,6 +56,7 @@ function Formulas({
             // type='button'
             onClick={() => {
                 setUserFormula({});
+                setShowChbx(true);
                 let tempObj = { ...filters };
                 for (let item in tempObj) {
                     tempObj[item] = false;
@@ -174,7 +175,7 @@ function Formulas({
         document.title = ' דף נוסחאות - 5 יחידות';
     }
     let filter = filters.active &&
-        <div className='flex wrap fitH ma3 center small' style={{ gap: '0.4em' }}>
+        <div className='flex wrap fitH ma3 center medium' style={{ gap: '0.4em' }}>
             {Object.keys(formulas).map((item, index) => (
                 <button
                     key={index}

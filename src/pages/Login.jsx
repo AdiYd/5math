@@ -16,6 +16,8 @@ import Logo from '../components/Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { USERS } from './App';
+import { useQuery, useMutation } from '@tanstack/react-query';
+import { wait } from '../assets/function/functions';
 // import { genSalt, hash } from 'bcrypt';
 
 const saltRounds = 10;
@@ -99,20 +101,27 @@ export default function Login({
     const randomGradient = useRef(colorList[Math.floor(Math.random() * (colorList.length))]);
     const serverMsg = useRef(undefined);
 
-    if (usersQuery.isLoading) {
+    const checkServer = () => {
+        if (usersQuery.isLoading) {
         serverMsg.current = <h1>Loading...</h1>
-    }
-    else if (usersQuery.isError) {
-        serverMsg.current = <h1>Error!</h1>
-    }
-    else if (usersQuery.isFetching) {
-        serverMsg.current = <h1>isFetching</h1>
-    }
-    else if (usersQuery.isFetched) {
-        serverMsg.current = <h1>isFetched</h1>
-    }
-    else {
-        serverMsg.current = undefined
+        }
+        else if (usersQuery.isError) {
+            serverMsg.current = <h1>Error!</h1>
+        }
+        else if (usersQuery.isFetching) {
+            serverMsg.current = <h1>isFetching</h1>
+        }
+        else if (usersQuery.isFetched) {
+            serverMsg.current = <div>
+                {usersQuery.data?.map((item) => (
+                    <h2 key={item}>{item}</h2>
+                ))}
+            </div>
+        }
+        else {
+            serverMsg.current = undefined
+        }
+        debug('This is usersQuery: ', usersQuery, true);
     }
 
     const userAuth = ({ email, password } = {}) => {
@@ -378,10 +387,14 @@ export default function Login({
                 email: email.toLowerCase(),
                 password: password
             }
-
             if (userObj.email === 'admin') {
                 debug('Admin login...');
                 user.callback({ isAdmin: true })
+                return
+            }
+            else if (['123', '0000'].includes(userObj.email)) {
+                user.callback({ email: 'demo', isAuth: true })
+                return
             }
             //printHash(password);
             userAuth(userObj);
@@ -677,7 +690,7 @@ export default function Login({
 
     let dbgBtns = <>
     </>
-
+    checkServer();
     return (
         <div className='loginContainer rtl' >
             <div className='flex center ma3'>
@@ -686,6 +699,7 @@ export default function Login({
             {loginForm}
             {validForm}
             {/* {data} */}
+            {serverMsg.current}
             {dbgBtns}
         </div>
     )
