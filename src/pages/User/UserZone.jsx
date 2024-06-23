@@ -7,22 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import wordIcon from './wordLogo.svg';
 import { useNavigate } from 'react-router-dom';
 import { debug } from '../../assets/function/functions';
-import * as AWS from 'aws-sdk';
-import { DynamoDB, DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
-import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
-import General from '../../components/General';
+import DBzone from '../../components/DBzone';
 
-const REGION = "REGION";
-const IDENTITY_POOL_ID = "myPoolID"; // An Amazon Cognito Identity Pool ID.
-
-export const dynamoClient = new DynamoDBClient({
-    region: REGION,
-    credentials: fromCognitoIdentityPool({
-        identityPoolId: IDENTITY_POOL_ID,
-        client: new CognitoIdentityClient({ region: REGION }),
-    }),
-});
 
 
 
@@ -30,31 +16,15 @@ function UserZone({ ...props }) {
     const user = useContext(User);
     const navigate = useNavigate();
 
-
-    const onRead = () => {
-        let params = {
-            TableName: "Users"
-        };
-
-        // docClient.scan(params, function (err, data) {
-        //     if (err) {
-        //         console.log(err);
-        //     } else {
-        //         debug('This is data: ', data, true);
-        //     }
-        // });
-    };
-
     useEffect(() => {
         if (!user.isAuth) {
             navigate('/Home')
         }
     }, [user, user.isAuth])
 
-    function onClickHandler(e) {
-        onRead();
+    const onClickHandler = (e) => {
+        debug('Button clicked!');
     }
-
 
 
     return (user.isAuth &&
@@ -72,7 +42,7 @@ function UserZone({ ...props }) {
             <div className='ma3'>
                 <button onClick={onClickHandler}> click Me</button>
             </div>
-            <General />
+            <DBzone />
         </div>
 
     )
