@@ -104,6 +104,7 @@ input#Email {
     min-width: 24vw;
     width: 37vw;
     max-width: 30em;
+    direction: ltr;
 }
 
 

@@ -182,3 +182,6 @@ img#tutorSelfie {
     margin: 1em;
 }
 */
+ul.adminList li {
+    list-style: decimal;
+}

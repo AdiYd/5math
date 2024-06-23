@@ -107,6 +107,9 @@
 .darkRed {
     color: rgb(102, 5, 5);
 }
+.bold {
+    font-weight: 600;
+}
 .smaller {
     font-size: 0.6em;
 }
@@ -243,7 +246,7 @@ button {
     font-weight: bold;
     border: none;
     transition: 0.3s;
-    font-size: 0.9em;
+    /* font-size: 0.85em; */
 }
 
 button:hover {
