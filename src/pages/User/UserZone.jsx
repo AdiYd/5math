@@ -11,19 +11,19 @@ import * as AWS from 'aws-sdk';
 import { DynamoDB, DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { CognitoIdentityClient } from "@aws-sdk/client-cognito-identity";
 import { fromCognitoIdentityPool } from "@aws-sdk/credential-provider-cognito-identity";
+import General from '../../components/General';
 
 const REGION = "REGION";
 const IDENTITY_POOL_ID = "myPoolID"; // An Amazon Cognito Identity Pool ID.
 
-const dynamoClient = new DynamoDBClient({
+export const dynamoClient = new DynamoDBClient({
     region: REGION,
     credentials: fromCognitoIdentityPool({
-        client: new CognitoIdentityClient({ region: REGION }),
         identityPoolId: IDENTITY_POOL_ID,
+        client: new CognitoIdentityClient({ region: REGION }),
     }),
 });
 
-export { dynamoClient };
 
 
 function UserZone({ ...props }) {
@@ -36,13 +36,13 @@ function UserZone({ ...props }) {
             TableName: "Users"
         };
 
-        docClient.scan(params, function (err, data) {
-            if (err) {
-                console.log(err);
-            } else {
-                debug('This is data: ', data, true);
-            }
-        });
+        // docClient.scan(params, function (err, data) {
+        //     if (err) {
+        //         console.log(err);
+        //     } else {
+        //         debug('This is data: ', data, true);
+        //     }
+        // });
     };
 
     useEffect(() => {
@@ -63,16 +63,18 @@ function UserZone({ ...props }) {
                 <h2> שלום {user.name} </h2>
             </div>
 
-            {user.isAdmin && <a href={PrincipleDoc} download="PrincipleDoc" className='flex center opacityHover gap1 pointer'>
+            {user.isAdmin && <a href={PrincipleDoc} download="PrincipleDoc" className='flex center opacityHover gap1 ma3 pointer'>
                 <img src={wordIcon}
                     style={{ width: '1em', height: '1em' }}
                     title='מסמך עקרונות' alt='Word document Icon' />
                 לחץ להורדת מסמך עקרונות
             </a>}
-            <div>
+            <div className='ma3'>
                 <button onClick={onClickHandler}> click Me</button>
             </div>
+            <General />
         </div>
+
     )
 }
 

@@ -33,6 +33,15 @@
         "password": null,
         "subscribe": null
     },
+    "yddevelops@gmail.com": {
+        "name": "Admin",
+        "email": "yddevelops@gmail.com",
+        "isAuth": true,
+        "isAdmin": true,
+        "google": true,
+        "password": null,
+        "subscribe": null
+    },
     "demo": {
         "name": "משתמש דמו",
         "email": "DemoUser@5math.co.il",

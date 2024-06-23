@@ -204,7 +204,8 @@ export default function Header({ currentPage }) {
                     size={isMobile ? '28' : '30'}>
                 </Avatar>
                 <SubMenu
-                    style={{ left: '0%', fontSize: '0.85em' }}
+                    isMobile={isMobile}
+                    style={{ left: '0%', fontSize: '1em' }}
                     showMenu={userMenu}>
                     <p>{user.name}</p>
                     <p>{user.email}</p>
@@ -430,6 +431,7 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
 function SubMenu({
     showMenu = true,
     horizontal = false,
+    isMobile = false,
     children,
     style = {},
     ...props }) {
@@ -441,6 +443,7 @@ function SubMenu({
 
     return (
         <div
+            id={isMobile ? 'subMenuMobile' : ''}
             style={{ display: showMenu ? '' : 'none', right: horizontal ? '-30%' : '', ...style }}
             className={`subMenu center ${!horizontal ? 'columns' : 'rows'}`}>
             {children}
