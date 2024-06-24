@@ -75,7 +75,10 @@
 .border {
     border: 1px solid var(--themeGreyAlpha);
     }
-    
+
+.borderBlack {
+    border: 1px solid rgba(0, 0, 0, 0.699);
+}
 .noneDisplay {
         display: none;
 }

@@ -205,7 +205,7 @@ export default function Header({ currentPage }) {
                 </Avatar>
                 <SubMenu
                     isMobile={isMobile}
-                    style={{ left: '0%', fontSize: '1em' }}
+                    style={{ left: '0%' }}
                     showMenu={userMenu}>
                     <p>{user.name}</p>
                     <p>{user.email}</p>

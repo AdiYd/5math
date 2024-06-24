@@ -21,7 +21,7 @@ import Checkbox from '../components/CheckBox';
 import AboutMe from '../components/AboutMe';
 import useWindowDimensions from '../assets/function/useWindowDimentions';
 import FloatingMath from '../components/FloatingMath';
-import YoutubeEmb from '../components/YoutubeEmb';
+import VideoEmb from '../components/VideoEmb';
 
 export const responsive = {
     superLargeDesktop: {
@@ -349,16 +349,16 @@ const PromoDiv = ({...props})=>{
         <div className='grid boxShadow' id='promoVideo' >
             <div className='flex tStart center'>
                 <ul id="promoList">
-                <li><FontAwesomeIcon icon={faTrophy} /><h3 id="textGradient2">רוצים לקבל ציון גבוה ב-30% ממה שאתם מסוגלים היום?</h3></li>
-                <li><FontAwesomeIcon icon={faLaptop} /><h3 id="textGradient2">חווית צפייה מושלמת ומותאמת למגוון מכשירים</h3></li>
-                <li><FontAwesomeIcon icon={faListCheck} /><h3 id="textGradient2">תמציתי ומדויק - כדי לחסוך לכם זמן לימוד מיותר</h3></li>
-                <li><FontAwesomeIcon icon={faHandshake} /><h3 id="textGradient2">ליווי אישי - פייסבוק, ווטסאפ, צ'אט. איך שנוח לכם</h3></li>
-                <li><FontAwesomeIcon icon={faWandSparkles} /><h3 id="textGradient2">יצירתיות - דרך חדשנית ומעניינת להצגת פתרונות הבגרות</h3></li>
-                <li><FontAwesomeIcon icon={faReact} size='lg' className='rotateInf' /><h3 id="textGradient2">אנימציות - שמסבירות בקלות וביעילות נושאים מורכבים</h3></li>
+                <li><FontAwesomeIcon icon={faTrophy} size='lg' /><h3 id="textGradient2">רוצים לקבל ציון גבוה ב-30% ממה שאתם מסוגלים היום?</h3></li>
+                <li><FontAwesomeIcon icon={faLaptop} size='lg' /><h3 id="textGradient2">חווית צפייה מושלמת ומותאמת למגוון מכשירים</h3></li>
+                <li><FontAwesomeIcon icon={faListCheck} size='lg' /><h3 id="textGradient2">תמציתי ומדויק - כדי לחסוך לכם זמן לימוד מיותר</h3></li>
+                <li><FontAwesomeIcon icon={faHandshake} size='lg' /><h3 id="textGradient2">ליווי אישי - פייסבוק, ווטסאפ, צ'אט. איך שנוח לכם</h3></li>
+                <li><FontAwesomeIcon icon={faWandSparkles} size='lg' /><h3 id="textGradient2">יצירתיות - דרך חדשנית ומעניינת להצגת פתרונות הבגרות</h3></li>
+                <li><FontAwesomeIcon icon={faReact} size='xl' className='rotateInf' /><h3 id="textGradient2">אנימציות - שמסבירות בקלות וביעילות נושאים מורכבים</h3></li>
                 </ul>
             </div>
             <div className='flex center' style={{height:'-webkit-fill-available' , width: '-webkit-fill-available'}}>
-                <YoutubeEmb />
+                <VideoEmb />
             </div>
         </div>
     )
