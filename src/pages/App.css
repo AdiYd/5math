@@ -82,6 +82,12 @@ img#frame2Img {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+#textGradient2 {
+  background: -webkit-linear-gradient(180deg, rgb(0, 59, 90), rgb(7, 59, 3));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 hr#horizLine {
   border-top: 1px solid var(--themeGrey);
@@ -223,14 +229,22 @@ ul#promoList {
 
 ul#promoList li {
   /* font-size: 1.1em; */
+  display: flex;
+  align-items: center;
+  gap: 2em;
   font-weight: 500;
   padding: 1em 0em;
   margin: 0.8em;
+}
 
+ul#promoList li h3 {
+  margin: 0em;
+  font-weight: 500;
 }
 
 div#promoVideo {
-  background: var(--themeGreyAlpha);
+  /* background: var(--themeGreyAlpha); */
+    background-color: rgba(255, 255, 255, 0.6);
   /* font-weight: 600; */
   border-radius: var(--themeBorderRadius);
   border-top-left-radius: 1px;
@@ -238,7 +252,7 @@ div#promoVideo {
   padding: 2em 1em;
   margin: 3em 5em;
   grid-auto-flow: column;
-  background-color: var(--themeColorBG);
+  /* background-color: var(--themeColorBG); */
   background-image: var(--themeBG_GradientLight);
 }
 

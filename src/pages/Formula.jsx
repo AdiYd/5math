@@ -243,7 +243,7 @@ function Formulas({
                                                 // defaultChecked={(userFormula[subjuct]?.includes(formulaName))}
                                                 checked={Boolean(userFormula[subjuct]?.includes(formulaName))}
                                                 name={subjuct + ">" + formulaName} />}
-                                            <a id='formulaName'>{prefix + formulaName.toString() + ' : '}</a>
+                                            <a id='formulaName'>{prefix + formulaName.toString() + ':'}</a>
                                             {!(formulas[subjuct][formulaName] instanceof Object) &&
                                                 <MathJax>
                                                     <a id="formula" title={formulaName.toString()}
