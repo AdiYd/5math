@@ -130,7 +130,25 @@
     font-size: 1.3em;
 }
 
+.tl {
+    top: 1em;
+    left: 1em;
+}
 
+.tr {
+    top: 1em;
+    right: 1em;
+}
+
+.bl {
+    bottom: 1em;
+    left: 1em;
+}
+
+.tr {
+    top: 1em;
+    right: 1em;
+}
 
 .fit {
     width: fit-content;
