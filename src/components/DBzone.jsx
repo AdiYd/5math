@@ -2,10 +2,9 @@
 import { useState, useEffect, useRef, useContext, act } from "react";
 import '../pages/App.css';
 import { debug } from "../assets/function/functions";
-import DBaccess from "../assets/function/DBaccess";
+import { dataBase } from "../pages/App";
 import wordIcon from '../pages/User/wordLogo.svg';
 import PrincipleDoc from '../assets/Documents/PrincipleDoc.docx'
-import { paste } from "@testing-library/user-event/dist/paste";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,14 +14,6 @@ import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 function DBzone({ ...props }) {
     const [update, setUpdate] = useState(false);
     const [adminPlot, setAdminPlot] = useState({ active: undefined, data: {} });
-    let db = new DBaccess();
-
-    const usersList = useRef();
-
-    useEffect(() => {
-        db.scanItems().then(data => usersList.current = data).
-            catch(rej => debug('Canno\'t retrive user list : ', rej, false));
-    }, []);
 
     // debug('This is adminPlot: ', adminPlot, usersList.current, true);
 
@@ -30,7 +21,7 @@ function DBzone({ ...props }) {
         if (!adminPlot.active || adminPlot.active !== e.target.name) {
             setAdminPlot({
                 active: e.target.name,
-                data: usersList.current
+                data: dataBase.usersList
             })
         }
         else if (adminPlot.active === e.target.name) {
@@ -60,10 +51,22 @@ function DBzone({ ...props }) {
         let formName = e.target.name;
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
-        db.queryTable({ value: userDataObj.email }).
-            then(val => setAdminPlot(p => ({ ...p, data: val }))).
-            catch(rej => debug('Canno\'t find this user : ', rej, false))
-
+        let data = userDataObj.email.toLowerCase();
+        debug('Searching for data : ', data, true);
+        if (data in dataBase.usersDict) {
+            setAdminPlot(p => ({ ...p, data: [dataBase.usersDict[data]] }))
+            return
+        }
+        else {
+            let resList = [];
+            for (let user of dataBase.usersList) {
+                if ([user.name.toLowerCase(), ...user.name.toLowerCase().split(' ')].includes(data)) {
+                    debug('Found match!');
+                    resList.push(user);
+                }
+            }
+            setAdminPlot(p => ({ ...p, data: resList }));
+        }
 
     }
 
@@ -85,7 +88,9 @@ function DBzone({ ...props }) {
                 adminPlot.active === 'search' &&
                 <div className="flex center">
                     <form name='Search by mail' onSubmit={onSubmit}>
-                        <input id='email' className="ltr" name='email' maxLength={80} type="email" required />
+                            <input id='email'
+                                placeholder="חיפוש לפי אימייל או שם"
+                                className="ltr" name='email' maxLength={80} type="text" required />
                         <button className="" type="submit">חיפוש</button>
                     </form>
                 </div>
@@ -96,7 +101,7 @@ function DBzone({ ...props }) {
                     <ul className="adminList">
                         {adminPlot.data.length ?
                             adminPlot.data.map((item, indx) => (
-                                <li key={indx}>
+                                <li key={item.email + indx}>
                                     <User userInfo={item} />
                                 </li>
                             )) : <h4>לא נמצא המידע המבוקש</h4>

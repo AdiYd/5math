@@ -1,53 +1,9 @@
 {
-    "admin@5math.co.il": {
-        "name": "יהונתן גילאון",
-        "email": "admin@5math.co.il",
-        "isAuth": true,
-        "google": false,
-        "password": null,
-        "subscribe": null
-    },
     "admin": {
         "name": "יהונתן גילאון",
         "email": "admin@5math.co.il",
         "isAuth": true,
         "google": false,
-        "isAdmin": true,
-        "password": null,
-        "subscribe": null
-    },
-    "adi": {
-        "name": "Adi Yehuda",
-        "email": "adiy@5math.co.il",
-        "isAuth": true,
-        "google": false,
-        "isAdmin": true,
-        "password": "$2a$10$yrCIym3BZ2pOMQIEjoo5IemjjGXYbdEmWXpz159tM/yGqsVC3oTBq",
-        "subscribe": null
-    },
-    "adiyehuda89@gmail.com": {
-        "name": "Adi Yehuda",
-        "email": "adiyehuda89@gmail.com",
-        "isAuth": true,
-        "google": true,
-        "password": null,
-        "subscribe": null
-    },
-    "yddevelops@gmail.com": {
-        "name": "Admin",
-        "email": "yddevelops@gmail.com",
-        "isAuth": true,
-        "isAdmin": true,
-        "google": true,
-        "password": null,
-        "subscribe": null
-    },
-    "demo": {
-        "name": "משתמש דמו",
-        "email": "demouser@5math.co.il",
-        "isAuth": true,
-        "google": false,
-        "password": null,
-        "subscribe": null
+        "isAdmin": true
     }
 }

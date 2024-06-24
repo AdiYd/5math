@@ -35,6 +35,7 @@ export default class DBaccess {
             } catch (error) {
                 debug('This is Adding error: ', error, false)
             }
+            this.scanItems();
         }
     }
 
@@ -70,6 +71,10 @@ export default class DBaccess {
             debug('Data fetched successfully:', data, true);
             this.usersList = [...data.Items];
             this.usersEmails = data.Items.map((user) => user.email);
+            this.usersDict = {};
+            for (let user of this.usersList) {
+                this.usersDict[user.email] = user;
+            }
             this.active = true;
             return data.Items
         } catch (err) {

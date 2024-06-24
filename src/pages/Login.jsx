@@ -15,11 +15,11 @@ import Prompt from '../components/PromptDiv';
 import Logo from '../components/Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { USERS } from './App';
+import { USERS, dataBase } from './App';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { wait } from '../assets/function/functions';
 import DBzone from '../components/DBzone';
-import DBaccess from '../assets/function/DBaccess';
+
 // import { genSalt, hash } from 'bcrypt';
 
 const saltRounds = 10;
@@ -30,7 +30,6 @@ export const toggleOn = <path d="M280-240q-100 0-170-70T40-480q0-100 70-170t170-
 const showPass = <path d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z" />
 const hidePass = <path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
 const errorMsg = <path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />;
-const dataBase = new DBaccess();
 const GradeDict = {
     0: 'מורה',
     9: "כיתה ט'",
@@ -80,7 +79,7 @@ export default function Login({
     const location = useLocation();
     const usersQuery = useQuery({
         queryKey: ['users'],
-        queryFn: () => wait(1500).then(() => Object.keys(USERS))
+        queryFn: () => wait(1500).then(() => { })
     })
     const [update, setUpdate] = useState(false);
     const [signup, setSignup] = useState(location.state?.signup ? location.state.signup : signupForm);
@@ -126,8 +125,8 @@ export default function Login({
     }
 
     const userAuth = ({ email, password } = {}) => {
-        if (email in USERS) { // React-query for user by mail 
-            if (USERS[email]?.google) {
+        if (email in dataBase.usersDict) { // React-query for user by mail 
+            if (dataBase.usersDict[email]?.google) {
                 setErr(p => ({
                     ...p,
                     ['general']:
@@ -137,8 +136,8 @@ export default function Login({
                 }))
                 return
             }
-            else if (!USERS[email]?.google && password) {
-                let passHash = USERS[email]?.password ? USERS[email].password : '';
+            else if (!dataBase.usersDict[email]?.google && password) {
+                let passHash = dataBase.usersDict[email]?.password ? dataBase.usersDict[email]?.password : '';
                 compare(password, passHash).then(bool => {
                     debug(`Passwords ${!bool ? "don't" : ''} match!`)
                     if (bool) {
@@ -415,10 +414,6 @@ export default function Login({
                 user.callback({ isAdmin: true })
                 return
             }
-            else if (['123', '0000'].includes(userObj.email)) {
-                user.callback({ email: 'demo', isAuth: true })
-                return
-            }
             //printHash(password);
             userAuth(userObj);
         }
@@ -649,14 +644,28 @@ export default function Login({
                     if (checkIfSigned()) {
                         return
                     }
+
                     if (userData) {
                         let userObj = {
                             name: userData.name.toLowerCase(),
                             email: userData.email.toLowerCase(),
                             google: true,
                             isAuth: true,
-                            src: userData.picture,
+                            picture: userData.picture,
                             jwt: res.credential
+                        }
+                        if (signup && (userObj.email in dataBase.usersDict)) {
+                            setErr(p => ({
+                                ...p,
+                                ['general']:
+                                    <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                                        {ValidIcons.notValid}  משתמש כבר רשום, אם שכחתם סיסמה <b className='opacityHover' onClick={() => setSignup(true)}> לחצו כאן </b><br />
+                                    </p>
+                            }))
+                            return
+                        }
+                        else if (signup && !(userObj.email in dataBase.usersDict)) {
+                            dataBase.addItem({ item: userObj });
                         }
                         user.callback({ email: userObj.email, google: true, userObj });
                         // onFulfilValidation()

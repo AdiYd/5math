@@ -12,6 +12,9 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { User } from '..';
 import { Cookies, useCookies } from 'react-cookie';
 import UserZone from './User/UserZone';
+import DBaccess from '../assets/function/DBaccess';
+
+export const dataBase = new DBaccess();
 
 // ************  Scroll event listner - for top menu fade effect  ************ //
 var prevScroll = 0, change = false;
@@ -113,6 +116,7 @@ export default function App({ }) {
 
     function userLogin({ email, google = false, userObj = {}, disconnect = false, isAdmin = false } = {}) {
         let userInfos;
+        debug('DB: ', dataBase, true);
         if (disconnect) {
             removeCookie('userAuth');
             setUserInfo(userInfo);
@@ -123,8 +127,8 @@ export default function App({ }) {
             setUserInfo(userInfos);
             onFulfilValidation(userInfos);
         }
-        else if (email in USERS) {
-            userInfos = { ...user, ...userObj, ...USERS[email] };
+        else if (email in dataBase.usersDict) {
+            userInfos = { ...user, ...dataBase.usersDict[email], ...userObj };
             delete userInfos?.password;
             debug('This is user Info: ', userInfos, true);
             setUserInfo(userInfos);
@@ -132,7 +136,7 @@ export default function App({ }) {
                 onFulfilValidation(userInfos);
             }
         }
-        else if (google && !(email in USERS)) {
+        else if (google && !(email in dataBase.usersDict)) {
             debug(`Signing new user based on google account: ${email}`);
         }
     }
