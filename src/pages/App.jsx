@@ -137,7 +137,11 @@ export default function App({ }) {
             }
         }
         else if (google && !(email in dataBase.usersDict)) {
-            debug(`Signing new user based on google account: ${email}`);
+            userInfos = { ...user, ...userObj };
+            setUserInfo(userInfos);
+            if (userInfos.isAuth === true) {
+                onFulfilValidation(userInfos);
+            }
         }
     }
 

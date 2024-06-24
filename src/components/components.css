@@ -58,7 +58,7 @@ div.cardContainer * {
     */
     
 div#promptContainer {
-    resize: both;
+    /* resize: both; */
         position: fixed;
         z-index: 150;
         background: var(--themeColorBG);

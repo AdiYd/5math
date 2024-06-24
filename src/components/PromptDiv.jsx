@@ -25,7 +25,7 @@ function Prompt({
 
     function onClickHandler(e) {
         setShowDiv(false);
-        callBack(p => !p);
+        callBack();
     }
 
     function testFunction(...args) {
@@ -52,12 +52,15 @@ function Prompt({
             {children}
             </User.Provider>
 
-            {showButton && <button
+            {showButton &&
+                <div className='flex center'>
+                    <button
                 onClick={onClickHandler}
-                style={{ position: 'sticky', bottom: '0.5em', left: '47%' }}
-                className='themeConst3 round ma1 pl2 pr2 pt1 pb1'>
+                        style={{ position: 'sticky', bottom: '0.5em', left: '47%', padding: '0.7em 1.5em' }}
+                        className='themeConst round ma2'>
                 סגור
-            </button>}
+                    </button>
+                </div>}
         </div>
     </div>
 
@@ -66,7 +69,7 @@ function Prompt({
             onResize={testFunction}
             // draggableOpts={{}}
             // minConstraints={[100, 100]}
-            style={{ display: showDiv ? '' : 'none' }}
+            style={{ display: showDiv ? '' : 'none', ...props }}
             className={`squarish boxShadow ${props.className ? props.className : ''} ${localDarkMode ? 'darkMode' : ''}`}
             id='promptContainer' >
             {childs}

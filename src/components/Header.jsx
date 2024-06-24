@@ -211,7 +211,6 @@ export default function Header({ currentPage }) {
                     <p>{user.email}</p>
                     <a className='pointer hoverTheme'
                         onClick={() => navigate('Personal')}>איזור אישי</a>
-                    <p>הגדרות</p>
                     {/* <div
                     title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
                     className='flex center pointer'>
@@ -332,7 +331,7 @@ export default function Header({ currentPage }) {
 
             </div>
             <div className={`App-main ${user.darkMode ? 'darkMode' : ''}`}>
-                <Prompt show={formula} callBack={setFormula}>
+                <Prompt show={formula} callBack={() => setFormula(p => !p)}>
                     <Formulas />
                 </Prompt>
                 {/* {refSheet &&

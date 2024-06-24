@@ -237,6 +237,7 @@ function Bagrut({ ...props }) {
                         cardID='bagrutCard'>
                         <h4 className='m1'>{bagrutDict[item].name}</h4>
                         <a
+                            target='_blank'
                             className='downLoad rounder'
                             href={bagrutDict[item].linkTo}>
                             הורדה &nbsp;

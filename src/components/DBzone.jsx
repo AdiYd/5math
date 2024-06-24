@@ -97,7 +97,7 @@ function DBzone({ ...props }) {
             }
             {
                 adminPlot.active &&
-                <div className="ltr" style={{ width: '90%' }}>
+                <div className="ltr" style={{ width: '-webkit-fill-available' }}>
                     <ul className="adminList">
                         {adminPlot.data.length ?
                             adminPlot.data.map((item, indx) => (
@@ -134,7 +134,7 @@ function User({ userInfo = {} }) {
     }, [])
 
     if (active) {
-        debug('User clicked : ', userInfo, true);
+        debug('User clicked : ', userData, true);
     }
     return (
         <div className="ma2" >

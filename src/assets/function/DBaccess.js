@@ -39,7 +39,7 @@ export default class DBaccess {
         }
     }
 
-    queryTable = async ({ tableName = 'Users', key = 'email', value = '' } = {}) => {
+    queryItem = async ({ tableName = 'Users', key = 'email', value = '' } = {}) => {
         const params = {
             TableName: tableName,
             KeyConditionExpression: `#${key} = : value`,
@@ -82,7 +82,4 @@ export default class DBaccess {
         }
     };
 
-    getUsers() {
-
-    }
 }

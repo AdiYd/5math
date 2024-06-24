@@ -267,6 +267,9 @@
         div.storyDiv svg {
             display: block;
     }
+div.UserZone {
+    font-size: 1.2em;
+}
 }
 
 @media only screen and (max-width: 450px) {

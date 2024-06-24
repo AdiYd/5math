@@ -36,7 +36,7 @@ export const User = createContext({
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <Header /> */}
+
       {/* <div className='background'></div> */}
       <div className='bg bg1'></div>
       <div className='mathLayout'></div>

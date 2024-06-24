@@ -77,10 +77,10 @@ export default function Login({
     document.title = 'הרשמה ל 5Math';
     const user = useContext(User);
     const location = useLocation();
-    const usersQuery = useQuery({
-        queryKey: ['users'],
-        queryFn: () => wait(1500).then(() => { })
-    })
+    // const usersQuery = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: () => wait(1500).then(() => { debug('Quering...') })
+    // })
     const [update, setUpdate] = useState(false);
     const [signup, setSignup] = useState(location.state?.signup ? location.state.signup : signupForm);
     const [validForm, setValidForm] = useState(undefined);
@@ -102,27 +102,27 @@ export default function Login({
     const randomGradient = useRef(colorList[Math.floor(Math.random() * (colorList.length))]);
     const serverMsg = useRef(undefined);
 
-    const checkServer = () => {
-        if (usersQuery.isLoading) {
-        serverMsg.current = <h1>Loading...</h1>
-        }
-        else if (usersQuery.isError) {
-            serverMsg.current = <h1>Error!</h1>
-        }
-        else if (usersQuery.isFetching) {
-            serverMsg.current = <h1>isFetching</h1>
-        }
-        else if (usersQuery.isFetched) {
-            serverMsg.current = <div>
-                {usersQuery.data?.map((item) => (
-                    <h2 key={item}>{item}</h2>
-                ))}
-            </div>
-        }
-        else {
-            serverMsg.current = undefined
-        }
-    }
+    // const checkServer = () => {
+    //     if (usersQuery.isLoading) {
+    //     serverMsg.current = <h1>Loading...</h1>
+    //     }
+    //     else if (usersQuery.isError) {
+    //         serverMsg.current = <h1>Error!</h1>
+    //     }
+    //     else if (usersQuery.isFetching) {
+    //         serverMsg.current = <h1>isFetching</h1>
+    //     }
+    //     else if (usersQuery.isFetched) {
+    //         serverMsg.current = <div>
+    //             {usersQuery.data?.map((item) => (
+    //                 <h2 key={item}>{item}</h2>
+    //             ))}
+    //         </div>
+    //     }
+    //     else {
+    //         serverMsg.current = undefined
+    //     }
+    // }
 
     const userAuth = ({ email, password } = {}) => {
         if (email in dataBase.usersDict) { // React-query for user by mail 
@@ -161,7 +161,7 @@ export default function Login({
                 ['general']:
                     <p className='errorMSG tStart rtl'>
                         {ValidIcons.notValid}  שם משתמש לא קיים במערכת,
-                        ניתן להרשם <b className='opacityHover' onClick={() => setSignup(true)}> כאן </b>
+                        ניתן להרשם <b className='opacityHover pointer' onClick={() => setSignup(true)}> כאן </b>
                     </p>
             }))
         }
@@ -311,33 +311,37 @@ export default function Login({
 
         const onSignupFullfil = (res) => {
             let msg;
-            if (res.data) {
-                let [fname, lname] = res.data?.name.split(' ');
+            if (res) {
                 msg = <div>
-                    <h2> Thank you, {fname.slice(0, 1).toUpperCase() + fname.slice(1)} </h2>
-                    <h3> Please check your email box </h3>
-                    <h3> {res.data.email}</h3>
-                    <Logo showIcon={false} clickable={false} />
+                    <Logo showIcon={true} clickable={false} />
                     <br />
+                    <h3>תודה על הרשמתך</h3>
+                    <h2 className='darkRed'>{res.name}</h2>
+                    <h3> מייל עם פרטים נוספים נשלח לכתובת: </h3>
+                    <h3> {res.email}</h3>
                 </div>
                 setSignup(false)
             }
             else {
                 msg = <div>
-                    <h3> {res.message}</h3>
-                    <Logo showIcon={false} clickable={false} />
+                    <Logo showIcon={true} clickable={false} />
                     <br />
+                    <h3> לא הצלחנו להשלים את תהליך ההרשמה</h3>
+                    <h3> ניתן לנסות בזמן אחר</h3>
                 </div>
             }
             setValidForm(
                 <Prompt
-                    setPreviewFunction={callBack}
+                    height='fit-content'
+                    showButton={true}
+                    callBack={() => user.callback({ email: res.email, userObj: { isAuth: true } })}
                     style={{ height: 'fit-content', borderRadius: '20px' }}
                     showDiv={true} >
                     {msg}
                 </Prompt>)
-            // onFulfilValidation(res)
         }
+
+
         e.preventDefault();
         if (checkIfSigned()) {
             return
@@ -357,7 +361,7 @@ export default function Login({
                         ...p,
                         ['general']:
                             <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                                {ValidIcons.notValid}  משתמש כבר רשום, אם שכחתם סיסמה <b className='opacityHover' onClick={() => setSignup(true)}> לחצו כאן </b><br />
+                                {ValidIcons.notValid}  משתמש כבר רשום, לשחזור סיסמה <b className='opacityHover pointer' onClick={() => debug('Forgot pass Page')}> לחצו כאן </b><br />
                             </p>
                     }))
                     return
@@ -385,10 +389,9 @@ export default function Login({
                         }
                         dataBase.addItem({ item: userItem }).then(res => {
                         }, rej => { debug('Adding rejected: ', rej, true) }).catch(err => debug('Adding error: ', err, false));
-                        // debug('We are reay to go! ', userItem, DBG_PROPS);
-
-                        // authUser(tempObj, 'signup', 'onSite', onSignupFullfil, onRejectValidation);
+                        onSignupFullfil(userItem);
                     });
+
                     return
                 })
                 // navigate('/Home');
@@ -659,12 +662,12 @@ export default function Login({
                                 ...p,
                                 ['general']:
                                     <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                                        {ValidIcons.notValid}  משתמש כבר רשום, אם שכחתם סיסמה <b className='opacityHover' onClick={() => setSignup(true)}> לחצו כאן </b><br />
+                                        {ValidIcons.notValid}  משתמש כבר רשום, אם שכחתם סיסמה <b className='opacityHover pointer' onClick={() => debug('Forgot Pass')}> לחצו כאן </b><br />
                                     </p>
                             }))
                             return
                         }
-                        else if (signup && !(userObj.email in dataBase.usersDict)) {
+                        else if (!(userObj.email in dataBase.usersDict)) {
                             dataBase.addItem({ item: userObj });
                         }
                         user.callback({ email: userObj.email, google: true, userObj });
