@@ -20,6 +20,8 @@ import Prompt from '../components/PromptDiv';
 import Checkbox from '../components/CheckBox';
 import AboutMe from '../components/AboutMe';
 import useWindowDimensions from '../assets/function/useWindowDimentions';
+import FloatingMath from '../components/FloatingMath';
+import YoutubeEmb from '../components/YoutubeEmb';
 
 export const responsive = {
     superLargeDesktop: {
@@ -56,14 +58,17 @@ function Home({ ...props }) {
     const { width } = useWindowDimensions();
 
     let frame1 =  <div className='flex center frameDiv1 pt3 round boxShadow'>
+        {/* <FloatingMath animation={'flicker'} color='black' text='g(x) = ln(x)+e^{2x}' position='tl' />
+        <FloatingMath fontSize='1.2em' transform='rotate(12deg)' text='sin^2(\pi) + cos^2(\pi) = 1' position='tr' />
+        <FloatingMath text='a_n = aq^{n-1}' position='bl' rotate={20} /> */}
             <div className='alignCenter fadeIn'>
                 <Logo />
-            <h1>קורס דיגיטלי ללימודי מתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
-            <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
-            <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>
-                <button
-                    className='themeConst2'
-                    id='trialButton'>לצפייה בשיעור ניסיון</button>
+                <h1>קורס דיגיטלי ללימודי מתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
+                <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
+                <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>
+                    <button
+                        className='themeConst2'
+                        id='trialButton'>לצפייה בשיעור ניסיון</button>
             </div>
         </div>
 
@@ -224,6 +229,60 @@ function Home({ ...props }) {
         </Card>
     </>
 
+    let quickSignUp =  <div className='quickSignUp boxShadow'>
+            <div className='flex center columns'>
+                <div className='flex center gap1'>
+                    <FontAwesomeIcon icon={faGift} size='2xl' color='var(--ThemeGPTOrangeDeep)' />
+                    {/* <FontAwesomeIcon icon={faVideo} size='2xl' color='var(--ThemeGPTOrangeDeep)' /> */}
+                </div>
+                <h3>נרשמים עכשיו ומקבלים שיעור במתנה: </h3>
+            </div>
+            <form onSubmit={onSubmitForm} name='quick Signup' >
+                <div className='flex center baseLine' >
+                    <input
+                        id='name'
+                        className='inputText'
+                        maxLength={30}
+                        required={true}
+                        autoComplete='on'
+                        title='שם מלא'
+                        type='text'
+                        // onChange={onInputHandler}
+                        placeholder='שם מלא'
+                        name='name'></input>
+                    <input
+                        id='emails'
+                        className='inputText'
+                        maxLength={60}
+                        required={true}
+                        autoComplete='on'
+                        title='אימייל'
+                        type='email'
+                        // onChange={onInputHandler}
+                        placeholder='אימייל'
+                        name='email'></input>
+                    <button
+                        className='themeConst round'
+                        type='submit'>לקבלת הטבה</button>
+                </div>
+                <div className='flex center' id='checkBoxDiv'>
+                    <div className='flex center checkboxContainer'>
+                        <Checkbox color='var(--constThemeColor)' id='10G' name='10' title="כיתה ט'" />
+                        <label forhtml='10G'> כיתה י'</label>
+                    </div>
+                    <div className='flex center checkboxContainer'>
+                        <Checkbox color='var(--constThemeColor)' id='11G' name='11' title="כיתה ט'" />
+                        <label forhtml='11G'>כיתה יא'</label>
+                    </div>
+                    <div className='flex center checkboxContainer'>
+                        <Checkbox color='var(--constThemeColor)' id='12G' name='12' title="כיתה ט'" />
+                        <label forhtml='12G'> כיתה יב'</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
     function onSubmitForm(e) {
         e.preventDefault();
         let formaName = e.target.name;
@@ -267,60 +326,10 @@ function Home({ ...props }) {
                 </Carousel>
             </section>
 
+            <PromoDiv />
             {/* <div style={{ height: '4em' }}></div> */}
 
-            <div className='quickSignUp boxShadow'>
-                <div className='flex center columns'>
-                    <div className='flex center gap1'>
-                        <FontAwesomeIcon icon={faGift} size='2xl' color='var(--ThemeGPTOrangeDeep)' />
-                        {/* <FontAwesomeIcon icon={faVideo} size='2xl' color='var(--ThemeGPTOrangeDeep)' /> */}
-                    </div>
-                    <h3>נרשמים עכשיו ומקבלים שיעור במתנה: </h3>
-                </div>
-                <form onSubmit={onSubmitForm} name='quick Signup' >
-                    <div className='flex center baseLine' >
-                        <input
-                            id='name'
-                            className='inputText'
-                            maxLength={30}
-                            required={true}
-                            autoComplete='on'
-                            title='שם מלא'
-                            type='text'
-                            // onChange={onInputHandler}
-                            placeholder='שם מלא'
-                            name='name'></input>
-                        <input
-                            id='emails'
-                            className='inputText'
-                            maxLength={60}
-                            required={true}
-                            autoComplete='on'
-                            title='אימייל'
-                            type='email'
-                            // onChange={onInputHandler}
-                            placeholder='אימייל'
-                            name='email'></input>
-                        <button
-                            className='themeConst round'
-                            type='submit'>לקבלת הטבה</button>
-                    </div>
-                    <div className='flex center' id='checkBoxDiv'>
-                        <div className='flex center checkboxContainer'>
-                            <Checkbox color='var(--constThemeColor)' id='10G' name='10' title="כיתה ט'" />
-                            <label forhtml='10G'> כיתה י'</label>
-                        </div>
-                        <div className='flex center checkboxContainer'>
-                            <Checkbox color='var(--constThemeColor)' id='11G' name='11' title="כיתה ט'" />
-                            <label forhtml='11G'>כיתה יא'</label>
-                        </div>
-                        <div className='flex center checkboxContainer'>
-                            <Checkbox color='var(--constThemeColor)' id='12G' name='12' title="כיתה ט'" />
-                            <label forhtml='12G'> כיתה יב'</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
+           {quickSignUp}
 
             <AboutMe />
 
@@ -330,3 +339,27 @@ function Home({ ...props }) {
 }
 
 export default Home;
+
+
+
+const PromoDiv = ({...props})=>{
+    
+    
+    return (
+        <div className='grid boxShadow' id='promoVideo' >
+            <div className='flex tStart center'>
+                <ul id="promoList">
+                <li>רוצים לקבל ציון גבוה ב-30% ממה שאתם מסוגלים היום?</li>
+                <li>חווית צפייה מושלמת ומותאמת למגוון מכשירים</li>
+                <li>תמציתי ומדויק - כדי לחסוך לכם זמן לימוד מיותר</li>
+                <li>ליווי אישי - פייסבוק, ווטסאפ, צ'אט. איך שנוח לכם</li>
+                <li>יצירתיות - דרך חדשנית ומעניינת להצגת פתרונות הבגרות</li>
+                <li>אנימציות - שמסבירות בקלות וביעילות נושאים מורכבים</li>
+                </ul>
+            </div>
+            <div className='flex center' style={{height:'-webkit-fill-available' , width: '-webkit-fill-available'}}>
+                <YoutubeEmb />
+            </div>
+        </div>
+    )
+}

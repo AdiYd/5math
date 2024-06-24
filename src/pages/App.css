@@ -211,4 +211,37 @@ div.carousel-container button::before {
   color: #1b9949;
   color: #25D366;
 }
-  
+
+#floatingFormula {
+  position: absolute;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+ul#promoList {
+  padding-right: 0em;
+}
+
+ul#promoList li {
+  /* font-size: 1.1em; */
+  font-weight: 500;
+  padding: 1em 0em;
+  margin: 0.8em;
+
+}
+
+div#promoVideo {
+  background: var(--themeGreyAlpha);
+  /* font-weight: 600; */
+  border-radius: var(--themeBorderRadius);
+  border-top-left-radius: 1px;
+  font-size: 0.9em;
+  padding: 2em 1em;
+  margin: 3em 5em;
+  grid-auto-flow: column;
+  background-color: var(--themeColorBG);
+  background-image: var(--themeBG_GradientLight);
+}
+
+div#promoVideo div {
+  min-height: 20em;
+}

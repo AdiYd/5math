@@ -185,3 +185,31 @@ img#tutorSelfie {
 ul.adminList li {
     list-style: decimal;
 }
+.flicker {
+    animation: flicker 5s alternate ease-in-out infinite;
+}
+
+@keyframes flicker {
+    0% {
+        transform: scale(1.4) rotate(-10deg);
+    }
+
+    33% {
+        transform: scale(0.4) rotate(10deg);
+    }
+
+    66% {
+        transform: scale(1.4) rotate(-10deg);
+    }
+
+    100% {
+        transform: scale(0.4) rotate(10deg);
+    }
+}
+.video-responsive {
+    overflow: hidden;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+    /* margin: 1em 2em; */
+    /* padding: 1em; */
+}
