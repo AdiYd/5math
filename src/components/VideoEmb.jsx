@@ -1,13 +1,15 @@
 import {useState, useEffect}  from "react";
 import useWindowDimensions from "../assets/function/useWindowDimentions";
 
-const YoutubeEmb = ({ 
+const promoVid = "https://iframe.mediadelivery.net/embed/12116/92763489-03f2-4bea-903c-9460602ad755?autoplay=true&amp;muted=false";
+
+const VideoEmb = ({ 
     height = '90%',
     width= '90%',
     frameBorder=0,
-    borderRadius=10,
+    borderRadius=8,
     title = 'Video',
-    embedId = '-sxfriO_IV0'
+    src = promoVid
         }) => {
             const {widthS, heightS} = useWindowDimensions();
             const [update, setUpdate] = useState(false);
@@ -19,10 +21,10 @@ const YoutubeEmb = ({
             <div className="video-responsive alignCenter">
             <iframe
                 className="boxShadow"
-                style={{borderRadius:`${borderRadius}px`, border:'1px solid rgba(0,0,0,0.8)'}}
+                style={{borderRadius:`${borderRadius}px`, background:'white'}}
                 width={width}
                 height={height}
-                src={`https://www.youtube.com/embed/${embedId}`}
+                src = {src}
                 frameBorder={`${frameBorder}`} 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerPolicy="strict-origin-when-cross-origin" 
@@ -32,4 +34,4 @@ const YoutubeEmb = ({
             </div>)
         };
 
-export default YoutubeEmb;
+export default VideoEmb;

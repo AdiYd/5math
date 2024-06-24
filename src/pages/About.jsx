@@ -454,6 +454,7 @@ export default function AboutUs({ ...props }) {
                 {aboutInfoDict.current[selectItem]?.title}
             </div>
             {aboutInfoDict.current[selectItem]?.body}
+            <button  onClick={() => setItem(undefined)} className="themeConst noneDisplay">סגירה</button>
         </div>
     </div>
 

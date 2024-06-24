@@ -242,6 +242,9 @@ ul#promoList li h3 {
   font-weight: 500;
 }
 
+ul#promoList li svg {
+  color: var(--themeDarkBlue);
+}
 div#promoVideo {
   /* background: var(--themeGreyAlpha); */
     background-color: rgba(255, 255, 255, 0.6);

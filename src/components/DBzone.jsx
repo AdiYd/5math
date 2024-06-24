@@ -89,9 +89,10 @@ function DBzone({ ...props }) {
                 <div className="flex center">
                     <form name='Search by mail' onSubmit={onSubmit}>
                             <input id='email'
+                            style={{height:'2em'}}
                                 placeholder="חיפוש לפי אימייל או שם"
                                 className="ltr" name='email' maxLength={80} type="text" required />
-                        <button className="" type="submit">חיפוש</button>
+                        <button className="medium" type="submit">חיפוש משתמש</button>
                     </form>
                 </div>
             }
@@ -140,20 +141,25 @@ function User({ userInfo = {} }) {
         <div className="ma2" >
             <div
                 title={userData.name}
-                onClick={() => setActive(p => !p)} className="pointer opacityHover tStart">
+                onClick={() => setActive(p => !p)} className="flex gap1 baseLine pointer opacityHover tStart">
                 {userData.email}
+                {userInfo.isAdmin && <p className="tStart small m0 darkRed">
+                         (Admin)
+                    </p>}
             </div>
             {active &&
                 <div>
-                    <div className="grid gap1 columns small mt2 mb2">
+                    <div className="grid columns small mt2 mb2">
                         {Object.keys(userData).map((item, indx) => (
                             <div
-                                className='squarish border alignCenter' key={indx}>
+                                className='border alignCenter' key={indx}>
                                 <div
                                     className="border bold"
                                     style={{
+                                        borderBottomLeftRadius: '0px',
+                                        borderBottomRightRadius:'0px',
                                         gridArea: `${indx + 1} / 1`,
-                                        background: 'var(--themeGreyAlpha)',
+                                        background: 'var(--themeGreenLight)',
                                         padding: '0.5em'
                                     }} >
                                     {item}
@@ -169,9 +175,6 @@ function User({ userInfo = {} }) {
                     <div className="tStart small">
                         {`Created at : ${createdAtTime.current}`}
                     </div>
-                    {userInfo.isAdmin && <h6 className="tStart m0 darkRed">
-                        This user is Admin
-                    </h6>}
                 </div>
             }
         </div>

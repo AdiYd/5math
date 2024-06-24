@@ -133,12 +133,12 @@ button#loginButton {
     color: var(--themeColorText_DarkMode);
 }
 div.subMenu#subMenuMobile {
-    gap: 2em;
     background-color: var(--themeColorBG2);
     box-shadow: var(--boxShadowHeader2);
     text-align: start;
     border-radius: 12px;
-    font-size: 2em;
+    font-size: 1.5em;
+        gap: 1em;
     width: max-content;
     padding: 1em;
     /* right: 5px; */
@@ -147,27 +147,36 @@ div.subMenu#subMenuMobile {
     overflow: scroll;
     overflow: overlay;
 }
+div.subMenu#subMenuMobile p {
+    margin: 0.3em;
+    padding: 0.5em;
+}
 ul#mobile {
-    gap: 2em;
-    background-color: var(--themeColorBG2);
+    background-color: var(--themeColorBG);
     box-shadow: var(--boxShadowHeader2);
-    text-align: start;
-    border-radius: 12px;
+    text-align: center;
+    border-radius: 0px 0px 10px 10px;
     font-size: 2em;
-    width: max-content;
-    padding: 1em;
-    right: 5px;
-    top: 10px;
+    width: -webkit-fill-available;
+    right: 0;
+    top: 20px;
     max-height: 70vh;
     overflow: scroll;
     overflow: overlay;
+    padding: 1em;
 }
 
-ul#mobile * {
-    text-align: start;
+ul#mobile div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-color: transparent;
 }
 
-ul#mobile *:hover {
+ul#mobile a {
+    padding: 0.5em;
+}
+
+ul#mobile a:hover {
     color: var(--themeColor);
 }

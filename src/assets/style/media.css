@@ -247,23 +247,24 @@
 
     div.storyDiv {
         position: absolute;
-        top: 0%;
-        left: 5%;
+        top: 2%;
+        left: 10%;
         height: max-content;
-        max-width: 85vw;
+        width: 85vw;
         max-height: 85vh;
         overflow-x: overlay;
         overflow-y: overlay;
         background-color: white !important;
         z-index: 40;
     }
-    
+
+    div.storyDiv button,
     div.storyDiv svg {
         display: block;
     }
     div.UserZone {
         font-size: 1.2em;
-    
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -328,5 +329,4 @@
         font-size: 8px;
     }
 
-}
 }
