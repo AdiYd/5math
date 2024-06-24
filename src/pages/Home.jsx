@@ -13,9 +13,9 @@ import '../assets/style/media.css';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAt, faComment, faComments, faDesktop, faEnvelope, faGift, faLaptop, faLocation, faLocationDot, faMailReply, faMobile, faMobileScreen, faPersonCircleQuestion, faPhone, faPlay, faQuestionCircle, faTabletScreenButton, faVideo, faWandMagicSparkles, faWifi } from '@fortawesome/free-solid-svg-icons';
-import { } from '@fortawesome/free-regular-svg-icons';
-import { faViadeoSquare, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faAt, faComment, faComments, faDesktop, faEnvelope, faGift, faHandHoldingHand, faLaptop, faListCheck, faLocation, faLocationDot, faMagicWandSparkles, faMailReply, faMobile, faMobileScreen, faPersonCircleQuestion, faPhone, faPlay, faQuestionCircle, faTabletScreenButton, faTrophy, faVideo, faWandMagicSparkles, faWandSparkles, faWifi } from '@fortawesome/free-solid-svg-icons';
+import { faHandshake} from '@fortawesome/free-regular-svg-icons';
+import { faReact, faViadeoSquare, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import Prompt from '../components/PromptDiv';
 import Checkbox from '../components/CheckBox';
 import AboutMe from '../components/AboutMe';
@@ -63,7 +63,7 @@ function Home({ ...props }) {
         <FloatingMath text='a_n = aq^{n-1}' position='bl' rotate={20} /> */}
             <div className='alignCenter fadeIn'>
                 <Logo />
-                <h1>קורס דיגיטלי ללימודי מתמטיקה 5 ו-4 יח"ל, בשילוב כלים דיגטליים</h1>
+                <h1>קורס דיגיטלי ללימודי מתמטיקה לבגרויות, בזמן ובנוחות שלך</h1>
                 <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
                 <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>
                     <button
@@ -188,7 +188,7 @@ function Home({ ...props }) {
                         icon={faPlay} className='' size='2xl' />
                     <FontAwesomeIcon
                         style={{ fontSize: '2.5em' }}
-                        icon={faWandMagicSparkles} className='' size='2xl' />
+                        icon={faWandSparkles} className='' size='2xl' />
                 </div>
 
                 <div>
@@ -349,12 +349,12 @@ const PromoDiv = ({...props})=>{
         <div className='grid boxShadow' id='promoVideo' >
             <div className='flex tStart center'>
                 <ul id="promoList">
-                <li>רוצים לקבל ציון גבוה ב-30% ממה שאתם מסוגלים היום?</li>
-                <li>חווית צפייה מושלמת ומותאמת למגוון מכשירים</li>
-                <li>תמציתי ומדויק - כדי לחסוך לכם זמן לימוד מיותר</li>
-                <li>ליווי אישי - פייסבוק, ווטסאפ, צ'אט. איך שנוח לכם</li>
-                <li>יצירתיות - דרך חדשנית ומעניינת להצגת פתרונות הבגרות</li>
-                <li>אנימציות - שמסבירות בקלות וביעילות נושאים מורכבים</li>
+                <li><FontAwesomeIcon icon={faTrophy} /><h3 id="textGradient2">רוצים לקבל ציון גבוה ב-30% ממה שאתם מסוגלים היום?</h3></li>
+                <li><FontAwesomeIcon icon={faLaptop} /><h3 id="textGradient2">חווית צפייה מושלמת ומותאמת למגוון מכשירים</h3></li>
+                <li><FontAwesomeIcon icon={faListCheck} /><h3 id="textGradient2">תמציתי ומדויק - כדי לחסוך לכם זמן לימוד מיותר</h3></li>
+                <li><FontAwesomeIcon icon={faHandshake} /><h3 id="textGradient2">ליווי אישי - פייסבוק, ווטסאפ, צ'אט. איך שנוח לכם</h3></li>
+                <li><FontAwesomeIcon icon={faWandSparkles} /><h3 id="textGradient2">יצירתיות - דרך חדשנית ומעניינת להצגת פתרונות הבגרות</h3></li>
+                <li><FontAwesomeIcon icon={faReact} size='lg' className='rotateInf' /><h3 id="textGradient2">אנימציות - שמסבירות בקלות וביעילות נושאים מורכבים</h3></li>
                 </ul>
             </div>
             <div className='flex center' style={{height:'-webkit-fill-available' , width: '-webkit-fill-available'}}>

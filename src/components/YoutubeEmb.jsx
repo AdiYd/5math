@@ -18,11 +18,12 @@ const YoutubeEmb = ({
             return(
             <div className="video-responsive alignCenter">
             <iframe
-                style={{borderRadius:`${borderRadius}px`}}
+                className="boxShadow"
+                style={{borderRadius:`${borderRadius}px`, border:'1px solid rgba(0,0,0,0.8)'}}
                 width={width}
                 height={height}
                 src={`https://www.youtube.com/embed/${embedId}`}
-                // frameBorder={`${frameBorder}`} 
+                frameBorder={`${frameBorder}`} 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen

@@ -71,7 +71,7 @@ function DBzone({ ...props }) {
     }
 
     return (
-        <div className="flex columns center border pb2 pt2 squarish" style={{ background: 'aliceblue' }}>
+        <div className="flex columns center border pb2 pt2 squarish" style={{ background:'aliceblue' }}>
             <h2> Admin center</h2>
             <a href={PrincipleDoc} download="PrincipleDoc" className='flex center opacityHover gap1 ma3 pointer'>
                 <img src={wordIcon}
