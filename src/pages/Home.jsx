@@ -57,7 +57,7 @@ function Home({ ...props }) {
     debug('Context: ', user, true);
     const { width } = useWindowDimensions();
 
-    let frame1 =  <div className='flex center frameDiv1 pt3 round boxShadow'>
+    let frame1 =  <div className='flex center frameDiv1 frameMargin purpleOnWhite themeRadius pt3 boxShadow'>
         {/* <FloatingMath animation={'flicker'} color='black' text='g(x) = ln(x)+e^{2x}' position='tl' />
         <FloatingMath fontSize='1.2em' transform='rotate(12deg)' text='sin^2(\pi) + cos^2(\pi) = 1' position='tr' />
         <FloatingMath text='a_n = aq^{n-1}' position='bl' rotate={20} /> */}
@@ -229,7 +229,7 @@ function Home({ ...props }) {
         </Card>
     </>
 
-    let quickSignUp =  <div className='quickSignUp boxShadow'>
+    let quickSignUp =  <div className='quickSignUp themeRadius frameMargin blackOnWhite boxShadow'>
             <div className='flex center columns'>
                 <div className='flex center gap1'>
                     <FontAwesomeIcon icon={faGift} size='2xl' color='var(--ThemeGPTOrangeDeep)' />
@@ -327,13 +327,9 @@ function Home({ ...props }) {
             </section>
 
             <PromoDiv />
-            {/* <div style={{ height: '4em' }}></div> */}
-
            {quickSignUp}
-
             <AboutMe />
 
-            {/* <div style={{ height: '4em' }}></div> */}
         </div>
     );
 }
@@ -346,7 +342,7 @@ const PromoDiv = ({...props})=>{
     
     
     return (
-        <div className='grid boxShadow' id='promoVideo' >
+        <div className='grid themeRadius lineargrad frameMargin boxShadow' id='promoVideo' >
             <div className='flex tStart center'>
                 <ul id="promoList">
                 <li><FontAwesomeIcon icon={faTrophy} size='lg' /><h3 id="textGradient2">רוצים לקבל ציון גבוה ב-30% ממה שאתם מסוגלים היום?</h3></li>

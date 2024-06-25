@@ -72,29 +72,29 @@ div#promptContainer {
         background-image: var(--themeBG_GradientLight);
     }
     
-    div#promptContainer::-webkit-scrollbar {
-        width: 0.4em;
-        height: 0.3em;
-        border-radius: var(--PlotRadius);
-    }
-    
-    div#promptContainer::-webkit-scrollbar-track {
-        background: transparent;
-    
-    }
-    
-    div#promptContainer::-webkit-scrollbar-thumb {
-        cursor: grab;
-        /* background: linear-gradient(315deg, transparent, transparent, #233b3234, transparent, transparent); */
-        border-radius: var(--cardRadius);
-        background-color: rgba(0, 0, 0, 0.442);
-        /* background: linear-gradient(45deg, rgba(22, 146, 235, 0.538), transparent); */
-    }
-    
-    div#promptContainer::-webkit-scrollbar-thumb:active {
-        cursor: grabbing;
-    }
-    
+div#promptContainer::-webkit-scrollbar {
+    width: 0.4em;
+    height: 0.3em;
+    border-radius: var(--PlotRadius);
+}
+
+div#promptContainer::-webkit-scrollbar-track {
+    background: transparent;
+
+}
+
+div#promptContainer::-webkit-scrollbar-thumb {
+    cursor: grab;
+    /* background: linear-gradient(315deg, transparent, transparent, #233b3234, transparent, transparent); */
+    border-radius: var(--cardRadius);
+    background-color: rgba(0, 0, 0, 0.442);
+    /* background: linear-gradient(45deg, rgba(22, 146, 235, 0.538), transparent); */
+}
+
+div#promptContainer::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
+}
+
     
 svg#closePrompt:hover {
     opacity: 0.6;
@@ -112,13 +112,10 @@ div.checkBoxDiv input[type=checkbox] {
     }
 
 div.frameDiv3 {
-    background: var(--ThemeGPTOrangeDeepAlpha);
     /* font-weight: 600; */
     font-size: 1em;
     padding: 2em 3em;
-    margin: 3em 5em;
     text-align: start;
-    border-radius: var(--themeBorderRadius);
     border-bottom-left-radius: 1px;
 }
 div.frameDiv3 p {
@@ -138,12 +135,10 @@ footer.footer {
     padding: 1em 1em;
     padding-bottom: 0.1em;
     width: -webkit-fill-available;
-    background-color: var(--themeColorBG_DarkMode);
-    /* background: var(--themeDarkBlue); */
-    background-image: var(--headerGradient);
-    color: var(--themeColorText_DarkMode);
-    
+    border-width: 1px 0px 0px 0px;
+    background-color: white;
 }
+
 div.writeMe {
     position: relative;
     /* width: fit-content; */

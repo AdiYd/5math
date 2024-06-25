@@ -5,7 +5,7 @@ import Logo from './Logo';
 function Footer({ ...props }) {
 
     return (
-        <footer className="footer">
+        <footer className="footer border">
             <div className='grid center ltr alignCenter'>
                 <div style={{ gridArea: '1 / 1 / span 2 / span 1', margin: '1em' }}>
                     <Logo linkTo='Home' whiteShadow={true}

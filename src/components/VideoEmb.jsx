@@ -7,7 +7,7 @@ const VideoEmb = ({
     height = '90%',
     width= '90%',
     frameBorder=0,
-    borderRadius=8,
+    borderRadius=12,
     title = 'Video',
     src = promoVid
         }) => {
@@ -20,7 +20,7 @@ const VideoEmb = ({
             return(
             <div className="video-responsive alignCenter">
             <iframe
-                className="boxShadow"
+                className="border"
                 style={{borderRadius:`${borderRadius}px`, background:'white'}}
                 width={width}
                 height={height}
