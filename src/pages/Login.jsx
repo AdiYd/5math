@@ -334,7 +334,7 @@ export default function Login({
                 <Prompt
                     height='fit-content'
                     showButton={true}
-                    callBack={() => user.callback({ email: res.email, userObj: { isAuth: true } })}
+                    callBack={() => user.callback({ email: res.email, userObj: { ...res, isAuth: true } })}
                     style={{ height: 'fit-content', borderRadius: '20px' }}
                     showDiv={true} >
                     {msg}

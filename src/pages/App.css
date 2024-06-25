@@ -22,15 +22,44 @@ div.App-main {
 
 div.frameDiv1 {
   position: relative;
-    background: var(--ThemeGPTPurpleVAlpha);
-    /* font-weight: 600; */
-    font-size: 0.9em;
-    padding: 2em 3em;
-    margin: 3em 5em;
-    color: white;
-    border-radius: var(--themeBorderRadius);
-    /* border-bottom-right-radius: 1px; */
-    }
+  font-size: 0.9em;
+  padding: 2em 3em;
+  /* border-bottom-right-radius: 1px; */
+  }
+  
+div.frameDiv1 p {
+  font-weight: 500;
+}
+
+.themeRadius {
+  border-radius: var(--themeBorderRadius);
+}
+
+.frameMargin {
+  margin: 3em 5em;
+}
+
+.purpleOnWhite {
+  background: var(--ThemeGPTPurpleVAlpha);
+  color: white;
+}
+
+.blackOnWhite{
+  background: #161b22;
+  background-color: var(--themeColorBG_DarkMode);
+  background: var(--themeDarkBlue);
+  background-image: var(--headerGradient);
+  color: var(--themeColorText_DarkMode);
+}
+
+.orangeOnBlack {
+  background: var(--ThemeGPTOrangeDeepAlpha);
+  color: var(--themeColorText);
+}
+.lineargrad {
+  background-color: rgba(255, 255, 255, 0.6);
+  background-image: var(--themeBG_GradientLight);
+}
         
 div.frameDiv2 {
     /* background: var(--ThemeGPTOrangeDeep); */
@@ -160,15 +189,8 @@ div.carousel-container button::before {
   
       
   div.quickSignUp {
-    background: #161b22;
-    background-color: var(--themeColorBG_DarkMode);
-    background: var(--themeDarkBlue);
-    background-image: var(--headerGradient);
-    color: var(--themeColorText_DarkMode);
     padding: 1em 0em;
-    border-radius: var(--themeBorderRadius);
     border-top-right-radius: 1px;
-    margin: 3em 5em;
   }
   
   div.quickSignUp h3 {
@@ -247,16 +269,11 @@ ul#promoList li svg {
 }
 div#promoVideo {
   /* background: var(--themeGreyAlpha); */
-    background-color: rgba(255, 255, 255, 0.6);
   /* font-weight: 600; */
-  border-radius: var(--themeBorderRadius);
   border-top-left-radius: 1px;
   font-size: 0.9em;
   padding: 2em 1em;
-  margin: 3em 5em;
   grid-auto-flow: column;
-  /* background-color: var(--themeColorBG); */
-  background-image: var(--themeBG_GradientLight);
 }
 
 div#promoVideo div {

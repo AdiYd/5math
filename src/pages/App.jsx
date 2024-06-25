@@ -136,7 +136,7 @@ export default function App({ }) {
                 onFulfilValidation(userInfos);
             }
         }
-        else if (google && !(email in dataBase.usersDict)) {
+        else if ( !(email in dataBase.usersDict)) {
             userInfos = { ...user, ...userObj };
             setUserInfo(userInfos);
             if (userInfos.isAuth === true) {

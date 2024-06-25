@@ -8,7 +8,6 @@ import { debug } from '../assets/function/functions';
 import { faWhatsapp, faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
 
 function AboutMe({ ...props }) {
-    const [active, setActive] = useState(false);
     const [moreInfo, setMoreInfo] = useState(false);
     const [writeMe, setWriteMe] = useState({
         active: false,
@@ -32,7 +31,7 @@ function AboutMe({ ...props }) {
         אני מאמין כי זו הדרך ללמוד היום מתמטיקה ואני פה כדי ללוות אתכם בכל התהליך.
     </p>
 
-    let additionalData = active && <p>
+    let additionalData =  <p>
         בתיכון הייתי תלמיד חלש ב 3 יחידות מתמטיקה. די מהר הסקתי שמתמטיקה זה לא בשבילי ושעדיף להתמקד בחלום שלי… להיות רפתן.  נרשמתי ללימודי מכינה למדעי הטבע באוניברסיטה העברית, אבל דווקא שם  התאהבתי במתמטיקה ובפיזיקה, וההתאהבות הלא צפויה הזו שינתה את כיוון חיי מרפתנות – לתואר בפיזיקה. למדתי שלמורה אחד יש את הכוח להשפיע על חייהם של מאות תלמידים.
 
         רציתי לעזור לתלמידים כמוני, שחוו תחושת כישלון בגלל מערכת חינוך לא מלמדת, ולהראות להם, כמו שגיליתי בעצמי, את היופי והעוצמה שבמתמטיקה. כך הפכתי להיות מורה.
@@ -50,7 +49,7 @@ function AboutMe({ ...props }) {
     </div>
 
     let contactMe = writeMe.active &&
-        <div className=' writeMe flex columns center fit boxShadow round'>
+        <div className=' writeMe flex columns center fit borderBlack squarish'>
         <FontAwesomeIcon
             className='opacityHover pointer'
             title='סגירה'
@@ -104,7 +103,7 @@ function AboutMe({ ...props }) {
     </div>
 
     return (
-        <div className='rtl frameDiv3 round boxShadow'>
+        <div className='rtl frameDiv3 themeRadius frameMargin orangeOnBlack boxShadow'>
             {/* <FontAwesomeIcon icon={faUser}
                 id='tutorSelfie' className='boxShadowHover p2' color='var(--constThemeColor)' /> */}
             <img id='tutorSelfie'
@@ -123,26 +122,20 @@ function AboutMe({ ...props }) {
             {additionalData}
             {myAgenda}
             <div className='flex center pt2 pb2'>
-                {!active && <button
-                    onClick={() => setActive(true)}
+                {!moreInfo && <button
+                    onClick={() => setMoreInfo(true)}
                     className='themeConst round'
                 >קראו עוד אודותי</button>}
 
-                {active && <div className='flex center alignCenter gap2'>
+                {moreInfo && <div className='flex center alignCenter gap2'>
                     <span className='flex center'>
                         <FontAwesomeIcon
                             title='סגירה'
                             className='mt1 pointer'
-                            onClick={() => { setActive(false); setMoreInfo(false); setWriteMe(p => ({ ...p, active: false })) }}
+                            onClick={() => {  setMoreInfo(false); setWriteMe(p => ({ ...p, active: false })) }}
                             icon={faSortUp} size='2xl' color='var(--constThemeColor)' />
 
                     </span>
-                    {!moreInfo &&
-                        <FontAwesomeIcon
-                            title='עוד עליי'
-                            className='mb1 pointer'
-                            onClick={() => setMoreInfo(true)}
-                            icon={faSortDown} size='2xl' color='var(--constThemeColor)' />}
                     {!writeMe.active && <button
                         onClick={() => setWriteMe(p => ({ ...p, active: true }))}
                         className='themeConst round'
