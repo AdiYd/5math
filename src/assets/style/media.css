@@ -247,14 +247,16 @@
 
     div.storyDiv {
         position: absolute;
-        top: 2%;
-        left: 10%;
+        top: 5%;
+        left: 5%;
         height: max-content;
-        width: 85vw;
+        width: 90vw;
         max-height: 85vh;
         overflow-x: overlay;
         overflow-y: overlay;
         background-color: white !important;
+        border-radius: 4px;
+        border-color: rgba(0, 0, 0, 0.777) !important;
         z-index: 40;
     }
 
@@ -327,6 +329,9 @@
 @media only screen and (max-width: 360px) {
     body {
         font-size: 8px;
+    }
+    ul#promoList {
+        font-size: smaller;
     }
 
 }

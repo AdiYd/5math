@@ -13,7 +13,7 @@ div#aboutCard {
     /* display: flex; */
     /* gap: 1em; */
     display: grid;
-        grid-template-rows: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;
     width: 13em;
     height: 12em;
     padding: 0.8em;
