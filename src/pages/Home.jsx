@@ -22,6 +22,7 @@ import AboutMe from '../components/AboutMe';
 import useWindowDimensions from '../assets/function/useWindowDimentions';
 import FloatingMath from '../components/FloatingMath';
 import VideoEmb from '../components/VideoEmb';
+import { dataBase } from './App';
 
 export const responsive = {
     superLargeDesktop: {
@@ -54,6 +55,7 @@ const cardStyle = {
 function Home({ ...props }) {
     document.title = '5 Math - דף הבית';
     const user = useContext(User);
+    const [msg, setMsg] = useState();
     debug('Context: ', user, true);
     const { width } = useWindowDimensions();
 
@@ -258,6 +260,7 @@ function Home({ ...props }) {
                         autoComplete='on'
                         title='אימייל'
                         type='email'
+                        dir='ltr'
                         // onChange={onInputHandler}
                         placeholder='אימייל'
                         name='email'></input>
@@ -267,17 +270,17 @@ function Home({ ...props }) {
                 </div>
                 <div className='flex center' id='checkBoxDiv'>
                     <div className='flex center checkboxContainer'>
-                        <Checkbox color='var(--constThemeColor)' id='10G' name='10' title="כיתה ט'" />
-                        <label forhtml='10G'> כיתה י'</label>
+                        <Checkbox color='var(--constThemeColor)' id='Approve' name='Approve' title="אישור קבלת דואר" />
+                        <label forhtml='Approve'> מאשר קבלת עדכונים והטבות במייל</label>
                     </div>
-                    <div className='flex center checkboxContainer'>
+                    {/* <div className='flex center checkboxContainer'>
                         <Checkbox color='var(--constThemeColor)' id='11G' name='11' title="כיתה ט'" />
                         <label forhtml='11G'>כיתה יא'</label>
                     </div>
                     <div className='flex center checkboxContainer'>
                         <Checkbox color='var(--constThemeColor)' id='12G' name='12' title="כיתה ט'" />
                         <label forhtml='12G'> כיתה יב'</label>
-                    </div>
+                    </div> */}
                 </div>
             </form>
         </div>
@@ -288,7 +291,17 @@ function Home({ ...props }) {
         let formaName = e.target.name;
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
-        debug('This is formData: ', userDataObj, true);
+        dataBase.addItem({tableName: 'Users_Leads',item:{...userDataObj, approved: ('Approve' in userDataObj)? 1:0}});
+        setMsg(<Prompt
+                height='fit-content'
+                showButton={true}
+                callBack={() => {setMsg(undefined)}}
+                style={{ height: 'fit-content', borderRadius: '20px' }}
+                showDiv={true} >
+                <Logo />
+                <h3> 🎉 מזל טוב, {userDataObj.name} 🎉</h3>
+                <h4> ההטבה בדרך למייל שלכם </h4>
+             </Prompt>)
     }
 
     return (
@@ -325,7 +338,7 @@ function Home({ ...props }) {
                     </div>
                 </Carousel>
             </section>
-
+            {msg}
             <PromoDiv />
            {quickSignUp}
             <AboutMe />

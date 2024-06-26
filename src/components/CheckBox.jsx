@@ -9,7 +9,8 @@ function Checkbox({
         <div className="checkBoxDiv">
             <input
                 style={{ accentColor: color }}
-                type="checkbox" {...props} />
+                type="checkbox" 
+                {...props} />
         </div>
     )
 }

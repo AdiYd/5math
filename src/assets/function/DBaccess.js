@@ -2,7 +2,7 @@ import AWS, { AccessAnalyzer } from 'aws-sdk';
 
 import { debug } from './functions';
 
-debug('This is your region: ',  process.env.REACT_APP_AWS_REGION,true);
+// debug('This is your region: ',  process.env.REACT_APP_AWS_REGION,true);
 
 export default class DBaccess {
     constructor() {
@@ -20,9 +20,15 @@ export default class DBaccess {
 
     addItem = async ({ tableName = 'Users', item, uniqueKey = 'email' } = {}) => {
         if (item) {
+            let additionalData = {
+                createdAtTime: String(new Date()),
+            }
+            if (tableName==='Users'){
+                additionalData.courses =  item.courses || '*' 
+            }
             const params = {
                 TableName: tableName,
-                Item: { ...item, createdAtTime: String(new Date()), courses: item.courses || '*' },
+                Item: { ...item,...additionalData},
                 ConditionExpression: `attribute_not_exists(${uniqueKey})`
             }
 
@@ -70,9 +76,16 @@ export default class DBaccess {
         };
         try {
             const data = await this.dynamoDB.scan(params).promise();
+            const usersData = await this.dynamoDB.scan({TableName: 'Users'}).promise();
+            const leadsData = await this.dynamoDB.scan({TableName:"Users_Leads"}).promise();
             debug('Data fetched successfully:', data, true);
-            this.usersList = [...data.Items];
-            this.usersEmails = data.Items.map((user) => user.email);
+            this.usersList = [...usersData.Items];
+            this.usersEmails = usersData.Items.map((user) => user.email);
+            this.leads = [...leadsData.Items];
+            this.leadsDict = {};
+            for( let item of this.leads){
+                this.leadsDict[item.email] = item;
+            }
             this.usersDict = {};
             for (let user of this.usersList) {
                 this.usersDict[user.email] = user;
