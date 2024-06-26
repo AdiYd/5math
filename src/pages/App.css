@@ -2,10 +2,10 @@ body {
   margin: 0em;
     position: relative;
     font-family: var(--fontFamily);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    font-size: var(--fontSize);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  font-size: var(--fontSize);
     direction: rtl;
     color: var(--themeColorText);
     background: var(--themeColorBG);
