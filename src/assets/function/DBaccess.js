@@ -2,6 +2,8 @@ import AWS, { AccessAnalyzer } from 'aws-sdk';
 
 import { debug } from './functions';
 
+debug('This is your region: ',  process.env.REACT_APP_AWS_REGION,true);
+
 export default class DBaccess {
     constructor() {
         let config = {
