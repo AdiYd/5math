@@ -23,19 +23,25 @@ const scrollFunction = (darkMode) => {
     let currentScroll = window.scrollY;
     let element = document.getElementById('header');
     // let login = document.getElementById('loginButton');
-    let logo = document.getElementById('imgLogo');
+    // let logo = document.getElementById('imgLogo');
     if (element && (currentScroll >= prevScroll) && currentScroll > 50 && !change) {  // Scrolling down
 
         change = true;
         element?.setAttribute('class', 'headerBorder');
         // login.setAttribute('class', 'themeConst round');
-        logo?.setAttribute('class', 'dropShadowWhite');
+        // logo?.setAttribute('class', 'dropShadowWhite');
     }
     else if ((element) && (currentScroll < prevScroll) && (currentScroll <= 20) && change) {   // Scrolling up
         change = false;
         element?.setAttribute('class', `headerPad ${darkMode ? 'darkModeHeader' : ''}`);
         // login.setAttribute('class', 'round');
-        logo?.setAttribute('class', 'dropShadow');
+        // logo?.setAttribute('class', 'dropShadow');
+    }
+    else if (element && currentScroll>850 && element.className!=='disAppear'){
+        element?.setAttribute('class', 'disAppear');
+    }
+    else if (element && currentScroll <450 && element.className==='disAppear'){
+        element?.setAttribute('class', 'headerBorder appearIn');
     }
     prevScroll = currentScroll;
     }
