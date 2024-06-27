@@ -28,7 +28,7 @@ function Formulas({
     });
     const [userFormula, setUserFormula] = useState(localStorage.getItem('userFormula') ? JSON.parse(localStorage.getItem('userFormula')) : {});
     const [showAll, setShowAll] = useState(JSON.parse(localStorage.getItem('userFormulaShowAll')) ?? true);
-    const msg = (!Object.keys(userFormula).length && showChbx) ? 'ניתן לבחור נוסחאות ולבנות דף נוסחאות מצומצם' : undefined;
+    const msg = (!Object.keys(userFormula).length && showChbx) ? showAll ? 'ניתן לבחור נוסחאות ולבנות דף נוסחאות מצומצם': 'לא נבחרו נוסחאות להצגה' : undefined;
     const selectAllList = useRef([]);
     const { darkMode, callback } = useContext(User);
 

@@ -102,7 +102,7 @@ function onTitleClickHandler() {
 //    ******************************        END          ******************************//
 
 //    ******************************    Change Theme color onClick at the LOGO picture      ******************************//
-function onLogoClickHandler(event, fromDB = false) {
+export function onLogoClickHandler(event, fromDB = false) {
     let element = event ? event.target : undefined, randomColor, randomColorAlpha;
     let randColor = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
     let themeColor = document.querySelector(':root');
@@ -114,6 +114,10 @@ function onLogoClickHandler(event, fromDB = false) {
         let colors = JSON.parse(localStorage.getItem('themeColor'));
         randomColor = colors.color;
         randomColorAlpha = colors.alpha;
+    }
+    else if (fromDB){
+        let style = getComputedStyle(document.body);
+        [randomColor, randomColorAlpha] = [ style.getPropertyValue('--ThemeGPTBlueV'),style.getPropertyValue('--ThemeGPTBlueVAlpha')];
     }
     else {
         let pickLightColor = (min) => (Math.floor(Math.random() * (255 - min + 1) + min));

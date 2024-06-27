@@ -24,7 +24,7 @@ img#LogoImgMain {
     margin: 0.15em;
     height: 4em;
     width: 5em;
-    border-radius: 40px;
+    /* border-radius: 40px; */
 }
 
 div.cardContainer {
