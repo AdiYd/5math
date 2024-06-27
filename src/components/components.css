@@ -65,9 +65,11 @@ div#promptContainer {
         padding: 1em;
         border: 1px solid var(--themeGrey);
         margin: 2em;
-        height: 80vh;
+        max-height: 80vh;
         max-width: 90vw;
-        left: 10%;
+        min-width: 60vw;
+        left: 10vw;
+        top: 7em;
         overflow-y: scroll;
         background-image: var(--themeBG_GradientLight);
     }

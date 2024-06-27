@@ -56,7 +56,7 @@ function Prompt({
                 <div className='flex center'>
                     <button
                 onClick={onClickHandler}
-                        style={{ position: 'sticky', bottom: '0.5em', left: '47%', padding: '0.7em 1.5em' }}
+                        style={{  bottom: '0.5em', padding: '0.7em 1.5em' }}
                         className='themeConst round ma2'>
                 סגירה
                     </button>

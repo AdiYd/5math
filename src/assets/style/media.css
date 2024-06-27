@@ -210,11 +210,11 @@
         font-size: 0.8em;
     }
 
-    div#promptContainer {
+    /* div#promptContainer {
         left: -1%;
         margin: 1em;
         height: 80vh;
-    }
+    */
 
     input#password,
     input#password2,
@@ -304,6 +304,9 @@
         font-size: 1.1em;
     }
 
+    div#promptContainer {
+        font-size: larger !important;
+    }
     div.frameDiv3 svg#tutorSelfie {
         width: 3em !important;
         height: 3em !important;

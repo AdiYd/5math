@@ -296,6 +296,7 @@ function Home({ ...props }) {
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
         dataBase.addItem({tableName: 'Users_Leads',item:{...userDataObj, approved: ('Approve' in userDataObj)? 1:0}});
+        debug('Prompting msg');
         setMsg(<Prompt
                 height='fit-content'
                 showButton={true}
@@ -303,7 +304,7 @@ function Home({ ...props }) {
                 style={{ height: 'fit-content', borderRadius: '20px' }}
                 showDiv={true} >
                 <Logo />
-                <h3> 🎁 מזל טוב, {userDataObj.name} 🎉</h3>
+                <h3> 🎉 מזל טוב, {userDataObj.name} 🎁</h3>
                 <h4> ההטבה בדרך למייל שלכם </h4>
              </Prompt>)
     }
