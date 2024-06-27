@@ -206,7 +206,7 @@ export default function Header({ currentPage }) {
                     round={true}
                     textSizeRatio={2}
                     color="var(--themeColor)"
-                    size={isMobile ? '28' : '30'}>
+                    size={isMobile ? '25' : '30'}>
                 </Avatar>
                 <SubMenu
                     isMobile={isMobile}

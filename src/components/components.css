@@ -60,14 +60,14 @@ div.cardContainer * {
 div#promptContainer {
     /* resize: both; */
         position: fixed;
-        z-index: 150;
+        z-index: 41;
         background: var(--themeColorBG);
         padding: 1em;
         border: 1px solid var(--themeGrey);
-        top: 10%;
-        width: 57vw;
+        margin: 2em;
         height: 80vh;
-        left: 20%;
+        max-width: 90vw;
+        left: 10%;
         overflow-y: scroll;
         background-image: var(--themeBG_GradientLight);
     }

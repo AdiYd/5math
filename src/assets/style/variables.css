@@ -40,6 +40,7 @@
 
     --ThemeColor1TitleColor: -webkit-linear-gradient(0deg, white, white, var(--themeColor), var(--themeColor), var(--themeColor), var(--themeColor));
     --headerGradient: linear-gradient(-90deg, #000000, #0007098c, #21212187, transparent);
+    --themeGradient: linear-gradient(200deg, var(--themeColorAlpha), transparent);
     --headerGradient2: linear-gradient(180deg, #000000, black, black, black, black, transparent);
     --linearGradient: -45deg, #9c78db5c, transparent;
     --linearGradient2: 45deg, transparent, rgba(188, 203, 230, 0.22), rgb(236 230 192 / 11%), rgb(206 239 199 / 22%), transparent;

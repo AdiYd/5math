@@ -23,7 +23,7 @@ div#aboutCard {
 div.storyDiv p {
     margin-top: 0em;
     line-height: 1.8;
-    max-width: 65vw;
+    margin: 1em;
 }
 
 div.storyDiv {
@@ -32,10 +32,8 @@ div.storyDiv {
     padding: 1.1em 2em;
     border-radius: var(--themeBorderRadius);
     width: fit-content;
-    margin-bottom: 2em;
-    margin-top: 1em;
-    
-    }
+    margin: 2em 5em;
+}
     
 
 .constGrad0 {

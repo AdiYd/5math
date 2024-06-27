@@ -230,7 +230,8 @@ function Bagrut({ ...props }) {
                         ((filterData.year && item.includes(filterData.year) || !filterData.year) && ((filterData.moed && item.includes(filterData.moed)) || !filterData.moed))))
                 }).map((item, indx) => (
                     <Card
-                        className={`rtl hoverGrad${indx % 6}`}
+                        // className={`rtl hoverGrad${indx % 6}`}
+                        className={`rtl hoverGradTheme`}
                         key={item + indx}
                         title={bagrutDict[item].name}
                         translateY={false}
@@ -249,7 +250,7 @@ function Bagrut({ ...props }) {
         </div>
     </div>
 
-    let bagrut5_about = <div className='rtl' style={{ maxWidth: '87%', margin: 'auto' }}>
+    let bagrut5_about = <div className='rtl' style={{ margin: '2em' }}>
         <h3>מבנה הבחינה:</h3>
         <p> בבחינת הבגרות במתמטיקה 5 יחידות אנחנו נדרשים ליישם ידע במגוון רחב של נושאים מתמטיים בזמן מוגבל.
 

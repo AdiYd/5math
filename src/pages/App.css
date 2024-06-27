@@ -85,7 +85,7 @@ div.frameDiv2 {
   /* background-image: linear-gradient(45deg, #cdbba482, transparent); */
   background: var(--themeColorBG);
     /* background-image: linear-gradient(238deg, #aae3c63a, #f0dfad11, #e4969622); */
-    background-image: var(--themeBG_GradientLight);
+  background-image: var(--themeBG_GradientLight);
 }
 
 #frame2Card2 {
@@ -119,6 +119,9 @@ img#frame2Img {
   -webkit-text-fill-color: transparent;
 }
 
+.hoverGradTheme:hover {
+  background-image: var(--themeGradient) !important;
+}
 hr#horizLine {
   border-top: 1px solid var(--themeGrey);
   margin-top: 0.5em;

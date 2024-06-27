@@ -61,7 +61,7 @@ function UserZone({ ...props }) {
         </div>
     }
 
-    let userMenu = <div className='flex center gap2'>
+    let userMenu = <div className='flex around'>
                        {Object.keys(userDict).map((item, i)=>(
                                 <section key={i} className='border squarish flex columns p3 m3 centerAlign'>
                                     <span 

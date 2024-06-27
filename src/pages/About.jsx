@@ -79,7 +79,7 @@ const aboutDict = (callBack) => ({
             איך לומדים כאן ?<br />
             איך אני צריך להרגיש כשאני לומד ?<br />
             מי המורה שלי ?<br />
-            אז…נתחיל לאט לאט ?ואולי נתחיל מהסוף
+            אז…נתחיל לאט לאט? ואולי נתחיל מהסוף
             <br /><br />
             קוראים לי שי , שי חכימי , ואני מלמד מתמטיקה ופיזיקה ברמת 5 יחידות לבגרות החל משנת 2001
             אבל אם אגיד 19 שנה, בעוד שנה זה לא יהיה רלוונטי
@@ -271,7 +271,8 @@ export default function AboutUs({ ...props }) {
             Object.keys(aboutInfoDict.current).map((item, indx) => (
                 indx < 4 && <Card
                     onClick={() => { setItem(p => item !== p ? item : undefined) }}
-                    className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
+                    // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
+                    className={`rtl pointer hoverGradTheme ${item === selectItem ? 'constGrad' + indx : ''}`}
                     key={item + indx}
                     title={aboutInfoDict.current[item].title?.props?.children}
                     translateY={false}
@@ -300,7 +301,8 @@ export default function AboutUs({ ...props }) {
             Object.keys(aboutInfoDict.current).map((item, indx) => (
                 (indx > 3 && indx < 8) && <Card
                     onClick={() => { setItem(p => item !== p ? item : undefined) }}
-                    className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
+                    // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
+                    className={`rtl pointer hoverGradTheme ${item === selectItem ? 'constGrad' + indx : ''}`}
                     key={item + indx}
                     title={aboutInfoDict.current[item].title?.props?.children}
                     translateY={false}

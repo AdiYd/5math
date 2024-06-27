@@ -194,11 +194,15 @@
     div.headerBorder {
         border-radius: 0px !important;
     }
-    
+
+    ul#mobile li.activePage {
+        border-color: transparent !important;
+        color: var(--themeColor) !important;
+    }
     img#tutorSelfie {
         margin: 1em !important;
-            width: 7em !important;
-            height: 7em !important;
+        width: 7em !important;
+        height: 7em !important;
         border: 1px solid rgba(255, 255, 255, 0.651);
     }
 
@@ -207,10 +211,9 @@
     }
 
     div#promptContainer {
-        top: 10%;
-        width: 68vw;
+        left: -1%;
+        margin: 1em;
         height: 80vh;
-        left: 10%;
     }
 
     input#password,
@@ -241,28 +244,30 @@
         display: none;
     }
     div#promptContainer {
-        left: 15% !important;
-        width: 74vw !important;
+        left: -1% !important;
+        margin: 1em !important;
+        max-width: 90%;
     }
 
     div.storyDiv {
         position: absolute;
-        top: 5%;
-        left: 5%;
+        top: 2%;
+        left: 2%;
         height: max-content;
         width: 90vw;
         max-height: 85vh;
         overflow-x: overlay;
         overflow-y: overlay;
         background-color: white !important;
-        border-radius: 4px;
+        border-radius: 4px !important;
         border-color: rgba(0, 0, 0, 0.777) !important;
         z-index: 40;
+        margin: 1em !important;
     }
 
     div.storyDiv button,
     div.storyDiv svg {
-        display: block;
+        display: block !important;
     }
     div.UserZone {
         font-size: 1.2em;
@@ -303,7 +308,15 @@
         width: 3em !important;
         height: 3em !important;
     }
-
+    div.UserZone {
+        font-size: 1em;
+    }
+    div.userZone section {
+        margin: 0.5em !important;
+    }
+    span * {
+        text-wrap: nowrap;
+    }
     button {
         font-size: 0.7em;
     }
@@ -311,10 +324,6 @@
     img#tutorSelfie {
         width: 5em !important;
         height: 5em !important;
-    }
-    div#promptContainer {
-        left: 10% !important;
-        width: 80vw !important;
     }
     div.login,
     div.signup {
@@ -328,7 +337,7 @@
 }
 @media only screen and (max-width: 360px) {
     body {
-        font-size: 8px;
+            font-size: 9px;
     }
     ul#promoList {
         font-size: smaller;
