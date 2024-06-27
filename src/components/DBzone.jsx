@@ -17,6 +17,10 @@ function DBzone({ ...props }) {
 
     // debug('This is adminPlot: ', adminPlot, usersList.current, true);
 
+useEffect(()=>{
+    dataBase.loadDB();
+},[])
+
     const loadUsers = (e) => {
         if (!adminPlot.active || adminPlot.active !== e.target.name) {
             setAdminPlot({

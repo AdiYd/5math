@@ -17,6 +17,7 @@ import { faArrowRightFromBracket, faBars, faCaretDown, faSquareArrowUpRight, faU
 import { PAGES } from '../pages/App';
 import Formulas from '../pages/Formula';
 import Logo from './Logo';
+import { dataBase } from '../pages/App';
 
 const DBG_PROPS = {
     color: 'darkred',
@@ -245,21 +246,32 @@ export default function Header({ currentPage }) {
             {!user.isAuth && <div style={{ display: 'none' }}>
                 <GoogleLogin
                     onSuccess={res => {
-                        let userData = jwtDecode(res.credential);
-                        debug('Google Res: ', res, userData, DBG_PROPS);
-
-                        if (userData) {
-                            user.callback({
-                                name: userData.name,
-                                email: userData.email,
-                                google: true,
-                                isAuth: true,
-                                src: userData.picture,
-                                jwt: res.credential
-                            })
-                        }
-                        // authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
-                        setUpdate(p => !p)
+                            let userData = jwtDecode(res.credential);
+                            debug('Google Res: ', res, userData, DBG_PROPS);
+                            if (userData) {
+                                let userObj = {
+                                    name: userData.name.toLowerCase(),
+                                    email: userData.email.toLowerCase(),
+                                    google: true,
+                                    isAuth: true,
+                                    picture: userData.picture,
+                                    jwt: res.credential
+                                }
+                                dataBase.queryItem({value:userObj.email}).then(res=>{
+                                    if (res.length){
+                                        user.callback({userObj: {...res[0],...userObj}});
+                                    }
+                                    else {
+                                        debug('User not found, Adding...');
+                                        dataBase.addItem({ item: userObj });
+                                        user.callback({ userObj });
+                                    }
+                                    })
+                                .catch(err=>{
+                                    console.error('Error with google Auth: ', err);
+                                })
+                            }
+                            setUpdate(p => !p)
                     }}
                     onError={() => {
                         debug('Google Login Failed!', DBG_PROPS);

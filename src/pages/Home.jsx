@@ -270,8 +270,12 @@ function Home({ ...props }) {
                 </div>
                 <div className='flex center' id='checkBoxDiv'>
                     <div className='flex center checkboxContainer'>
-                        <Checkbox color='var(--constThemeColor)' id='Approve' name='Approve' title="אישור קבלת דואר" />
-                        <label forhtml='Approve'> מאשר קבלת עדכונים והטבות במייל</label>
+                        <Checkbox 
+                        value = {true}
+                        // onChange= {(e)=>{debug('Changing: ',e.target.value);e.target.value = !e.target.value}}
+                        defaultChecked = {true}
+                        color='var(--constThemeColor)' id='Approve' name='Approve' title="אישור קבלת דואר" />
+                        <label forhtml='Approve'> אישור קבלת עדכונים והטבות במייל</label>
                     </div>
                     {/* <div className='flex center checkboxContainer'>
                         <Checkbox color='var(--constThemeColor)' id='11G' name='11' title="כיתה ט'" />
@@ -299,7 +303,7 @@ function Home({ ...props }) {
                 style={{ height: 'fit-content', borderRadius: '20px' }}
                 showDiv={true} >
                 <Logo />
-                <h3> 🎉 מזל טוב, {userDataObj.name} 🎉</h3>
+                <h3> 🎁 מזל טוב, {userDataObj.name} 🎉</h3>
                 <h4> ההטבה בדרך למייל שלכם </h4>
              </Prompt>)
     }

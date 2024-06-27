@@ -58,7 +58,7 @@ function Prompt({
                 onClick={onClickHandler}
                         style={{ position: 'sticky', bottom: '0.5em', left: '47%', padding: '0.7em 1.5em' }}
                         className='themeConst round ma2'>
-                סגור
+                סגירה
                     </button>
                 </div>}
         </div>

@@ -114,9 +114,8 @@ export default function App({ }) {
         }, 1500)
     }
 
-    function userLogin({ email, google = false, userObj = {}, disconnect = false, isAdmin = false } = {}) {
+    function userLogin({ userObj = {}, disconnect = false, isAdmin = false } = {}) {
         let userInfos;
-        debug('DB: ', dataBase, true);
         if (disconnect) {
             removeCookie('userAuth');
             setUserInfo(userInfo);
@@ -126,22 +125,12 @@ export default function App({ }) {
             userInfos = { ...USERS.admin };
             setUserInfo(userInfos);
             onFulfilValidation(userInfos);
+            return
         }
-        else if (email in dataBase.usersDict) {
-            userInfos = { ...user, ...dataBase.usersDict[email], ...userObj };
-            delete userInfos?.password;
-            debug('This is user Info: ', userInfos, true);
+        else{
+            userInfos = {...userObj, isAuth: true};
             setUserInfo(userInfos);
-            if (userInfos.isAuth === true) {
-                onFulfilValidation(userInfos);
-            }
-        }
-        else if ( !(email in dataBase.usersDict)) {
-            userInfos = { ...user, ...userObj };
-            setUserInfo(userInfos);
-            if (userInfos.isAuth === true) {
-                onFulfilValidation(userInfos);
-            }
+            onFulfilValidation(userInfos)
         }
     }
 

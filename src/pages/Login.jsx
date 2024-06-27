@@ -102,69 +102,102 @@ export default function Login({
     const randomGradient = useRef(colorList[Math.floor(Math.random() * (colorList.length))]);
     const serverMsg = useRef(undefined);
 
-    // const checkServer = () => {
-    //     if (usersQuery.isLoading) {
-    //     serverMsg.current = <h1>Loading...</h1>
-    //     }
-    //     else if (usersQuery.isError) {
-    //         serverMsg.current = <h1>Error!</h1>
-    //     }
-    //     else if (usersQuery.isFetching) {
-    //         serverMsg.current = <h1>isFetching</h1>
-    //     }
-    //     else if (usersQuery.isFetched) {
-    //         serverMsg.current = <div>
-    //             {usersQuery.data?.map((item) => (
-    //                 <h2 key={item}>{item}</h2>
-    //             ))}
-    //         </div>
-    //     }
-    //     else {
-    //         serverMsg.current = undefined
-    //     }
-    // }
 
     const userAuth = ({ email, password } = {}) => {
-        if (email in dataBase.usersDict) { // React-query for user by mail 
-            if (dataBase.usersDict[email]?.google) {
+        dataBase.queryItem({tableName:'Users', value:email}).then(res=>{
+            if (res.length){
+                let authUser = res[0];
+                if (authUser?.google){
+                    setErr(p => ({
+                        ...p,
+                        ['general']:
+                            <p className='errorMSG tStart rtl'>
+                                {ValidIcons.notValid}  שם משתמש קיים, יש להתחבר דרך גוגל <br />
+                            </p>
+                    }))
+                    return
+                }
+                else if (!authUser?.google){
+                    dataBase.queryItem({tableName:'Pass', value:email}).then(item=>{
+                        if (item.length){
+                            let passHash = item[0]?.password;
+                            compare(password, passHash).then(bool => {
+                                debug(`Passwords ${!bool ? "don't" : ''} match!`)
+                                if (bool) {
+                                    user.callback({ userObj: { ...res[0]} });
+                                }
+                                else {
+                                    setErr(p => ({
+                                        ...p,
+                                        ['general']:
+                                            <p className='errorMSG tStart rtl' >
+                                                {ValidIcons.notValid} סיסמה שגויה <br />
+                                            </p>
+                                    }))
+                                }
+                            })
+                        }else{
+                            setErr(p => ({
+                                ...p,
+                                ['general']:
+                                    <p className='errorMSG tStart rtl' >
+                                        {ValidIcons.notValid} לא נמצאו פרטי המשתמש, נסו מאוחר יותר<br />
+                                    </p>
+                            }))
+                        }
+                    })
+                }
+            }else{
                 setErr(p => ({
                     ...p,
                     ['general']:
                         <p className='errorMSG tStart rtl'>
-                            {ValidIcons.notValid}  שם משתמש קיים, יש להתחבר דרך גוגל <br />
+                            {ValidIcons.notValid}  שם משתמש לא קיים במערכת,
+                            ניתן להרשם <b className='opacityHover pointer' onClick={() => setSignup(true)}> כאן </b>
                         </p>
                 }))
-                return
             }
-            else if (!dataBase.usersDict[email]?.google && password) {
-                let passHash = dataBase.usersDict[email]?.password ? dataBase.usersDict[email]?.password : '';
-                compare(password, passHash).then(bool => {
-                    debug(`Passwords ${!bool ? "don't" : ''} match!`)
-                    if (bool) {
-                        user.callback({ email, userObj: { isAuth: true } });
-                    }
-                    else {
-                        setErr(p => ({
-                            ...p,
-                            ['general']:
-                                <p className='errorMSG tStart rtl' >
-                                    {ValidIcons.notValid} סיסמה שגויה <br />
-                                </p>
-                        }))
-                    }
-                })
-            }
-        }
-        else {
-            setErr(p => ({
-                ...p,
-                ['general']:
-                    <p className='errorMSG tStart rtl'>
-                        {ValidIcons.notValid}  שם משתמש לא קיים במערכת,
-                        ניתן להרשם <b className='opacityHover pointer' onClick={() => setSignup(true)}> כאן </b>
-                    </p>
-            }))
-        }
+        })
+        // if (email in dataBase.usersDict) { // React-query for user by mail 
+        //     if (dataBase.usersDict[email]?.google) {
+        //         setErr(p => ({
+        //             ...p,
+        //             ['general']:
+        //                 <p className='errorMSG tStart rtl'>
+        //                     {ValidIcons.notValid}  שם משתמש קיים, יש להתחבר דרך גוגל <br />
+        //                 </p>
+        //         }))
+        //         return
+        //     }
+        //     else if (!dataBase.usersDict[email]?.google && password) {
+        //         let passHash = dataBase.usersDict[email]?.password ? dataBase.usersDict[email]?.password : '';
+        //         compare(password, passHash).then(bool => {
+        //             debug(`Passwords ${!bool ? "don't" : ''} match!`)
+        //             if (bool) {
+        //                 user.callback({ email, userObj: { isAuth: true } });
+        //             }
+        //             else {
+        //                 setErr(p => ({
+        //                     ...p,
+        //                     ['general']:
+        //                         <p className='errorMSG tStart rtl' >
+        //                             {ValidIcons.notValid} סיסמה שגויה <br />
+        //                         </p>
+        //                 }))
+        //             }
+        //         })
+        //     }
+        // }
+        // else {
+        //     setErr(p => ({
+        //         ...p,
+        //         ['general']:
+        //             <p className='errorMSG tStart rtl'>
+        //                 {ValidIcons.notValid}  שם משתמש לא קיים במערכת,
+        //                 ניתן להרשם <b className='opacityHover pointer' onClick={() => setSignup(true)}> כאן </b>
+        //             </p>
+        //     }))
+        // }
     }
 
     const onRejectValidation = (data) => {
@@ -315,7 +348,7 @@ export default function Login({
                 msg = <div>
                     <Logo showIcon={true} clickable={false} />
                     <br />
-                    <h3>תודה על הרשמתך</h3>
+                    <h3>🎉 תודה על הרשמתך 🎉</h3>
                     <h2 className='darkRed'>{res.name}</h2>
                     <h3> מייל עם פרטים נוספים נשלח לכתובת: </h3>
                     <h3> {res.email}</h3>
@@ -355,46 +388,49 @@ export default function Login({
                 (confirmEmail ? userDataObj.email2 === userDataObj.email : true)) {
                 let tempObj = { ...userDataObj };
                 tempObj.email = tempObj.email.toLowerCase();
-                debug(dataBase.usersEmails, true);
-                if (dataBase.usersEmails?.includes(tempObj.email)) {
-                    setErr(p => ({
-                        ...p,
-                        ['general']:
-                            <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                                {ValidIcons.notValid}  משתמש כבר רשום, לשחזור סיסמה <b className='opacityHover pointer' onClick={() => debug('Forgot pass Page')}> לחצו כאן </b><br />
-                            </p>
-                    }))
-                    return
-                }
-                delete tempObj.password2;
-                delete tempObj.email2;
-                genSalt(saltRounds, (err, salt) => {
-                    if (err) {
-                        debug('Error with crypt salt: ', err, DBG_PROPS);
+                dataBase.queryItem({value:tempObj.email}).then(res=>{
+                    if (res.length){  // User exist with the same email
+                        setErr(p => ({
+                            ...p,
+                            ['general']:
+                                <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                                    {ValidIcons.notValid}  משתמש כבר רשום, לשחזור סיסמה <b className='opacityHover pointer' onClick={() => debug('Forgot pass Page')}> לחצו כאן </b><br />
+                                </p>
+                        }))
                         return
                     }
-                    hash(tempObj.password, salt, (error, hashedPass) => {
-                        if (error) {
-                            debug('Error with crypt Hash: ', error, DBG_PROPS);
-                        }
-                        tempObj.password = hashedPass;
-                        tempObj.name = `${tempObj.fname.toLowerCase()} ${tempObj.lname.toLowerCase()}`
-                        setUserData(tempObj);
-                        let userItem = {
-                            name: tempObj.name,
-                            email: tempObj.email,
-                            isAuth: false,
-                            password: tempObj.password,
-                            goals: JSON.stringify(userData.type)
-                        }
-                        dataBase.addItem({ item: userItem }).then(res => {
-                        }, rej => { debug('Adding rejected: ', rej, true) }).catch(err => debug('Adding error: ', err, false));
-                        onSignupFullfil(userItem);
-                    });
-
-                    return
+                    else {  // User does not exist
+                        genSalt(saltRounds, (err, salt) => {
+                            if (err) {
+                                debug('Error with crypt salt: ', err, DBG_PROPS);
+                                return
+                            }
+                            hash(tempObj.password, salt, (error, hashedPass) => {
+                                if (error) {
+                                    debug('Error with crypt Hash: ', error, DBG_PROPS);
+                                }
+                                tempObj.password = hashedPass;
+                                tempObj.name = `${tempObj.fname.toLowerCase()} ${tempObj.lname.toLowerCase()}`
+                                setUserData(tempObj);
+                                let userItem = {
+                                    name: tempObj.name,
+                                    email: tempObj.email,
+                                    isAuth: false,
+                                    goals: JSON.stringify(userData.type)
+                                }
+                                dataBase.addItem({ item: userItem }).then(res => {
+                                }, rej => { debug('Adding rejected: ', rej, true) }).catch(err => debug('Adding error: ', err, false));
+                                dataBase.addPass({email:userItem.email, password:tempObj.password});
+                                onSignupFullfil(userItem);
+                            });
+        
+                            return
+                        })
+                    }
+                }).catch(err=>{
+                    console.error('Error with verifying user: ', err)
                 })
-                // navigate('/Home');
+                return
             }
             else if (confirmEmail && userDataObj.email !== userDataObj.email2) {
                 document.getElementById('email2').setCustomValidity("Emails don't match");
@@ -647,7 +683,6 @@ export default function Login({
                     if (checkIfSigned()) {
                         return
                     }
-
                     if (userData) {
                         let userObj = {
                             name: userData.name.toLowerCase(),
@@ -657,23 +692,31 @@ export default function Login({
                             picture: userData.picture,
                             jwt: res.credential
                         }
-                        if (signup && (userObj.email in dataBase.usersDict)) {
-                            setErr(p => ({
-                                ...p,
-                                ['general']:
-                                    <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
-                                        {ValidIcons.notValid}  משתמש כבר רשום, אם שכחתם סיסמה <b className='opacityHover pointer' onClick={() => debug('Forgot Pass')}> לחצו כאן </b><br />
-                                    </p>
-                            }))
-                            return
-                        }
-                        else if (!(userObj.email in dataBase.usersDict)) {
-                            dataBase.addItem({ item: userObj });
-                        }
-                        user.callback({ email: userObj.email, google: true, userObj });
-                        // onFulfilValidation()
+                        dataBase.queryItem({value:userObj.email}).then(res=>{
+                            if (res.length){
+                                if (signup){
+                                    setErr(p => ({
+                                    ...p,
+                                    ['general']:
+                                        <p className='errorMSG tStart rtl' style={{ fontSize: '0.8em' }}>
+                                            {ValidIcons.notValid}  משתמש כבר רשום, אם שכחתם סיסמה <b className='opacityHover pointer' onClick={() => debug('Forgot Pass')}> לחצו כאן </b><br />
+                                        </p>
+                                    }))
+                                    return
+                                }else{
+                                    user.callback({userObj: {...res[0],...userObj}});
+                                }
+                            }
+                            else {
+                                debug('User not found, Adding...');
+                                dataBase.addItem({ item: userObj });
+                                user.callback({ userObj });
+                            }
+                            })
+                        .catch(err=>{
+                            console.error('Error with google Auth: ', err);
+                        })
                     }
-                    // authUser({ ...userData }, signup ? 'signup' : 'login', 'google', onFulfilValidation, onRejectValidation);
                     setUpdate(p => !p)
                 }}
                 onError={() => {
