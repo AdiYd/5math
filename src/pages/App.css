@@ -11,6 +11,8 @@ body {
     background: var(--themeColorBG);
     transition: 0.1s;
     overflow-x: hidden;
+    max-width: 100vw;
+    overflow-x: scroll;
 }
 div#root {
   /* display: flex;
