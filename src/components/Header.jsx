@@ -215,7 +215,7 @@ export default function Header({ currentPage }) {
                     <p>{user.name}</p>
                     <p>{user.email}</p>
                     <a className='pointer hoverTheme'
-                        onClick={() => navigate('Personal')}>איזור אישי</a>
+                        onClick={() => {navigate('Personal'); setUserMenu(false)}}>איזור אישי</a>
                     {/* <div
                     title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
                     className='flex center pointer'>
@@ -450,6 +450,7 @@ function SubMenu({
     children,
     style = {},
     ...props }) {
+
     const [update, setUpdate] = useState(false);
     useEffect(() => {
         setUpdate(p => !p);

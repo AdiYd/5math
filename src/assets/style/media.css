@@ -277,6 +277,9 @@
     div.UserZone {
         font-size: 1.2em;
     }
+    ul#promoList li {
+        font-size: 1.1em !important;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -348,7 +351,7 @@
 }
 @media only screen and (max-width: 360px) {
     body {
-        /* font-size: 9px; */
+    position: relative;
     }
     ul#promoList {
         font-size: smaller;
