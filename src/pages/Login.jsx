@@ -382,7 +382,7 @@ export default function Login({
         let formaName = e.target.name;
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
-        debug('User Form data: ', formaName, userDataObj, DBG_PROPS);
+        // debug('User Form data: ', formaName, userDataObj, DBG_PROPS);
         if (formaName === 'signup') {
             if (userDataObj.password2 === userDataObj.password && validPass &&
                 (confirmEmail ? userDataObj.email2 === userDataObj.email : true)) {

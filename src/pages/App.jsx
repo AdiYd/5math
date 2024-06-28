@@ -13,6 +13,7 @@ import { User } from '..';
 import { Cookies, useCookies } from 'react-cookie';
 import UserZone from './User/UserZone';
 import DBaccess from '../assets/function/DBaccess';
+import { jwtDecode } from 'jwt-decode';
 
 export const dataBase = new DBaccess();
 
@@ -89,11 +90,10 @@ export default function App({ }) {
 
     useEffect(() => {
         if (cookie.userAuth) {
-            debug('User Authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
+            debug('User Authorized!: ', cookie, { color: 'lightgreen', fontSize: 16, fontWeight: 'bold' });
             // setUserInfo(cookie.userAuth);
         }
         else {
-
             debug('User Un-authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
         }
     }, []);
@@ -111,10 +111,43 @@ export default function App({ }) {
         }
     }, [user.darkMode])
 
+    useEffect(()=>{
+        const getUser = async ()=> {
+            const response = await fetch('https://geolocation-db.com/json/');
+            const data = await response.json();
+            const visitorData = {
+                ip: data['IPv4'],
+                userName: user.name,
+                userEmail: user.email,
+                countryCode: data['country_code'],
+                city: data['city'],
+                latitude: data['latitude'],
+                longitude: data['longitude'],
+                counter: 1
+            }
+            dataBase.queryItem({tableName:'Visitors_Home',key:'ip',value:visitorData.ip}).then(res=>{
+                if(!res.length){
+                    dataBase.addItem({tableName:'Visitors_Home', item: visitorData, uniqueKey: 'ip'})
+                }
+                else{
+                    dataBase.updateItem({tableName:'Visitors_Home',
+                    keyVal:{ip:res[0].ip}, 
+                    attrName:'counter',
+                    attrVal:res[0].counter+1})
+                }
+                debug(`User : ${res[0].name} visited this website ${res[0].counter} times`);
+            })
+            setCookie('userData',JSON.stringify(data),{maxAge: 60*60*24});
+        }
+        if (!cookie.userData){
+            getUser();
+        }
+    },[])
+
     const onFulfilValidation = (res) => {
         setTimeout(() => {
             let maxAge = res.isAdmin ? tokenTime.admin : res.google ? tokenTime.google : tokenTime.default;
-            setCookie('userAuth', JSON.stringify(res), { maxAge, secure: false });
+            setCookie('userAuth', JSON.stringify(res), { maxAge });
             debug('Authoraized new user: ', res.email, `Valid for ${maxAge / 60} minutes`, true)
             navigate('/Home');
         }, 1500)

@@ -14,11 +14,18 @@ import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 function DBzone({ ...props }) {
     const [update, setUpdate] = useState(false);
     const [adminPlot, setAdminPlot] = useState({ active: undefined, data: {} });
+    const [visitorsPlot, setVisitorsPlot] = useState({active: false, data:{}});
+    const totalVisitors = dataBase.uniqueVisitosHome ;
 
     // debug('This is adminPlot: ', adminPlot, usersList.current, true);
 
 useEffect(()=>{
-    dataBase.loadDB();
+    if (!dataBase.isActive){
+        dataBase.loadDB().then(res=> {
+            debug('This is res: ', res, true);
+            setUpdate(p=>!p);
+        })
+      }
 },[])
 
     const loadUsers = (e) => {
@@ -33,6 +40,26 @@ useEffect(()=>{
         }
     }
 
+    const visitorsData = (e)=>{
+        if (visitorsPlot.active){
+            setVisitorsPlot(p=>({...p, active: false}));
+        }
+        else{
+            let data = <div className="ltr" style={{ width: '-webkit-fill-available' }}>  
+                <ul className="adminList m0">
+                    {dataBase.uniqueVisitosHome ?
+                        dataBase.visitorsHomeList.map((item, indx)=>(
+                            <li key={indx}>
+                                 <Visitor userInfo={item} key={indx+item}/>
+                            </li>
+                    )) : <h4>לא נמצא המידע המבוקש</h4>
+                    }
+                </ul>
+            </div>
+           
+            setVisitorsPlot({active:true, data});
+        }
+    }
 
     const searchUser = (e) => {
         if (!adminPlot.active || adminPlot.active !== e.target.name) {
@@ -87,6 +114,32 @@ useEffect(()=>{
         setAdminPlot(p => ({ ...p, data: resList }));
     }
 
+    let search = <div className="flex center">
+                    <form name='Search by mail' onSubmit={onSubmit}>
+                            <input id='email'
+                            style={{height:'2em'}}
+                                placeholder="חיפוש לפי אימייל או שם"
+                                className="ltr" name='email' maxLength={80} type="text" required />
+                        <button className="small" type="submit">חיפוש משתמש</button>
+                    </form>
+            </div>
+
+    let usersBtns = <div className="flex center gap2 ma2">
+                <button name="loadAll" className={`medium ${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} onClick={loadUsers} >משתמשים רשומים</button>
+                <button name="leads" className={`medium ${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} onClick={fastSignup}> נרשמו להטבה</button>
+            </div>
+
+    let visitorsHome = totalVisitors && <>
+            <div className="flex center gap1 ma2">
+                <span className="flex center gap2"><h4>מספר המבקרים השונים בדף הבית: &nbsp; {String(totalVisitors)}</h4>
+                    <button name="visitors" 
+                    className={`small ${visitorsPlot.active ? 'themeConst2' : 'themeBorder'}`} 
+                    onClick={visitorsData}> פרטי מבקרים </button>
+                </span>
+            </div>
+            {visitorsPlot.active && visitorsPlot.data}
+    </>
+
     return (
         <div className="flex columns center border pb2 pt2 squarish" style={{ background:'aliceblue' }}>
             <h2> Admin center</h2>
@@ -96,23 +149,10 @@ useEffect(()=>{
                     title='מסמך עקרונות' alt='Word document Icon' />
                 לחץ להורדת מסמך עקרונות
             </a>
-            <div className="flex center gap2">
-                <button name="loadAll" className={`${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} onClick={loadUsers} >טען משתמשים</button>
-                <button name="search" className={`${adminPlot.active === 'search' ? 'themeConst2' : ''}`} onClick={searchUser}> חיפוש</button>
-                <button name="dummy" className={`${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} onClick={fastSignup}> רישום להטבה</button>
-            </div>
-            {
-                adminPlot.active === 'search' &&
-                <div className="flex center">
-                    <form name='Search by mail' onSubmit={onSubmit}>
-                            <input id='email'
-                            style={{height:'2em'}}
-                                placeholder="חיפוש לפי אימייל או שם"
-                                className="ltr" name='email' maxLength={80} type="text" required />
-                        <button className="medium" type="submit">חיפוש משתמש</button>
-                    </form>
-                </div>
-            }
+           
+            {visitorsHome}
+            {search}
+            {usersBtns}
             {
                 adminPlot.active &&
                 <div className="ltr" style={{ width: '-webkit-fill-available' }}>
@@ -225,6 +265,74 @@ function Lead({ userInfo = {} }) {
                 {userInfo.isAdmin && <p className="tStart small m0 darkRed">
                          (Admin)
                     </p>}
+            </div>
+            {active &&
+                <div>
+                    <div className="grid columns small mt2 mb2">
+                        {Object.keys(userData).map((item, indx) => (
+                            <div
+                                className='border alignCenter' key={indx}>
+                                <div
+                                    className="border bold"
+                                    style={{
+                                        borderBottomLeftRadius: '0px',
+                                        borderBottomRightRadius:'0px',
+                                        gridArea: `${indx + 1} / 1`,
+                                        background: 'var(--themeGreenLight)',
+                                        padding: '0.5em'
+                                    }} >
+                                    {item}
+                                </div>
+                                <div style={{ gridArea: `${indx + 1} / 2`, padding: '0.5em' }} >
+                                    {typeof userData[item] === "boolean" ?
+                                        <FontAwesomeIcon icon={userData[item] ? faCheck : faXmark} /> : userData[item]}
+                                </div>
+                            </div>)
+
+                        )}
+                    </div>
+                    <div className="tStart small">
+                        {`Created at : ${createdAtTime.current}`}
+                    </div>
+                </div>
+            }
+        </div>
+    )
+}
+function Visitor({ userInfo = {} }) {
+    const [active, setActive] = useState(false);
+    const [userData, setData] = useState({});
+    const createdAtTime = useRef();
+
+    useEffect(() => {
+        createdAtTime.current = userInfo.createdAtTime ? userInfo.createdAtTime : 'Created at unkown time';
+        let tempObj = {
+                'משתמש' : userInfo.userName === 'John Doe' ? 'לא ידוע': userInfo.userName,
+                'אימייל' : userInfo.userName === 'John Doe' ? false : userInfo.userEmail,
+                'מדינה': userInfo['countryCode'],
+                'עיר': userInfo['city'],
+                lat: userInfo['latitude'],
+                long: userInfo['longitude'],
+                'מספר כניסות': userInfo.counter,
+                'IPv4': userInfo.ip
+        }
+        
+        debug(tempObj, userInfo, true);
+        setData(tempObj);
+    }, [])
+
+    if (active) {
+        debug('User clicked : ', userData, true);
+    }
+    return (
+        <div className="ma1" >
+            <div
+                title={userData['משתמש']}
+                onClick={() => setActive(p => !p)} className="flex gap1 ltr baseLine pointer opacityHover tStart">
+                <p>{userData['משתמש']}</p>
+                <p>{userData['מדינה']}</p>
+                <p className="darkRed">({String(userData['מספר כניסות'])})</p>
+                
             </div>
             {active &&
                 <div>

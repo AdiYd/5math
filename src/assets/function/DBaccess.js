@@ -86,7 +86,32 @@ export default class DBaccess {
 
     }
 
-    loadDB = async()=>{
+    updateItem = async ({tableName='Users',keyVal, attrName, attrVal}={})=>{
+        const updateExpression = 'SET #attrName = :attrValue';
+        const expressionAttributeValues = {
+            ':attrValue': attrVal
+        };
+        const expressionAttributeNames = {
+            '#attrName': attrName
+        };
+        const params = {
+            TableName: tableName,
+            Key: keyVal,
+            UpdateExpression: updateExpression,
+            ExpressionAttributeValues: expressionAttributeValues,
+            ExpressionAttributeNames: expressionAttributeNames,
+            ReturnValues: 'UPDATED_NEW' // Optionally, you can return the updated attributes
+          };
+          debug('Trying to update with: ', params, false);
+        try {
+            const result = await this.dynamoDB.update(params).promise();
+            debug('Update succeeded');
+        } catch (error) {
+            debug('Failed to update item:', error);
+        }
+    };
+
+    loadDB = async ()=>{
         // Loading users
         const usersData = await this.dynamoDB.scan({TableName: 'Users'}).promise();
         this.usersList = [...usersData.Items];
@@ -102,6 +127,16 @@ export default class DBaccess {
         for( let item of this.leads){
             this.leadsDict[item.email] = item;
         } 
+
+        const visitorsHomeData =  await this.dynamoDB.scan({TableName:"Visitors_Home"}).promise();
+        this.visitorsHomeList= [...visitorsHomeData.Items];
+        this.uniqueVisitosHome = this.visitorsHomeList.length;
+        this.visitorsHomeDict = {};
+        for( let item of this.visitorsHomeList){
+            this.visitorsHomeDict[item.ip] = item;
+        } 
+        return visitorsHomeData;
+        // debug(this,true);
     }
 
     scanItems = async ({ tableName = 'Users' } = {}) => {
@@ -111,7 +146,6 @@ export default class DBaccess {
         try {
             const data = await this.dynamoDB.scan(params).promise();
             debug('Data fetched successfully:', data, true);
-            this.active = true;
             return data.Items
         } catch (err) {
             debug('Error fatching data:', err, true);
