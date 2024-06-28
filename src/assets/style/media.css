@@ -248,13 +248,15 @@
         margin: 1em !important;
         max-width: 90%;
     }
-
+    div.storyDiv p {
+        margin: 0.1em !important;
+    }
     div.storyDiv {
         position: absolute;
         top: 2%;
-        left: 2%;
+        left: 0%;
         height: max-content;
-        width: 90vw;
+        width: 88vw;
         max-height: 85vh;
         overflow-x: overlay;
         overflow-y: overlay;
@@ -296,6 +298,9 @@
         max-width: 5em;
     */
 
+    h3 {
+        font-size: 0.9em;
+    }
     div#frame2Card h3 {
         font-size: 1em;
     }
@@ -340,7 +345,7 @@
 }
 @media only screen and (max-width: 360px) {
     body {
-            font-size: 9px;
+        /* font-size: 9px; */
     }
     ul#promoList {
         font-size: smaller;

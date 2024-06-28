@@ -69,7 +69,7 @@ div#promptContainer {
         max-width: 90vw;
         min-width: 60vw;
         left: 10vw;
-        top: 7em;
+        top: 3em;
         overflow-y: scroll;
         background-image: var(--themeBG_GradientLight);
     }

@@ -186,9 +186,9 @@ const aboutDict = (callBack) => ({
         title: <h3> איך בנוי מבחן הבגרות ל 5 יחידות לימוד?</h3>,
         promot: <p>ממה מורכב שאלון הבגרות ? כמה זמן יש למבחן? ועוד שאלות</p>,
         body: <div className="bargrutInfo grid" style={{ gridTemplateColumns: '1fr 1fr', gap: '1em' }} >
-            <div className="flex columns center tStart around">
+            <div className="flex columns fill center tStart around">
                 <Card
-                    style={{ maxWidth: '20em' }}
+                    style={{ maxWidth: '35em' }}
                     // style={{ backgroundImage: `linear-gradient(45deg,${colorList[Math.floor(Math.random() * colorList2.length)]},transparent` }}
                     className='borderDropBR border' cardID={'bagrutInfoCarusel'} key={'5u1'} boxShadow={false} translateY={false}>
                     <h3 >{bagrutInfoDict.L5.frst.title}</h3>
@@ -214,9 +214,9 @@ const aboutDict = (callBack) => ({
                     </div>
                 </Card>
             </div>
-            <div className="flex columns center tStart around">
+            <div className="flex columns fill center tStart around">
                 <Card
-                    style={{ maxWidth: '20em' }}
+                    style={{ maxWidth: '35em' }}
                     // style={{ backgroundImage: `linear-gradient(45deg,${colorList[Math.floor(Math.random() * colorList2.length)]},transparent` }}
                     className='borderDropBL border' cardID={'bagrutInfoCarusel'} key={'5u1'} boxShadow={false} translateY={false}>
                     <h3 >{bagrutInfoDict.L5.sec.title}</h3>
