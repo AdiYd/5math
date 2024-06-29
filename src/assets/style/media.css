@@ -59,7 +59,7 @@
     div.quickSignUp form div#checkBoxDiv div {
         flex-direction: row;
         gap: 1.2em;
-        font-size: 0.7em;
+        /* font-size: 0.7em; */
     }
 
     div.quickSignUp form button {
@@ -232,6 +232,22 @@
     div.signup {
         width: 65% !important;
             /* border-radius: 0px !important; */
+    }
+
+    div.courses div {
+        margin: 0em !important;
+        width: -webkit-fill-available;
+    }
+
+    div.Courses {
+        padding: 1em 0em !important;
+    }
+
+    div.onConstruction {
+        margin: 0em !important;
+    }
+    div#notifyMe {
+        margin: 0em;
     }
 
     input#lname,

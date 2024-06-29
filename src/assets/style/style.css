@@ -196,6 +196,7 @@
 
 .boxShadowHover {
     box-shadow: var(--boxShadow);
+    transition: box-shadow 0.2s;
 }
 
 .boxShadowHover:hover {

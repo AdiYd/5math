@@ -462,7 +462,7 @@ export default function Login({
     if (signup) { // Sign up form
         formFields = <>
             <div className='ma1'>
-                <div className='flex' style={{ justifyContent: 'space-between' }}>
+                <div className='flex gap2' style={{ justifyContent: 'space-between' }}>
                     <div className='grid center tStart' >
                         <label htmlFor='fname'>שם פרטי: </label>
                         <input

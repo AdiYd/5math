@@ -310,12 +310,12 @@ function Bagrut({ ...props }) {
             <div className='flex center gap2'>
                 <button
                     onClick={() => { if (!bagrutInfo) { setInfo(true); slideOne.current.click() } }}
-                    className={`${!bagrutInfo ? 'themeBorder' : ''}`} >
+                    className={`squarish ${!bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
                     מידע על מבנה הבגרות</button>
                 <button
                     onClick={() => { if (bagrutInfo) { setInfo(false); slideZero.current.click() } }}
-                    className={`${bagrutInfo ? 'themeBorder' : ''}`} >
+                    className={`squarish ${bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faFile} className='ml2' />
                     שאלוני בגרות משנים קודמות</button>
             </div>

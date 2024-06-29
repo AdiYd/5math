@@ -123,7 +123,7 @@ select#gradeSelect {
 input#fname,
 input#lname {
     width: 100%;
-    max-width: 12vw;
+    /* max-width: 12vw; */
 }
 
 span#pass {

@@ -285,3 +285,6 @@ div#promoVideo {
 div#promoVideo div {
   min-height: 20em;
 }
+span#mathJax {
+  visibility: visible;
+}

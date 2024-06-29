@@ -358,7 +358,7 @@ export default Home;
 
 const PromoDiv = ({...props})=>{
     
-    
+
     return (
         <div className='grid themeRadius lineargrad frameMargin boxShadow' id='promoVideo' >
             <div className='flex tStart center'>
