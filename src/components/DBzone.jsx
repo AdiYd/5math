@@ -2,16 +2,17 @@
 import { useState, useEffect, useRef, useContext, act } from "react";
 import '../pages/App.css';
 import { debug } from "../assets/function/functions";
-import { dataBase } from "../pages/App";
+import { dataBase} from "../pages/App";
 import wordIcon from '../pages/User/wordLogo.svg';
 import PrincipleDoc from '../assets/Documents/PrincipleDoc.docx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
-
+import { User as USR } from "..";
 
 
 
 function DBzone({ ...props }) {
+    const user = useContext(USR);
     const [update, setUpdate] = useState(false);
     const [adminPlot, setAdminPlot] = useState({ active: undefined, data: {} });
     const [visitorsPlot, setVisitorsPlot] = useState({active: false, data:{}});
@@ -21,8 +22,7 @@ function DBzone({ ...props }) {
 
 useEffect(()=>{
     if (!dataBase.isActive){
-        dataBase.loadDB().then(res=> {
-            debug('This is res: ', res, true);
+        dataBase.fetchDB(user).then(res=> {
             setUpdate(p=>!p);
         })
       }
@@ -111,7 +111,8 @@ useEffect(()=>{
                 resList.push(user);
             }
         }
-        setAdminPlot(p => ({ ...p, data: resList }));
+        debug('This is what i got: ', resList, true);
+        setAdminPlot(p => ({ active:true, data: resList }));
     }
 
     let search = <div className="flex center">
@@ -120,20 +121,22 @@ useEffect(()=>{
                             style={{height:'2em'}}
                                 placeholder="חיפוש לפי אימייל או שם"
                                 className="ltr" name='email' maxLength={80} type="text" required />
-                        <button className="small" type="submit">חיפוש משתמש</button>
+                        <button className="small squarish themeBorder" type="submit">חיפוש משתמש</button>
                     </form>
             </div>
 
     let usersBtns = <div className="flex center gap2 ma2">
-                <button name="loadAll" className={`medium ${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} onClick={loadUsers} >משתמשים רשומים</button>
-                <button name="leads" className={`medium ${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} onClick={fastSignup}> נרשמו להטבה</button>
+                <button name="loadAll" className={`medium squarish ${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} 
+                onClick={loadUsers} >משתמשים רשומים</button>
+                <button name="leads" className={`medium squarish ${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} 
+                onClick={fastSignup}> נרשמו להטבה</button>
             </div>
 
     let visitorsHome = totalVisitors && <>
             <div className="flex center gap1 ma2">
                 <span className="flex center gap2"><h4>מספר המבקרים השונים בדף הבית: &nbsp; {String(totalVisitors)}</h4>
                     <button name="visitors" 
-                    className={`small ${visitorsPlot.active ? 'themeConst2' : 'themeBorder'}`} 
+                    className={`small ${visitorsPlot.active ? 'themeConst2' : ''}`} 
                     onClick={visitorsData}> פרטי מבקרים </button>
                 </span>
             </div>
@@ -351,7 +354,7 @@ function Visitor({ userInfo = {} }) {
                                     }} >
                                     {item}
                                 </div>
-                                <div style={{ gridArea: `${indx + 1} / 2`, padding: '0.5em' }} >
+                                <div style={{ gridArea: `${indx + 1} / 2`, padding: '0.5em', filter: ['lat','long','IPv4'].includes(item) ? 'blur(3px)':'' }} >
                                     {typeof userData[item] === "boolean" ?
                                         <FontAwesomeIcon icon={userData[item] ? faCheck : faXmark} /> : userData[item]}
                                 </div>

@@ -14,6 +14,8 @@ import { Cookies, useCookies } from 'react-cookie';
 import UserZone from './User/UserZone';
 import DBaccess from '../assets/function/DBaccess';
 import { jwtDecode } from 'jwt-decode';
+import Courses from './Courses';
+import Exercises from './Exercises';
 
 export const dataBase = new DBaccess();
 
@@ -49,13 +51,14 @@ const scrollFunction = (darkMode) => {
 };
 // ************  Scroll event listner - END  ************ //
 
+
 export const PAGES = {
     Home: {
         link: <Home />,
         name: 'דף הבית'
     },
     Courses: {
-        link: undefined,
+        link: <Courses />,
         name: 'הקורסים שלנו'
     },
     BagrutOfficial: {
@@ -63,7 +66,7 @@ export const PAGES = {
         name: 'מבחני בגרות'
     },
     Exercise: {
-        link: undefined,
+        link: <Exercises />,
         name: 'חוברות תרגול'
     },
     AboutUs: {
@@ -90,11 +93,11 @@ export default function App({ }) {
 
     useEffect(() => {
         if (cookie.userAuth) {
-            debug('User Authorized!: ', cookie, { color: 'lightgreen', fontSize: 16, fontWeight: 'bold' });
+            debug('User Authorized! ', { color: 'lightgreen', fontSize: 16, fontWeight: 'bold' });
             // setUserInfo(cookie.userAuth);
         }
         else {
-            debug('User Un-authorized!: ', cookie, { color: 'red', fontSize: 16, fontWeight: 'bold' });
+            debug('User Un-authorized! ',  { color: 'red', fontSize: 16, fontWeight: 'bold' });
         }
     }, []);
 

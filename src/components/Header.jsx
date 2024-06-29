@@ -18,6 +18,7 @@ import { PAGES } from '../pages/App';
 import Formulas from '../pages/Formula';
 import Logo from './Logo';
 import { dataBase } from '../pages/App';
+import { MathJax } from 'better-react-mathjax';
 
 const DBG_PROPS = {
     color: 'darkred',
@@ -26,10 +27,6 @@ const DBG_PROPS = {
 }
 const MOBILE_SCREEN_WIDTH = 680;
 export const THEME_COLORS = ['var(--ThemeGPTBlueV)', 'var(--ThemeGPTBlue)', 'var(--ThemeGPTOrangeV)', 'var(--ThemeGPTOrangeDeep)', 'var(--ThemeGPTRedV)', 'var(--ThemeGPTRed)', 'var(--ThemeGPTPurpleV)', 'var(--ThemeGPTPurpleLightV)', 'var(--ThemeGPTGreenV)', 'var(--ThemeGPTGreen)'];
-if (Boolean(localStorage.getItem('themeColor'))) {
-    onLogoClickHandler(undefined, true);
-}
-
 
 
 const Formula = (color, isMobile = false) => {
@@ -48,7 +45,7 @@ const Formula = (color, isMobile = false) => {
 //    ******************************    Change Radius onClick at the Title     ******************************//
 let round = 0;
 
-function onTitleClickHandler() {
+export const onTitleClickHandler = ()=> {
     debug('This is logo click with round = ', round, { color: 'darkgreen', background: 'lightgrey', fontWeight: 'bold', fontSize: 15 })
     let themeRadius = document.querySelector(':root');
     if (round === 0) {       // Make all buttons Squarish
@@ -102,11 +99,15 @@ function onTitleClickHandler() {
 //    ******************************        END          ******************************//
 
 //    ******************************    Change Theme color onClick at the LOGO picture      ******************************//
-export function onLogoClickHandler(event, fromDB = false) {
+export const onLogoClickHandler = (event, fromDB = false, def=false) => {
     let element = event ? event.target : undefined, randomColor, randomColorAlpha;
     let randColor = THEME_COLORS[Math.floor(Math.random() * THEME_COLORS.length)];
     let themeColor = document.querySelector(':root');
-    if (!fromDB) {
+    if (def){
+        let style = getComputedStyle(document.body);
+        [randomColor, randomColorAlpha] = [ style.getPropertyValue('--ThemeGPTBlueV'),style.getPropertyValue('--ThemeGPTBlueVAlpha')];
+    }
+    else if (!fromDB) {
         randomColor = randColor;
         randomColorAlpha = randColor.slice(0, randColor.indexOf(')')) + 'Alpha' + randColor.slice(randColor.indexOf(')'));
     }
@@ -128,7 +129,9 @@ export function onLogoClickHandler(event, fromDB = false) {
     }
     themeColor.style.setProperty('--themeColor', randomColor);
     themeColor.style.setProperty('--themeColorAlpha', randomColorAlpha);
-    localStorage.setItem('themeColor', JSON.stringify({ color: randomColor, alpha: randomColorAlpha }));
+    if (!def || !fromDB){
+        localStorage.setItem('themeColor', JSON.stringify({ color: randomColor, alpha: randomColorAlpha }));
+    }
     if (element) {
         element.animate(
             { transform: 'rotate(360deg)' },
@@ -138,7 +141,59 @@ export function onLogoClickHandler(event, fromDB = false) {
 }
 //    ******************************        END          ******************************//
 
-// onLogoClickHandler(undefined, true)
+export const setAppRaduis = ({type='d', fromDB = false}={})=>{
+    let style = getComputedStyle(document.body);
+    let rootSelector = document.querySelector(':root');
+    if (fromDB && localStorage.getItem('themeRadius')) {
+        type = localStorage.getItem('themeRadius');
+    }
+    switch (type){
+        case 'r':
+            rootSelector.style.setProperty('--themeBorderRadius','');
+            rootSelector.style.setProperty('--cardRadius','25px');
+            rootSelector.style.setProperty('--buttonRadius','25px');
+            rootSelector.style.setProperty('--buttonSquarishRadius','25px');
+            rootSelector.style.setProperty('--buttonRounderRadius','');
+            break;
+        case 's':
+            rootSelector.style.setProperty('--themeBorderRadius','10px');
+            rootSelector.style.setProperty('--cardRadius','10px');
+            rootSelector.style.setProperty('--buttonRadius','10px');
+            rootSelector.style.setProperty('--buttonSquarishRadius','');
+            rootSelector.style.setProperty('--buttonRounderRadius','10px');
+            break;
+        case 'q':
+            rootSelector.style.setProperty('--themeBorderRadius','3px');
+            rootSelector.style.setProperty('--cardRadius','3px');
+            rootSelector.style.setProperty('--buttonRadius','');
+            rootSelector.style.setProperty('--buttonSquarishRadius','3px');
+            rootSelector.style.setProperty('--buttonRounderRadius','3px');
+            break;
+        default:
+            rootSelector.style.setProperty('--themeBorderRadius','30px');
+            rootSelector.style.setProperty('--cardRadius','12px');
+            rootSelector.style.setProperty('--buttonRadius','3px');
+            rootSelector.style.setProperty('--buttonSquarishRadius','10px');
+            rootSelector.style.setProperty('--buttonRounderRadius','20px');
+            break;
+    }
+}
+
+const setUserSettings = ({def = false}={})=>{
+    if (def){
+        onLogoClickHandler(undefined, true,true);
+        setAppRaduis({type:'d',fromDB: false});
+    }
+    else {
+        if (Boolean(localStorage.getItem('themeColor'))) {
+            onLogoClickHandler(undefined, true);
+        }
+        if (Boolean(localStorage.getItem('themeRadius'))) {
+            setAppRaduis({fromDB: true});
+        }
+    }
+}
+
 
 export default function Header({ currentPage }) {
     const { width, height } = useWindowDimensions();
@@ -153,6 +208,7 @@ export default function Header({ currentPage }) {
         // debug('Changing header pageName after page Change: ', currentPage, true);
         setPageName(currentPage);
     }, [currentPage])
+
     useEffect(() => {
         let relPath = window.location.href.slice(window.location.href.lastIndexOf('/') + 1);
         currentPage = relPath;
@@ -166,6 +222,10 @@ export default function Header({ currentPage }) {
             setPageName(currentPage);
         }
     }, [window.location.href])
+
+    useEffect(() => {
+        setUserSettings({def: !user.isAuth});
+    }, [user.isAuth])
     let isMobile = Boolean(width <= MOBILE_SCREEN_WIDTH);
 
     function onClickHandler(e) {
@@ -400,12 +460,14 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                                 </div>
                             </div>
                         </Link>
-                        <SubMenu showMenu={subMenu[pageRout] && !mobileMenu} horizontal={true} >
-                                <a className='hoverTheme pointer'>  בדיקה של טקסט כלשהו </a>
-                                <a className='hoverTheme pointer'>  בדיקה של טקסט כלשהו </a>
-                                <a className='hoverTheme pointer'>  בדיקה של טקסט כלשהו </a>
-                                <a className='hoverTheme pointer'>  בדיקה של טקסט כלשהו </a>
-                            <a href='/Home'>  בדיקה של טקסט כלשהו </a>
+                        <SubMenu showMenu={subMenu[pageRout] && !mobileMenu} horizontal={false} >
+                            <MathJax>
+                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{'וקטורים  $$ \\vec{v}, \\vec{t} $$'}</a>
+                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{'אנליטית $$(x_1,y_1) $$'}</a>
+                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{'מרוכבים $$ z=x+i\\cdot y $$'}</a>
+                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{"חשבון דיפרנציאלי ואינטגרלי $\\int f(x), f'(x) $"}</a>
+                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{"משוואות מעריכיות $$x = e^{\\ln(x)}$$ "}</a>
+                                </MathJax>
                         </SubMenu>
                     </div> :
                     <div

@@ -62,14 +62,13 @@
 }
 
 .squarish {
-    border-radius: 8px;
+    border-radius: var(--buttonSquarishRadius);
 }
 .round {
     border-radius: var(--themeBorderRadius);
 }
-
 .rounder {
-    border-radius: 20px;
+    border-radius: var(--buttonRounderRadius);
 }
 
 .border {
@@ -104,12 +103,12 @@
 }
 .darkBlue {
     color: var(--themeDarkBlue);
-    color: #045083;
-    color: #023458;
+    /* color: #045083;
+                color: #023458; */
 }
 
 .darkRed {
-    color: rgb(102, 5, 5);
+    color: var(--themeDarkRed);
 }
 .bold {
     font-weight: 600;
@@ -264,7 +263,7 @@ button {
     padding: 0.6em 0.8em;
     color: var(--themeColorText_DarkMode);
     background-color: var(--themeColor);
-    border-radius: 8px;
+    border-radius: var(--buttonRadius);
     font-weight: bold;
     border: none;
     transition: 0.3s;
@@ -505,6 +504,9 @@ button:hover {
 /*     END Padding     */
 
 /*     Margin     */
+.mAuto {
+    margin: auto;
+}
 .ma1 {
     margin: 0.5em;
 }

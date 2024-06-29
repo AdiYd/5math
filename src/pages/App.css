@@ -168,15 +168,16 @@ div.carousel-container button {
   /* background-color: transparent; */
   background: transparent;
   z-index: 0;
-  border: 1px solid black;
+  /* border-radius: var(--themeBorderRadius); */
+  border: 1px solid var(--themeColorText);
 }
 
 div.carousel-container button:hover::before {
-  color: white;
+  color: var(--themeColorText_DarkMode);
 }
 
 div.carousel-container button::before {
-  color: black;
+  color: var(--themeColorText);
 }
 
 .custom-dot-list-style button {
@@ -184,13 +185,12 @@ div.carousel-container button::before {
 }
 
 .custom-dot-list-style li.react-multi-carousel-dot--active button {
-  background-color: black;
+  background-color: var(--themeColorText);
 }
 .cardText {
   display: contents;
   /* font-size: 1.5em; */
     color: var(--themeDarkBlue);
-    color: #032f4d;
   }
   
       

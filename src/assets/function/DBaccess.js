@@ -111,7 +111,13 @@ export default class DBaccess {
         }
     };
 
-    loadDB = async ()=>{
+    fetchDB = (user) => {
+        if (user.isAdmin){
+            return this.#loadDB();
+        }
+    }
+
+    #loadDB = async ()=>{
         // Loading users
         const usersData = await this.dynamoDB.scan({TableName: 'Users'}).promise();
         this.usersList = [...usersData.Items];

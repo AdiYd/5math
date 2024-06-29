@@ -138,7 +138,7 @@ footer.footer {
     padding-bottom: 0.1em;
     width: -webkit-fill-available;
     border-width: 1px 0px 0px 0px;
-    background-color: white;
+    background-color: var(--footerBGColor);
 }
 
 div.writeMe {

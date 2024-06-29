@@ -120,9 +120,12 @@ div.subMenu {
 div.subMenu * {
     height: fit-content;
     width: max-content;
-    margin: 0.7em;
+    /* margin: 0.7em; */
 }
 
+svg#fxLogo {
+    fill: var(--themeColorText);
+}
 
 li {
     list-style: none;

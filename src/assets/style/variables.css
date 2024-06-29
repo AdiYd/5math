@@ -7,7 +7,9 @@
     --themeGrey: rgba(184, 198, 211, 1);
 
     --themeColor: var(--ThemeGPTBlueV);
-    --themeDarkBlue: rgba(1, 30, 51, 1);
+    --themeDarkBlue: #032f4d;
+    --themeDarkRed: rgb(102, 5, 5);
+        /* rgba(1, 30, 51, 1); */
     --themeColorAlpha: rgba(0, 166, 255, 0.3);
     --themeGreyAlpha: rgba(184, 198, 211, 0.473);
     --themeGreenLight: rgb(155, 212, 155);
@@ -17,10 +19,16 @@
 
     --themeColorText: black;
     --themeColorText2: #27326d;
-    --themeColorText_DarkMode: rgb(254, 248, 233);
-    --themeColorBG: white;
+
+    --themeColorText_DarkMode: #f7f7f7;
+    --themeColorText_DarkMode2: #fef8e9;
     --themeColorBG_DarkMode: #212121;
+
+    --themeColorBG: white;
     --themeColorBG2: aliceblue;
+
+    --footerBGColor: white;
+
     --themeBG_GradientLight: -webkit-linear-gradient(238deg, #b0d0c03a, transparent);
     --themeBG_GradientLight: -webkit-linear-gradient(90deg, rgba(71, 172, 235, 0.15), transparent);
     --themeBG_GradientLight: -webkit-linear-gradient(90deg, rgba(71, 200, 235, 0.15), transparent);
@@ -28,15 +36,18 @@
 
     --themeBorderRadius: 30px;
     --cardRadius: 12px;
+    --buttonRadius: 3px;
+    --buttonSquarishRadius: 10px;
+    --buttonRounderRadius: 25px;
 
     --fontFamily: 'Rubik', Assistant, sans-serif;
 
     --boxShadowHeader: 0px 1px 4px -1px rgba(0, 0, 0, 0.445);
     --boxShadowHeader2: 0px 1px 4px -1px #222;
-        --BoxShadowPlotBase: -1px 1px 8px 1px;
+    --BoxShadowPlotBase: -1px 1px 5px 1px;
     /* #222; */
     --boxShadow: 3px 3px 12px rgba(117, 115, 115, 0.755);
-        --boxShadow2: 1px 1px 5px rgba(0, 0, 0, .955);
+    --boxShadow2: 1px 1px 5px rgba(0, 0, 0, .955);
 
     --ThemeColor1TitleColor: -webkit-linear-gradient(0deg, white, white, var(--themeColor), var(--themeColor), var(--themeColor), var(--themeColor));
     --headerGradient: linear-gradient(-90deg, #000000, #0007098c, #21212187, transparent);
@@ -46,6 +57,8 @@
     --linearGradient2: 45deg, transparent, rgba(188, 203, 230, 0.22), rgb(236 230 192 / 11%), rgb(206 239 199 / 22%), transparent;
     --linearGradDeg: 10deg;
     --linearGradOpacity: 0.3;
+
+
     /* +++++++++++++   GPT Theme colors Light +++++++++++++ */
     --ThemeGPTOrangeDeep: #F39F2E;
     --ThemeGPTOrangeDeepAlpha: rgba(243, 159, 46, 0.7);
@@ -58,7 +71,7 @@
     --ThemeGPTGreen: #29a847;
     --ThemeGPTGreenAlpha: rgba(41, 168, 71, 0.5);
     --ThemeGPTGreenV: rgb(32, 206, 1);
-        --ThemeGPTGreenVAlpha: rgba(32, 206, 1, 0.5);
+    --ThemeGPTGreenVAlpha: rgba(32, 206, 1, 0.5);
     --ThemeGPTGrey: #708090;
     --ThemeGPTGreyV: #708090;
     --ThemeGPTRed: rgb(220, 35, 35);
