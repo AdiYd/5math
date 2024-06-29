@@ -341,7 +341,7 @@ function Visitor({ userInfo = {} }) {
                 <div>
                     <div className="grid columns small mt2 mb2">
                         {Object.keys(userData).map((item, indx) => (
-                            <div
+                            userData[item]&&<div
                                 className='border alignCenter' key={indx}>
                                 <div
                                     className="border bold"

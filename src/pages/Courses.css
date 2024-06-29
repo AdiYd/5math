@@ -1,0 +1,123 @@
+/* body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+  } */
+
+.Courses {
+    text-align: center;
+    padding: 1em;
+    /* margin: 1em; */
+}
+
+
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em;
+    padding: 1em;
+    width: -webkit-fill-available;
+}
+
+.course-card {
+    background: rgba(255, 255, 255, 0.702);
+    border-radius: var(--cardRadius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: default;
+    max-width: 20em;
+    width: -webkit-fill-available;
+    /* height: 10em; */
+    padding: 0.8em 0.7em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.course-card:hover {
+    /* transform: translateY(-0.8em); */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.264);
+    box-shadow: var(--boxShadow);
+}
+
+.course-card h2 {
+    color: var(--themeDarkRed);
+    margin-bottom: 1em;
+}
+
+.course-card ul {
+    list-style-type: disc;
+    padding: 0.3em;
+    text-align: left;
+    margin: 0.5em 0em;
+    text-align: -webkit-right;
+}
+
+.course-card ul li {
+    margin: 1em 0em;
+    color: var(--themeColorText);
+    display: flex;
+    gap: 1em;
+    font-weight: 500;
+    padding: 0em 1em;
+    align-items: center;
+    direction: rtl;
+}
+
+
+.course-card ul li i {
+    margin-right: 0.1em;
+    color: var(--themeDarkBlue);
+}
+
+.price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.8em;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--themeColorGrey);
+    margin-right: 0em;
+}
+
+.discounted-price {
+    color: var(--themeDarkRed);
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.2em;
+}
+
+.paymentPromo {
+    padding: 1.1em 2em;
+    border: 1px solid var(--themeGrey);
+    border-radius: var(--buttonSquarishRadius);
+    background-color: var(--themeColorBG);
+    background-image: var(--themeBG_GradientLight);
+
+}
+
+.paymentPromo * {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+
+.notify {
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .course-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card {
+        /* width: 80vw; */
+        height: auto;
+    }
+}

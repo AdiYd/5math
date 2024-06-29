@@ -140,7 +140,7 @@ export default function App({ }) {
                 }
                 debug(`User : ${res[0].name} visited this website ${res[0].counter} times`);
             })
-            setCookie('userData',JSON.stringify(data),{maxAge: 60*60*24});
+            setCookie('userData',JSON.stringify(data),{maxAge: 60*60});
         }
         if (!cookie.userData){
             getUser();
