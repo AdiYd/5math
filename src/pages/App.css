@@ -55,6 +55,19 @@ div.frameDiv1 p {
   color: var(--themeColorText_DarkMode);
 }
 
+.blackOnWhite2 {
+  background: black;
+  background-color: var(--themeColorBG_DarkMode);
+  background: var(--themeDarkBlue);
+  color: var(--themeColorText_DarkMode);
+  }
+  
+.greyOnBlack {
+  background: var(--themeGrey);
+  background-color: var(--themeGreyAlpha);
+  color: var(--themeColorText);
+}
+
 .orangeOnBlack {
   background: var(--ThemeGPTOrangeDeepAlpha);
   color: var(--themeColorText);
@@ -262,7 +275,7 @@ ul#promoList li {
   gap: 2em;
   font-weight: 500;
   padding: 1em 0em;
-  margin: 0.8em;
+  margin: 0.8em 0.1em;
 }
 
 ul#promoList li h3 {
@@ -285,6 +298,8 @@ div#promoVideo {
 div#promoVideo div {
   min-height: 20em;
 }
-span#mathJax {
+
+a#mathJax,
+a#mathJax span {
   visibility: visible;
 }

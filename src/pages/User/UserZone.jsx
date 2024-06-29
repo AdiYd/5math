@@ -12,6 +12,7 @@ import ColorPickerCustom from '../../components/ColorPicker';
 import { onLogoClickHandler , setAppRaduis} from '../../components/Header';
 import { height, width } from '@fortawesome/free-brands-svg-icons/fa42Group';
 import { faArrowsRotate, faGear } from '@fortawesome/free-solid-svg-icons';
+import { toggleOff, toggleOn } from '../Login';
 
 
 
@@ -20,9 +21,9 @@ import { faArrowsRotate, faGear } from '@fortawesome/free-solid-svg-icons';
 function UserZone({ ...props }) {
     const user = useContext(User);
     const [color, setColor] = useState(JSON.parse(localStorage.getItem('themeColor'))?.color);
-    const [buttonRadius, setButtonRadius] = useState(undefined);
+    const [buttonRadius, setButtonRadius] = useState(localStorage.getItem('themeRadius'));
     const navigate = useNavigate();
-
+    debug('This is buttonRadius:', buttonRadius);
     useEffect(() => {
         if (!user.isAuth) {
             navigate('/Home')
@@ -55,10 +56,11 @@ function UserZone({ ...props }) {
                        {Object.keys(userDict).map((item, i)=>(
                                 <section key={i} className='border squarish flex columns p3 m3 centerAlign'>
                                     <span 
-                                    style={{  padding:'0.5em',
-                                    borderRadius: '8px 8px 0px 0px',
-                                    background: 'var(--themeGreenLight)'}}
-                                    className='flex center'><h5>{item}</h5></span>
+                                    style={{
+                                    padding:'0.5em',
+                                    borderRadius: 'var(--buttonSquarishRadius) var(--buttonSquarishRadius) 0px 0px',
+                                    }}
+                                    className='flex blackOnWhite center'><h5>{item}</h5></span>
                                     <span 
                                     style={{  padding:'0.5em'}}
                                     className='flex ltr center'>{userDict[item]}</span>
@@ -68,7 +70,7 @@ function UserZone({ ...props }) {
 
     let colorPicker = <div className='flex gap2 p2 m2'>
                         <div>
-                            <p style={{fontWeight:'500'}}>בחירת צבע לאתר:</p>
+                            <p style={{fontWeight:'500'}}>בחירת צבע נושא לאתר:</p>
                         </div>
                         <div className='flex center gap1'>
                                 <ColorPickerCustom  
@@ -88,7 +90,7 @@ function UserZone({ ...props }) {
 
     let radiusPicker = <div className='flex gap2 p2 m2'>
                         <div>
-                            <p style={{fontWeight:'500'}}>בחירת סגנון כפתור לאתר:</p>
+                            <p style={{fontWeight:'500'}}>בחירת סגנון אתר:</p>
                         </div>
                         <div className='flex center gap1'>
                                 <button className={`${buttonRadius === 'r'? '':'themeBorder'} small`}
@@ -107,7 +109,26 @@ function UserZone({ ...props }) {
                                     icon={faArrowsRotate} />
                         </div>
                      </div>
-
+    let modePicker = <div className='flex gap2 p2 m2'>
+                        <div>
+                            <p style={{fontWeight:'500'}}>בחירת תצוגת מסך:</p>
+                        </div>
+                        <div title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
+                            className='flex center pointer'>
+                            {<p className='m2 w500'>בהירה</p>}
+                            <svg
+                                onClick={() => { }}
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="30px"
+                                viewBox="0 -960 960 960"
+                                width="30px"
+                            // fill={user.darkMode ? '' : ""}
+                            >
+                            {!user.darkMode ? toggleOn : toggleOff}
+                            </svg>
+                            {<p className='m2 w500'>כהה</p>}
+                        </div> 
+                    </div>
 
     return (user.isAuth &&
         <div className='UserZone'>
@@ -124,6 +145,7 @@ function UserZone({ ...props }) {
             <ul style={{paddingRight:'2em'}}>
                 <li style={{listStyle:'disc'}}>{colorPicker}</li>
                 <li style={{listStyleType:'disc'}}>{radiusPicker}</li>
+                <li style={{listStyleType:'disc'}}>{modePicker}</li>
             </ul>
             <div className='flex gap2 ma2 center'>
                 <button className='squarish'> כפתור להמחשה </button>

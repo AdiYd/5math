@@ -7,6 +7,7 @@
 .Courses {
     text-align: center;
     padding: 1em;
+    position: relative;
     /* margin: 1em; */
 }
 
@@ -21,9 +22,9 @@
 }
 
 .course-card {
-    background: rgba(255, 255, 255, 0.702);
+    background: rgba(255, 255, 255, 0.675);
     border-radius: var(--themeBorderRadius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     cursor: default;
     max-width: 20em;
     width: -webkit-fill-available;
@@ -34,13 +35,14 @@
     /* grid-template-rows: 1fr 2fr 1fr; */
         /* justify-content: space-between; */
     }
-
+/* 
 .course-card:hover {
-    /* transform: translateY(-0.8em); */
+    transform: translateY(-0.8em);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.264);
     box-shadow: var(--boxShadow);
 }
 
+*/
 .course-card h2 {
     color: var(--themeDarkBlue);
         margin-bottom: 0.4em;
@@ -66,6 +68,7 @@
 }
 
 div.onConstruction {
+    padding: 1em;
     margin: 2em 3em;
 }
 
@@ -111,6 +114,7 @@ div.onConstruction {
 div.course-card div button#purchesButton {
     background-color: var(--constThemeColor);
     color: var(--themeColorText_DarkMode);
+    border: 1px solid rgba(0, 0, 0, 0.366);
 }
 
 div.course-card div button#purchesButton:hover {
@@ -118,18 +122,9 @@ div.course-card div button#purchesButton:hover {
     color: var(--themeColorText);
 }
 
+div#notifyMe {
+    border-radius: var(--themeBorderRadius);
+}
 .notify {
     font-style: italic;
-}
-
-@media (max-width: 768px) {
-    .course-list {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .course-card {
-        /* width: 80vw; */
-        height: auto;
-    }
 }

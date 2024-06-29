@@ -8,7 +8,7 @@ function Footer({ ...props }) {
         <footer className="footer border">
             <div className='grid center ltr alignCenter'>
                 <div style={{ gridArea: '1 / 1 / span 2 / span 1', margin: '1em' }}>
-                    <Logo linkTo='Home' whiteShadow={true}
+                    <Logo linkTo='Home' whiteShadow={true} showCaption={false}
                         rotate={false} imgWidth='2em' imgHeight='2em' fontSize={'1em'} />
                 </div>
                 <div style={{ gridArea: '1 / 2' }} >

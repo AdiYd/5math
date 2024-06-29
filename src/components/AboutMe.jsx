@@ -90,7 +90,7 @@ function AboutMe({ ...props }) {
                 שליחה
             </button>
         </form>
-            <div className='flex center gap1'>
+            <div style={{flexDirection:'row'}} className='flex center gap1'>
                 <h4> אפשר גם בוואטצאפ</h4>
                 <FontAwesomeIcon
                     onClick={() => { window.location.href = 'https://wa.me/972507191745' }}

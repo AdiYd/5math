@@ -309,11 +309,13 @@ function Bagrut({ ...props }) {
             <h2>בגרות במתמטיקה - מידע ושאלונים</h2>
             <div className='flex center gap2'>
                 <button
+                    style={{padding:'0.7em 2em', border: !bagrutInfo ? '':'1px solid var(--themeColor)'}}
                     onClick={() => { if (!bagrutInfo) { setInfo(true); slideOne.current.click() } }}
                     className={`squarish ${!bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
                     מידע על מבנה הבגרות</button>
                 <button
+                    style={{padding:'0.7em 2em', border: bagrutInfo ? '':'1px solid var(--themeColor)'}}
                     onClick={() => { if (bagrutInfo) { setInfo(false); slideZero.current.click() } }}
                     className={`squarish ${bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faFile} className='ml2' />

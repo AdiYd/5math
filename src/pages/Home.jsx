@@ -23,6 +23,7 @@ import useWindowDimensions from '../assets/function/useWindowDimentions';
 import FloatingMath from '../components/FloatingMath';
 import VideoEmb from '../components/VideoEmb';
 import { dataBase } from './App';
+import { MOBILE_SCREEN_WIDTH } from '../components/Header';
 
 export const responsive = {
     superLargeDesktop: {
@@ -58,13 +59,14 @@ function Home({ ...props }) {
     const [msg, setMsg] = useState();
     debug('Context: ', user, true);
     const { width } = useWindowDimensions();
+    let isMobile = Boolean(width <= MOBILE_SCREEN_WIDTH);
 
     let frame1 =  <div className='flex center frameDiv1 frameMargin purpleOnWhite themeRadius pt3 boxShadow'>
         {/* <FloatingMath animation={'flicker'} color='black' text='g(x) = ln(x)+e^{2x}' position='tl' />
         <FloatingMath fontSize='1.2em' transform='rotate(12deg)' text='sin^2(\pi) + cos^2(\pi) = 1' position='tr' />
         <FloatingMath text='a_n = aq^{n-1}' position='bl' rotate={20} /> */}
             <div className='alignCenter fadeIn'>
-                <Logo />
+                <Logo showCaption={!isMobile} />
                 <h1>קורס דיגיטלי ללימודי מתמטיקה לבגרויות, בזמן ובנוחות שלך</h1>
                 <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
                 <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>

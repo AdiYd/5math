@@ -13,7 +13,7 @@ import imgLogo from '../assets/img/5Math.svg';
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRightFromBracket, faBars, faCaretDown, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faBars, faCaretDown, faGear, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
 import { PAGES } from '../pages/App';
 import Formulas from '../pages/Formula';
 import Logo from './Logo';
@@ -25,7 +25,7 @@ const DBG_PROPS = {
     background: 'azul',
     fontWeight: 'bold'
 }
-const MOBILE_SCREEN_WIDTH = 680;
+export const MOBILE_SCREEN_WIDTH = 680;
 export const THEME_COLORS = ['var(--ThemeGPTBlueV)', 'var(--ThemeGPTBlue)', 'var(--ThemeGPTOrangeV)', 'var(--ThemeGPTOrangeDeep)', 'var(--ThemeGPTRedV)', 'var(--ThemeGPTRed)', 'var(--ThemeGPTPurpleV)', 'var(--ThemeGPTPurpleLightV)', 'var(--ThemeGPTGreenV)', 'var(--ThemeGPTGreen)'];
 
 
@@ -150,24 +150,24 @@ export const setAppRaduis = ({type='d', fromDB = false}={})=>{
     switch (type){
         case 'r':
             rootSelector.style.setProperty('--themeBorderRadius','');
-            rootSelector.style.setProperty('--cardRadius','25px');
-            rootSelector.style.setProperty('--buttonRadius','25px');
-            rootSelector.style.setProperty('--buttonSquarishRadius','25px');
+            rootSelector.style.setProperty('--cardRadius','30px');
+            rootSelector.style.setProperty('--buttonRadius','17px');
+            rootSelector.style.setProperty('--buttonSquarishRadius','20px');
             rootSelector.style.setProperty('--buttonRounderRadius','');
             break;
         case 's':
-            rootSelector.style.setProperty('--themeBorderRadius','10px');
+            rootSelector.style.setProperty('--themeBorderRadius','8px');
             rootSelector.style.setProperty('--cardRadius','10px');
-            rootSelector.style.setProperty('--buttonRadius','10px');
+            rootSelector.style.setProperty('--buttonRadius','8px');
             rootSelector.style.setProperty('--buttonSquarishRadius','');
-            rootSelector.style.setProperty('--buttonRounderRadius','10px');
+            rootSelector.style.setProperty('--buttonRounderRadius','13px');
             break;
         case 'q':
-            rootSelector.style.setProperty('--themeBorderRadius','3px');
-            rootSelector.style.setProperty('--cardRadius','3px');
+            rootSelector.style.setProperty('--themeBorderRadius','4px');
+            rootSelector.style.setProperty('--cardRadius','5px');
             rootSelector.style.setProperty('--buttonRadius','');
-            rootSelector.style.setProperty('--buttonSquarishRadius','3px');
-            rootSelector.style.setProperty('--buttonRounderRadius','3px');
+            rootSelector.style.setProperty('--buttonSquarishRadius','4px');
+            rootSelector.style.setProperty('--buttonRounderRadius','7px');
             break;
         default:
             rootSelector.style.setProperty('--themeBorderRadius','30px');
@@ -272,34 +272,25 @@ export default function Header({ currentPage }) {
                     isMobile={isMobile}
                     style={{ left: '0%' }}
                     showMenu={userMenu}>
-                    <p>{user.name}</p>
-                    <p>{user.email}</p>
-                    <a className='pointer hoverTheme'
-                        onClick={() => {navigate('Personal'); setUserMenu(false)}}>איזור אישי</a>
-                    {/* <div
-                    title={user.darkMode ? 'תצוגה בהירה' : 'תצוגה כהה'}
-                    className='flex center pointer'>
-                    <svg
-                        onClick={() => { user.callback({ darkMode: !user.darkMode }) }}
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="24px"
-                        viewBox="0 -960 960 960"
-                        width="24px"
-                    // fill={user.darkMode ? '' : ""}
-                    >
-                        {!user.darkMode ? toggleOn : toggleOff}
-                    </svg>
-                </div> */}
-                    <div
+                    <p className='m0 pb1 w500'>{user.name}</p>
+                    <p className='m0 pb3 w500'>{user.email}</p>
+                    <span 
+                        onClick={() => {navigate('Personal'); setUserMenu(false)}}
+                        className='pointer flex center gap1 ma1 alignCenter hoverTheme'>
+                        <FontAwesomeIcon icon={faGear}
+                        style={{ width: '1em' }} />
+                        <a>איזור אישי</a>
+                    </span>
+                    <span
                         onClick={() => { setUserMenu(false); user.callback({ disconnect: true }) }}
-                        className='flex center pointer hoverTheme alignCenter m0'>
+                        className='flex center pointer gap1 ma1 hoverTheme alignCenter'>
                         <FontAwesomeIcon
-                            style={{ width: '1.1em' }}
+                            style={{ width: '1em' }}
                             // size='xs'
                             title='התנתקות'
                             icon={faArrowRightFromBracket} />
-                        <p>יציאה</p>
-                    </div>
+                        <a>יציאה</a>
+                    </span>
                 </SubMenu>
             </div>}
     </div>

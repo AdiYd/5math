@@ -20,13 +20,18 @@ function DBzone({ ...props }) {
 
     // debug('This is adminPlot: ', adminPlot, usersList.current, true);
 
-useEffect(()=>{
-    if (!dataBase.isActive){
-        dataBase.fetchDB(user).then(res=> {
+    useEffect(()=>{
+        if (!dataBase.isActive){
+            dataBase.fetchDB(user).then(res=> {
+                setUpdate(p=>!p);
+            })
+        }
+    },[])
+    useEffect(()=>{
+        if (!isNaN(dataBase.uniqueVisitosHome)){
             setUpdate(p=>!p);
-        })
-      }
-},[])
+        }
+    },[dataBase.uniqueVisitosHome])
 
     const loadUsers = (e) => {
         if (!adminPlot.active || adminPlot.active !== e.target.name) {
@@ -119,24 +124,28 @@ useEffect(()=>{
                     <form name='Search by mail' onSubmit={onSubmit}>
                             <input id='email'
                             style={{height:'2em'}}
-                                placeholder="חיפוש לפי אימייל או שם"
+                                placeholder="חיפוש משתמש לפי אימייל או שם"
                                 className="ltr" name='email' maxLength={80} type="text" required />
                         <button className="small squarish themeBorder" type="submit">חיפוש משתמש</button>
                     </form>
             </div>
 
     let usersBtns = <div className="flex center gap2 ma2">
-                <button name="loadAll" className={`medium squarish ${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} 
-                onClick={loadUsers} >משתמשים רשומים</button>
-                <button name="leads" className={`medium squarish ${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} 
-                onClick={fastSignup}> נרשמו להטבה</button>
+                <button 
+                        name="leads" 
+                        className={`medium squarish ${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} 
+                        onClick={fastSignup}> מתעניינים </button>
+                <button 
+                        name="loadAll" 
+                        className={`medium squarish ${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} 
+                        onClick={loadUsers} >משתמשים רשומים</button>
             </div>
 
     let visitorsHome = totalVisitors && <>
             <div className="flex center gap1 ma2">
                 <span className="flex center gap2"><h4>מספר המבקרים השונים בדף הבית: &nbsp; {String(totalVisitors)}</h4>
                     <button name="visitors" 
-                    className={`small ${visitorsPlot.active ? 'themeConst2' : ''}`} 
+                    className={`small squarish ${visitorsPlot.active ? 'themeConst2' : ''}`} 
                     onClick={visitorsData}> פרטי מבקרים </button>
                 </span>
             </div>
@@ -214,12 +223,12 @@ function User({ userInfo = {} }) {
                             <div
                                 className='border alignCenter' key={indx}>
                                 <div
-                                    className="border bold"
+                                    className="border greyOnBlack bold"
                                     style={{
+                                        borderBottomColor:'black',
                                         borderBottomLeftRadius: '0px',
                                         borderBottomRightRadius:'0px',
                                         gridArea: `${indx + 1} / 1`,
-                                        background: 'var(--themeGreenLight)',
                                         padding: '0.5em'
                                     }} >
                                     {item}
@@ -248,9 +257,11 @@ function Lead({ userInfo = {} }) {
     useEffect(() => {
         createdAtTime.current = userInfo.createdAtTime ? userInfo.createdAtTime : 'Created at unkown time';
         let tempObj = {
-            name: userInfo.name,
-            email: userInfo.email,
+            'שם': userInfo.name,
+            'אימייל': userInfo.email,
             "מאשר שליחת הטבות": Boolean(userInfo.approved),
+            "שאלון 581": userInfo['581'],
+            "4 יחדות": userInfo['4 יחידות']
         }
         debug(tempObj, userInfo, true);
         setData(tempObj);
@@ -262,26 +273,25 @@ function Lead({ userInfo = {} }) {
     return (
         <div className="ma2" >
             <div
-                title={userData.name}
+                title={userData['שם']}
                 onClick={() => setActive(p => !p)} className="flex gap1 baseLine pointer opacityHover tStart">
-                {userData.email}
-                {userInfo.isAdmin && <p className="tStart small m0 darkRed">
-                         (Admin)
-                    </p>}
+                {userData['אימייל']}
+                {/* &nbsp;&nbsp;
+                {userData['שם']} */}
             </div>
             {active &&
                 <div>
                     <div className="grid columns small mt2 mb2">
                         {Object.keys(userData).map((item, indx) => (
-                            <div
+                            userData[item] !== undefined && <div
                                 className='border alignCenter' key={indx}>
                                 <div
-                                    className="border bold"
+                                    className="border greyOnBlack bold"
                                     style={{
+                                        borderBottomColor:'black',
                                         borderBottomLeftRadius: '0px',
                                         borderBottomRightRadius:'0px',
                                         gridArea: `${indx + 1} / 1`,
-                                        background: 'var(--themeGreenLight)',
                                         padding: '0.5em'
                                     }} >
                                     {item}
@@ -330,6 +340,7 @@ function Visitor({ userInfo = {} }) {
     return (
         <div className="ma1" >
             <div
+                id='userDataDiv'
                 title={userData['משתמש']}
                 onClick={() => setActive(p => !p)} className="flex gap1 ltr baseLine pointer opacityHover tStart">
                 <p>{userData['משתמש']}</p>
@@ -344,12 +355,12 @@ function Visitor({ userInfo = {} }) {
                             userData[item]&&<div
                                 className='border alignCenter' key={indx}>
                                 <div
-                                    className="border bold"
+                                    className="border greyOnBlack bold"
                                     style={{
+                                        borderBottomColor:'black',
                                         borderBottomLeftRadius: '0px',
                                         borderBottomRightRadius:'0px',
                                         gridArea: `${indx + 1} / 1`,
-                                        background: 'var(--themeGreenLight)',
                                         padding: '0.5em'
                                     }} >
                                     {item}

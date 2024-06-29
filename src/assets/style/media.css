@@ -119,10 +119,18 @@
     div#promoVideo {
         grid-auto-flow: row !important;
     }
+    .course-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .course-card {
+        /* width: 80vw; */
+        height: auto;
+    }
 }
 
 @media only screen and (max-width: 680px) {
-
 
     section.caruselDiv {
         /* background: var(--themeColorAlpha); */
@@ -146,7 +154,7 @@
     div.frameDiv3 {
         margin: 0em !important;
         border-radius: 0em !important;
-        font-size: 0.8em !important;
+        /* font-size: 0.8em !important; */
     }
 
     div.quickSignUp {
@@ -245,8 +253,10 @@
 
     div.onConstruction {
         margin: 0em !important;
+        padding: 1em 0em !important;
     }
     div#notifyMe {
+        border-radius: 0em !important;
         margin: 0em;
     }
 
@@ -315,14 +325,12 @@
         padding: 0.8em;
     }
 
-    /* #frame2Card {
-        height: 7em;
-        max-width: 5em;
-    */
-
-    h3 {
-        font-size: 0.9em;
+    div#promoVideo,
+    div.frameDiv1,
+    div.frameDiv3 {
+        font-size: 0.8em !important;
     }
+
     div#frame2Card h3 {
         font-size: 1em;
     }

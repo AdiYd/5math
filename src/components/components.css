@@ -183,6 +183,10 @@ ul.adminList li {
     list-style: decimal;
 }
 
+div#userDataDiv p {
+    margin: 0.1em;
+    font-size: 0.85em;
+}
 .video-responsive {
     overflow: hidden;
     height: -webkit-fill-available;

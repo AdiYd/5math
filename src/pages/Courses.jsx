@@ -28,7 +28,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(170deg,transparent, rgba(0, 166, 260, 0.5))'
+    bgColor: 'linear-gradient(60deg,transparent, rgba(0, 166, 260, 0.5))'
   },
   {
     name: 'אנליטית',
@@ -41,7 +41,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(170deg,transparent, rgba(32, 206, 1,0.5))'
+    bgColor: 'linear-gradient(120deg,transparent, rgba(32, 206, 1,0.5))'
   },
   {
     name: 'חשבון דפרנציאלי ואינטגרלי',
@@ -55,7 +55,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(170deg,transparent, rgba(220, 35, 35,0.5))'
+    bgColor: 'linear-gradient(180deg,transparent, rgba(220, 35, 35,0.5))'
   },
   {
     name: 'מרוכבים',
@@ -69,7 +69,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(170deg,transparent, rgba(168, 0, 230, 0.5))'
+    bgColor: 'linear-gradient(240deg,transparent, rgba(168, 0, 230, 0.5))'
   },
   {
     name: 'משוואות מעריכיות',
@@ -82,37 +82,49 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(170deg,transparent, rgba(243, 159, 46, 0.5))'
+    bgColor: 'linear-gradient(300deg,transparent, rgba(243, 159, 46, 0.5))'
   }
 ];
 
 const CourseCard = ({ course }) => {
+
+    let price =   <div className="price rtl">
+                    <span className="original-price">
+                    {crncy}{course.originalPrice}
+                    </span>
+                    <MathJax>
+                    <a id="mathJax" className="discounted-price">
+                    {`$ \\text{${crncy}} ${course.discountedPrice} $`}
+                    </a>
+                    </MathJax>
+                </div>
+    let purches =  <div className="flex center">
+                        <button 
+                        style={{width:'75%'}}
+                        id="purchesButton"
+                        className="round ma3 pt2 pb2">לרכישה</button>
+                    </div>
+    let bullets =  <div>
+                    <MathJax>
+                        <a id="mathJax">{course.mathJax}</a>
+                    </MathJax>
+                    <ul>
+                        {course.bullets.map((bullet, index) => (
+                        <li key={index}><i className="fas fa-check-circle"></i> {bullet}</li>
+                        ))}
+                    </ul>
+                </div>
+    let title =  <div>
+                    <h2>{course.name}</h2>
+                    <hr id='horizLine'/>
+                </div>
+
   return (
-    <div className="course-card border" style={{backgroundImage:course.bgColor}}>
-      <div>
-        <h2>{course.name}</h2>
-        <hr id='horizLine'/>
-      </div>
-     <div>
-        <MathJax id="mathJax"><span>{course.mathJax}</span></MathJax>
-        <ul>
-            {course.bullets.map((bullet, index) => (
-            <li key={index}><i className="fas fa-check-circle"></i> {bullet}</li>
-            ))}
-        </ul>
-     </div>
-      <div className="price rtl">
-        <span className="original-price">{crncy}{course.originalPrice}</span>
-        <MathJax id="mathJax">
-        <span className="discounted-price">{`$ \\text{${crncy}} ${course.discountedPrice} $`}</span>
-        </MathJax>
-      </div>
-      <div className="flex center">
-        <button 
-        style={{padding:'0.8em 2em'}}
-        id="purchesButton"
-        className="round pointer ma3 border">לרכישה</button>
-      </div>
+    <div className="course-card noneSelect boxShadowHover" style={{backgroundImage:course.bgColor}}>
+        {title}
+        {bullets}
+        {price}
+        {purches}
     </div>
   );
 };
@@ -127,48 +139,53 @@ const Courses = ({...props}) => {
         let formaName = e.target.name;
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
+        debug('Your form data is :', userDataObj, true);
+        for (let item in userDataObj){
+            if (userDataObj[item] === 'on'){
+                userDataObj[item] = true;
+            }
+        }
         dataBase.addItem({tableName: 'Users_Leads',item:{...userDataObj, approved: ('Approve' in userDataObj)? 1:0}});
-        debug('Prompting msg');
         setMsg(<Prompt
                 height='fit-content'
                 showButton={true}
                 callBack={() => {setMsg(undefined)}}
                 style={{ height: 'fit-content', borderRadius: '20px' }}
                 showDiv={true} >
-                <Logo />
-                <h3>  קיבלנו את הבקשה, {userDataObj.name} </h3>
-                <h4> נודיע לכם כשיעלו התכנים, בנתיים אתם מוזמנים להתנסות בתכנים שקיימים</h4>
+                    <Logo />
+                    <h3> ✨ קיבלנו את הבקשה, {userDataObj.name} </h3>
+                    <h4> נודיע לך כשיעלו התכנים, בנתיים אפשר להתנסות בתכנים שקיימים</h4>
              </Prompt>)
     }
 
     let coursesOptions = <div className="flex center gap2">
                             {/* <p className="w500">בחרו שאלון : </p> */}
                                 <button 
-                                style={{padding:'0.7em 2em'}}
+                                style={{padding:'0.7em 2em', border: !option ==='581'? '':'1px solid var(--themeColor)'}}
                                 onClick={()=>{setOption('581')}}
                                 className={`${option ==='581' ? '':'themeBorder'} squarish`}> שאלון 581</button>
                                 <button 
-                                style={{padding:'0.7em 2em'}}
+                                style={{padding:'0.7em 2em', border: !option ==='582'? '':'1px solid var(--themeColor)'}}
                                 onClick={()=>{setOption('582')}}
                                 className={`${option ==='582' ? '':'themeBorder'} squarish`}> שאלון 582</button>
                     </div>
 
-    let paymentPromo =  <div className="flex center gap2">
-                            <div className="flex gap1 columns lineargrad boxShadowHover paymentPromo center">
+    let paymentPromo =  <div className="flex center gap2 m2">
+                            <div className="flex gap1 columns lineargrad boxShadow paymentPromo center">
                                 <a className=""> רכישה מאובטחת ובטוחה  </a>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faLock} />
                                     <FontAwesomeIcon icon={faCreditCard} />
                                 </div>
                             </div>
-                            <div className="flex gap1 columns lineargrad boxShadowHover paymentPromo center">
+                            <div className="flex gap1 columns lineargrad boxShadow paymentPromo center">
                                 <a className=""> הקורסים פתוחים למשך 8 חודשים </a>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faClock} />
                                     <FontAwesomeIcon icon={faUserAstronaut} />
                                 </div>
                             </div>
-                            <div className="flex gap1 columns lineargrad boxShadowHover paymentPromo center">
+                            <div className="flex gap1 columns lineargrad boxShadow paymentPromo center">
                                 <a className=""> ניתן להתייעץ ולשאול את המורה שאלות </a>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faQuestionCircle} />
@@ -222,16 +239,35 @@ const Courses = ({...props}) => {
         </section>
 
     let notifyForm = <div id='notifyMe'
-                        className='quickSignUp blackOnWhite squarish frameMargin pt3 pb3 p3 boxShadow'>
+                        className='quickSignUp themeRadius blackOnWhite squarish frameMargin pt3 pb3 boxShadow'>
                         <div className='flex center ma2 columns'>
                             <div className='flex center gap1'>
-                                <FontAwesomeIcon icon={faBell} size='2xl' color="var(--themeColor)"/>
+                                <FontAwesomeIcon icon={faBell} className="shake" size='2xl' color="var(--themeColor)"/>
                                 <FontAwesomeIcon icon={faStopwatch} size='2xl' color="var(--ThemeGPTOrangeDeep)" />
                                 {/* <FontAwesomeIcon icon={faVideo} size='2xl' color='var(--ThemeGPTOrangeDeep)' /> */}
                             </div>
-                            <h3 className="pt2 pb2">נרשמים כאן ומקבלים תזכורת כשהתכנים יעלו לאתר</h3>
+                            <h3 className="pt2">נרשמים כאן ומקבלים תזכורת כשהתכנים יעלו לאתר</h3>
                         </div>
                         <form onSubmit={onSubmitForm} name='quick Signup' >
+                        <div style={{flexDirection:'row'}} className="flex center gap2">
+                                <a> שאלון: </a>
+                                <label className="flex alignCenter" htmlFor="582">
+                                    <Checkbox 
+                                        title = 'רוצה תכנים לשאלון 581'
+                                        id='581' 
+                                        name={'581'}
+                                        defaultChecked = {true} />
+                                        581 
+                                </label>
+                                <label className="flex alignCenter" htmlFor="4 יחידות">
+                                    <Checkbox 
+                                        title = 'רוצה תכנים של 4 יחידות'
+                                        id='4 יחידות' 
+                                        name={'4 יחידות'}
+                                        defaultChecked = {false} />
+                                        4 יחידות
+                                </label>
+                            </div>
                             <div className='flex center baseLine' >
                                 <input
                                     id='name'
@@ -263,10 +299,10 @@ const Courses = ({...props}) => {
                             <div className='flex center' id='checkBoxDiv'>
                                 <div className='flex center checkboxContainer'>
                                     <Checkbox 
-                                    value = {true}
                                     // onChange= {(e)=>{debug('Changing: ',e.target.value);e.target.value = !e.target.value}}
-                                    defaultChecked = {true}
-                                    color='var(--constThemeColor)' id='Approve' name='Approve' title="אישור קבלת דואר" />
+                                    onChange={()=>{}}
+                                    checked = {true}
+                                    color='var(--ThemeGPTGreen)' id='Approve' name='Approve' title="אישור קבלת דואר" />
                                     <label forhtml='Approve'>אישור קבלת עדכונים והטבות במייל</label>
                                 </div>
                                 {/* <div className='flex center checkboxContainer'>
@@ -294,26 +330,15 @@ const Courses = ({...props}) => {
     }
     else if (option ==='581'){
         main =  <>
+                {msg}
                 <div className="onConstruction">
-                    <p  className="ma1 w500">אנו מכינים ברגעים אלו את הקורס לשאלון 581 (5 יחידות י"א) ובקרוב נעלה את התכנים.
-                        <br/> בנוסף, אנו עובדים על קורס הכנה לבגרות 4 יחידות, בקרוב!
-                    </p>
-                    <div className="flex center gap2">
-                            <FontAwesomeIcon icon={faBell} size="2xl" color="#CD7F32" />
+                <div className="flex center gap2">
+                            {/* <FontAwesomeIcon icon={faBell} size="2xl" color="#CD7F32" /> */}
                             <svg 
                             xmlns="http://www.w3.org/2000/svg" 
-                            height="30px" 
-                            viewBox="0 0 24 24"
-                            width="30px" 
-                            fill="#FFD700">
-                                <path d="M0 0h24v24H0V0z" fill="none"/>
-                                <path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-4.51 2.11.26 2.79-2.74.62-1.43 2.41L12 18.82l-2.58 1.11-1.43-2.41-2.74-.62.26-2.8L3.66 12l1.85-2.12-.26-2.78 2.74-.61 1.43-2.41L12 5.18l2.58-1.11 1.43 2.41 2.74.62-.26 2.79L20.34 12l-1.85 2.11zM11 15h2v2h-2zm0-8h2v6h-2z"/>
-                            </svg>
-                            <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            enable-background="new 0 0 20 20" 
-                            height="30px" viewBox="0 0 20 20" 
-                            width="30px" fill="#FFA500">
+                            enableBackground="new 0 0 20 20" 
+                            height="35px" viewBox="0 0 20 20" 
+                            width="35px" fill="#FFA500">
                                 <g>
                                 <rect fill="none" height="20" width="20" x="0"/>
                                 </g><g><g>
@@ -321,12 +346,26 @@ const Courses = ({...props}) => {
                                 <path d="M12.57,8.14L12.57,8.14l0.88,0.88l1.06-1.06l1.41,1.41c0.78-0.78,0.78-2.05,0-2.83l-2.47-2.47l-0.74,0.74l0-1.49 l-0.49-0.49L9.74,5.31l0.49,0.49l1.49,0l-0.74,0.74l0.88,0.88L10,9.29L7.51,6.81l0.15-1.26L5.36,3.23L3.23,5.36l2.31,2.31 l1.26-0.15L9.29,10l-1.05,1.05H6.83l-3.54,3.54c-0.39,0.39-0.39,1.02,0,1.41L4,16.71c0.39,0.39,1.02,0.39,1.41,0l3.54-3.54v-1.41 L12.57,8.14z M4.71,16L4,15.29l3.18-3.18l0.71,0.71L4.71,16z"/>
                                 </g></g>
                             </svg>
+                            <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            height="35px" 
+                            viewBox="0 0 24 24"
+                            width="35px" 
+                            fill="#FFD700">
+                                <path d="M0 0h24v24H0V0z" fill="none"/>
+                                <path d="m23 12-2.44-2.78.34-3.68-3.61-.82-1.89-3.18L12 3 8.6 1.54 6.71 4.72l-3.61.81.34 3.68L1 12l2.44 2.78-.34 3.69 3.61.82 1.89 3.18L12 21l3.4 1.46 1.89-3.18 3.61-.82-.34-3.68L23 12zm-4.51 2.11.26 2.79-2.74.62-1.43 2.41L12 18.82l-2.58 1.11-1.43-2.41-2.74-.62.26-2.8L3.66 12l1.85-2.12-.26-2.78 2.74-.61 1.43-2.41L12 5.18l2.58-1.11 1.43 2.41 2.74.62-.26 2.79L20.34 12l-1.85 2.11zM11 15h2v2h-2zm0-8h2v6h-2z"/>
+                            </svg>
                             <FontAwesomeIcon icon={faWrench} size="2xl" color="#228B22" />
                     </div>
-                    <p  className="ma1 w500">רוצים לקבל עדכון כשהקורס של שאלון 581 / 4 יח"ל יעלה לאתר? 
+                    <h3>אנחנו על זה ...</h3>
+                    <p  className="ma1 w500">אנו מכינים ברגעים אלו את הקורס לשאלון 581 (5 יחידות י"א) ובקרוב נעלה את התכנים.
+                        <br/> בנוסף, אנו עובדים על קורס הכנה לבגרות 4 יחידות, בקרוב!
+                    </p>
+                   
+                    <p  className="ma1 mb3 w500">רוצים לקבל עדכון כשהקורס של שאלון 581 / 4 יח"ל יעלה לאתר? 
                         <a
                         onClick = {()=>{}} 
-                        className="notify pointer darkRed m2 opacityHover"> הרשמו למטה </a>
+                        className="notify darkRed m2 opacityHover"> הרשמו למטה </a>
                     </p>
                     {notify && notifyForm}
                 </div>
