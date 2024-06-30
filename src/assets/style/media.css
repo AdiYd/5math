@@ -307,20 +307,21 @@
         font-size: 1.1em !important;
     }
 
-    .menu {
-        display: none;
-      }
     .menu.open {
-    display: flex;
-    width: 60%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    z-index: 1000;
+        position: absolute !important;
+        display: flex;
+        width: max-content;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 50% !important;
+        z-index: 1000;
     }
     .mobile-menu-button {
-    display: block;
+        display: none;
+    }
+    .menu.closed {
+        width: 4em !important;
     }
 }
 

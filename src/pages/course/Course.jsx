@@ -39,7 +39,7 @@ const Course = ({courseList={},topic,...props}) => {
       <div className="content">
         <p className='w500'>{selectedContent}</p>
         <VideoEmb
-          width={width/2} height={width*0.7/2} />
+          width={Math.min(width/1.5, 750)} height={Math.max(width*0.7/2,260)} />
       </div>
       <button className="mobile-menu-button" onClick={() => setMenuOpen(!menuOpen)}>
         ☰

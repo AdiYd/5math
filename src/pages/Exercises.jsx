@@ -12,11 +12,11 @@ function Exercises ({...props}){
 
     return (
         <div>
-            <div className="flex center gap2 ma2 pt2 pb2">
+            <div className="flex center gap2 wrap ma2 pt2 pb2">
                 {topicsList.map((item,index)=>(
                     <button key={index}
                     className={`${course === item ? '':'themeBorder'} borderTheme round pointer`}
-                    style={{padding:'0.8em 1.2em'}}
+                    style={{padding:'0.5em 1em'}}
                     onClick={()=>setCourse(item)}>{item}</button>                    
                 ))}
             </div>
