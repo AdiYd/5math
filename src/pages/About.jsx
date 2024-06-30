@@ -272,7 +272,7 @@ export default function AboutUs({ ...props }) {
                 indx < 4 && <Card
                     onClick={() => { setItem(p => item !== p ? item : undefined) }}
                     // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
-                    className={`rtl pointer hoverGradTheme ${item === selectItem ? 'constGrad' + indx : ''}`}
+                    className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
                     key={item + indx}
                     title={aboutInfoDict.current[item].title?.props?.children}
                     translateY={false}
@@ -302,7 +302,7 @@ export default function AboutUs({ ...props }) {
                 (indx > 3 && indx < 8) && <Card
                     onClick={() => { setItem(p => item !== p ? item : undefined) }}
                     // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
-                    className={`rtl pointer hoverGradTheme ${item === selectItem ? 'constGrad' + indx : ''}`}
+                    className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
                     key={item + indx}
                     title={aboutInfoDict.current[item].title?.props?.children}
                     translateY={false}

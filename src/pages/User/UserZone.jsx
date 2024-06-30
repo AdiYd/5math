@@ -98,13 +98,13 @@ function UserZone({ ...props }) {
                             <p style={{fontWeight:'500'}}>בחירת סגנון אתר:</p>
                         </div>
                         <div className='flex center gap1'>
-                                <button className={`${buttonRadius === 'r'? '':'themeBorder'} small`}
+                                <button className={`${buttonRadius === 'r'? '':'themeBorder'} borderTheme small`}
                                 onClick={()=>setRadius('r')}
                                  style={{borderRadius: '25px'}}> אתר עגול</button>
-                                <button className={`${buttonRadius === 's'? '':'themeBorder'} small`}
+                                <button className={`${buttonRadius === 's'? '':'themeBorder'} borderTheme small`}
                                 onClick={()=>setRadius('s')}
                                  style={{borderRadius: '10px'}}> אתר מעוגל</button>
-                                <button className={`${buttonRadius === 'q'? '':'themeBorder'} small`}
+                                <button className={`${buttonRadius === 'q'? '':'themeBorder'} borderTheme small`}
                                 onClick={()=>setRadius('q')}
                                  style={{borderRadius: '3px'}}> אתר מרובע</button>
                                 <FontAwesomeIcon 

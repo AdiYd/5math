@@ -1,8 +1,8 @@
-  div#about {
+div#about {
     position: relative;
     padding: 0.5em;
     min-height: 69vh;
-  }
+}
 div#aboutCard {
     background-color: var(--themeColorBG);
     background-image: var(--themeBG_GradientLight);
@@ -20,6 +20,12 @@ div#aboutCard {
     border-radius: var(--cardRadius);
 }
 
+div#aboutCard:hover {
+    background-image: -webkit-linear-gradient(var(--linearGradient));
+    background-image: linear-gradient(0deg, #9ed6d23b, transparent);
+    background-image: linear-gradient(0deg, var(--themeGreyAlpha), transparent);
+
+}
 div.storyDiv p {
     margin-top: 0em;
     line-height: 1.8;
@@ -27,7 +33,7 @@ div.storyDiv p {
 }
 
 div.storyDiv {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.9);
     margin: auto;
     padding: 1.1em 2em;
     border-radius: var(--themeBorderRadius);
@@ -59,6 +65,13 @@ div.storyDiv {
 .constGrad5 {
     background-image: linear-gradient(var(--linearGradDeg), rgba(229, 19, 228, var(--linearGradOpacity)), transparent) !important;
 }
+.constGrad {
+    background-image: -webkit-linear-gradient(var(--linearGradient2)) !important;
+}
+    
+.constGradTheme {
+    background-image: -webkit-linear-gradient(90deg, var(--themeColorAlpha), transparent) !important;
+}
 
 
 .hoverGrad0:hover {
@@ -82,4 +95,7 @@ div.storyDiv {
 
 .hoverGrad5:hover {
     background-image: linear-gradient(var(--linearGradDeg), rgba(229, 19, 228, var(--linearGradOpacity)), transparent) !important;
+}
+.hoverGrad:hover {
+    background-image: linear-gradient(0deg, #9ed6d23b, transparent) !important;
 }

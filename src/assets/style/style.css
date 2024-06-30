@@ -330,6 +330,9 @@ button:hover {
     background-color: var(--themeColor);
 }
 
+.borderTheme {
+    border: 1px solid var(--themeColor) !important;
+}
 .themeBorder {
     background: transparent !important;
     color: var(--themeColorText);

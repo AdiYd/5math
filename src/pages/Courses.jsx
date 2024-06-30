@@ -26,7 +26,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(60deg,transparent, rgba(0, 166, 260, 0.5))'
+    bgColor: 'linear-gradient(60deg,transparent, rgba(0, 166, 260, 0.2))'
   },
   {
     name: 'אנליטית',
@@ -38,7 +38,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(120deg,transparent, rgba(32, 206, 1,0.5))'
+    bgColor: 'linear-gradient(120deg,transparent, rgba(32, 206, 1,0.2))'
   },
   {
     name: 'חדו"א',
@@ -50,7 +50,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(180deg,transparent, rgba(220, 35, 35,0.5))'
+    bgColor: 'linear-gradient(180deg,transparent, rgba(220, 35, 35,0.2))'
   },
   {
     name: 'מרוכבים',
@@ -62,7 +62,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(240deg,transparent, rgb(213 118 248 / 50%))'
+    bgColor: 'linear-gradient(240deg,transparent, rgb(213, 118, 248,0.2))'
   },
   {
     name: 'משוואות מעריכיות',
@@ -74,7 +74,7 @@ const courses = [
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(300deg,transparent, rgba(243, 159, 46, 0.5))'
+    bgColor: 'linear-gradient(300deg,transparent, rgba(243, 159, 46, 0.2))'
   }
 ];
 
@@ -153,13 +153,13 @@ const Courses = ({...props}) => {
     let coursesOptions = <div className="flex center gap2">
                             {/* <p className="w500">בחרו שאלון : </p> */}
                                 <button 
-                                style={{padding:'0.7em 2em', border: !option ==='581'? '':'1px solid var(--themeColor)'}}
+                                style={{padding:'0.7em 2em'}}
                                 onClick={()=>{setOption('581')}}
-                                className={`${option ==='581' ? '':'themeBorder'} squarish`}> שאלון 581</button>
+                                className={`${option ==='581' ? '':'themeBorder'} borderTheme squarish`}> שאלון 581</button>
                                 <button 
-                                style={{padding:'0.7em 2em', border: !option ==='582'? '':'1px solid var(--themeColor)'}}
+                                style={{padding:'0.7em 2em'}}
                                 onClick={()=>{setOption('582')}}
-                                className={`${option ==='582' ? '':'themeBorder'} squarish`}> שאלון 582</button>
+                                className={`${option ==='582' ? '':'themeBorder'} borderTheme squarish`}> שאלון 582</button>
                     </div>
 
     let paymentPromo =  <div className="flex center gap2 m2">
@@ -234,8 +234,7 @@ const Courses = ({...props}) => {
                         className='quickSignUp themeRadius blackOnWhite squarish frameMargin pt3 pb3 boxShadow'>
                         <div className='flex center ma2 columns'>
                             <div className='flex center gap1'>
-                                <FontAwesomeIcon icon={faBell} className="shake" size='2xl' color="var(--themeColor)"/>
-                                <FontAwesomeIcon icon={faStopwatch} size='2xl' color="var(--ThemeGPTOrangeDeep)" />
+                                <FontAwesomeIcon icon={faBell} className="shake" size='2xl' color="var(--ThemeGPTOrangeDeep)"/>
                                 {/* <FontAwesomeIcon icon={faVideo} size='2xl' color='var(--ThemeGPTOrangeDeep)' /> */}
                             </div>
                             <h3 className="pt2">נרשמים כאן ומקבלים תזכורת כשהתכנים יעלו לאתר</h3>
@@ -316,10 +315,10 @@ const Courses = ({...props}) => {
            
             <p className="w500"> איך לומדים איתנו בצורה יעילה? צפו בשיעור ולאחר מכן בפתרון תרגיל לדוגמה, המשיכו ופתרו מספר תרגילים בעצמכם ברמות קושי משתנות (מחוברת התרגול המצורפות או ממקורות אחרים)
             <br/> מתקשים? אנחנו פה! חזרו לשיעור, להסברים, לתרגול, לדוגמאות ודברו איתנו 🙂</p>
-            {paymentPromo}
+          
             {carusel}
-
-            <p className="w500"> מהירי הבנה? מעולה, תוכלו לצפות בקצב מהיר(x 1.5), לוקחים את הזמן? נהדר, מוזמנים לצפות בקצב שלכם (x 0.75) ולחזור על השיעור כמה שרק תרצו </p>
+            {paymentPromo}
+            <p className="w500"> מהירי הבנה? מעולה, תוכלו לצפות בקצב מהיר(x 1.5), לוקחים את הזמן? נהדר, מוזמנים לצפות בקצב שלכם (x 0.75) ולחזור על השיעורים כמה שרק תרצו </p>
         </>  
     }
     else if (option ==='581'){

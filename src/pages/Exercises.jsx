@@ -15,7 +15,7 @@ function Exercises ({...props}){
             <div className="flex center gap2 ma2 pt2 pb2">
                 {topicsList.map((item,index)=>(
                     <button key={index}
-                    className={`${course === item ? '':'themeBorder'} round pointer`}
+                    className={`${course === item ? '':'themeBorder'} borderTheme round pointer`}
                     style={{padding:'0.8em 1.2em'}}
                     onClick={()=>setCourse(item)}>{item}</button>                    
                 ))}

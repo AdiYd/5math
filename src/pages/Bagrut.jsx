@@ -231,7 +231,7 @@ function Bagrut({ ...props }) {
                 }).map((item, indx) => (
                     <Card
                         // className={`rtl hoverGrad${indx % 6}`}
-                        className={`rtl hoverGradTheme`}
+                        className={`rtl`}
                         key={item + indx}
                         title={bagrutDict[item].name}
                         translateY={false}
@@ -309,15 +309,15 @@ function Bagrut({ ...props }) {
             <h2>בגרות במתמטיקה - מידע ושאלונים</h2>
             <div className='flex center gap2'>
                 <button
-                    style={{padding:'0.7em 2em', border: !bagrutInfo ? '':'1px solid var(--themeColor)'}}
+                    style={{padding:'0.7em 2em'}}
                     onClick={() => { if (!bagrutInfo) { setInfo(true); slideOne.current.click() } }}
-                    className={`squarish ${!bagrutInfo ? 'themeBorder' : ''}`} >
+                    className={`squarish borderTheme ${!bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faInfoCircle} className='ml2' />
                     מידע על מבנה הבגרות</button>
                 <button
-                    style={{padding:'0.7em 2em', border: bagrutInfo ? '':'1px solid var(--themeColor)'}}
+                    style={{padding:'0.7em 2em'}}
                     onClick={() => { if (bagrutInfo) { setInfo(false); slideZero.current.click() } }}
-                    className={`squarish ${bagrutInfo ? 'themeBorder' : ''}`} >
+                    className={`squarish borderTheme ${bagrutInfo ? 'themeBorder' : ''}`} >
                     <FontAwesomeIcon icon={faFile} className='ml2' />
                     שאלוני בגרות משנים קודמות</button>
             </div>

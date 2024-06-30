@@ -111,9 +111,10 @@ export default class DBaccess {
         }
     };
 
-    fetchDB = (user) => {
+    fetchDB = async (user) => {
         if (user.isAdmin){
-            return this.#loadDB();
+            const res = await this.#loadDB().then(data=>this.isActive = true);
+            return res;
         }
     }
 

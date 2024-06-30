@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './CourseContainer.css';
-import Menu from '../../components/Menu';
 import { debug } from '../../assets/function/functions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoEmb from '../../components/VideoEmb';
 import { faAngleRight, faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import useWindowDimensions from '../../assets/function/useWindowDimentions';
+import CourseMenu from '../../components/Menu';
 
 const Course = ({courseList={},topic,...props}) => {
   const [selectedContent, setSelectedContent] = useState('Select a menu item');
@@ -24,7 +24,7 @@ const Course = ({courseList={},topic,...props}) => {
 
   return (
     <div className="courseContainer">
-      <div id='courseMenu' className={`menu boxShadow lineargrad ${menuOpen ? 'open' : 'closed'}`}>
+      <div id='courseMenu' className={`menu squarish lineargrad ${menuOpen ? 'open' : 'closed'}`}>
         <div className="flex blackOnWhite between pointer pt3 pb3"
         style={{padding:'1em 0.5em'}}
         onClick={() => setMenuOpen(!menuOpen)}>
@@ -34,7 +34,7 @@ const Course = ({courseList={},topic,...props}) => {
           title={!menuOpen ? 'פתיחת תפריט': 'צמצום תפריט'} 
           icon={!menuOpen ? faAnglesLeft: faAnglesRight} size='lg'/>
         </div>
-        {menuOpen && <Menu items={courseList} onMenuClick={handleMenuClick} />}
+        {menuOpen && <CourseMenu items={courseList} onMenuClick={handleMenuClick} />}
       </div>
       <div className="content">
         <p className='w500'>{selectedContent}</p>

@@ -452,13 +452,11 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                             </div>
                         </Link>
                         <SubMenu showMenu={subMenu[pageRout] && !mobileMenu} horizontal={false} >
-                            <MathJax>
-                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{'וקטורים'}</a>
-                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{'אנליטית'}</a>
-                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{'מרוכבים'}</a>
-                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{"חשבון דיפרנציאלי ואינטגרלי"}</a>
-                                    <a className='hoverTheme flex gap2 center mAuto alignCenter pointer'>{"משוואות מעריכיות"}</a>
-                                </MathJax>
+                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{'וקטורים'}</a>
+                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{'אנליטית'}</a>
+                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{'מרוכבים'}</a>
+                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{"חשבון דיפרנציאלי ואינטגרלי"}</a>
+                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{"משוואות מעריכיות"}</a>
                         </SubMenu>
                     </div> :
                     <div

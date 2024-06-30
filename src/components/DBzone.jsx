@@ -8,6 +8,7 @@ import PrincipleDoc from '../assets/Documents/PrincipleDoc.docx'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { User as USR } from "..";
+import { arrowDown, arrowUp } from "./Menu";
 
 
 
@@ -26,7 +27,7 @@ function DBzone({ ...props }) {
                 setUpdate(p=>!p);
             })
         }
-    },[])
+    },[dataBase.isActive])
     useEffect(()=>{
         if (!isNaN(dataBase.uniqueVisitosHome)){
             setUpdate(p=>!p);
@@ -130,23 +131,31 @@ function DBzone({ ...props }) {
                     </form>
             </div>
 
-    let usersBtns = <div className="flex center gap2 ma2">
+    let usersBtns = dataBase.isActive &&<div className="flex center gap2 ma2">
                 <button 
                         name="leads" 
-                        className={`medium squarish ${adminPlot.active === 'leads' ? 'themeConst2' : ''}`} 
-                        onClick={fastSignup}> מתעניינים </button>
+                        className={`medium borderTheme round ${adminPlot.active === 'leads' ? '' : 'themeBorder'}`} 
+                        onClick={fastSignup}> {`מתעניינים (${Object.keys(dataBase.leadsDict)?.length})`} </button>
                 <button 
                         name="loadAll" 
-                        className={`medium squarish ${adminPlot.active === 'loadAll' ? 'themeConst2' : ''}`} 
-                        onClick={loadUsers} >משתמשים רשומים</button>
-            </div>
+                        className={`medium borderTheme round ${adminPlot.active === 'loadAll' ? '' : 'themeBorder'}`} 
+                        onClick={loadUsers} >{`משתמשים רשומים (${dataBase.usersList?.length})`}</button>
+                </div>
 
     let visitorsHome = totalVisitors && <>
             <div className="flex center gap1 ma2">
-                <span className="flex center gap2"><h4>מספר המבקרים השונים בדף הבית: &nbsp; {String(totalVisitors)}</h4>
-                    <button name="visitors" 
+                <span className="flex center gap2">
+                <p>מספר המבקרים השונים בדף הבית: &nbsp; {String(totalVisitors)}</p>
+                    <div 
+                    name="visitors" 
+                    title="פירוט מבקרים"
+                    className='flex center alignCenter pointer'
+                    onClick={visitorsData}>
+                        {visitorsPlot.active ? arrowUp : arrowDown}
+                    </div>
+                    {/* <button name="visitors" 
                     className={`small squarish ${visitorsPlot.active ? 'themeConst2' : ''}`} 
-                    onClick={visitorsData}> פרטי מבקרים </button>
+                    onClick={visitorsData}> פרטי מבקרים </button> */}
                 </span>
             </div>
             {visitorsPlot.active && visitorsPlot.data}

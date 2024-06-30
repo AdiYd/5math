@@ -29,7 +29,8 @@ div#bagrutCard {
 
 div#bagrutCard:hover {
     background-image: linear-gradient(180deg, var(--themeGreyAlpha), transparent);
-    background-image: var(--themeGradient);
+        /* background-image: linear-gradient(0deg, #9ed6d23b, transparent); */
+        /* background-image: var(--themeGradient); */
 }
 
 a.downLoad {
