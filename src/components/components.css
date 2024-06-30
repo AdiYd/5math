@@ -192,6 +192,7 @@ div#userDataDiv p {
     font-size: 0.85em;
 }
 .video-responsive {
+    position: relative;
     overflow: hidden;
     height: -webkit-fill-available;
     width: -webkit-fill-available;

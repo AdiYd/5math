@@ -44,10 +44,12 @@ const Menu = ({ items, onMenuClick }) => {
 
 const MenuItem = ({ title, topic, onMenuClick }) => {
   const [open, setOpen] = useState(false);
+  const [lesson, setLesson] = useState();
+
   let isSubMenu = Object.keys(topic).length;
   return (
     <li>
-      <div className={`flex gap1 alignCenter tStart ${open ? 'bold':''}`} 
+      <div className={`flex alignCenter tStart ${open ? 'bold':''}`} 
         onClick={() => setOpen(!open)}>
         {title} {isSubMenu && <div 
         style={{fill:'var(--themeColorText)'}}
@@ -58,8 +60,10 @@ const MenuItem = ({ title, topic, onMenuClick }) => {
         <ul className="submenu">
           {Object.keys(topic).map((lessonName, index) => (
             <li 
+            title={lessonName}
             className='pointer squarish'
-            key={index} onClick={() => onMenuClick(topic[lessonName])}>
+            style={lesson === lessonName ? {color: 'var(--themeColor)', fontWeight:'500'}:{}}
+            key={index} onClick={() =>{setLesson(lessonName); onMenuClick(`קישור ל: ${title} > ${lessonName}`)}}>
               {lessonName}
             </li>
           ))}

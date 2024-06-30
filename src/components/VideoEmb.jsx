@@ -21,7 +21,7 @@ const VideoEmb = ({
             <div className="video-responsive alignCenter">
             <iframe
                 className="border"
-                style={{borderRadius:`${borderRadius}px`, background:'white'}}
+                style={{borderRadius:`${borderRadius}px`, background:'white', maxHeight:'80vh'}}
                 width={width}
                 height={height}
                 src = {src}
@@ -30,6 +30,7 @@ const VideoEmb = ({
                 referrerPolicy="strict-origin-when-cross-origin" 
                 allowFullScreen
                 title={title}
+                color="green"
             />
             </div>)
         };

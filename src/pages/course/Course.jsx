@@ -5,11 +5,12 @@ import { debug } from '../../assets/function/functions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import VideoEmb from '../../components/VideoEmb';
 import { faAngleRight, faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+import useWindowDimensions from '../../assets/function/useWindowDimentions';
 
 const Course = ({courseList={},topic,...props}) => {
   const [selectedContent, setSelectedContent] = useState('Select a menu item');
   const [menuOpen, setMenuOpen] = useState(true);
-
+  const {width, height} = useWindowDimensions();
   const handleMenuClick = (content) => {
     setSelectedContent(content);
   };
@@ -20,17 +21,18 @@ const Course = ({courseList={},topic,...props}) => {
         <div className="flex blackOnWhite between pointer pt3 pb3"
         style={{padding:'1em 0.5em'}}
         onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen && <a>{topic}</a>}
+          {menuOpen && <h3 className='m0'>{topic}</h3>}
           <FontAwesomeIcon 
           className='hoverTheme'
-          title={!menuOpen ? 'פתיחה': 'צמצום'} 
+          title={!menuOpen ? 'פתיחת תפריט': 'צמצום תפריט'} 
           icon={!menuOpen ? faAnglesLeft: faAnglesRight} size='lg'/>
         </div>
-        <Menu items={courseList} onMenuClick={handleMenuClick} />
+        {menuOpen && <Menu items={courseList} onMenuClick={handleMenuClick} />}
       </div>
       <div className="content">
-        <h2>{selectedContent}</h2>
-        <VideoEmb width='800' height='400' />
+        <p className='w500'>{selectedContent}</p>
+        <VideoEmb
+          width={width/2} height={width*0.7/2} />
       </div>
       <button className="mobile-menu-button" onClick={() => setMenuOpen(!menuOpen)}>
         ☰
