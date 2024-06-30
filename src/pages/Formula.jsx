@@ -183,7 +183,7 @@ function Formulas({
                     title='סינון'
                     style={{ border: '1px solid var(--themeColor)' }}
                     onClick={() => { setFilters(p => ({ ...p, [item]: !p[item] })); selectAllToggle(item, true) }}
-                    className={`squarish smaller ${!filters[item] ? 'themeBorder' : ''}`}>
+                    className={`squarish medium ${!filters[item] ? 'themeBorder' : ''}`}>
                     {item}
                 </button>
             ))}
@@ -220,7 +220,7 @@ function Formulas({
                 {msg && <p className='ma1'>{msg}</p>}
                 <div className='mt1 mb3'>
                     {Object.keys(formulas).map((subjuct, index) => (
-                        (((showAll || (!showAll && subjuct in userFormula)) && !filters.active) || (filters.active && filters[subjuct]))
+                        (((showAll || (!showAll && subjuct in userFormula)) && !filters.active) || (filters.active && (filters[subjuct])))
                         &&
                         <div key={index + subjuct}>
                             <div

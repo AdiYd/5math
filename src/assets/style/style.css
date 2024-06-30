@@ -263,6 +263,7 @@ a:active {
 button {
     padding: 0.6em 0.8em;
     color: var(--themeColorText_DarkMode);
+    border: 1px solid var(--themeColor);
     background-color: var(--themeColor);
     border-radius: var(--buttonRadius);
     font-weight: bold;
@@ -381,7 +382,7 @@ button:hover {
     animation: flicker 5s alternate ease-in-out infinite;
 }
 .shake {
-    animation: shake 0.7s alternate ease-in-out 15 forwards;
+    animation: shake 0.7s alternate ease-in-out infinite forwards;
 }
 
 @keyframes flicker {

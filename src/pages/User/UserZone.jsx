@@ -32,7 +32,12 @@ function UserZone({ ...props }) {
 
     const setRadius = (type) => {
         setButtonRadius(type);
-        localStorage.setItem('themeRadius',type);
+        if (type === 'd'){
+            localStorage.removeItem('themeRadius')
+        }
+        else{
+            localStorage.setItem('themeRadius',type);
+        }
         setAppRaduis({type});
     }
 

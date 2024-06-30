@@ -73,18 +73,21 @@ div#promptContainer {
         overflow-y: scroll;
         background-image: var(--themeBG_GradientLight);
     }
-    
+
+div#courseMenu::-webkit-scrollbar,
 div#promptContainer::-webkit-scrollbar {
     width: 0.4em;
     height: 0.3em;
     border-radius: var(--PlotRadius);
 }
 
+div#courseMenu::-webkit-scrollbar-track,
 div#promptContainer::-webkit-scrollbar-track {
     background: transparent;
 
 }
 
+div#courseMenu::-webkit-scrollbar-thumb,
 div#promptContainer::-webkit-scrollbar-thumb {
     cursor: grab;
     /* background: linear-gradient(315deg, transparent, transparent, #233b3234, transparent, transparent); */
@@ -93,6 +96,7 @@ div#promptContainer::-webkit-scrollbar-thumb {
     /* background: linear-gradient(45deg, rgba(22, 146, 235, 0.538), transparent); */
 }
 
+div#courseMenu::-webkit-scrollbar-thumb:active,
 div#promptContainer::-webkit-scrollbar-thumb:active {
     cursor: grabbing;
 }

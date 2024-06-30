@@ -156,7 +156,7 @@ export const setAppRaduis = ({type='d', fromDB = false}={})=>{
             rootSelector.style.setProperty('--buttonRounderRadius','');
             break;
         case 's':
-            rootSelector.style.setProperty('--themeBorderRadius','8px');
+            rootSelector.style.setProperty('--themeBorderRadius','15px');
             rootSelector.style.setProperty('--cardRadius','10px');
             rootSelector.style.setProperty('--buttonRadius','8px');
             rootSelector.style.setProperty('--buttonSquarishRadius','');
@@ -171,8 +171,8 @@ export const setAppRaduis = ({type='d', fromDB = false}={})=>{
             break;
         default:
             rootSelector.style.setProperty('--themeBorderRadius','30px');
-            rootSelector.style.setProperty('--cardRadius','12px');
-            rootSelector.style.setProperty('--buttonRadius','3px');
+            rootSelector.style.setProperty('--cardRadius','15px');
+            rootSelector.style.setProperty('--buttonRadius','4px');
             rootSelector.style.setProperty('--buttonSquarishRadius','10px');
             rootSelector.style.setProperty('--buttonRounderRadius','20px');
             break;

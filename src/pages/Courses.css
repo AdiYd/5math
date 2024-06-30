@@ -35,6 +35,9 @@
     /* grid-template-rows: 1fr 2fr 1fr; */
         /* justify-content: space-between; */
     }
+.course-card:hover {
+    transform: translateY(-3px);
+}
 /* 
 .course-card:hover {
     transform: translateY(-0.8em);
@@ -52,7 +55,7 @@
     list-style-type: disc;
     padding: 0.3em;
     text-align: left;
-    margin: 0.5em 0em;
+    margin: 0em;
     text-align: -webkit-right;
 }
 
@@ -81,7 +84,6 @@ div.onConstruction {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 0.8em;
 }
 
 .original-price {
@@ -114,7 +116,7 @@ div.onConstruction {
 div.course-card div button#purchesButton {
     background-color: var(--constThemeColor);
     color: var(--themeColorText_DarkMode);
-    border: 1px solid rgba(0, 0, 0, 0.366);
+    border: 1px solid var(--themeColorGrey);
 }
 
 div.course-card div button#purchesButton:hover {

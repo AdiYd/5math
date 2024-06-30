@@ -11,7 +11,7 @@
     --themeDarkRed: rgb(102, 5, 5);
         /* rgba(1, 30, 51, 1); */
     --themeColorAlpha: rgba(0, 166, 255, 0.3);
-    --themeGreyAlpha: rgba(184, 198, 211, 0.473);
+    --themeGreyAlpha: rgba(181, 199, 216, 0.473);
     --themeGreenLight: rgb(155, 212, 155);
 
     --constThemeColor: var(--ThemeGPTPurpleV);

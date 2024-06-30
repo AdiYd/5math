@@ -20,10 +20,8 @@ const courses = [
     name: 'וקטורים',
     mathJax: '$$ \\vec{v} + \\vec{a} = 2\\vec{b} $$',
     bullets: [
-      '20 שעות של תוכן',
-      'וקטורים במרחב',
-      'גאומטריה וקטורית',
-      'אנימציות מתקדות',
+      'כל מה שצריך לבגרות',
+      'אנימציות מתקדמות, דוגמאות וטיפים',
       'פתרון שאלות מבגרות'
     ],
     originalPrice: 60,
@@ -36,7 +34,6 @@ const courses = [
     bullets: [
       'מעבר על כל סוגי השאלות',
       'תרגול ופתרון שאלות בגרות',
-      'הדרכה צעד צעד וטיפים',
       'בונוס - חוברת תרגול'
     ],
     originalPrice: 60,
@@ -44,14 +41,12 @@ const courses = [
     bgColor: 'linear-gradient(120deg,transparent, rgba(32, 206, 1,0.5))'
   },
   {
-    name: 'חשבון דפרנציאלי ואינטגרלי',
+    name: 'חדו"א',
     mathJax: "$$ \\int f'(x)dx = f(x) + C $$",
     bullets: [
-      '20 שעות של הסברים',
+      '20 שעות תוכן',
       'פונקציות, נגזרות, אינטגרלים',
-      'חקירת פונקציות ופתרון בעיות קיצון',
-      'דוגמאות שימושיות',
-      'תרגול וחיזוק הבנה'
+      'בונוס - חוברת תרגול',
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
@@ -61,24 +56,21 @@ const courses = [
     name: 'מרוכבים',
     mathJax: '$$ z=rcos(\\theta)+i\\cdot rsin(\\theta) $$',
     bullets: [
-        'הצגה קרטזית ופולארית',
-        'המישור המרוכב',
-        'אריתמטיקה של מספרים מרוכבים',
-        'פתרון בעיות - צעד צעד',
-       'שאלות נפוצות ותשובות',
+        'תוכן ויזואלי ופרקטי',
+        'הסברים ופתרון שאלות - צעד צעד',
+        'בונוס - חוברת תרגול',
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
-    bgColor: 'linear-gradient(240deg,transparent, rgba(168, 0, 230, 0.5))'
+    bgColor: 'linear-gradient(240deg,transparent, rgb(213 118 248 / 50%))'
   },
   {
     name: 'משוואות מעריכיות',
     mathJax: '$$f(x) = e^{2x}ln(x)$$',
     bullets: [
-      '15 שעות וידאו',
-      'פתרון תרגילים לדוגמה',
-      'הסברים וטיפים לפתרון',
-      'חוברת תרגול'
+      'הסברים ודוגמאות רבות',
+      'טכניקות וטיפים לפתרון',
+      'פתרון שאלות בגרות',
     ],
     originalPrice: 60,
     discountedPrice: 39.9,
@@ -102,7 +94,7 @@ const CourseCard = ({ course }) => {
                         <button 
                         style={{width:'75%'}}
                         id="purchesButton"
-                        className="round ma3 pt2 pb2">לרכישה</button>
+                        className="round border ma3 pt2 pointer pb2">לרכישה</button>
                     </div>
     let bullets =  <div>
                     <MathJax>
@@ -171,21 +163,21 @@ const Courses = ({...props}) => {
                     </div>
 
     let paymentPromo =  <div className="flex center gap2 m2">
-                            <div className="flex gap1 columns lineargrad boxShadow paymentPromo center">
+                            <div className="flex gap1 columns lineargrad border paymentPromo center">
                                 <a className=""> רכישה מאובטחת ובטוחה  </a>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faLock} />
                                     <FontAwesomeIcon icon={faCreditCard} />
                                 </div>
                             </div>
-                            <div className="flex gap1 columns lineargrad boxShadow paymentPromo center">
+                            <div className="flex gap1 columns lineargrad border paymentPromo center">
                                 <a className=""> הקורסים פתוחים למשך 8 חודשים </a>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faClock} />
                                     <FontAwesomeIcon icon={faUserAstronaut} />
                                 </div>
                             </div>
-                            <div className="flex gap1 columns lineargrad boxShadow paymentPromo center">
+                            <div className="flex gap1 columns lineargrad border paymentPromo center">
                                 <a className=""> ניתן להתייעץ ולשאול את המורה שאלות </a>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faQuestionCircle} />
@@ -320,11 +312,13 @@ const Courses = ({...props}) => {
     let main;
     if (option ==='582'){
         main =  <>
-            <p className="w500"> צפו בשיעור בנושא מסוים ובפתרון תרגיל לדוגמה, פתרו כמה תרגילים בעצמכם מחוברת התרגול או ממקורות אחרים, מתקשים? חזרו לשיעור, לתרגילים ולדוגמאות או שתדברו איתנו 🙂</p>
+            <p className="w600">מעל 60 שעות של תוכן איכותי ומאורגן לפי נושאים עם תרגילים לדוגמה וחוברת תרגילים, ניתן לרכוש נושאים בודדים או את כל התוכן במחיר משתלם</p>
+           
+            <p className="w500"> איך לומדים איתנו בצורה יעילה? צפו בשיעור ולאחר מכן בפתרון תרגיל לדוגמה, המשיכו ופתרו מספר תרגילים בעצמכם ברמות קושי משתנות (מחוברת התרגול המצורפות או ממקורות אחרים)
+            <br/> מתקשים? אנחנו פה! חזרו לשיעור, להסברים, לתרגול, לדוגמאות ודברו איתנו 🙂</p>
             {paymentPromo}
             {carusel}
-            <p className="w500">מעל 60 שעות של תוכן איכותי ומאורגן לפי נושאים, בכל נושא תרגילים לדוגמה וחוברת תרגילים</p>
-            <p className="w500">ניתן לרכוש נושאים בודדים או את כל התוכן של השאלון במחיר משתלם</p>
+
             <p className="w500"> מהירי הבנה? מעולה, תוכלו לצפות בקצב מהיר(x 1.5), לוקחים את הזמן? נהדר, מוזמנים לצפות בקצב שלכם (x 0.75) ולחזור על השיעור כמה שרק תרצו </p>
         </>  
     }
