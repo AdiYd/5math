@@ -12,8 +12,6 @@ function Exercises ({...props}){
 
     return (
         <div>
-            <h2> Page {"Exercises"}</h2>
-            <h3> בחרו קורס מהרשימה</h3>
             <div className="flex center gap2 ma2 pt2 pb2">
                 {topicsList.map((item,index)=>(
                     <button key={index}

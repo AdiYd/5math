@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CourseContainer.css';
 import Menu from '../../components/Menu';
 import { debug } from '../../assets/function/functions';
@@ -9,8 +9,15 @@ import useWindowDimensions from '../../assets/function/useWindowDimentions';
 
 const Course = ({courseList={},topic,...props}) => {
   const [selectedContent, setSelectedContent] = useState('Select a menu item');
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(Boolean(Object.keys(courseList).length));
   const {width, height} = useWindowDimensions();
+
+  useEffect(()=>{
+    if (!menuOpen&& Object.keys(courseList).length){
+      setMenuOpen(true);
+    }
+  },[courseList, topic])
+
   const handleMenuClick = (content) => {
     setSelectedContent(content);
   };

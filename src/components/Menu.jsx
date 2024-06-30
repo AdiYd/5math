@@ -49,7 +49,9 @@ const MenuItem = ({ title, topic, onMenuClick }) => {
   let isSubMenu = Object.keys(topic).length;
   return (
     <li>
-      <div className={`flex alignCenter tStart ${open ? 'bold':''}`} 
+      <div 
+        style={{alignItems:'flex-start', gap:'0.2em'}}
+        className={`flex tStart ${open ? 'bold':''}`} 
         onClick={() => setOpen(!open)}>
         {title} {isSubMenu && <div 
         style={{fill:'var(--themeColorText)'}}
