@@ -199,3 +199,11 @@ div#userDataDiv p {
     /* margin: 1em 2em; */
     /* padding: 1em; */
 }
+div#backTo {
+    padding: 0.3em 0.6em;
+    border-radius: var(--buttonSquarishRadius);
+}
+
+div#backTo:hover {
+    background-color: var(--themeGreyAlpha);
+}

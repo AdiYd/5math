@@ -18,9 +18,11 @@ import Courses from './Courses';
 import Exercises from './Exercises';
 import ErrorPage from '../components/ErrorPage';
 import Course from './course/Course';
+import CourseSale from './course/CourseSale';
+import CourseContainer from './course/CourseContainer';
 
 export const allCourses = require('../assets/lessons/all_582.json');
-const topicsList = Object.keys(allCourses);
+export const topicsList = Object.keys(allCourses);
 
 export const dataBase = new DBaccess();
 
@@ -204,9 +206,30 @@ export default function App({ }) {
                                     <Route
                                         key={indx}
                                         path={pageName}
-                                        element={
-                                            PAGES[pageName].link
-                                        } />)}
+                                        element={PAGES[pageName].link} >
+                                        {pageName === 'Courses' && 
+                                        <>
+                                            <Route
+                                                path=''
+                                                element = <CourseSale /> />
+                                            <Route 
+                                                path='582'
+                                                element = <CourseContainer courseSymbol={'582'} />>
+                                                <>
+                                                    <Route
+                                                    path=''
+                                                    element=<Course /> />
+                                                    {Object.keys(allCourses).map((item,ind)=>(
+                                                        <Route
+                                                            key={ind + item}
+                                                            path={item}
+                                                            element = {<Course topic={item} />} />
+                                                    ))}
+                                                </>
+                                            </Route>
+                                        </>}
+                                        </Route>
+                                        )}
                                 <Route
                                     path={'Login'}
                                         element={

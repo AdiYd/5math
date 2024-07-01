@@ -164,13 +164,13 @@ section.caruselDiv {
                                     background: var(--themeGreyAlpha); */
   /* background: var(--themeColor); */
   padding: 1em;
-  line-height: 1.5;
+  line-height: 1.2;
 }
 
 div.carousel-container {
   padding: 2em 0.5em;
   padding-top: 0em;
-  margin: 1em 0em;
+  margin: 0em;
 }
     
 div.carousel-container li {

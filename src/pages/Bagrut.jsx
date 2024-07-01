@@ -306,7 +306,7 @@ function Bagrut({ ...props }) {
     return (
         <div className={`bagrutMain mt1 mb3 ${user.darkMode ? 'darkMode' : ''}`}>
             <div style={{ height: '1em' }}></div>
-            <h1>בגרות במתמטיקה - מידע ושאלונים</h1>
+            <h2>בגרות במתמטיקה - מידע ושאלונים</h2>
             <div className='flex center gap2'>
                 <button
                     style={{padding:'0.7em 2em'}}

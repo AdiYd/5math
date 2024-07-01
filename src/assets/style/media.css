@@ -130,104 +130,106 @@
     }
 }
 
-@media only screen and (max-width: 680px) {
+@media screen and (max-width: 680px) {
 
-    section.caruselDiv {
+section.caruselDiv {
         /* background: var(--themeColorAlpha); */
         padding: 1em 0.5em;
     }
 
-    #frame2Card {
-        height: 17em;
-        width: 16em;
-    }
+        #frame2Card {
+            height: 17em;
+            width: 16em;
+        }
 
-    div.frameDiv2 {
-        display: flex;
-        flex-wrap: wrap;
-        width: -webkit-fill-available;
-        margin: 0em;
-    }
+                div.frameDiv2 {
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: -webkit-fill-available;
+                    margin: 0em;
+                }
 
-    div#promoVideo,
-    div.frameDiv1,
-    div.frameDiv3 {
-        margin: 0em !important;
-        border-radius: 0em !important;
-        /* font-size: 0.8em !important; */
-    }
+                div#promoVideo,
+                div.frameDiv1,
+                div.frameDiv3 {
+                    margin: 0em !important;
+                    border-radius: 0em !important;
+                    /* font-size: 0.8em !important; */
+                }
 
-    div.quickSignUp {
-        margin: 0em;
-        border-radius: 0em;
-    }
+                div.quickSignUp {
+                    margin: 0em;
+                    border-radius: 0em;
+                }
 
-    div.frameDiv3 div h2 {
-        font-size: 1em;
-    }
+                div.frameDiv3 div h2 {
+                    font-size: 1em;
+                }
 
-    div.frameDiv3 p {
-        font-size: 0.9em !important;
-    }
+                div.frameDiv3 p {
+                    font-size: 0.9em !important;
+                }
 
-    div.frameDiv3 h1 {
-        font-size: 1.3em;
-    }
+                div.frameDiv3 h1 {
+                    font-size: 1.3em;
+                }
 
-    div.frameDiv3 svg#tutorSelfie {
-        width: 4em !important;
-        height: 4em !important;
-        padding: 1em;
-        margin: 1em;
-    }
+                div.frameDiv3 svg#tutorSelfie {
+                    width: 4em !important;
+                    height: 4em !important;
+                    padding: 1em;
+                    margin: 1em;
+                }
 
-    div.writeMe {
-        width: -webkit-fill-available;
-        /* box-shadow: none; */
-    }
+                div.writeMe {
+                    width: -webkit-fill-available;
+                    /* box-shadow: none; */
+                }
 
-    div.writeMe div {
-        flex-direction: column;
-    }
+                div.writeMe div {
+                    flex-direction: column;
+                }
 
-    div.writeMe svg {
-        width: 0.8em;
-    }
+                div.writeMe svg {
+                    width: 0.8em;
+                }
 
-    div.writeMe input,
-    div.writeMe textArea {
-        width: 65vw !important;
-    }
+                div.writeMe input,
+                div.writeMe textArea {
+                    width: 65vw !important;
+                }
 
-    div.headerBorder {
-        border-radius: 0px !important;
-    }
+                div.headerBorder {
+                    border-radius: 0px !important;
+                }
 
-    ul#mobile li.activePage {
-        border-color: transparent !important;
-        color: var(--themeColor) !important;
-    }
-    img#tutorSelfie {
-        margin: 1em !important;
-        width: 7em !important;
-        height: 7em !important;
-        border: 1px solid rgba(255, 255, 255, 0.651);
-    }
+                ul#mobile li.activePage {
+                    border-color: transparent !important;
+                    color: var(--themeColor) !important;
+                }
+        
+                img#tutorSelfie {
+                    margin: 1em !important;
+                    width: 7em !important;
+                    height: 7em !important;
+                    border: 1px solid rgba(255, 255, 255, 0.651);
+                }
 
-    button {
-        font-size: 0.8em;
-    }
+                button {
+                    font-size: 0.8em;
+                }
 
-    div.rcp span {
-        width: 10em !important;
-    }
-    /* div#promptContainer {
-        left: -1%;
-        margin: 1em;
-        height: 80vh;
-    */
+                div.rcp span {
+                    width: 10em !important;
+                }
+        
+                /* div#promptContainer {
+                    left: -1%;
+                    margin: 1em;
+                    height: 80vh;
+                */
 
-    input#password,
+input#password,
     input#password2,
     input#email,
     input#Password,
@@ -236,175 +238,201 @@
         max-width: none !important;
     }
 
-    div.login,
-    div.signup {
-        width: 65% !important;
+        div.login,
+        div.signup {
+            width: 65% !important;
             /* border-radius: 0px !important; */
-    }
+        }
 
-    div.courses div {
-        margin: 0em !important;
-        width: -webkit-fill-available;
-    }
+        div.carousel-container button {
+            border: none !important;
+            font-weight: 600 !important;
+        }
+    
+        div.courses div {
+            margin: 0em !important;
+            width: -webkit-fill-available;
+        }
 
-    div.Courses {
-        padding: 1em 0em !important;
-    }
+        div.Courses {
+            padding: 1em 0em !important;
+        }
 
-    div.onConstruction {
-        margin: 0em !important;
-        padding: 1em 0em !important;
-    }
-    div#notifyMe {
-        border-radius: 0em !important;
-        margin: 0em;
-    }
+        div.onConstruction {
+            margin: 0em !important;
+            padding: 1em 0em !important;
+        }
+    
+        div#notifyMe {
+            border-radius: 0em !important;
+            margin: 0em;
+        }
 
-    input#lname,
-    input#fname {
-        min-width: 20vw;
-    }
+        input#lname,
+        input#fname {
+            min-width: 20vw;
+        }
 
-    div.loginForm button#signupButton {
+        div.loginForm button#signupButton {
             /* font-size: 0.8em; */
             width: 25vw;
-    }
-    div.fliterDiv p {
-        display: none;
-    }
-    div#promptContainer {
-        left: -1% !important;
-        margin: 1em !important;
-        max-width: 90%;
-    }
-    div.storyDiv p {
-        margin: 0.1em !important;
-    }
-    div.storyDiv {
-        position: absolute;
-        top: 2%;
-        left: 0%;
-        height: max-content;
-        width: 83vw;
-        max-height: 85vh;
-        overflow-x: overlay;
-        overflow-y: overlay;
-        background-color: white !important;
-        border-radius: 4px !important;
-        border-color: rgba(0, 0, 0, 0.777) !important;
-        z-index: 40;
-        margin: 1em !important;
-        padding: auto !important;
-    }
+        }
+    
+        div.fliterDiv p {
+            display: none;
+        }
+    
+        div#promptContainer {
+            left: -1% !important;
+            margin: 1em !important;
+            max-width: 90%;
+        }
+    
+        div.storyDiv p {
+            margin: 0.1em !important;
+        }
+    
+        div.storyDiv {
+            position: absolute;
+            top: 2%;
+            left: 0%;
+            height: max-content;
+            width: 83vw;
+            max-height: 85vh;
+            overflow-x: overlay;
+            overflow-y: overlay;
+            background-color: white !important;
+            border-radius: 4px !important;
+            border-color: rgba(0, 0, 0, 0.777) !important;
+            z-index: 40;
+            margin: 1em !important;
+            padding: auto !important;
+        }
 
-    div.storyDiv button,
-    div.storyDiv svg {
-        display: block !important;
-    }
-    div.UserZone {
-        font-size: 1.2em;
-    }
-    ul#promoList li {
-        font-size: 1.1em !important;
-    }
+        div.storyDiv button,
+        div.storyDiv svg {
+            display: block !important;
+        }
+    
+        div.UserZone {
+            font-size: 1.2em;
+        }
+    
+        ul#promoList li {
+            font-size: 1.1em !important;
+        }
 
-    .menu.open {
-        position: absolute !important;
-        display: flex;
-        width: max-content;
-        right: 0;
-        top: 0;
-        height: 100%;
-        width: 60% !important;
-        z-index: 40;
-    }
-    .menu.open li div {
-        align-items: center !important;
-    }
-    .menu.closed {
-        width: 4em !important;
-    }
-    iframe {
-        width: -webkit-fill-available;
-    }
-}
+        .menu.open {
+            position: absolute !important;
+            display: flex;
+            width: max-content;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 60% !important;
+            z-index: 40;
+        }
+    
+        .menu.open li div {
+            align-items: center !important;
+        }
+    
+        .menu.closed {
+            width: 4em !important;
+        }
+    
+        iframe {
+            width: -webkit-fill-available;
+        }
+        }
 
 @media only screen and (max-width: 450px) {
     body {
         font-size: 10px;
     }
-    
+
     .App {
         font-size: 0.8rem;
     }
 
-    .translateY:hover {
-        transform: none;
-    }
+                .translateY:hover {
+                    transform: none;
+                }
 
-    div.frameDiv2 {
-        padding: 0.8em;
-    }
+                div.frameDiv2 {
+                    padding: 0.8em;
+                }
 
-    div#promoVideo,
-    div.frameDiv1,
-    div.frameDiv3 {
-        font-size: 0.8em !important;
-    }
+                div#promoVideo,
+                div.frameDiv1,
+                div.frameDiv3 {
+                    font-size: 0.8em !important;
+                }
 
-    div#frame2Card h3 {
-        font-size: 1em;
-    }
+                div#frame2Card h3 {
+                    font-size: 1em;
+                }
 
-    div.frameDiv3 h1 {
-        font-size: 1.1em;
-    }
+                div.frameDiv3 h1 {
+                    font-size: 1.1em;
+                }
 
-    div#promptContainer {
-        font-size: larger !important;
-    }
-    div.frameDiv3 svg#tutorSelfie {
-        width: 3em !important;
-        height: 3em !important;
-    }
-    div.UserZone {
-        font-size: 1em;
-    }
-    div.userZone section {
-        margin: 0.5em !important;
-    }
-    span * {
-        text-wrap: nowrap;
-    }
-    button {
-        font-size: 0.7em;
-    }
+                div#promptContainer {
+                    font-size: larger !important;
+                }
+        
+                div.frameDiv3 svg#tutorSelfie {
+                    width: 3em !important;
+                    height: 3em !important;
+                }
+        
+                div.UserZone {
+                    font-size: 1em;
+                }
+        
+                div.userZone section {
+                    margin: 0.5em !important;
+                }
+        
+                span * {
+                    text-wrap: nowrap;
+                }
+        
+                button {
+                    font-size: 0.7em;
+                }
 
-    img#tutorSelfie {
-        width: 5em !important;
-        height: 5em !important;
-    }
-    div.login,
-    div.signup {
-        width: -webkit-fill-available !important;
-        border-radius: 0px !important;
-    }
-    div.loginForm {
-        padding: 2em;
-    }
-    .content {
-        padding: 0em;
-    }
-    iframe {
-        width: -webkit-fill-available;
-        border-radius: 0px;
-    }
+                img#tutorSelfie {
+                    width: 5em !important;
+                    height: 5em !important;
+                }
+        
+                div.login,
+                div.signup {
+                    width: -webkit-fill-available !important;
+                    border-radius: 0px !important;
+                }
+        
+                div.loginForm {
+                    padding: 2em;
+                }
+        
+                .content {
+                    padding: 0em;
+                }
+        
+                iframe {
+                    width: -webkit-fill-available;
+                    border-radius: 0px;
+                }
 
 }
+
 @media only screen and (max-width: 360px) {
     body {
         position: relative;
     }
+
     ul#promoList {
         font-size: smaller;
     }

@@ -10,18 +10,18 @@ function Exercises ({...props}){
 
     return (
         <div>
-        <h2>תרגול איכותי בכל הנושאים</h2>
-            <div className="flex center gap2 wrap ma2 pt2 pb2">
-                {/* {topicsList.map((item,index)=>(
+            <h2>תרגול איכותי בכל הנושאים</h2>
+            {/* <div className="flex center gap2 wrap ma2 pt2 pb2">
+                {topicsList.map((item,index)=>(
                     <button key={index}
                     className={`${course === item ? '':'themeBorder'} borderTheme round pointer`}
                     style={{padding:'0.5em 1em'}}
                     onClick={()=>setCourse(item)}>{item}</button>                    
-                ))} */}
+                ))}
             </div>
             <div className="fill fillH border squarish">
                 <Course topic={course} />
-            </div>
+            </div> */}
         </div>
     );
 }
