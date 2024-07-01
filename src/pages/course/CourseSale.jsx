@@ -226,7 +226,7 @@ function CourseSale ({...props}){
                 // transitionDuration={1000}
                 // partialVisbile={true}
                 containerClass="carousel-container"
-                // removeArrowOnDeviceType={["tablet", "mobile"]}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
                 // deviceType={this.props.deviceType}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-39.9-px">

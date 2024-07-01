@@ -21,7 +21,7 @@ import Course from './course/Course';
 import CourseSale from './course/CourseSale';
 import CourseContainer from './course/CourseContainer';
 
-export const allCourses = require('../assets/lessons/all_582.json');
+export const allCourses = require('../lessons/all_582.json');
 export const topicsList = Object.keys(allCourses);
 
 export const dataBase = new DBaccess();
