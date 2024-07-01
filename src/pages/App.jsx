@@ -156,7 +156,7 @@ export default function App({ }) {
         }, 1500)
     }
 
-    function userLogin({ userObj = {}, disconnect = false, isAdmin = false } = {}) {
+    function userLogin({ userObj = {}, disconnect = false, isAdmin = false, isUpdate=false } = {}) {
         let userInfos;
         if (disconnect) {
             removeCookie('userAuth');
@@ -166,13 +166,13 @@ export default function App({ }) {
         else if (isAdmin) {
             userInfos = { ...USERS.admin };
             setUserInfo(userInfos);
-            onFulfilValidation(userInfos);
-            return
         }
         else{
             userInfos = {...userObj, isAuth: true};
             setUserInfo(userInfos);
-            onFulfilValidation(userInfos)
+        }
+        if (!isUpdate){
+          onFulfilValidation(userInfos)
         }
     }
 
@@ -187,36 +187,35 @@ export default function App({ }) {
                     element={<>
                         <User.Provider value={{ ...user, callback: userLogin }}>
                             <Header currentPage={relPath} />
-                        <Routes>
-                            <Route
+                            <Routes>
+                                <Route
+                                        index
+                                        element={<Home />} />
+                                    <Route
+                                        path={'5Math'}
+                                        element={<Home />} />
 
-                                    index
-                                    element={<Home />} />
+                                {Object.keys(PAGES).map((pageName, indx) =>
+                                    <Route
+                                        key={indx}
+                                        path={pageName}
+                                        element={
+                                            PAGES[pageName].link
+                                        } />)}
                                 <Route
-                                    path={'5Math'}
-                                    element={<Home />} />
-
-                            {Object.keys(PAGES).map((pageName, indx) =>
+                                    path={'Login'}
+                                        element={
+                                            <Login />
+                                        } />
+                                    <Route
+                                        path={'Personal'}
+                                        element={
+                                            <UserZone />
+                                        } />
                                 <Route
-                                    key={indx}
-                                    path={pageName}
-                                    element={
-                                        PAGES[pageName].link
-                                    } />)}
-                            <Route
-                                path={'Login'}
-                                    element={
-                                        <Login />
-                                    } />
-                                <Route
-                                    path={'Personal'}
-                                    element={
-                                        <UserZone />
-                                    } />
-                            <Route
-                                path="*"
-                                element={<><h1>Error Page! 404</h1></>} />
-                        </Routes>
+                                    path="*"
+                                    element={<><h1>Error Page! 404</h1></>} />
+                            </Routes>
                         </User.Provider>
                         <Footer />
                     </>

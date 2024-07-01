@@ -314,8 +314,11 @@
         right: 0;
         top: 0;
         height: 100%;
-        width: 50% !important;
-        z-index: 1000;
+        width: 60% !important;
+        z-index: 40;
+    }
+    .menu.open li div {
+        align-items: center !important;
     }
     .mobile-menu-button {
         display: none;
@@ -323,6 +326,9 @@
     .menu.closed {
         width: 4em !important;
     }
+        iframe {
+            width: -webkit-fill-available;
+        }
 }
 
 @media only screen and (max-width: 450px) {
@@ -387,6 +393,13 @@
     }
     div.loginForm {
         padding: 2em;
+    }
+    .content {
+        padding: 0em;
+    }
+    iframe {
+        width: -webkit-fill-available;
+        border-radius: 0px;
     }
 
 }
