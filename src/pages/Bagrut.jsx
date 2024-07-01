@@ -178,7 +178,7 @@ const bagrutDict = {
 }
 
 function Bagrut({ ...props }) {
-    document.title = 'שאלוני בגרות';
+    document.title = 'מבחני בגרות';
     const user = useContext(User);
     debug('Context: ', user, true);
     const [filterData, setFilterData] = useState({
@@ -306,7 +306,7 @@ function Bagrut({ ...props }) {
     return (
         <div className={`bagrutMain mt1 mb3 ${user.darkMode ? 'darkMode' : ''}`}>
             <div style={{ height: '1em' }}></div>
-            <h2>בגרות במתמטיקה - מידע ושאלונים</h2>
+            <h1>בגרות במתמטיקה - מידע ושאלונים</h1>
             <div className='flex center gap2'>
                 <button
                     style={{padding:'0.7em 2em'}}

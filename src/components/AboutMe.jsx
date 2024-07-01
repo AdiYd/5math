@@ -113,7 +113,7 @@ function AboutMe({ ...props }) {
                 title='Picture of the course teacher'
             />
             <div className='flex center'>
-                <h1>ההצלחה מתחילה בך ועוברת במרצה </h1>
+                <h2>ההצלחה בבגרות מתחילה בך ועוברת במרצה</h2>
             </div>
             <div className='flex'>
                 <h2 style={{ margin: '0em' }}><b>שי חכימי - </b></h2>

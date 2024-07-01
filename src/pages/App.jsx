@@ -16,6 +16,11 @@ import DBaccess from '../assets/function/DBaccess';
 import { jwtDecode } from 'jwt-decode';
 import Courses from './Courses';
 import Exercises from './Exercises';
+import ErrorPage from '../components/ErrorPage';
+import Course from './course/Course';
+
+export const allCourses = require('../assets/lessons/all_582.json');
+const topicsList = Object.keys(allCourses);
 
 export const dataBase = new DBaccess();
 
@@ -137,10 +142,10 @@ export default function App({ }) {
                     keyVal:{ip:res[0].ip}, 
                     attrName:'counter',
                     attrVal:res[0].counter+1})
+                    debug(`User : ${res[0].name} visited this website ${res[0].counter +1} times`);
                 }
-                debug(`User : ${res[0].name} visited this website ${res[0].counter} times`);
             })
-            setCookie('userData',JSON.stringify(data),{maxAge: 60*60});
+            setCookie('userData',JSON.stringify(visitorData),{maxAge: 60*60});
         }
         if (!cookie.userData){
             getUser();
@@ -214,7 +219,7 @@ export default function App({ }) {
                                         } />
                                 <Route
                                     path="*"
-                                    element={<><h1>Error Page! 404</h1></>} />
+                                    element={<ErrorPage />} />
                             </Routes>
                         </User.Provider>
                         <Footer />

@@ -463,7 +463,7 @@ export default function AboutUs({ ...props }) {
     return (
         <div id='about' className={`${user.darkMode ? 'darkMode' : ''}`}>
             <h2> הקורס הדיגיטלי המתקדם ביותר ללימודי מתמטיקה אונליין</h2>
-            <p className="large">ללמוד, להבין ולתרגל מתמטיקה ממורים מנוסים שיודעים בדיוק מה אתם צריכים</p>
+            <h3 className="large">ללמוד, להבין ולתרגל מתמטיקה ממורים מנוסים שיודעים בדיוק מה אתם צריכים</h3>
             {aboutCarusel}
             {story}
         </div>

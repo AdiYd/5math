@@ -285,7 +285,7 @@
         top: 2%;
         left: 0%;
         height: max-content;
-        width: 88vw;
+        width: 83vw;
         max-height: 85vh;
         overflow-x: overlay;
         overflow-y: overlay;
@@ -294,6 +294,7 @@
         border-color: rgba(0, 0, 0, 0.777) !important;
         z-index: 40;
         margin: 1em !important;
+        padding: auto !important;
     }
 
     div.storyDiv button,
@@ -320,15 +321,12 @@
     .menu.open li div {
         align-items: center !important;
     }
-    .mobile-menu-button {
-        display: none;
-    }
     .menu.closed {
         width: 4em !important;
     }
-        iframe {
-            width: -webkit-fill-available;
-        }
+    iframe {
+        width: -webkit-fill-available;
+    }
 }
 
 @media only screen and (max-width: 450px) {

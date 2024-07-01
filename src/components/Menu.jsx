@@ -25,10 +25,6 @@ const CourseMenu = ({ items, onMenuClick }) => {
       {Object.keys(items).map((item, index) => {
         const mainTitle = item;
         const topic = items[item];
-        if (topic === 'href'){
-          debug('Aura!');
-          return
-        }
         return (
           <MenuItem
             key={index}

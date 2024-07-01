@@ -29,7 +29,7 @@ export default function Card({
     ...props }) {
     return (
         <div
-            className={`flex center cardContainer columns alignCenter tCenter ${className} ${boxShadow ? 'boxShadowHover' : ''} ${translateY ? 'translateY' : ''}`}
+            className={`flex center cardContainer noneSelect columns alignCenter tCenter ${className} ${boxShadow ? 'boxShadowHover' : ''} ${translateY ? 'translateY' : ''}`}
             style={{ ...style }}
             {...props}
             id={cardID}>

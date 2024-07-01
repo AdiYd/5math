@@ -68,8 +68,8 @@ function Home({ ...props }) {
             <div className='alignCenter fadeIn'>
                 <Logo showCaption={!isMobile} />
                 <h1>קורס דיגיטלי ללימודי מתמטיקה לבגרויות, בזמן ובנוחות שלך</h1>
-                <p className='xLarge'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</p>
-                <p className='xLarge'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</p>
+                <h2 className='w500'> ללמוד ולתרגל בצורה יעילה וחכמה כל הדרך אל הבגרות, בעזרת תוכן איכותי ומונגש</h2>
+                <h2 className='w500'>המדריכים שלנו ילכו איתכם יד ביד עד הבגרות, ללמוד בראש שקט ובבטחון</h2>
                     <button
                         className='themeConst2'
                         id='trialButton'>לצפייה בשיעור ניסיון</button>

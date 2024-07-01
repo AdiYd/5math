@@ -206,7 +206,7 @@ export default function Header({ currentPage }) {
     // const [menu, setMenu] = useState(false);
     useEffect(() => {
         // debug('Changing header pageName after page Change: ', currentPage, true);
-        setPageName(currentPage);
+        setPageName(currentPage || 'Home');
     }, [currentPage])
 
     useEffect(() => {

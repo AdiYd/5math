@@ -2,7 +2,6 @@
     position: relative;
     display: flex;
     margin: 0em;
-    padding-bottom: 1em;
     height: fit-content;
     background-color: var(--themeColorBG);
 }

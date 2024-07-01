@@ -6,17 +6,20 @@ import VideoEmb from '../../components/VideoEmb';
 import { faAngleRight, faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
 import useWindowDimensions from '../../assets/function/useWindowDimentions';
 import CourseMenu from '../../components/Menu';
+import { allCourses } from '../App';
 
-const Course = ({courseList={},topic,...props}) => {
-  const [selectedContent, setSelectedContent] = useState('Select a menu item');
+const Course = ({topic = 'בחרו קורס',...props}) => {
+  const [courseList, setCourseList] = useState(allCourses[topic]);
+  const [selectedContent, setSelectedContent] = useState('בחרו קורס');
   const [menuOpen, setMenuOpen] = useState(Boolean(Object.keys(courseList).length));
   const {width, height} = useWindowDimensions();
 
   useEffect(()=>{
-    if (!menuOpen&& Object.keys(courseList).length){
+    setCourseList(allCourses[topic])
+    if (!menuOpen&& Object.keys(allCourses[topic]).length){
       setMenuOpen(true);
     }
-  },[courseList, topic])
+  },[topic])
 
   const handleMenuClick = (content) => {
     setSelectedContent(content);
@@ -41,9 +44,6 @@ const Course = ({courseList={},topic,...props}) => {
         <VideoEmb
           width={Math.min(width/1.5, 750)} height={Math.max(width*0.7/2,260)} />
       </div>
-      <button className="mobile-menu-button" onClick={() => setMenuOpen(!menuOpen)}>
-        ☰
-      </button>
     </div>
   );
 };

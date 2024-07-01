@@ -1,7 +1,7 @@
 import {useState, useEffect}  from "react";
 import useWindowDimensions from "../assets/function/useWindowDimentions";
 
-const promoVid = "https://iframe.mediadelivery.net/embed/12116/92763489-03f2-4bea-903c-9460602ad755?autoplay=true&amp;muted=true";
+const promoVid = "https://iframe.mediadelivery.net/embed/12116/92763489-03f2-4bea-903c-9460602ad755?autoplay=true&muted=true";
 
 const VideoEmb = ({ 
     height = '90%',

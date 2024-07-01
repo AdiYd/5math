@@ -367,7 +367,7 @@ const Courses = ({...props}) => {
 
   return (
     <div className="Courses">
-        <h2>הקורסים שלנו לבגרות</h2>
+        <h2>הקורסים שלנו לבגרות במתמטיקה</h2>
         {coursesOptions}
       
         {main}
