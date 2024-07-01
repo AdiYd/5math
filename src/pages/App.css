@@ -84,17 +84,17 @@ div.frameDiv2 {
     padding: 1em 0.7em;
     margin: 1em 0em;
     flex-wrap: wrap;
-      gap: 1.8em;
+    gap: 1.8em;
     /* margin: 3em 5em; */
 }
 #frame2Card {
-  padding: 1em;
+  /* padding: 1em; */
   direction: rtl;
   text-align: -webkit-center;
   display: flex;
   flex-direction: column;
-  width: 15em;
-  height: 20em;
+  max-width: 16em;
+  height: 18em;
   border-radius: var(--cardRadius);
   justify-content: space-around;
   /* background-image: linear-gradient(45deg, #cdbba482, transparent); */
@@ -112,6 +112,7 @@ div.frameDiv2 {
   display: flex;
   justify-content: space-evenly;
   border-radius: var(--cardRadius);
+  margin: 0em 1em;
 }
 
 img#frame2Img {
@@ -169,11 +170,13 @@ section.caruselDiv {
 
 div.carousel-container {
   padding: 2em 0.5em;
-  padding-top: 0em;
   margin: 0em;
 }
     
 div.carousel-container li {
+    display: flex;
+    /* margin: auto; */
+    justify-content: center;
     align-content: center;
   }
 

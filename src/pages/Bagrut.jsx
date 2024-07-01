@@ -329,7 +329,7 @@ function Bagrut({ ...props }) {
                 showDots={true}
                 arrows={false}
                 customButtonGroup={<ButtonCarusel />}
-                responsive={responsive}
+                responsive={responsive({desk:1, tablet:1})}
                 // ssr={true} // means to render carousel on server-side.
                 infinite={true}
                 // autoPlay={this.props.deviceType !== "mobile" ? true : false}

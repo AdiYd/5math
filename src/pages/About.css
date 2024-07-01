@@ -15,6 +15,7 @@ div#aboutCard {
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
     width: 13em;
+    max-width: 88%;
     height: 12em;
     padding: 0.8em;
     border-radius: var(--cardRadius);

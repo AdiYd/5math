@@ -266,149 +266,148 @@ export default function AboutUs({ ...props }) {
         debug(e);
     }
 
-    let caruselSection1 = <>
-        {
+    let caruselSection = 
             Object.keys(aboutInfoDict.current).map((item, indx) => (
-                indx < 4 && <Card
-                    onClick={() => { setItem(p => item !== p ? item : undefined) }}
-                    // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
-                    className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
-                    key={item + indx}
-                    title={aboutInfoDict.current[item].title?.props?.children}
-                    translateY={false}
-                    cardID='aboutCard' >
-                    {aboutInfoDict.current[item].img &&
-                        <>
-                            {aboutInfoDict.current[item].img}
-                            <hr id='horizLine' />
-                        </>
-                    }
-                    {aboutInfoDict.current[item].title}
-                    {aboutInfoDict.current[item].promot}
-                    <div
-                        className="flex center pointer darkBlue opacityHover baseLine gap1">
-                        <h5 >קראו עוד</h5>
-                        <FontAwesomeIcon icon={faSortDown} />
-                    </div>
-                </Card>
+                <div className="flex center m2 mt3 mb3">
+                    <Card
+                        onClick={() => { setItem(p => item !== p ? item : undefined) }}
+                        // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
+                        className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
+                        key={item + indx}
+                        title={aboutInfoDict.current[item].title?.props?.children}
+                        translateY={false}
+                        cardID='aboutCard' >
+                        {aboutInfoDict.current[item].img &&
+                            <>
+                                {aboutInfoDict.current[item].img}
+                                <hr id='horizLine' />
+                            </>
+                        }
+                        {aboutInfoDict.current[item].title}
+                        {aboutInfoDict.current[item].promot}
+                        <div
+                            className="flex center pointer darkBlue opacityHover baseLine gap1">
+                            <h5 >קראו עוד</h5>
+                            <FontAwesomeIcon icon={faSortDown} />
+                        </div>
+                    </Card>
+                </div>
             ))
-        }
 
-    </>
 
-    let caruselSection2 = <>
-        {
-            Object.keys(aboutInfoDict.current).map((item, indx) => (
-                (indx > 3 && indx < 8) && <Card
-                    onClick={() => { setItem(p => item !== p ? item : undefined) }}
-                    // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
-                    className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
-                    key={item + indx}
-                    title={aboutInfoDict.current[item].title?.props?.children}
-                    translateY={false}
-                    cardID='aboutCard' >
-                    {aboutInfoDict.current[item].img &&
-                        <>
-                            {aboutInfoDict.current[item].img}
-                            <hr id='horizLine' />
-                        </>
-                    }
-                    {aboutInfoDict.current[item].title}
-                    {aboutInfoDict.current[item].promot}
-                    <div
-                        className="flex center pointer darkBlue opacityHover baseLine gap1">
-                        <h5 >קראו עוד</h5>
-                        <FontAwesomeIcon icon={faSortDown} />
-                    </div>
-                </Card>
-            ))
-        }
+    // let caruselSection2 = <>
+    //     {
+    //         Object.keys(aboutInfoDict.current).map((item, indx) => (
+    //             (indx > 3 && indx < 8) && <Card
+    //                 onClick={() => { setItem(p => item !== p ? item : undefined) }}
+    //                 // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
+    //                 className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
+    //                 key={item + indx}
+    //                 title={aboutInfoDict.current[item].title?.props?.children}
+    //                 translateY={false}
+    //                 cardID='aboutCard' >
+    //                 {aboutInfoDict.current[item].img &&
+    //                     <>
+    //                         {aboutInfoDict.current[item].img}
+    //                         <hr id='horizLine' />
+    //                     </>
+    //                 }
+    //                 {aboutInfoDict.current[item].title}
+    //                 {aboutInfoDict.current[item].promot}
+    //                 <div
+    //                     className="flex center pointer darkBlue opacityHover baseLine gap1">
+    //                     <h5 >קראו עוד</h5>
+    //                     <FontAwesomeIcon icon={faSortDown} />
+    //                 </div>
+    //             </Card>
+    //         ))
+    //     }
 
-    </>
+    // </>
 
-    let caruselSection3 = <>
-        <Card
-            className={` `}
-            style={{ backgroundImage: 'linear-gradient( transparent, rgb(168 0 230 / 30%))' }}
-            cardID={'frame2Card2'}>
-            <>
-                <div className='flex center ma3 darkBlue mt1 gap1'>
-                    <FontAwesomeIcon
-                        style={{ fontSize: '3em' }}
-                        icon={fa0} className='' size='2xl' />
-                    <FontAwesomeIcon
-                        style={{ fontSize: '3em' }}
-                        icon={fa0} className='' size='2xl' />
-                </div>
+    // let caruselSection3 = <>
+    //     <Card
+    //         className={` `}
+    //         style={{ backgroundImage: 'linear-gradient( transparent, rgb(168 0 230 / 30%))' }}
+    //         cardID={'frame2Card2'}>
+    //         <>
+    //             <div className='flex center ma3 darkBlue mt1 gap1'>
+    //                 <FontAwesomeIcon
+    //                     style={{ fontSize: '3em' }}
+    //                     icon={fa0} className='' size='2xl' />
+    //                 <FontAwesomeIcon
+    //                     style={{ fontSize: '3em' }}
+    //                     icon={fa0} className='' size='2xl' />
+    //             </div>
 
-                <div>
-                    <h3 className='cardText'>יש עם מי לדבר</h3>
-                </div>
-                <hr id='horizLine' />
-                <p >תוכלו לשאול שאלות ולהתייעץ עם המרצה ועם מורים אחרים, ניתן לפנות אלינו במגוון דרכים ולקבל מענה בהתאם לצורך</p>
-                <div className='ma1 darkBlue gap1 flex around'>
-                    <FontAwesomeIcon title='Whatsapp' icon={fa0} />
-                    <FontAwesomeIcon title='טלפון' icon={fa0} />
-                    <FontAwesomeIcon title='אימייל' icon={fa0} />
-                    <FontAwesomeIcon title='שיתוף מסמכים' icon={fa0} />
+    //             <div>
+    //                 <h3 className='cardText'>יש עם מי לדבר</h3>
+    //             </div>
+    //             <hr id='horizLine' />
+    //             <p >תוכלו לשאול שאלות ולהתייעץ עם המרצה ועם מורים אחרים, ניתן לפנות אלינו במגוון דרכים ולקבל מענה בהתאם לצורך</p>
+    //             <div className='ma1 darkBlue gap1 flex around'>
+    //                 <FontAwesomeIcon title='Whatsapp' icon={fa0} />
+    //                 <FontAwesomeIcon title='טלפון' icon={fa0} />
+    //                 <FontAwesomeIcon title='אימייל' icon={fa0} />
+    //                 <FontAwesomeIcon title='שיתוף מסמכים' icon={fa0} />
 
-                </div>
-                <h3 id='textGradient'> ההצלחה שלכם חשובה לנו!</h3>
-            </>
-        </Card>
-        <Card
-            className={` `}
-            style={{
-                backgroundImage: 'linear-gradient(transparent, var(--themeColorAlpha))'
-            }}
-            cardID={'frame2Card2'}>
-            <>
-                <div className='flex center ma3 mt1 darkBlue gap1'>
-                    <FontAwesomeIcon
-                        style={{ fontSize: '3em' }}
-                        icon={fa0} className='' size='2xl' />
-                    <FontAwesomeIcon
-                        style={{ fontSize: '2.5em' }}
-                        icon={fa0} className='' size='2xl' />
-                </div>
+    //             </div>
+    //             <h3 id='textGradient'> ההצלחה שלכם חשובה לנו!</h3>
+    //         </>
+    //     </Card>
+    //     <Card
+    //         className={` `}
+    //         style={{
+    //             backgroundImage: 'linear-gradient(transparent, var(--themeColorAlpha))'
+    //         }}
+    //         cardID={'frame2Card2'}>
+    //         <>
+    //             <div className='flex center ma3 mt1 darkBlue gap1'>
+    //                 <FontAwesomeIcon
+    //                     style={{ fontSize: '3em' }}
+    //                     icon={fa0} className='' size='2xl' />
+    //                 <FontAwesomeIcon
+    //                     style={{ fontSize: '2.5em' }}
+    //                     icon={fa0} className='' size='2xl' />
+    //             </div>
 
-                <div>
-                    <h3 className='cardText'>למידה דיגיטלית וחדשנית </h3>
-                </div>
-                <hr id='horizLine' />
-                <p >תוכן ויזואלי ערוך תמציתי ומדויק, סרטונים ותרגילים ברמה גבוהה יחד עם ממשק דיגטלי וכלים שיעזרו לכם להבין כל נושא לעומק  </p>
+    //             <div>
+    //                 <h3 className='cardText'>למידה דיגיטלית וחדשנית </h3>
+    //             </div>
+    //             <hr id='horizLine' />
+    //             <p >תוכן ויזואלי ערוך תמציתי ומדויק, סרטונים ותרגילים ברמה גבוהה יחד עם ממשק דיגטלי וכלים שיעזרו לכם להבין כל נושא לעומק  </p>
 
-                <h3 id='textGradient'> להבין מתמטיקה באופן אינטואיטיבי</h3>
-            </>
-        </Card>
-        <Card
-            className={` `}
-            style={{ backgroundImage: 'linear-gradient(transparent, rgb(32 206 1 / 30%))' }}
-            cardID={'frame2Card2'}>
-            <>
-                <div className='flex center ma3 mt1 darkBlue gap1'>
-                    <FontAwesomeIcon
-                        style={{ fontSize: '3em' }}
-                        icon={fa0} className='' size='2xl' />
-                    <FontAwesomeIcon
-                        style={{ fontSize: '3em' }}
-                        icon={fa0} className='' size='2xl' />
-                </div>
+    //             <h3 id='textGradient'> להבין מתמטיקה באופן אינטואיטיבי</h3>
+    //         </>
+    //     </Card>
+    //     <Card
+    //         className={` `}
+    //         style={{ backgroundImage: 'linear-gradient(transparent, rgb(32 206 1 / 30%))' }}
+    //         cardID={'frame2Card2'}>
+    //         <>
+    //             <div className='flex center ma3 mt1 darkBlue gap1'>
+    //                 <FontAwesomeIcon
+    //                     style={{ fontSize: '3em' }}
+    //                     icon={fa0} className='' size='2xl' />
+    //                 <FontAwesomeIcon
+    //                     style={{ fontSize: '3em' }}
+    //                     icon={fa0} className='' size='2xl' />
+    //             </div>
 
-                <div>
-                    <h3 className='cardText'>ללמוד בכל זמן ומקום</h3>
-                </div>
-                <hr id='horizLine' />
-                <p > בואו ללמוד בנוחות, בקצב וברמה שמתאימה לכם <br /> האתר מותאם לגלישה בקצב מהיר ונתמך ע"י רוב המכשירים</p>
-                <div className='ma1 darkBlue gap1 flex around'>
-                    <FontAwesomeIcon title='סמארטפון' icon={fa0} />
-                    <FontAwesomeIcon title='מחשב נייד' icon={fa0} />
-                    <FontAwesomeIcon title='מחשב נייח' icon={fa0} />
-                </div>
-                <h3 id='textGradient'> ללמוד מתי ואיפה שנוח לך</h3>
-            </>
-        </Card>
-    </>
+    //             <div>
+    //                 <h3 className='cardText'>ללמוד בכל זמן ומקום</h3>
+    //             </div>
+    //             <hr id='horizLine' />
+    //             <p > בואו ללמוד בנוחות, בקצב וברמה שמתאימה לכם <br /> האתר מותאם לגלישה בקצב מהיר ונתמך ע"י רוב המכשירים</p>
+    //             <div className='ma1 darkBlue gap1 flex around'>
+    //                 <FontAwesomeIcon title='סמארטפון' icon={fa0} />
+    //                 <FontAwesomeIcon title='מחשב נייד' icon={fa0} />
+    //                 <FontAwesomeIcon title='מחשב נייח' icon={fa0} />
+    //             </div>
+    //             <h3 id='textGradient'> ללמוד מתי ואיפה שנוח לך</h3>
+    //         </>
+    //     </Card>
+    // </>
 
 
     let aboutCarusel = <section className='caruselDiv'>
@@ -416,7 +415,7 @@ export default function AboutUs({ ...props }) {
             swipeable={true}
             draggable={false}
             showDots={true}
-            responsive={responsive}
+            responsive={responsive({mobile:2, tablet:3, desk:4})}
             // ssr={true} // means to render carousel on server-side.
             infinite={true}
             // autoPlay={this.props.deviceType !== "mobile" ? true : false}
@@ -426,16 +425,11 @@ export default function AboutUs({ ...props }) {
             // transitionDuration={1000}
             // partialVisbile={true}
             containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
+            // removeArrowOnDeviceType={["tablet", "mobile"]}
             // deviceType={this.props.deviceType}
             dotListClass="custom-dot-list-style"
             itemClass="carousel-item-padding-40-px">
-            <div className="flex wrap center" >
-                {caruselSection1}
-            </div>
-            <div className="flex wrap center" >
-                {caruselSection2}
-            </div>
+                {caruselSection}
             {/* <div className="flex wrap center" >
                 {caruselSection3}
             </div> */}

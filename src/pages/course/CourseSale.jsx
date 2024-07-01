@@ -205,18 +205,17 @@ function CourseSale ({...props}){
                         ))}
                     </div>
 
-    let caruselSection1 = <div className="course-list">
-                            {courses.map((course, index) => (
-                            index<3 && <CourseCard key={index} course={course} />
-                            ))}
-                        </div>
+    let caruselSection = courses.map((course, index) => (
+    <CourseCard key={index} course={course} />
+))
+                      
 
     let carusel = <section className='caruselDiv' style={{paddingTop:'0em'}}>
             <Carousel
                 swipeable={true}
                 draggable={false}
                 showDots={true}
-                responsive={responsive}
+                responsive={responsive({desk:3, mobile:1, tablet:2})}
                 // ssr={true} // means to render carousel on server-side.
                 infinite={true}
                 // autoPlay={this.props.deviceType !== "mobile" ? true : false}
@@ -226,20 +225,12 @@ function CourseSale ({...props}){
                 // transitionDuration={1000}
                 // partialVisbile={true}
                 containerClass="carousel-container"
-                removeArrowOnDeviceType={["tablet", "mobile"]}
+                removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
                 // deviceType={this.props.deviceType}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-39.9-px">
-
-                <div
-                    style={{ gap: '2.2em' }}
-                    className='flex center frameDiv2'>
-                    {caruselSection1}
-                </div>
-                <div
-                    className='flex center frameDiv2'>
-                    {caruselSection2}
-                </div>
+                    {caruselSection} 
+                    {/* {caruselSection2} */}
             </Carousel>
         </section>
 

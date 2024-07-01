@@ -26,6 +26,7 @@ const DBG_PROPS = {
     fontWeight: 'bold'
 }
 export const MOBILE_SCREEN_WIDTH = 680;
+export const TABLET_SCREEN_WIDTH = 1000;
 export const THEME_COLORS = ['var(--ThemeGPTBlueV)', 'var(--ThemeGPTBlue)', 'var(--ThemeGPTOrangeV)', 'var(--ThemeGPTOrangeDeep)', 'var(--ThemeGPTRedV)', 'var(--ThemeGPTRed)', 'var(--ThemeGPTPurpleV)', 'var(--ThemeGPTPurpleLightV)', 'var(--ThemeGPTGreenV)', 'var(--ThemeGPTGreen)'];
 
 

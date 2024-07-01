@@ -7,7 +7,7 @@
     text-align: center;
     /* padding: 1em; */
     position: relative;
-    /* margin: 1em; */
+    margin: 1em;
 }
 
 
@@ -21,11 +21,11 @@
 }
 
 .course-card {
+    justify-content: center;
     background: rgba(255, 255, 255, 0.675);
     border-radius: var(--themeBorderRadius);
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     cursor: default;
-    max-width: 20em;
+    max-width: 80%;
     width: -webkit-fill-available;
     /* height: 10em; */
     padding: 0.8em 0.7em;

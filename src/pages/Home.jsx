@@ -23,27 +23,27 @@ import useWindowDimensions from '../assets/function/useWindowDimentions';
 import FloatingMath from '../components/FloatingMath';
 import VideoEmb from '../components/VideoEmb';
 import { dataBase } from './App';
-import { MOBILE_SCREEN_WIDTH } from '../components/Header';
+import { MOBILE_SCREEN_WIDTH, TABLET_SCREEN_WIDTH } from '../components/Header';
 
-export const responsive = {
+export const responsive = ({desk= 3, tablet= 2, mobile= 1}={})=> ({
     superLargeDesktop: {
         // the naming can be any, depends on you.
         breakpoint: { max: 4000, min: 3000 },
-        items: 1
+        items: 8
     },
     desktop: {
-        breakpoint: { max: 3000, min: 1024 },
-        items: 1
+        breakpoint: { max: 3000, min: 1000 },
+        items: desk
     },
     tablet: {
-        breakpoint: { max: 1024, min: 464 },
-        items: 1
+        breakpoint: { max: TABLET_SCREEN_WIDTH, min: 680 },
+        items: tablet
     },
     mobile: {
-        breakpoint: { max: 464, min: 0 },
-        items: 1
+        breakpoint: { max: MOBILE_SCREEN_WIDTH, min: 0 },
+        items: mobile,
     }
-};
+});
 
 const logoStyle = {
 
@@ -59,8 +59,7 @@ function Home({ ...props }) {
     const [msg, setMsg] = useState();
     debug('Context: ', user, true);
     const { width } = useWindowDimensions();
-    let isMobile = Boolean(width <= MOBILE_SCREEN_WIDTH);
-
+    let isMobile = Boolean(width <= MOBILE_SCREEN_WIDTH), isTablet = Boolean(width <=TABLET_SCREEN_WIDTH);
     let frame1 =  <div className='flex center frameDiv1 frameMargin purpleOnWhite themeRadius pt3 boxShadow'>
         {/* <FloatingMath animation={'flicker'} color='black' text='g(x) = ln(x)+e^{2x}' position='tl' />
         <FloatingMath fontSize='1.2em' transform='rotate(12deg)' text='sin^2(\pi) + cos^2(\pi) = 1' position='tr' />
@@ -76,79 +75,77 @@ function Home({ ...props }) {
             </div>
         </div>
 
-    let caruselSection2 = <>
-        <Card
-            className={``}
-            cardID={'frame2Card'}>
-            <>
-                <div className='flex center' style={{ verticalAlign: 'top' }}>
-                    <img id='frame2Img'
-                        src={digital} alt='לוגו תוכן דיגיטלי' title='תוכן דיגיטלי' />
-                </div>
-                <div>
-                    <h3 className='cardText'>תוכן ויזואלי ודיגיטלי</h3>
-                </div>
-                <hr id='horizLine' />
-                <p >אנימציות, כתב מחשב, תלת מימד
-                    ועוד מגוון שיפורים שטרם ראיתם</p>
-            </>
-        </Card>
-        <Card
-            className={``}
-            cardID={'frame2Card'}>
-            <>
-                <div className='flex center'>
-                    <img id='frame2Img'
-                        src={timeSave} alt='לוגו חסכון בזמן' title='חסכון בזמן' />
-                </div>
-                <div>
-                    <h3 className='cardText'>הקורס שיחסוך לכם זמן וכסף</h3>
-                </div>
-                <hr id='horizLine' />
-                <p>
-                    צמצמנו את החומר כדי ללמד אתכם בצורה הטובה, היעילה והאיכותית ביותר
-                </p>
-            </>
-        </Card>
-        <Card
-            className={``}
-            cardID={'frame2Card'}>
-            <>
-                <div className='flex center'>
-                    <img id='frame2Img'
-                        src={experience} alt='לוגו 21 שנות ניסיון' title='21 שנות נסיון' />
-                </div>
-                <div>
-                    <h3 className='cardText'>21 שנות ניסיון בהוראת מתמטיקה</h3>
-                </div>
-                <hr id='horizLine' />
-                <p>מדריך מנוסה בהוראת מתמטיקה במכונים הגדולים והמוצלחים ביותר בישראל
-                </p>
-            </>
-        </Card>
-        <Card
-            className={``}
-            cardID={'frame2Card'}>
-            <>
-                <div className='flex center' >
-                    <img id='frame2Img'
-                        src={assist} alt='לוגו ליווי אישי צמוד' title='ליווי אישי' />
-                </div>
-                <div>
-                    <h3 className='cardText'>ליווי אישי צמוד</h3>
-                </div>
-                <hr id='horizLine' />
-                <div className='flex'>
-                    <p>אנחנו כאן איתכם,
-                        כל הדרך אל ההצלחה
+    let caruselSection2 = [ <Card
+        className={``}
+        cardID={'frame2Card'}>
+        <>
+            <div className='flex center' style={{ verticalAlign: 'top' }}>
+                <img id='frame2Img'
+                    src={digital} alt='לוגו תוכן דיגיטלי' title='תוכן דיגיטלי' />
+            </div>
+            <div>
+                <h3 className='cardText'>תוכן ויזואלי ודיגיטלי</h3>
+            </div>
+            <hr id='horizLine' />
+            <p >אנימציות, כתב מחשב, תלת מימד
+                ועוד מגוון שיפורים שטרם ראיתם</p>
+        </>
+    </Card>,
+    <Card
+        className={``}
+        cardID={'frame2Card'}>
+        <>
+            <div className='flex center'>
+                <img id='frame2Img'
+                    src={timeSave} alt='לוגו חסכון בזמן' title='חסכון בזמן' />
+            </div>
+            <div>
+                <h3 className='cardText'>הקורס שיחסוך לכם זמן וכסף</h3>
+            </div>
+            <hr id='horizLine' />
+            <p>
+                צמצמנו את החומר כדי ללמד אתכם בצורה הטובה, היעילה והאיכותית ביותר
+            </p>
+        </>
+    </Card>,
+    <Card
+        className={``}
+        cardID={'frame2Card'}>
+        <>
+            <div className='flex center'>
+                <img id='frame2Img'
+                    src={experience} alt='לוגו 21 שנות ניסיון' title='21 שנות נסיון' />
+            </div>
+            <div>
+                <h3 className='cardText'>21 שנות ניסיון בהוראת מתמטיקה</h3>
+            </div>
+            <hr id='horizLine' />
+            <p>מדריך מנוסה בהוראת מתמטיקה במכונים הגדולים והמוצלחים ביותר בישראל
+            </p>
+        </>
+    </Card>,
+    <Card
+        className={``}
+        cardID={'frame2Card'}>
+        <>
+            <div className='flex center' >
+                <img id='frame2Img'
+                    src={assist} alt='לוגו ליווי אישי צמוד' title='ליווי אישי' />
+            </div>
+            <div>
+                <h3 className='cardText'>ליווי אישי צמוד</h3>
+            </div>
+            <hr id='horizLine' />
+            <div className='flex'>
+                <p>אנחנו כאן איתכם,
+                    כל הדרך אל ההצלחה
 
-                    </p>
-                </div>
-            </>
-        </Card>
-    </>
+                </p>
+            </div>
+        </>
+    </Card>]
 
-    let caruselSection1 = <>
+    let caruselSection1 = [
         <Card
             className={` `}
             style={{ backgroundImage: 'linear-gradient( transparent, rgb(168 0 230 / 30%))' }}
@@ -177,11 +174,11 @@ function Home({ ...props }) {
                 </div>
                 <h3 id='textGradient'> ההצלחה שלכם חשובה לנו!</h3>
             </>
-        </Card>
+        </Card>,
         <Card
             className={` `}
             style={{
-                padding: width >= 900 ? '2.5%' : '',
+                padding: width >= 1000 ? '7%' : '',
                 backgroundImage: 'linear-gradient(transparent, var(--themeColorAlpha))'
             }}
             cardID={'frame2Card2'}>
@@ -203,7 +200,7 @@ function Home({ ...props }) {
 
                 <h3 id='textGradient'> ללמוד מתמטיקה באופן אינטואיטיבי</h3>
             </>
-        </Card>
+        </Card>,
         <Card
             className={` `}
             style={{ backgroundImage: 'linear-gradient(transparent, rgb(32 206 1 / 30%))' }}
@@ -231,7 +228,7 @@ function Home({ ...props }) {
                 <h3 id='textGradient'> ללמוד מתי ואיפה שנוח לך</h3>
             </>
         </Card>
-    </>
+        ]
 
     let quickSignUp =  <div className='quickSignUp themeRadius frameMargin blackOnWhite boxShadow'>
             <div className='flex center columns'>
@@ -298,7 +295,6 @@ function Home({ ...props }) {
         var formData = new FormData(e.target);
         let userDataObj = Object.fromEntries(formData);
         dataBase.addItem({tableName: 'Users_Leads',item:{...userDataObj, approved: ('Approve' in userDataObj)? 1:0}});
-        debug('Prompting msg');
         setMsg(<Prompt
                 height='fit-content'
                 showButton={true}
@@ -318,10 +314,10 @@ function Home({ ...props }) {
                 <Carousel
                     swipeable={true}
                     draggable={false}
-                    showDots={true}
-                    responsive={responsive}
+                    showDots={isTablet}
+                    responsive={responsive({desk:3, tablet:2, mobile:1})}
                     // ssr={true} // means to render carousel on server-side.
-                    infinite={true}
+                    infinite={isTablet}
                     // autoPlay={this.props.deviceType !== "mobile" ? true : false}
                     // autoPlaySpeed={1000}
                     keyBoardControl={true}
@@ -329,27 +325,40 @@ function Home({ ...props }) {
                     // transitionDuration={1000}
                     // partialVisbile={true}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    removeArrowOnDeviceType={["tablet", "mobile","desktop"]}
                     // deviceType={this.props.deviceType}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px">
-
-                    <div
-                        style={{ gap: '2.2em' }}
-                        className='flex center frameDiv2'>
                         {caruselSection1}
-                    </div>
-                    <div
-                        className='flex center frameDiv2'>
-                        {caruselSection2}
-                    </div>
                 </Carousel>
             </section>
-            {msg}
             <PromoDiv />
+            <section className='caruselDiv'>
+                <Carousel
+                    swipeable={true}
+                    draggable={false}
+                    showDots={isTablet}
+                    responsive={responsive({desk:4,tablet:2,mobile:2})}
+                    // ssr={true} // means to render carousel on server-side.
+                    infinite={isTablet}
+                    // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                    // autoPlaySpeed={1000}
+                    keyBoardControl={true}
+                    // customTransition="all .5"
+                    // transitionDuration={1000}
+                    // partialVisbile={true}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
+                    // deviceType={this.props.deviceType}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px">             
+                        {caruselSection2}
+                    
+                </Carousel>
+            </section>
            {quickSignUp}
+           {msg}
             <AboutMe />
-
         </div>
     );
 }
@@ -359,7 +368,6 @@ export default Home;
 
 
 const PromoDiv = ({...props})=>{
-    
 
     return (
         <div className='grid themeRadius lineargrad frameMargin boxShadow' id='promoVideo' >
