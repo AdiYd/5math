@@ -1,4 +1,4 @@
-import {useState, useEffect}  from "react";
+import {useState, useRef,useEffect}  from "react";
 
 import React from 'react';
 import { debug } from "../../assets/function/functions";
@@ -6,7 +6,7 @@ import { dataBase } from "../App";
 import '../Courses.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { responsive } from "../Home";
-import { faBell, faClock, faCommentSms, faCreditCard, faLock, faQuestionCircle, faStopwatch, faUserAstronaut, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faBackward, faBell, faClock, faCommentSms, faCreditCard, faForward, faLock, faQuestionCircle, faStopwatch, faUserAstronaut, faWrench } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-multi-carousel";
 import { MathJax } from "better-react-mathjax";
 import Checkbox from "../../components/CheckBox";
@@ -138,7 +138,22 @@ function CourseSale ({...props}){
     const [option, setOption] = useState('582');
     const [notify, setNotify] = useState(true);
     const [msg, setMsg] = useState(undefined);
+    const nextButton = useRef();
+    const prevButton = useRef();
+    const slideZero = useRef();
+    const slideOne = useRef();
 
+    const ButtonCarusel = ({ next, previous, goToSlide, ...rest }) => {
+        const { carouselState: { currentSlide } } = rest;
+        return (
+            <div style={{ display: 'none' }} className="carousel-button-group">
+                <button ref={nextButton} onClick={() => next()} />
+                <button ref={prevButton} onClick={() => previous()} />
+                <button ref={slideZero} onClick={() => goToSlide(0)} />
+                <button ref={slideOne} onClick={() => goToSlide(1)} />
+            </div>
+        );
+    };
     function onSubmitForm(e) {
         e.preventDefault();
         let formaName = e.target.name;
@@ -210,11 +225,24 @@ function CourseSale ({...props}){
 ))
                       
 
-    let carusel = <section className='caruselDiv' style={{paddingTop:'0em'}}>
+    let carusel = <section className='relative caruselDiv'>
+                <span style={{ top: '0em', zIndex: 39, right: '10%'}}
+                    className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
+                    onClick={()=>nextButton.current.click()} >
+                <FontAwesomeIcon icon={faForward} size="2xl" />
+                        הבא
+                </span>
+                <span style={{ top: '0em', zIndex: 39, left: '10%'}}
+                        className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
+                        onClick={()=>prevButton.current.click()} >
+                        הקודם   
+                <FontAwesomeIcon icon={faBackward} size="2xl" />
+             </span>
             <Carousel
                 swipeable={true}
                 draggable={false}
                 showDots={true}
+                customButtonGroup={<ButtonCarusel />}
                 responsive={responsive({desk:3, mobile:1, tablet:2})}
                 // ssr={true} // means to render carousel on server-side.
                 infinite={true}
@@ -230,7 +258,6 @@ function CourseSale ({...props}){
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-39.9-px">
                     {caruselSection} 
-                    {/* {caruselSection2} */}
             </Carousel>
         </section>
 
@@ -314,7 +341,7 @@ function CourseSale ({...props}){
 
     let main;
     if (option ==='582'){
-        main =  <>
+        main =  <div className="m3">
             <p className="w600">מעל 60 שעות של תוכן איכותי ומאורגן לפי נושאים עם תרגילים לדוגמה וחוברת תרגילים, ניתן לרכוש נושאים בודדים או את כל התוכן במחיר משתלם</p>
            
             <p className="w500"> איך לומדים איתנו בצורה יעילה? צפו בשיעור ולאחר מכן בפתרון תרגיל לדוגמה, המשיכו ופתרו מספר תרגילים בעצמכם ברמות קושי משתנות (מחוברת התרגול המצורפות או ממקורות אחרים)
@@ -327,12 +354,12 @@ function CourseSale ({...props}){
             {carusel}
             {paymentPromo}
             <p className="w500"> מהירי הבנה? מעולה, תוכלו לצפות בקצב מהיר(x 1.5), לוקחים את הזמן? נהדר, מוזמנים לצפות בקצב שלכם (x 0.75) ולחזור על השיעורים כמה שרק תרצו </p>
-        </>  
+        </div>  
     }
     else if (option ==='581'){
         main =  <>
                 {msg}
-                <div className="onConstruction">
+                <div className="onConstruction m3">
                     <div className="flex center gap2">
                             {/* <FontAwesomeIcon icon={faBell} size="2xl" color="#CD7F32" /> */}
                             <svg 
@@ -368,8 +395,8 @@ function CourseSale ({...props}){
                         onClick = {()=>{}} 
                         className="notify darkRed m2 opacityHover"> הרשמו למטה </a>
                     </p>
-                    {notify && notifyForm}
                 </div>
+                {notify && notifyForm}
             </>
     }
 

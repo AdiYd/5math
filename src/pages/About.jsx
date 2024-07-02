@@ -4,7 +4,7 @@ import { User } from "..";
 import Carousel from "react-multi-carousel";
 import Card from "../components/Card";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { fa0, faCircleXmark, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { fa0, faArrowAltCircleLeft, faArrowCircleLeft, faArrowCircleRight, faBackward, faCircleXmark, faForward, faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { faFaceSmileWink } from "@fortawesome/free-regular-svg-icons";
 import { responsive } from "./Home";
 import { bagrutInfoDict } from "./Bagrut";
@@ -257,6 +257,23 @@ export default function AboutUs({ ...props }) {
     const [selectItem, setItem] = useState();
     const navigate = useNavigate();
     const aboutInfoDict = useRef(aboutDict(() => navigate('/BagrutOfficial')));
+    
+    const nextButton = useRef();
+    const prevButton = useRef();
+    const slideZero = useRef();
+    const slideOne = useRef();
+
+    const ButtonCarusel = ({ next, previous, goToSlide, ...rest }) => {
+        const { carouselState: { currentSlide } } = rest;
+        return (
+            <div style={{ display: 'none' }} className="carousel-button-group">
+                <button ref={nextButton} onClick={() => next()} />
+                <button ref={prevButton} onClick={() => previous()} />
+                <button ref={slideZero} onClick={() => goToSlide(0)} />
+                <button ref={slideOne} onClick={() => goToSlide(1)} />
+            </div>
+        );
+    };
 
     debug('Context: ', user, true);
 
@@ -268,12 +285,11 @@ export default function AboutUs({ ...props }) {
 
     let caruselSection = 
             Object.keys(aboutInfoDict.current).map((item, indx) => (
-                <div className="flex center m2 mt3 mb3">
+                <div  key={item + indx} className="flex center m2 mt3 mb3">
                     <Card
                         onClick={() => { setItem(p => item !== p ? item : undefined) }}
                         // className={`rtl pointer hoverGrad${indx % 6} ${item === selectItem ? 'constGrad' + indx : ''}`}
                         className={`rtl noneSelect pointer ${item === selectItem ? 'constGradTheme' : ''}`}
-                        key={item + indx}
                         title={aboutInfoDict.current[item].title?.props?.children}
                         translateY={false}
                         cardID='aboutCard' >
@@ -411,31 +427,43 @@ export default function AboutUs({ ...props }) {
 
 
     let aboutCarusel = <section className='caruselDiv'>
-        <Carousel
-            swipeable={true}
-            draggable={false}
-            showDots={true}
-            responsive={responsive({mobile:2, tablet:3, desk:4})}
-            // ssr={true} // means to render carousel on server-side.
-            infinite={true}
-            // autoPlay={this.props.deviceType !== "mobile" ? true : false}
-            // autoPlaySpeed={1000}
-            keyBoardControl={true}
-            // customTransition="all .5"
-            // transitionDuration={1000}
-            // partialVisbile={true}
-            containerClass="carousel-container"
-            // removeArrowOnDeviceType={["tablet", "mobile"]}
-            // deviceType={this.props.deviceType}
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px">
-                {caruselSection}
-            {/* <div className="flex wrap center" >
-                {caruselSection3}
-            </div> */}
-
-        </Carousel>
-    </section>
+             <span style={{ zIndex: 39, right: '10%'}}
+                    className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
+                    onClick={()=>nextButton.current.click()} >
+             <FontAwesomeIcon icon={faForward} size="2xl" />
+                    הבא
+            </span>
+             <span style={{ zIndex: 39, left: '10%'}}
+                    className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
+                    onClick={()=>prevButton.current.click()} >
+                    הקודם   
+             <FontAwesomeIcon icon={faBackward} size="2xl" />
+             </span>
+                <Carousel
+                    swipeable={true}
+                    draggable={false}
+                    showDots={true}
+                    customButtonGroup={<ButtonCarusel />}
+                    responsive={responsive({mobile:2, tablet:3, desk:4})}
+                    // ssr={true} // means to render carousel on server-side.
+                    infinite={true}
+                    // autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                    // autoPlaySpeed={1000}
+                    keyBoardControl={true}
+                    // customTransition="all .5"
+                    // transitionDuration={1000}
+                    // partialVisbile={true}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["tablet", "mobile", "desktop"]}
+                    // deviceType={this.props.deviceType}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px">
+                        {caruselSection}
+                    {/* <div className="flex wrap center" >
+                        {caruselSection3}
+                    </div> */}
+                </Carousel>
+        </section>
 
     let story = selectItem && <div className="border storyDiv center">
         <div className="flex tStart columns center" style={{ position: 'relative' }}>

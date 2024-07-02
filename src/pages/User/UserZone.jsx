@@ -83,7 +83,7 @@ function UserZone({ ...props }) {
                                     defaultColor={color}
                                     width={15}
                                     hideAlpha={true}
-                                    style={{width:'15vw', height:'15vh', borderRadius:'8px'}}
+                                    style={{borderRadius:'8px'}}
                                     callback={setThemeColor} />
                                 <FontAwesomeIcon 
                                     title='איפוס צבע'

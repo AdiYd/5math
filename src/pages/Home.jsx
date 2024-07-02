@@ -76,6 +76,7 @@ function Home({ ...props }) {
         </div>
 
     let caruselSection2 = [ <Card
+        key={'12ab'}
         className={``}
         cardID={'frame2Card'}>
         <>
@@ -92,6 +93,7 @@ function Home({ ...props }) {
         </>
     </Card>,
     <Card
+        key={'12a'}
         className={``}
         cardID={'frame2Card'}>
         <>
@@ -109,6 +111,7 @@ function Home({ ...props }) {
         </>
     </Card>,
     <Card
+        key={'12'}
         className={``}
         cardID={'frame2Card'}>
         <>
@@ -125,6 +128,7 @@ function Home({ ...props }) {
         </>
     </Card>,
     <Card
+        key={'1'}
         className={``}
         cardID={'frame2Card'}>
         <>
@@ -147,6 +151,7 @@ function Home({ ...props }) {
 
     let caruselSection1 = [
         <Card
+            key={'32abc'}
             className={` `}
             style={{ backgroundImage: 'linear-gradient( transparent, rgb(168 0 230 / 30%))' }}
             cardID={'frame2Card2'}>
@@ -176,6 +181,7 @@ function Home({ ...props }) {
             </>
         </Card>,
         <Card
+            key={'32ab'}
             className={` `}
             style={{
                 padding: width >= 1000 ? '7%' : '',
@@ -202,6 +208,7 @@ function Home({ ...props }) {
             </>
         </Card>,
         <Card
+            key={'32a'}
             className={` `}
             style={{ backgroundImage: 'linear-gradient(transparent, rgb(32 206 1 / 30%))' }}
             cardID={'frame2Card2'}>
@@ -338,7 +345,7 @@ function Home({ ...props }) {
                     swipeable={true}
                     draggable={false}
                     showDots={isTablet}
-                    responsive={responsive({desk:4,tablet:2,mobile:2})}
+                    responsive={responsive({desk:4,tablet:3,mobile:1})}
                     // ssr={true} // means to render carousel on server-side.
                     infinite={isTablet}
                     // autoPlay={this.props.deviceType !== "mobile" ? true : false}
@@ -348,7 +355,7 @@ function Home({ ...props }) {
                     // transitionDuration={1000}
                     // partialVisbile={true}
                     containerClass="carousel-container"
-                    removeArrowOnDeviceType={['tablet', 'mobile', 'desktop']}
+                    removeArrowOnDeviceType={['tablet', 'desktop']}
                     // deviceType={this.props.deviceType}
                     dotListClass="custom-dot-list-style"
                     itemClass="carousel-item-padding-40-px">             

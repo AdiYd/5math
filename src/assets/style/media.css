@@ -35,7 +35,9 @@
     div.frameDiv3 {
         font-size: 0.9em;
     */
-
+    .translateY {
+        transform: none !important;
+    }
     .course-card,
     #frame2Card2 {
         transform: none;
@@ -233,7 +235,7 @@
     }
 
     div.rcp span {
-        width: 10em !important;
+        width: 14em !important;
     }
 
     /* div#promptContainer {
@@ -357,9 +359,7 @@
         width: 80% !important;
         margin: 0.8em 4em;
     }
-    .translateY {
-        transform: none !important;
-    }
+
 }
 
 @media only screen and (max-width: 450px) {

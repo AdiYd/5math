@@ -56,10 +56,10 @@ export default function ColorPickerCustom({
             </div>
             <span style={{
                 position: "absolute",
-                width: "10em",
+                width: "18em",
                 zIndex: 15,
                 top: "100%",
-                left: '20%',
+                left: '-5em',
                 visibility: active ? '' : 'hidden',
                 ...style
             }}>
