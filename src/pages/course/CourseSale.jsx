@@ -6,7 +6,7 @@ import { dataBase } from "../App";
 import '../Courses.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { responsive } from "../Home";
-import { faBackward, faBell, faClock, faCommentSms, faCreditCard, faForward, faLock, faQuestionCircle, faStopwatch, faUserAstronaut, faWrench } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleLeft, faArrowCircleLeft, faArrowCircleRight, faBackward, faBell, faCheck, faClock, faCommentSms, faCreditCard, faForward, faLock, faQuestionCircle, faStopwatch, faUserAstronaut, faWrench } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "react-multi-carousel";
 import { MathJax } from "better-react-mathjax";
 import Checkbox from "../../components/CheckBox";
@@ -99,9 +99,9 @@ const CourseCard = ({ index,course }) => {
                 </div>
     let purches =  <div className="flex center">
                         <button 
-                        style={{width:'75%'}}
+                        style={{width:'75%', padding:'0.8em 1em'}}
                         id="purchesButton"
-                        className="round border ma3 pt2 pointer pb2">לרכישה</button>
+                        className="round border ma3 pointer pb2">לרכישה</button>
                     </div>
     let bullets =  <div>
                     <MathJax>
@@ -190,28 +190,37 @@ function CourseSale ({...props}){
                                 className={`${option ==='582' ? '':'themeBorder'} borderTheme squarish`}> שאלון 582</button>
                     </div>
 
-    let paymentPromo =  <div className="flex center gap2 m2">
-                            <div className="flex gap1 columns lineargrad border paymentPromo center">
+    let paymentPromo =  <div className="flex around gap2 m2 p3 paymentPromo">
+                            <div className="flex gap1 columns center">
+                                <div className="flex center gap1">
+                                <FontAwesomeIcon icon={faCheck} color="var(--ThemeGPTGreen)" />
                                 <a className=""> רכישה מאובטחת ובטוחה  </a>
+                                </div>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faLock} />
                                     <FontAwesomeIcon icon={faCreditCard} />
                                 </div>
                             </div>
-                            <div className="flex gap1 columns lineargrad border paymentPromo center">
+                            <div className="flex gap1 columns center">
+                                <div className="flex center gap1">
+                                <FontAwesomeIcon icon={faCheck} color="var(--ThemeGPTGreen)" />
                                 <a className=""> הקורסים פתוחים למשך 8 חודשים </a>
+                                </div>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faClock} />
                                     <FontAwesomeIcon icon={faUserAstronaut} />
                                 </div>
                             </div>
-                            <div className="flex gap1 columns lineargrad border paymentPromo center">
+                            <div className="flex gap1 columns center">
+                                <div className="flex center gap1">
+                                <FontAwesomeIcon icon={faCheck} color="var(--ThemeGPTGreen)" />
                                 <a className=""> ניתן להתייעץ ולשאול את המורה שאלות </a>
+                                </div>
                                 <div className="flex center gap2">
                                     <FontAwesomeIcon icon={faQuestionCircle} />
                                     <FontAwesomeIcon icon={faCommentSms} />
                                 </div>
-                            </div>
+                            </div> 
                         </div>
 
 
@@ -226,14 +235,14 @@ function CourseSale ({...props}){
                 <span style={{ top: '0em', zIndex: 39, right: '10%'}}
                     className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
                     onClick={()=>nextButton.current.click()} >
-                <FontAwesomeIcon icon={faForward} size="2xl" />
+                <FontAwesomeIcon icon={faArrowCircleRight} size="2xl" />
                         הבא
                 </span>
                 <span style={{ top: '0em', zIndex: 39, left: '10%'}}
                         className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
                         onClick={()=>prevButton.current.click()} >
                         הקודם   
-                <FontAwesomeIcon icon={faBackward} size="2xl" />
+                <FontAwesomeIcon icon={faArrowCircleLeft} size="2xl" />
              </span>
             <Carousel
                 swipeable={true}
@@ -340,17 +349,20 @@ function CourseSale ({...props}){
     let main;
     if (option ==='582'){
         main =  <div className="m3">
+            <Link to={'582'} >
+                <h4 className="opacityHover darkRed pointer ma2">
+                    לצפייה בקורסים שאלון 582
+                </h4>
+            </Link>
             <p className="w600">מעל 60 שעות של תוכן איכותי ומאורגן לפי נושאים עם תרגילים לדוגמה וחוברת תרגילים, ניתן לרכוש נושאים בודדים או את כל התוכן במחיר משתלם</p>
            
             <p className="w500"> איך לומדים איתנו בצורה יעילה? צפו בשיעור ולאחר מכן בפתרון תרגיל לדוגמה, המשיכו ופתרו מספר תרגילים בעצמכם ברמות קושי משתנות (מחוברת התרגול המצורפות או ממקורות אחרים)
             <br/> מתקשים? אנחנו פה! חזרו לשיעור, להסברים, לתרגול, לדוגמאות ודברו איתנו 🙂</p>
-          <Link to={'582'} >
-           <h4 className="opacityHover darkRed pointer m0">
-                לצפייה בקורסים שאלון 582
-            </h4>
-          </Link>
-            {carusel}
+            <hr id="horizLine" />   
             {paymentPromo}
+            <hr id="horizLine" />
+
+            {carusel}
             <p className="w500"> מהירי הבנה? מעולה, תוכלו לצפות בקצב מהיר(x 1.5), לוקחים את הזמן? נהדר, מוזמנים לצפות בקצב שלכם (x 0.75) ולחזור על השיעורים כמה שרק תרצו </p>
         </div>  
     }

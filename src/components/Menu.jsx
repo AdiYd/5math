@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Components.css';
 import '../pages/course/CourseContainer.css';
 import { debug } from '../assets/function/functions';
@@ -19,15 +19,21 @@ export const arrowUp = <svg
                     fill="var(--themeColorText)">
                     <path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"/></svg>;
 
-const CourseMenu = ({ items, onMenuClick }) => {
+const CourseMenu = ({ items, menuPath,onMenuClick }) => {
+  const [update, setUpdate] = useState(false);
+  useEffect(()=>{
+    setUpdate(p=>!p);
+  },[items])
+
   return (
     <ul className="menu-list">
       {Object.keys(items).map((item, index) => {
         const mainTitle = item;
-        const topic = items[item];
+        const topic = items[item];;
         return (
           <MenuItem
-            key={index}
+            key={index + mainTitle}
+            menuPath={menuPath}
             title={mainTitle}
             topic={topic}
             onMenuClick={onMenuClick}
@@ -38,17 +44,32 @@ const CourseMenu = ({ items, onMenuClick }) => {
   );
 };
 
-const MenuItem = ({ title, topic, onMenuClick }) => {
-  const [open, setOpen] = useState(false);
-  const [lesson, setLesson] = useState();
-
+const MenuItem = ({ title, topic,menuPath, onMenuClick }) => {
+  const [open, setOpen] = useState(menuPath?.title === title);
+  const [lesson, setLesson] = useState(menuPath?.lesson);
   let isSubMenu = Object.keys(topic).length;
+  useEffect(()=>{
+    setLesson(menuPath.lesson);
+    // setOpen(menuPath?.title === title);
+  },[menuPath.title])
+
+  const onTitleClick = ()=>{
+    // if (!open){
+    //  onMenuClick({title:title})
+    // }
+    setOpen(!open); 
+  }
+  const onLossonClick = (lessonName)=>{
+    setLesson(lessonName); 
+    onMenuClick({title: title, lesson: lessonName});
+  }
+
   return (
     <li>
       <div 
         style={{alignItems:'flex-start', gap:'0.2em'}}
         className={`flex tStart ${open ? 'bold':''}`} 
-        onClick={() => setOpen(!open)}>
+        onClick={onTitleClick} >
         {title} {isSubMenu && <div 
         style={{fill:'var(--themeColorText)'}}
         title={open ? 'סגירה':'פתיחה'} > 
@@ -61,7 +82,8 @@ const MenuItem = ({ title, topic, onMenuClick }) => {
             title={lessonName}
             className='pointer squarish'
             style={lesson === lessonName ? {color: 'var(--themeColor)', fontWeight:'500'}:{}}
-            key={index} onClick={() =>{setLesson(lessonName); onMenuClick(`קישור ל: ${title} > ${lessonName}`)}}>
+            key={title+lessonName} 
+            onClick={()=> onLossonClick(lessonName)}>
               {lessonName}
             </li>
           ))}

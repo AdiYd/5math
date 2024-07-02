@@ -272,7 +272,7 @@ button {
     font-weight: bold;
     border: none;
     transition: 0.3s;
-    /* font-size: 0.85em; */
+    font-size: 0.85em;
 }
 
 button:hover {

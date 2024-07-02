@@ -458,6 +458,7 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                         <SubMenu showMenu={subMenu[pageRout] && !mobileMenu} horizontal={false} >
                         {topicsList.map((item)=>(
                                     <Link to={'/Courses/582/'+item} 
+                                        key={item}
                                         className='hoverTheme flex w500 center ma2 alignCenter pointer'
                                         style={{color: courseName === item ? 'var(--themeColor)':'' }}
                                         >{item}</Link>

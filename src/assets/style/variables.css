@@ -7,6 +7,7 @@
     --themeGrey: rgba(184, 198, 211, 1);
 
     --themeColor: var(--ThemeGPTBlueV);
+    --themeHeaderDarkBlue: rgba(1, 30, 51, 1);
     --themeDarkBlue: #032f4d;
     --themeDarkRed: rgb(102, 5, 5);
         /* rgba(1, 30, 51, 1); */

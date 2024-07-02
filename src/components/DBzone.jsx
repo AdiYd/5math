@@ -127,7 +127,7 @@ function DBzone({ ...props }) {
                             style={{height:'2em'}}
                                 placeholder="חיפוש משתמש לפי אימייל או שם"
                                 className="ltr" name='email' maxLength={80} type="text" required />
-                        <button className="small squarish themeBorder" type="submit">חיפוש משתמש</button>
+                        <button className="small squarish" type="submit">חיפוש משתמש</button>
                     </form>
             </div>
 

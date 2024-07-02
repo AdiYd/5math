@@ -430,14 +430,14 @@ export default function AboutUs({ ...props }) {
              <span style={{ zIndex: 39, right: '10%'}}
                     className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
                     onClick={()=>nextButton.current.click()} >
-             <FontAwesomeIcon icon={faForward} size="2xl" />
+             <FontAwesomeIcon icon={faArrowCircleRight} size="2xl" />
                     הבא
             </span>
              <span style={{ zIndex: 39, left: '10%'}}
                     className="flex gap1 alignCenter w500 opacityHover pointer hoverTheme absolute"
                     onClick={()=>prevButton.current.click()} >
                     הקודם   
-             <FontAwesomeIcon icon={faBackward} size="2xl" />
+             <FontAwesomeIcon icon={faArrowCircleLeft} size="2xl" />
              </span>
                 <Carousel
                     swipeable={true}

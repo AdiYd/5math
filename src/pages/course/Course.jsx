@@ -8,23 +8,43 @@ import useWindowDimensions from '../../assets/function/useWindowDimentions';
 import CourseMenu from '../../components/Menu';
 import { allCourses, topicsList } from '../App';
 import { Link } from 'react-router-dom';
+import { Cookies, useCookies } from 'react-cookie';
+
+const courseTranslate = {
+  'אנליטית': 'analytic',
+  'וקטורים' : 'vectors',
+  'מרוכבים': 'complex',
+  'חדו"א': 'calculus',
+  'משוואות מעריכיות': 'logarithm'
+}
 
 const Course = ({topic = 'בחרו קורס',...props}) => {
   const [courseList, setCourseList] = useState(allCourses[topic]||{});
   const [selectedContent, setSelectedContent] = useState('בחרו קורס');
+  const [cookie, setCookie, removeCookie] = useCookies();
   const [course, setCourse] = useState();
+  const [menuPath, setMenuPath] = useState(cookie[`menuPath_${courseTranslate[topic]}`]);
   const [menuOpen, setMenuOpen] = useState(Boolean(Object.keys(courseList).length));
   const {width, height} = useWindowDimensions();
 
   useEffect(()=>{
     setCourseList(allCourses[topic]||{})
-    if (!menuOpen&& Object.keys(allCourses[topic]||{}).length){
+    if (!menuOpen && Object.keys(allCourses[topic]||{}).length){
       setMenuOpen(true);
+    }
+    let checkPath = cookie[`menuPath_${courseTranslate[topic]}`];
+    setMenuPath(checkPath);
+    if (checkPath){
+        setSelectedContent(`${checkPath?.title} + ${checkPath?.lesson||''}`);
     }
   },[topic])
 
   const handleMenuClick = (content) => {
-    setSelectedContent(content);
+    let pathName = `menuPath_${courseTranslate[topic]}`, maxAge = 60*60*24*10;
+    debug('Have cockie: ', content, pathName);
+    setCookie(pathName,JSON.stringify(content),{maxAge});
+    setMenuPath(content)
+    setSelectedContent(`${content?.title} + ${content?.lesson||''}`);
   };
 
   let courseContainer = <div className="courseContainer">
@@ -38,7 +58,11 @@ const Course = ({topic = 'בחרו קורס',...props}) => {
                         title={!menuOpen ? 'פתיחת תפריט': 'צמצום תפריט'} 
                         icon={!menuOpen ? faAnglesLeft: faAnglesRight} size='lg'/>
                     </div>
-                        {menuOpen && <CourseMenu items={courseList} onMenuClick={handleMenuClick} />}
+                        {menuOpen && <CourseMenu 
+                        menuPath ={menuPath}
+                        items={courseList} 
+                        topic={topic} 
+                        onMenuClick={handleMenuClick} />}
                   </div>
                   <div className="content">
                       <p className='w500'>{selectedContent}</p>
