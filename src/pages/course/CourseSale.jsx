@@ -85,7 +85,7 @@ const courses = [
   }
 ];
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ index,course }) => {
 
     let price =   <div className="price rtl">
                     <span className="original-price">
@@ -125,7 +125,7 @@ const CourseCard = ({ course }) => {
                 </div>
 
   return (
-    <div className="course-card noneSelect boxShadowHover" style={{backgroundImage:course.bgColor}}>
+    <div id={`courseCard${index}`} className="course-card noneSelect boxShadowHover" style={{backgroundImage:course.bgColor}}>
         {title}
         {bullets}
         {price}
@@ -214,16 +214,13 @@ function CourseSale ({...props}){
                             </div>
                         </div>
 
-    let caruselSection2 = <div className="course-list">
-                        {courses.map((course, index) => (
-                            index >2 && <CourseCard key={index} course={course} />
-                        ))}
-                    </div>
 
     let caruselSection = courses.map((course, index) => (
-    <CourseCard key={index} course={course} />
+    <CourseCard index={index} key={index} course={course} />
 ))
-                      
+    const onSlideChange = (prev, state)=>{
+  
+    }
 
     let carusel = <section className='relative caruselDiv'>
                 <span style={{ top: '0em', zIndex: 39, right: '10%'}}
@@ -243,6 +240,7 @@ function CourseSale ({...props}){
                 draggable={false}
                 showDots={true}
                 customButtonGroup={<ButtonCarusel />}
+                afterChange={onSlideChange}
                 responsive={responsive({desk:3, mobile:1, tablet:2})}
                 // ssr={true} // means to render carousel on server-side.
                 infinite={true}

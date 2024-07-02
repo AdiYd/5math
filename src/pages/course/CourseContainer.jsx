@@ -8,7 +8,6 @@ import BackTo from "../../components/BackTo";
 function CourseContainer ({ courseSymbol,...props}){
     const params = useParams();
     let topic =params['*']?.split('/')?.length<=3 ?  params['*'].split('/')[2]: '';
-    debug('This is params: ', params['*'].split('/'), true);
 
     return (
         <div className="relative">

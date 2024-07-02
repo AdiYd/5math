@@ -10,11 +10,11 @@ import '../assets/style/style.css';
 import './Components.css';
 import './header.css';
 import imgLogo from '../assets/img/5Math.svg';
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate, useParams } from "react-router-dom";
 import Avatar from 'react-avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faBars, faCaretDown, faGear, faSquareArrowUpRight, faUser } from '@fortawesome/free-solid-svg-icons';
-import { PAGES } from '../pages/App';
+import { PAGES, topicsList } from '../pages/App';
 import Formulas from '../pages/Formula';
 import Logo from './Logo';
 import { dataBase } from '../pages/App';
@@ -417,6 +417,9 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
     const [pageName, setPageName] = useState(currentPage);
     const [subMenu, setSubmenu] = useState({ Courses: false, Exercise: false })
     const [mobileMenu, setMobileMenu] = useState(false);
+    const urlParams = useParams();
+    let courseName = urlParams['*'].split('/');
+    courseName = courseName?.length ? courseName[2]:'';  
     useEffect(() => {
         setPageName(currentPage);
     }, [currentPage])
@@ -453,11 +456,12 @@ function Menu({ pages, currentPage, isMobile = false, ...props }) {
                             </div>
                         </Link>
                         <SubMenu showMenu={subMenu[pageRout] && !mobileMenu} horizontal={false} >
-                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{'וקטורים'}</a>
-                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{'אנליטית'}</a>
-                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{'מרוכבים'}</a>
-                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{"חשבון דיפרנציאלי ואינטגרלי"}</a>
-                                    <a className='hoverTheme flex center ma2 alignCenter pointer'>{"משוואות מעריכיות"}</a>
+                        {topicsList.map((item)=>(
+                                    <Link to={'/Courses/582/'+item} 
+                                        className='hoverTheme flex w500 center ma2 alignCenter pointer'
+                                        style={{color: courseName === item ? 'var(--themeColor)':'' }}
+                                        >{item}</Link>
+                                  ))}
                         </SubMenu>
                     </div> :
                     <div
